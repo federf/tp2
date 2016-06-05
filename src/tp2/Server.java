@@ -149,7 +149,8 @@ public class Server implements Serializable {
 		/* TODO: Completar este metodo
 		bans es una lista de IPBan
 			ORDENADA (respecto al tiempo de expiracion de cada IP) 
-			SIN REPETICIONES (sin repeticiones de IP)
+			SIN REPETICIONES de expires.
+			SIN REPETICIONES de IP.
 			NINGUN IP baneado tiene tiempo menor a lastupdate
 		exceptiones es una lista de IPs
 			SIN REPETICIONES
@@ -160,7 +161,7 @@ public class Server implements Serializable {
 		// CREO PUEDE MEJORARSE LA EJECUCION PARA AHORRAR CICLOS, POR EJEMPLO
 		// VERIFICANDO bansSorted y bansOkTime con el mismo ciclo, aunque 
 		// creo queda mejor mas modularizado
-		return bansSorted() && bansNotRepeated() && bansOkTime() && exceptionsNotRepeated() && notSharedElements();
+		return bansSorted() && bansNotRepeatedExpirationOrIP() && bansOkTime() && exceptionsNotRepeated() && notSharedElements();
 	}
 	
 	
@@ -300,8 +301,8 @@ public class Server implements Serializable {
 		boolean sorted = true;
 		if(!bans.isEmpty()){
 			Node current = bans.header;
-			while(current.next != null && sorted){
-				sorted = (current.element.getExpires() <= current.next.element.getExpires());
+			while(current != null && sorted){
+				sorted = (current.element.getExpires() < current.next.element.getExpires());
 				current = current.next;
 			}
 		}
@@ -309,10 +310,36 @@ public class Server implements Serializable {
 	}
 	
 	/*
-	 * This method returns True iff bans list does not contain repeated elements
+	 * This method returns True iff bans list does not contain repeated expiration times or IPs
 	 * Used for repOk
 	 */
-	private boolean bansNotRepeated(){
+	private boolean bansNotRepeatedExpirationOrIP(){
+		boolean notRepeatedExpire = true;
+		boolean notRepeatedIP = true;
+		if(!bans.isEmpty()){
+			// set current element
+			Node current = bans.header;
+			Node other;
+			// loop over the elements searching for repeated elements until there is no more elements
+			// or a repeated element is found
+			while(current != null && notRepeatedExpire && notRepeatedIP){
+				other = current.next;
+				while(other != null && notRepeatedExpire && notRepeatedIP){
+					notRepeatedExpire = !current.element.getExpires().equals(other.element.getExpires());
+					notRepeatedIP = !current.element.getIp().equals(other.element.getIp());
+					other = other.next;
+				}
+				current = current.next;
+			}
+		}
+		return notRepeatedExpire && notRepeatedIP;
+	}
+	
+	/*
+	 * This method returns True iff bans list does not contain repeated IP
+	 * Used for repOk
+	 */
+	/*private boolean bansNotRepeatedIP(){
 		boolean notRepeated = true;
 		if(!bans.isEmpty()){
 			// set current element
@@ -323,14 +350,14 @@ public class Server implements Serializable {
 			while(current.next != null && notRepeated){
 				other = current.next;
 				while(other != null && notRepeated){
-					notRepeated = !current.element.equals(other) ;
+					notRepeated = !current.element.ip.equals(other.element.ip);
 					other = other.next;
 				}
 				current = current.next;
 			}
 		}
 		return notRepeated;
-	}
+	}*/
 	
 	/*
 	 * This method returns True iff bans list does not contain IPs which 
@@ -341,8 +368,7 @@ public class Server implements Serializable {
 		boolean okTime = true;
 		if(!bans.isEmpty()){
 			Node current = bans.header;
-			while(current.next != null && okTime){
-				// DUDA - DEBE SER MAYOR ESTRICTO O MAYOR IGUAL??? EN EL ENUNCIADO DICE QUE NO PUEDEN TENER TIEMPO "MENOR"
+			while(current != null && okTime){
 				okTime = ( current.element.getExpires() > lastUpdate );
 				current = current.next;
 			}
@@ -362,7 +388,7 @@ public class Server implements Serializable {
 			Entry other;
 			// loop over the elements searching for repeated elements until there is no more elements
 			// or a repeated element is found
-			while(current.next != null && notRepeated){
+			while(current != null && notRepeated){
 				other = current.next;
 				while(other != null && notRepeated){
 					notRepeated = !current.element.equals(other) ;
@@ -382,7 +408,7 @@ public class Server implements Serializable {
 		boolean notShared = true;
 		Node current = bans.header;
 		// search shared elements between bans and exceptions
-		while(current.next != null && notShared){
+		while(current != null && notShared){
 			notShared = exceptions.contains(current.element.getIp());
 			current=current.next;
 		}

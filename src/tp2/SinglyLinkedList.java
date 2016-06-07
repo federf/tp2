@@ -111,37 +111,47 @@ public class SinglyLinkedList implements Serializable{
 
 	
 	public boolean repOK(){
-		if(this==null)
+		// this cant be null
+    	if(this==null)
 			return false;
-    	
+    	// size must be zero o higher
     	if(size<0)
     		return false;
+    	// header must be not null
 		if(header==null)
 			return false;
+		// header's element must be null
 		if(header.element!=null)
 			return false;
 		
+		// "visited" nodes list
 		LinkedList<Entry> visited=new LinkedList<Entry>();
-		Entry current=header;
 		
+		// add header to the visited nodes list
 		visited.add(header);
 		
-		current=header.next;
+		// advance to the next element
+		Entry current=header.next;
 		
+		// loop over the list searching for loops
+		// and counting the elements visited until current element becomes null
+		// and cant is lower or equal to size
 		int cant=0;
-		while(current!=null){
+		while(current!=null && cant<= size){
+			// if current.element is null return false
 			if(current.element==null)
 				return false;
-			
+			// if current was already visited return false (there exists a loop)
 			if(visited.contains(current))
 				return false;
-			
+			// otherwise add current node to the visited nodes list
 			visited.add(current);
-			
+			// increase cant counter
 			cant++;
-			
+			// advance current to the next element of the list and try to loop again
 			current=current.next;
 		}
+		// if the list has no loops return if the size of the list equals the amount of elements visited
 		return cant==size;
 	}
 }//End Class

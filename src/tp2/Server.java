@@ -317,16 +317,26 @@ public class Server implements Serializable {
 	 */
 	private boolean bansSorted(){
 		boolean sorted = true;
-		if(bans.getSize()>1){
-			Node current = bans.header.next;
-			while(current != null && sorted){
-				if(current.next==null){
-					return true;
+		//if the list is not empty (has at least 1 element)
+		if(bans.header.next!=null){
+			//if the list has at least 2 elements
+			if(bans.header.next.next!=null){
+				//get the first element after the sentinel
+				Node current = bans.header.next;
+				//while there current element is not null and the list still sorted
+				while(current != null && sorted){
+					//if next element is null return true
+					if(current.next==null){
+						return true;
+					}
+					//otherwise compare the current element with the next one
+					sorted = (current.element.getExpires() < current.next.element.getExpires());
+					//update current element
+					current = current.next;
 				}
-				sorted = (current.element.getExpires() < current.next.element.getExpires());
-				current = current.next;
 			}
 		}
+		
 		return sorted;
 	}
 	
@@ -342,31 +352,38 @@ public class Server implements Serializable {
 		LinkedList<Long> existingET= new LinkedList<Long>();
 		//existing IP's
 		LinkedList<IP> existingIP= new LinkedList<IP>();
-		if(bans.getSize()>1){
-			// set current element
-			Node current = bans.header.next;
-			
-			existingET.add(current.element.getExpires());
-			existingIP.add(current.element.getIp());
-			
-			current=current.next;
-			
-			// loop over the elements searching for repeated elements until there is no more elements
-			// or a repeated element is found
-			while(current != null && notRepeatedExpire && notRepeatedIP){
-				notRepeatedExpire = !existingET.contains(current.element.getExpires());
-				notRepeatedIP = !existingIP.contains(current.element.getIp());
-				
-				if(!notRepeatedExpire)
-					return false;
-				if(!notRepeatedIP)
-					return false;
-				
+		//if the bans list has at lest one element (after the sentinel one)
+		if(bans.header.next!=null){
+			//if the list has at least 2 elements
+			if(bans.header.next.next!=null){
+				// set current element at the first element after the sentinel
+				Node current = bans.header.next;
+				//save it expiration time and ip
 				existingET.add(current.element.getExpires());
 				existingIP.add(current.element.getIp());
+				//advance to the next element (2nd one)
+				current=current.next;
 				
-				current = current.next;
+				// loop over the elements searching for repeated elements until there is no more elements
+				// or a repeated element is found
+				while(current != null && notRepeatedExpire && notRepeatedIP){
+					//update boolean fields
+					notRepeatedExpire = !existingET.contains(current.element.getExpires());
+					notRepeatedIP = !existingIP.contains(current.element.getIp());
+					//if there is a repeated expire time return false
+					if(!notRepeatedExpire)
+						return false;
+					//if there is a repeated ip return false
+					if(!notRepeatedIP)
+						return false;
+					//otherwise save the current element ip and expire time and loop again if possible
+					existingET.add(current.element.getExpires());
+					existingIP.add(current.element.getIp());
+					//update current element to the next one
+					current = current.next;
+				}
 			}
+		
 		}
 		return notRepeatedExpire && notRepeatedIP;
 	}
@@ -378,8 +395,12 @@ public class Server implements Serializable {
 	 */
 	private boolean bansOkTime(){
 		boolean okTime = true;
-		if(bans.getSize()>1){
+		//if bans list has at least one element
+		if(bans.header.next!=null){
+			//get the first element (after the sentinel one)
 			Node current = bans.header.next;
+			//and loop over the list until a null is found or there is an
+			//expired time that is greater that the lastupdate time
 			while(current != null && okTime){
 				okTime = ( current.element.getExpires() > lastUpdate );
 				current = current.next;
@@ -394,22 +415,25 @@ public class Server implements Serializable {
 	 */
 	private boolean exceptionsNotRepeated(){
 		boolean notRepeated = true;
+		//list of existing Entry's in exceptions
 		LinkedList<Entry> existingEntry=new LinkedList<Entry>();
-		if(exceptions.getSize()>1){
-			// set current element
-			Entry current = exceptions.header.next;
-			
-			existingEntry.add(current);
-			
-			if(current.next==null)
-				return true;
-			current=current.next;
-			
-			// loop over the elements searching for repeated elements until there is no more elements
-			// or a repeated element is found
-			while(current != null && notRepeated){
-				notRepeated = !existingEntry.contains(current);
-				current = current.next;
+		//if exceptions list has at least 1 element
+		if(exceptions.header.next!=null){
+			//if exceptions list has at least 2 elements
+			if(exceptions.header.next.next!=null){
+				// set current element
+				Entry current = exceptions.header.next;
+				// save current element as a visited one (is the first element)
+				existingEntry.add(current);
+				// update current element to the next one
+				current=current.next;
+				
+				// loop over the elements searching for repeated elements until there is no more elements
+				// or a repeated element is found
+				while(current != null && notRepeated){
+					notRepeated = !existingEntry.contains(current);
+					current = current.next;
+				}
 			}
 		}
 		return notRepeated;
@@ -421,15 +445,21 @@ public class Server implements Serializable {
 	 */
 	private boolean notSharedElements(){
 		boolean notShared = true;
+		//list of exceptions IP's
 		LinkedList<IP> IPExceptions=new LinkedList<IP>();
-		if(bans.getSize()>0 && exceptions.getSize()>0){
+		//if bans has at least 1 element and exceptions has at least 1 element
+		if(bans.header.next!=null && exceptions.header.next!=null){
+			// get the first exception entry
 			Entry current=exceptions.header.next;
+			// while current entry still not null
 			while(current!=null){
+				// save the current element IP
 				IPExceptions.add(current.element);
 				current=current.next;
 			}
+			// get the first ban element
 			Node currentNode = bans.header.next;
-			// search shared elements between bans and exceptions
+			// search shared elements between bans and exceptions by IP
 			while(currentNode.next != null && notShared){
 				notShared = !IPExceptions.contains(currentNode.element.getIp());
 				currentNode=currentNode.next;

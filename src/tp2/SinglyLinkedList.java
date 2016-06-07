@@ -1,6 +1,7 @@
 package tp2;
 
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Set;
 import java.io.Serializable;
 
@@ -73,7 +74,8 @@ public class SinglyLinkedList implements Serializable{
     			}
     			current = current.next;
     			prev = prev.next;
-       	} 
+       	}
+    	size--;
     	return true;
     }
 
@@ -107,4 +109,39 @@ public class SinglyLinkedList implements Serializable{
 		return res + ")";
 	}
 
+	
+	public boolean repOK(){
+		if(this==null)
+			return false;
+    	
+    	if(size<0)
+    		return false;
+		if(header==null)
+			return false;
+		if(header.element!=null)
+			return false;
+		
+		LinkedList<Entry> visited=new LinkedList<Entry>();
+		Entry current=header;
+		
+		visited.add(header);
+		
+		current=header.next;
+		
+		int cant=0;
+		while(current!=null){
+			if(current.element==null)
+				return false;
+			
+			if(visited.contains(current))
+				return false;
+			
+			visited.add(current);
+			
+			cant++;
+			
+			current=current.next;
+		}
+		return cant==size;
+	}
 }//End Class

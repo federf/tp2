@@ -3,6 +3,7 @@ package tp2;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 
 import korat.finitization.IClassDomain;
@@ -157,15 +158,32 @@ public class Server implements Serializable {
 			lista SIMPLEMENTE ENCADENADA con ELEMENTO CENTINELA
 		exceptiones y bans
 			NO COMPARTEN ELEMENTOS
-		*/
-		// CREO PUEDE MEJORARSE LA EJECUCION PARA AHORRAR CICLOS, POR EJEMPLO
-		// VERIFICANDO bansSorted y bansOkTime con el mismo ciclo, aunque 
-		// creo queda mejor mas modularizado
-		return bansSorted() && bansNotRepeatedExpirationOrIP() && bansOkTime() && exceptionsNotRepeated() && notSharedElements();
+		*/		
+		
+		if(!bans.repOK())
+			return false;
+		if(!exceptions.repOK())
+			return false;
+		
+		if(!bansSorted())
+			return false;
+
+		if(!bansNotRepeatedExpirationOrIP())
+			return false;
+		
+		if(!bansOkTime())
+			return false;
+		
+		if(!exceptionsNotRepeated())
+			return false;
+		
+		if(!notSharedElements())
+			return false;
+			
+		return true;
 	}
 	
-	
-	
+
 	private static List<IP> fixedIPList() {
 		ArrayList<IP> res = new ArrayList<IP>(20);
 		res.add(new IP(102,103,254,98));
@@ -299,9 +317,12 @@ public class Server implements Serializable {
 	 */
 	private boolean bansSorted(){
 		boolean sorted = true;
-		if(!bans.isEmpty()){
-			Node current = bans.header;
+		if(bans.getSize()>1){
+			Node current = bans.header.next;
 			while(current != null && sorted){
+				if(current.next==null){
+					return true;
+				}
 				sorted = (current.element.getExpires() < current.next.element.getExpires());
 				current = current.next;
 			}
@@ -316,48 +337,39 @@ public class Server implements Serializable {
 	private boolean bansNotRepeatedExpirationOrIP(){
 		boolean notRepeatedExpire = true;
 		boolean notRepeatedIP = true;
-		if(!bans.isEmpty()){
+		
+		//existing Expiration Times
+		LinkedList<Long> existingET= new LinkedList<Long>();
+		//existing IP's
+		LinkedList<IP> existingIP= new LinkedList<IP>();
+		if(bans.getSize()>1){
 			// set current element
-			Node current = bans.header;
-			Node other;
+			Node current = bans.header.next;
+			
+			existingET.add(current.element.getExpires());
+			existingIP.add(current.element.getIp());
+			
+			current=current.next;
+			
 			// loop over the elements searching for repeated elements until there is no more elements
 			// or a repeated element is found
 			while(current != null && notRepeatedExpire && notRepeatedIP){
-				other = current.next;
-				while(other != null && notRepeatedExpire && notRepeatedIP){
-					notRepeatedExpire = !current.element.getExpires().equals(other.element.getExpires());
-					notRepeatedIP = !current.element.getIp().equals(other.element.getIp());
-					other = other.next;
-				}
+				notRepeatedExpire = !existingET.contains(current.element.getExpires());
+				notRepeatedIP = !existingIP.contains(current.element.getIp());
+				
+				if(!notRepeatedExpire)
+					return false;
+				if(!notRepeatedIP)
+					return false;
+				
+				existingET.add(current.element.getExpires());
+				existingIP.add(current.element.getIp());
+				
 				current = current.next;
 			}
 		}
 		return notRepeatedExpire && notRepeatedIP;
 	}
-	
-	/*
-	 * This method returns True iff bans list does not contain repeated IP
-	 * Used for repOk
-	 */
-	/*private boolean bansNotRepeatedIP(){
-		boolean notRepeated = true;
-		if(!bans.isEmpty()){
-			// set current element
-			Node current = bans.header;
-			Node other;
-			// loop over the elements searching for repeated elements until there is no more elements
-			// or a repeated element is found
-			while(current.next != null && notRepeated){
-				other = current.next;
-				while(other != null && notRepeated){
-					notRepeated = !current.element.ip.equals(other.element.ip);
-					other = other.next;
-				}
-				current = current.next;
-			}
-		}
-		return notRepeated;
-	}*/
 	
 	/*
 	 * This method returns True iff bans list does not contain IPs which 
@@ -366,8 +378,8 @@ public class Server implements Serializable {
 	 */
 	private boolean bansOkTime(){
 		boolean okTime = true;
-		if(!bans.isEmpty()){
-			Node current = bans.header;
+		if(bans.getSize()>1){
+			Node current = bans.header.next;
 			while(current != null && okTime){
 				okTime = ( current.element.getExpires() > lastUpdate );
 				current = current.next;
@@ -382,18 +394,21 @@ public class Server implements Serializable {
 	 */
 	private boolean exceptionsNotRepeated(){
 		boolean notRepeated = true;
-		if(!exceptions.isEmpty()){
+		LinkedList<Entry> existingEntry=new LinkedList<Entry>();
+		if(exceptions.getSize()>1){
 			// set current element
-			Entry current = exceptions.header;
-			Entry other;
+			Entry current = exceptions.header.next;
+			
+			existingEntry.add(current);
+			
+			if(current.next==null)
+				return true;
+			current=current.next;
+			
 			// loop over the elements searching for repeated elements until there is no more elements
 			// or a repeated element is found
 			while(current != null && notRepeated){
-				other = current.next;
-				while(other != null && notRepeated){
-					notRepeated = !current.element.equals(other) ;
-					other = other.next;
-				}
+				notRepeated = !existingEntry.contains(current);
 				current = current.next;
 			}
 		}
@@ -406,13 +421,22 @@ public class Server implements Serializable {
 	 */
 	private boolean notSharedElements(){
 		boolean notShared = true;
-		Node current = bans.header;
-		// search shared elements between bans and exceptions
-		while(current != null && notShared){
-			notShared = exceptions.contains(current.element.getIp());
-			current=current.next;
+		LinkedList<IP> IPExceptions=new LinkedList<IP>();
+		if(bans.getSize()>0 && exceptions.getSize()>0){
+			Entry current=exceptions.header.next;
+			while(current!=null){
+				IPExceptions.add(current.element);
+				current=current.next;
+			}
+			Node currentNode = bans.header.next;
+			// search shared elements between bans and exceptions
+			while(currentNode.next != null && notShared){
+				notShared = !IPExceptions.contains(currentNode.element.getIp());
+				currentNode=currentNode.next;
+			}
 		}
 		return notShared;
+		
 	}
 	
 	

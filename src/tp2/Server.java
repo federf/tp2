@@ -272,7 +272,10 @@ public class Server implements Serializable {
 		IObjSet longs = f.createObjSet(Long.class, false);
 		IClassDomain longsClassDomain = f.createClassDomain(Long.class);
 		longsClassDomain.includeInIsomorphismCheck(false);
-		for (int i = 0; i < maxSizeLists; i++) {
+		// BUG: AL GENERAR LOS ELEMENTOS DE BANS GENERABA HASTA COTA-1 
+		// MIENTRAS QUE GENERABA EXCEPTIONS HASTA COTA 
+		// modifique maxSizeLists a maxSizeLists+1 aca
+		for (int i = 0; i < maxSizeLists+1; i++) {
 			longsClassDomain.addObject(longsList.get(i));
 		}
 		longs.addClassDomain(longsClassDomain);
@@ -500,5 +503,11 @@ public class Server implements Serializable {
 	// used for testing
 	public long getLastUpdate(){
 		return lastUpdate;
+	}
+	
+	//This method returns current time value
+	// used for testing (Theories)
+	public ITime getTime(){
+		return time;
 	}
 }

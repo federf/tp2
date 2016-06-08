@@ -45,7 +45,7 @@ public class Deserialization {
 	}
 	
 	public static void main (String args[]) throws FileNotFoundException, IOException{
-		Deserialization d= new Deserialization("src/tp2/serverKoratTests.obj");
+		Deserialization d= new Deserialization("test/tp2/serverKoratTestsCota4.obj");
 		int[] cantbans=new int[5];
 		int[] cantexceptions=new int[5];
 		
@@ -68,13 +68,22 @@ public class Deserialization {
 		System.out.println("----------------------------------------------------------------------------");
 		System.out.println("cantidad de servers: "+serversKorat.size());
 		System.out.println("----------------------------------------------------------------------------");
+		int cantidadCasosExceptions=0;
 		for(int i=0; i<5; i++){
 			System.out.println("genero "+cantexceptions[i]+" casos en que exceptions tiene "+i+" elementos\n");
+			cantidadCasosExceptions=cantidadCasosExceptions+cantexceptions[i];
 		}
+		if(cantidadCasosExceptions==serversKorat.size())
+			System.out.println("cantidad de casos exceptions OK");
+		
 		System.out.println("----------------------------------------------------------------------------");
+		int cantidadCasosBans=0;
 		for(int i=0; i<5; i++){
 			System.out.println("genero "+cantbans[i]+" casos en que bans tiene "+i+" elementos\n");
+			cantidadCasosBans=cantidadCasosBans+cantbans[i];
 		}
+		if(cantidadCasosBans==serversKorat.size())
+			System.out.println("cantidad de casos bans OK");
 		System.out.println("----------------------------------------------------------------------------");
 	}
 }

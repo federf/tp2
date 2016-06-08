@@ -58,17 +58,7 @@ public class Server implements Serializable {
 		this.exceptions = new SinglyLinkedList();
 		this.bans = new StrictlySortedSinglyLinkedList();
 		this.time = new RealTime();
-	}
-	
-	/**
-	 * Creates a new server with time as a StubTime element
-	 * @param time
-	 * Used for testing (Theories)
-	 */
-	public Server(int time){
-		this.exceptions = new SinglyLinkedList();
-		this.bans = new StrictlySortedSinglyLinkedList();
-		this.time = new StubTime();
+		this.lastUpdate=(long) 0;
 	}
 	
 	/**
@@ -275,12 +265,14 @@ public class Server implements Serializable {
 		// BUG: AL GENERAR LOS ELEMENTOS DE BANS GENERABA HASTA COTA-1 
 		// MIENTRAS QUE GENERABA EXCEPTIONS HASTA COTA 
 		// modifique maxSizeLists a maxSizeLists+1 aca
-		for (int i = 0; i < maxSizeLists+1; i++) {
+		int listElems = maxSizeLists + 1;
+		
+		for (int i = 0; i < listElems; i++) {
 			longsClassDomain.addObject(longsList.get(i));
 		}
 		longs.addClassDomain(longsClassDomain);
 
-		int listElems = maxSizeLists + 1;
+		
 
 		List<IP> IPList = fixedIPList();
 		IObjSet ips = f.createObjSet(IP.class, true);

@@ -61,6 +61,17 @@ public class Server implements Serializable {
 	}
 	
 	/**
+	 * Creates a new server with time as a StubTime element
+	 * @param time
+	 * Used for testing (Theories)
+	 */
+	public Server(int time){
+		this.exceptions = new SinglyLinkedList();
+		this.bans = new StrictlySortedSinglyLinkedList();
+		this.time = new StubTime();
+	}
+	
+	/**
 	 * Accepts a new connection.
 	 * If there's a ban for the connecting IP and the ban is not yet due then the connection will be refused.
 	 * It returns true iff the connection was accepted.
@@ -135,7 +146,7 @@ public class Server implements Serializable {
 	 * @return
 	 */
 	public void update() {
-
+		
 		lastUpdate = time.getCurrentTime();
 		
 		IPBan b;
@@ -485,5 +496,9 @@ public class Server implements Serializable {
 		
 	}
 	
-	
+	// this method return lastupdate value
+	// used for testing
+	public long getLastUpdate(){
+		return lastUpdate;
+	}
 }

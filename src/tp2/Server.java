@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
+import randoop.CheckRep;
+
 import korat.finitization.IClassDomain;
 import korat.finitization.IFinitization;
 import korat.finitization.IIntSet;
@@ -102,6 +104,10 @@ public class Server implements Serializable {
 	 * returns true iff the ban was successfully added
 	 */
 	public boolean addBan(IP ban) {
+		// ban must be not null
+		if(ban==null){
+			return false;
+		}
 		//no repeated
 		if (bans.containsIP(ban)) {
 			return false;
@@ -146,7 +152,7 @@ public class Server implements Serializable {
 		
 	}
 	
-	
+	@CheckRep
 	public boolean repOK(){
 		/* TODO: Completar este metodo
 		bans es una lista de IPBan
@@ -313,7 +319,7 @@ public class Server implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Server [lastUpdate=" + lastUpdate + ", exceptions=" + exceptions.toString() + ", bans=" + bans.toString() + "]";
+		return "Server [lastUpdate=" + String.valueOf(lastUpdate) + ", exceptions=" + exceptions.toString() + ", bans=" + bans.toString() + "]";
 	} 
 	
 	
@@ -479,13 +485,6 @@ public class Server implements Serializable {
 				if(!notShared)
 					return false;
 			}
-			/*// get the first ban element
-			Node currentNode = bans.header.next;
-			// search shared elements between bans and exceptions by IP
-			while(currentNode.next != null && notShared){
-				notShared = !IPExceptions.contains(currentNode.element.getIp());
-				currentNode=currentNode.next;
-			}*/
 		}
 		return notShared;
 		
@@ -502,4 +501,15 @@ public class Server implements Serializable {
 	public ITime getTime(){
 		return time;
 	}
+	
+	/*public boolean equals(Server s2){
+		if(!String.valueOf(lastUpdate).equals(String.valueOf(s2.lastUpdate)))
+			return false;
+		if(!bans.equals(s2.bans))
+			return false;
+		if(!exceptions.equals(s2.exceptions))
+			return false;
+		return true;
+		
+	}*/
 }

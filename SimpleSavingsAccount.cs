@@ -36,6 +36,27 @@ namespace SavingsAccount
                 Si  amount>=10000, el descuento es del 3%
                 TODOS los descuentos se deben ir acumulando en taxesDiscount.
             */
+            balance += amount;
+            if (amount > 0)
+            {
+                if (bankcheck)
+                {
+                    if (amount > 1000)
+                    {
+                        taxesDiscount += amount * (0.012);
+                    }else
+                    {
+                        if(amount>=1000 || amount < 10000)
+                        {
+                            taxesDiscount += amount * (0.02);
+                        }
+                        else
+                        {
+                            taxesDiscount += amount * (0.03);
+                        }
+                    }
+                }
+            }
            
         }
         public void Withdraw(int amount)

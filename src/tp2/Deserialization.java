@@ -56,11 +56,11 @@ public class Deserialization {
 		
 		
 		LinkedList<Server> serversKorat=d.deserialization();
-		System.out.println("cantidad de servers: "+serversKorat.size());
+		//System.out.println("cantidad de servers: "+serversKorat.size());
 		for(Server s: serversKorat){
-			System.out.println(s.toString());
-			System.out.println("exceptions tiene "+s.exceptions.getSize()+" elementos" );
-			System.out.println("bans tiene "+s.bans.getSize()+" elementos" );
+			//System.out.println(s.toString());
+			//System.out.println("exceptions tiene "+s.exceptions.getSize()+" elementos" );
+			//System.out.println("bans tiene "+s.bans.getSize()+" elementos" );
 			cantexceptions[s.exceptions.getSize()]=cantexceptions[s.exceptions.getSize()]+1;
 			cantbans[s.bans.getSize()]=cantbans[s.bans.getSize()]+1;
 			

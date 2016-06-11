@@ -71,7 +71,8 @@ public class StrictlySortedSinglyLinkedList implements Serializable{
     			current = current.next;
     			prev = prev.next;
        	} 
-    	size--;
+    	if(current!=null)
+    		size--;
     	return true;
     	
     }
@@ -175,7 +176,7 @@ public class StrictlySortedSinglyLinkedList implements Serializable{
 		// and counting the elements visited until current element becomes null
 		// and cant is lower or equal to size
 		int cant=0;
-		while(current!=null && cant<= size){
+		while(current!=null){
 			// if current.element is null return false
 			if(current.element==null)
 				return false;

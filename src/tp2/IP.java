@@ -1,6 +1,7 @@
 package tp2;
 
 import java.io.Serializable;
+import java.lang.IllegalArgumentException;
 
 public class IP implements Serializable {
 
@@ -51,8 +52,11 @@ public class IP implements Serializable {
 	private Integer fourth;
 	
 	
-	public IP(Integer first, Integer second, Integer third, Integer fourth) {
+	public IP(Integer first, Integer second, Integer third, Integer fourth) throws IllegalArgumentException{
 		super();
+		if(first==null || second==null || third==null || fourth==null){
+			throw new IllegalArgumentException();
+		}
 		this.first = first;
 		this.second = second;
 		this.third = third;

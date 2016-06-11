@@ -50,7 +50,11 @@ public class Server implements Serializable {
 	private ITime time;
 	
 	public void setTime(ITime time) {
-		this.time = time;
+		if(time!=null){
+			this.time = time;
+		}else{
+			this.time = new RealTime();
+		}
 	}
 
 	/**
@@ -81,6 +85,9 @@ public class Server implements Serializable {
 	 * It returns true iff the exception was successfully added.
 	 */
 	public boolean addException(IP ip) {
+		if(ip==null){
+			return false;
+		}
 		if (exceptions.contains(ip)) {
 			return false;
 		}
@@ -146,7 +153,7 @@ public class Server implements Serializable {
 		lastUpdate = time.getCurrentTime();
 		
 		IPBan b;
-		while(bans.getSize()>0 && (b=bans.get(0)).getExpires().compareTo(lastUpdate) <= 0){
+		while(bans.getSize()>0 && (b=bans.get(0)).expires.compareTo(lastUpdate) <= 0){
 			bans.removeFromIP(b.ip);
 		}
 		
@@ -165,14 +172,23 @@ public class Server implements Serializable {
 			lista SIMPLEMENTE ENCADENADA con ELEMENTO CENTINELA
 		exceptiones y bans
 			NO COMPARTEN ELEMENTOS
-		*/		
-		
+		*/
 		if(!bans.repOK())
 			return false;
 		if(!exceptions.repOK())
 			return false;
 		
+		
+		if(!bansOkTime())
+			return false;
+		
+		if(!bansNotRepeatedExpirationOrIP())
+			return false;
+		
 		if(!bansSorted())
+			return false;
+		
+		/*if(!bansSorted())
 			return false;
 
 		if(!bansNotRepeatedExpirationOrIP())
@@ -180,6 +196,10 @@ public class Server implements Serializable {
 		
 		if(!bansOkTime())
 			return false;
+			*/
+		/*if(!bansOK())
+			return false;*/
+		
 		
 		if(!exceptionsNotRepeated())
 			return false;
@@ -267,18 +287,13 @@ public class Server implements Serializable {
 		List<Long> longsList = fixedLongList();
 		IObjSet longs = f.createObjSet(Long.class, false);
 		IClassDomain longsClassDomain = f.createClassDomain(Long.class);
-		longsClassDomain.includeInIsomorphismCheck(false);
-		// BUG: AL GENERAR LOS ELEMENTOS DE BANS GENERABA HASTA COTA-1 
-		// MIENTRAS QUE GENERABA EXCEPTIONS HASTA COTA 
-		// modifique maxSizeLists a maxSizeLists+1 aca
-		int listElems = maxSizeLists + 1;
-		
-		for (int i = 0; i < listElems; i++) {
+		longsClassDomain.includeInIsomorphismCheck(false);		
+		for (int i = 0; i < maxSizeLists; i++) {
 			longsClassDomain.addObject(longsList.get(i));
 		}
 		longs.addClassDomain(longsClassDomain);
 
-		
+		int listElems = maxSizeLists + 1;
 
 		List<IP> IPList = fixedIPList();
 		IObjSet ips = f.createObjSet(IP.class, true);
@@ -322,6 +337,87 @@ public class Server implements Serializable {
 		return "Server [lastUpdate=" + String.valueOf(lastUpdate) + ", exceptions=" + exceptions.toString() + ", bans=" + bans.toString() + "]";
 	} 
 	
+	//  ESTE METODO ENCAPSULA bansSorted, bansNotRepeatedExpireOrIP y bansOkTime --verificar
+	private boolean bansOK(){
+		boolean repeatedExpire = false;
+		boolean repeatedIP = false;
+		//existing Expiration Times
+		LinkedList<Long> existingET= new LinkedList<Long>();
+		//existing IP's
+		LinkedList<IP> existingIP= new LinkedList<IP>();
+		//bans list sorted
+		boolean sorted = true;
+		//bans elements expiration time is greater than lastUpdate
+		boolean okTime=true;
+
+		//if the list is not empty (has at least 1 element)
+		if(bans.header.next!=null){
+			//if the list has at least 2 elements
+			if(bans.header.next.next!=null){
+				//get the first element after the sentinel
+				Node current = bans.header.next;
+				// verify if expiration time of current is greater than lastUpdate
+				okTime=current.element.expires>lastUpdate;
+				// if not okTime return false
+				if(!okTime)
+					return false;
+				//save it expiration time and ip
+				existingET.add(current.element.expires);
+				existingIP.add(current.element.ip);
+				// verify sorted with the next element
+				sorted = (current.element.expires < current.next.element.expires);
+				// if not sorted return false
+				if(!sorted)
+					return false;				
+				//advance to the next and loop over the rest of the file
+				current=current.next;
+				//while there current element is not null (and the list still sorted
+				// and there is no repeated elements and elements expiration is greater than lastupdate - implicit)
+				//  && sorted && !repeatedExpire && !repeatedIP && okTime
+				while(current != null){
+					
+					// update boolean fields for repetitions
+					repeatedExpire = existingET.contains(current.element.expires);
+					repeatedIP = existingIP.contains(current.element.ip);
+					//if there is a repeated expiration time or IP return false
+					if(repeatedExpire || repeatedIP)
+						return false;
+					//otherwise save the current element ip and expiration time and loop again if possible
+					existingET.add(current.element.expires);
+					existingIP.add(current.element.ip);
+					
+					// if current.next is null we must return okTime because
+					// the list still sorted and without repetitions until now
+					if(current.next==null){
+						return current.element.expires>lastUpdate;
+					}else{
+						// otherwise if current.next!=null
+						// try to update all the boolean fields
+						// update sorted
+						sorted = (current.element.expires < current.next.element.expires);
+						// if sorted becomes false returns false
+						if(!sorted)
+							return false;
+
+						// verify if current element expiration time is greater than lastUpdate 
+						okTime=current.element.expires>lastUpdate;
+						// if current okTime becomes false return false
+						if(!okTime)
+							return false;
+						//otherwise update current element to the next one and loop again
+						current = current.next;
+					}
+				}
+			}else{
+				//if there is only one element see if expires time is greater than lastUpdate
+				okTime=bans.header.next.element.expires>lastUpdate;
+				return okTime;
+			}
+		}
+		// if the list is empty return true
+		return true;
+	}
+	
 	
 	/*
 	 * This method returns True iff bans list is sorted by IP expiration time
@@ -342,13 +438,12 @@ public class Server implements Serializable {
 						return true;
 					}
 					//otherwise compare the current element with the next one
-					sorted = (current.element.getExpires() < current.next.element.getExpires());
+					sorted = (current.element.expires < current.next.element.expires);
 					//update current element
 					current = current.next;
 				}
 			}
 		}
-		
 		return sorted;
 	}
 	
@@ -371,8 +466,8 @@ public class Server implements Serializable {
 				// set current element at the first element after the sentinel
 				Node current = bans.header.next;
 				//save it expiration time and ip
-				existingET.add(current.element.getExpires());
-				existingIP.add(current.element.getIp());
+				existingET.add(current.element.expires);
+				existingIP.add(current.element.ip);
 				//advance to the next element (2nd one)
 				current=current.next;
 				
@@ -380,8 +475,8 @@ public class Server implements Serializable {
 				// or a repeated element is found
 				while(current != null && !repeatedExpire && !repeatedIP){
 					//update boolean fields
-					repeatedExpire = existingET.contains(current.element.getExpires());
-					repeatedIP = existingIP.contains(current.element.getIp());
+					repeatedExpire = existingET.contains(current.element.expires);
+					repeatedIP = existingIP.contains(current.element.ip);
 					//if there is a repeated expire time return false
 					if(repeatedExpire)
 						return false;
@@ -389,13 +484,12 @@ public class Server implements Serializable {
 					if(repeatedIP)
 						return false;
 					//otherwise save the current element ip and expire time and loop again if possible
-					existingET.add(current.element.getExpires());
-					existingIP.add(current.element.getIp());
+					existingET.add(current.element.expires);
+					existingIP.add(current.element.ip);
 					//update current element to the next one
 					current = current.next;
 				}
 			}
-		
 		}
 		return !repeatedExpire && !repeatedIP;
 	}
@@ -414,7 +508,7 @@ public class Server implements Serializable {
 			//and loop over the list until a null is found or there is an
 			//expired time that is greater that the lastupdate time
 			while(current != null && okTime){
-				okTime = ( current.element.getExpires() > lastUpdate );
+				okTime = ( current.element.expires > lastUpdate );
 				current = current.next;
 			}
 		}
@@ -476,7 +570,7 @@ public class Server implements Serializable {
 			Node banIP=bans.header.next;
 			while(banIP!=null){
 				// save the current element IP
-				IPBans.add(banIP.element.getIp());
+				IPBans.add(banIP.element.ip);
 				banIP=banIP.next;
 			}
 			

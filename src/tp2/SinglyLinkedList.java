@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.Set;
 import java.io.Serializable;
 
+import randoop.CheckRep;
+
 
 /**
  * Class  SinglyLinkedList defines Singly linked List
@@ -49,12 +51,14 @@ public class SinglyLinkedList implements Serializable{
 	
 	//add the new IP at the first position.
 	public void add (IP ip){
-		Entry n = new Entry();
-		n.element = new IP(ip.getFirst(), ip.getSecond(), ip.getThird(), ip.getFourth());
-		Entry nn = header.next;
-		n.next = nn;
-		header.next = n;
-		size++;
+		if(ip!=null){
+			Entry n = new Entry();
+			n.element = new IP(ip.getFirst(), ip.getSecond(), ip.getThird(), ip.getFourth());
+			Entry nn = header.next;
+			n.next = nn;
+			header.next = n;
+			size++;
+		}
 	} 
 	
 	 /**
@@ -110,7 +114,7 @@ public class SinglyLinkedList implements Serializable{
 		return res + ")";
 	}
 
-	
+	@CheckRep
 	public boolean repOK(){
 		// this cant be null
     	if(this==null)

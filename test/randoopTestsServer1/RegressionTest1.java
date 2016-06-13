@@ -15,10 +15,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test001"); }
 
 
-    java.lang.Integer i1 = java.lang.Integer.valueOf(2048);
+    java.lang.String str1 = java.lang.Integer.toUnsignedString(167772260);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 2048+ "'", i1.equals(2048));
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "167772260"+ "'", str1.equals("167772260"));
 
   }
 
@@ -28,10 +28,16 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test002"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toUnsignedString(51200);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "51200"+ "'", str1.equals("51200"));
+    // The following exception was thrown during execution in test generation
+    try {
+      java.lang.Integer i2 = java.lang.Integer.valueOf("13", (-129));
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
 
   }
 
@@ -41,10 +47,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test003"); }
 
 
-    java.lang.String str2 = java.lang.Integer.toUnsignedString(1342177288, 3);
+    int i1 = java.lang.Integer.highestOneBit(201326592);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "10110112112200002221"+ "'", str2.equals("10110112112200002221"));
+    org.junit.Assert.assertTrue(i1 == 134217728);
 
   }
 
@@ -54,10 +60,30 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test004"); }
 
 
-    int i1 = java.lang.Integer.reverse(24);
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    tp2.IP iP12 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i13 = iP12.getFourth();
+    singlyLinkedList0.add(iP12);
+    int i15 = singlyLinkedList0.getSize();
+    int i16 = singlyLinkedList0.getSize();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 402653184);
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i13 + "' != '" + 100+ "'", i13.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i15 == 1);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i16 == 1);
 
   }
 
@@ -67,10 +93,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test005"); }
 
 
-    java.lang.Integer i1 = new java.lang.Integer((-219971585));
+    java.lang.Integer i1 = java.lang.Integer.valueOf(201326784);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + (-219971585)+ "'", i1.equals((-219971585)));
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 201326784+ "'", i1.equals(201326784));
 
   }
 
@@ -80,10 +106,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test006"); }
 
 
-    int i2 = java.lang.Integer.compare(1325400064, (-219971585));
+    java.lang.String str1 = java.lang.Integer.toOctalString(33554432);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1);
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "200000000"+ "'", str1.equals("200000000"));
 
   }
 
@@ -93,10 +119,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test007"); }
 
 
-    java.lang.Integer i1 = new java.lang.Integer("32");
+    int i2 = java.lang.Integer.compare(33554432, 15);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 32+ "'", i1.equals(32));
+    org.junit.Assert.assertTrue(i2 == 1);
 
   }
 
@@ -106,16 +132,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test008"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      java.lang.Integer i1 = java.lang.Integer.decode("8000001c");
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    int i1 = java.lang.Integer.highestOneBit(11884);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 8192);
 
   }
 
@@ -125,16 +145,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test009"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseInt("1111111111111111111111111111111", 1677721761);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    java.lang.Integer i1 = new java.lang.Integer(5120);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 5120+ "'", i1.equals(5120));
 
   }
 
@@ -144,10 +158,16 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test010"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toUnsignedString(229376);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "229376"+ "'", str1.equals("229376"));
+    // The following exception was thrown during execution in test generation
+    try {
+      java.lang.Integer i2 = java.lang.Integer.valueOf("4", 100);
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
 
   }
 
@@ -157,16 +177,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test011"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseInt("111000000000000000000000000000", 80000085);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    int i1 = java.lang.Integer.lowestOneBit((-2147483648));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == (-2147483648));
 
   }
 
@@ -176,10 +190,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test012"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toUnsignedString(12);
+    int i1 = java.lang.Integer.reverse(16);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "12"+ "'", str1.equals("12"));
+    org.junit.Assert.assertTrue(i1 == 134217728);
 
   }
 
@@ -189,10 +203,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test013"); }
 
 
-    java.lang.Integer i1 = java.lang.Integer.valueOf(536870926);
+    int i1 = java.lang.Integer.signum(1476395008);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 536870926+ "'", i1.equals(536870926));
+    org.junit.Assert.assertTrue(i1 == 1);
 
   }
 
@@ -202,10 +216,81 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test014"); }
 
 
-    java.lang.Integer i1 = java.lang.Integer.valueOf(32768);
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    boolean b8 = singlyLinkedList0.isEmpty();
+    int i9 = singlyLinkedList0.getSize();
+    tp2.IP iP14 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i15 = iP14.getThird();
+    iP14.setFourth((java.lang.Integer)0);
+    boolean b18 = singlyLinkedList0.contains(iP14);
+    boolean b19 = singlyLinkedList0.isEmpty();
+    tp2.IP iP24 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i25 = iP24.getFirst();
+    java.lang.Integer i26 = iP24.getFirst();
+    singlyLinkedList0.add(iP24);
+    tp2.Server server28 = new tp2.Server();
+    boolean b29 = server28.exceptionsNotRepeated();
+    boolean b30 = server28.bansSorted();
+    boolean b31 = server28.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList32 = new tp2.SinglyLinkedList();
+    tp2.IP iP37 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i38 = iP37.getFourth();
+    singlyLinkedList32.add(iP37);
+    boolean b40 = server28.addException(iP37);
+    java.lang.Integer i41 = iP37.getFourth();
+    boolean b42 = singlyLinkedList0.contains(iP37);
+    iP37.setSecond((java.lang.Integer)134217728);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 32768+ "'", i1.equals(32768));
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i9 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + (-1)+ "'", i15.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b18 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i25 + "' != '" + (-1)+ "'", i25.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i26 + "' != '" + (-1)+ "'", i26.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b29 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b30 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b31 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i38 + "' != '" + 100+ "'", i38.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b40 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i41 + "' != '" + 100+ "'", i41.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == true);
 
   }
 
@@ -215,10 +300,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test015"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toHexString(402653184);
+    java.lang.Integer i2 = java.lang.Integer.getInteger("c", 0);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "18000000"+ "'", str1.equals("18000000"));
+    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 0+ "'", i2.equals(0));
 
   }
 
@@ -228,10 +313,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test016"); }
 
 
-    int i1 = java.lang.Integer.reverseBytes((-2147483515));
+    java.lang.String str1 = java.lang.Integer.toHexString(1476395008);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == (-2063597440));
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "58000000"+ "'", str1.equals("58000000"));
 
   }
 
@@ -241,10 +326,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test017"); }
 
 
-    java.lang.String str2 = java.lang.Integer.toUnsignedString(1677721600, 0);
+    int i1 = java.lang.Integer.bitCount(784);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "1677721600"+ "'", str2.equals("1677721600"));
+    org.junit.Assert.assertTrue(i1 == 3);
 
   }
 
@@ -254,10 +339,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test018"); }
 
 
-    int i2 = java.lang.Integer.divideUnsigned(134217728, 31);
+    int i1 = java.lang.Integer.bitCount(1);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 4329604);
+    org.junit.Assert.assertTrue(i1 == 1);
 
   }
 
@@ -267,10 +352,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test019"); }
 
 
-    java.lang.Integer i1 = new java.lang.Integer("51200");
+    int i1 = java.lang.Integer.reverse(32);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 51200+ "'", i1.equals(51200));
+    org.junit.Assert.assertTrue(i1 == 67108864);
 
   }
 
@@ -280,10 +365,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test020"); }
 
 
-    int i1 = java.lang.Integer.reverse(4);
+    int i2 = java.lang.Integer.compareUnsigned(16384, 201326592);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 536870912);
+    org.junit.Assert.assertTrue(i2 == (-1));
 
   }
 
@@ -293,10 +378,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test021"); }
 
 
-    int i2 = java.lang.Integer.sum(1677721600, 0);
+    int i1 = java.lang.Integer.reverse(67108864);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1677721600);
+    org.junit.Assert.assertTrue(i1 == 32);
 
   }
 
@@ -306,10 +391,17 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test022"); }
 
 
-    java.lang.Integer i1 = java.lang.Integer.valueOf(31);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 31+ "'", i1.equals(31));
+    java.lang.Integer i1 = null;
+    // The following exception was thrown during execution in test generation
+    try {
+      tp2.IP iP4 = new tp2.IP((java.lang.Integer)(-2), i1, (java.lang.Integer)8, (java.lang.Integer)1073741824);
+      org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException");
+    } catch (java.lang.IllegalArgumentException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.IllegalArgumentException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException, got " + e.getClass().getCanonicalName());
+      }
+    }
 
   }
 
@@ -319,10 +411,8 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test023"); }
 
 
-    java.lang.String str2 = java.lang.Integer.toUnsignedString(79, 80000000);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "79"+ "'", str2.equals("79"));
+    tp2.IP iP4 = new tp2.IP((java.lang.Integer)1073741824, (java.lang.Integer)(-1), (java.lang.Integer)16, (java.lang.Integer)1);
+    iP4.setThird((java.lang.Integer)(-1073741824));
 
   }
 
@@ -332,10 +422,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test024"); }
 
 
-    int i2 = java.lang.Integer.sum(10, 8);
+    korat.finitization.IFinitization iFinitization1 = tp2.Server.finServer(16);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 18);
+    org.junit.Assert.assertNotNull(iFinitization1);
 
   }
 
@@ -345,16 +435,60 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test025"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseUnsignedInt("4294967295", 5);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.exceptionsNotRepeated();
+    boolean b2 = server0.bansSorted();
+    boolean b3 = server0.notSharedElements();
+    boolean b4 = server0.bansSorted();
+    server0.update();
+    tp2.IP iP10 = new tp2.IP((java.lang.Integer)11100, (java.lang.Integer)40, (java.lang.Integer)28, (java.lang.Integer)727449600);
+    boolean b11 = server0.addException(iP10);
+    server0.update();
+    tp2.Server server13 = new tp2.Server();
+    tp2.IP iP18 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b19 = server13.removeBan(iP18);
+    tp2.IP iP24 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i25 = iP24.getThird();
+    iP24.setFourth((java.lang.Integer)0);
+    iP24.setSecond((java.lang.Integer)3);
+    iP24.setFourth((java.lang.Integer)12);
+    boolean b32 = server13.addBan(iP24);
+    boolean b33 = server0.addException(iP24);
+    boolean b34 = server0.bansNotRepeatedExpirationOrIP();
+    boolean b35 = server0.exceptionsNotRepeated();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b4 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i25 + "' != '" + (-1)+ "'", i25.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b33 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b34 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b35 == true);
 
   }
 
@@ -364,16 +498,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test026"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseInt("1600000", 35320);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    int i2 = java.lang.Integer.sum(671088640, 4);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 671088644);
 
   }
 
@@ -383,10 +511,112 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test027"); }
 
 
-    int i1 = java.lang.Integer.lowestOneBit(51200);
+    tp2.IP iP4 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i5 = iP4.getFirst();
+    java.lang.Integer i6 = iP4.getSecond();
+    iP4.setFirst((java.lang.Integer)201326592);
+    tp2.IPBan iPBan10 = new tp2.IPBan(iP4, (java.lang.Long)727449600L);
+    tp2.IP iP11 = iPBan10.getIp();
+    tp2.Server server12 = new tp2.Server();
+    boolean b13 = server12.exceptionsNotRepeated();
+    boolean b14 = server12.bansSorted();
+    boolean b15 = server12.notSharedElements();
+    tp2.Server server16 = new tp2.Server();
+    boolean b17 = server16.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList18 = new tp2.SinglyLinkedList();
+    tp2.IP iP23 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i24 = iP23.getThird();
+    boolean b25 = singlyLinkedList18.remove(iP23);
+    boolean b26 = server16.addException(iP23);
+    tp2.SinglyLinkedList singlyLinkedList27 = new tp2.SinglyLinkedList();
+    tp2.IP iP32 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i33 = iP32.getFourth();
+    singlyLinkedList27.add(iP32);
+    java.lang.Integer i35 = iP32.getFirst();
+    boolean b36 = server16.removeBan(iP32);
+    tp2.ITime iTime37 = null;
+    server16.setTime(iTime37);
+    boolean b39 = server16.notSharedElements();
+    tp2.IP iP44 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i45 = iP44.getThird();
+    iP44.setFourth((java.lang.Integer)0);
+    iP44.setSecond((java.lang.Integer)3);
+    boolean b50 = server16.addBan(iP44);
+    tp2.SinglyLinkedList singlyLinkedList51 = new tp2.SinglyLinkedList();
+    tp2.IP iP56 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i57 = iP56.getThird();
+    boolean b58 = singlyLinkedList51.remove(iP56);
+    java.lang.Integer i59 = iP56.getThird();
+    iP56.setFirst((java.lang.Integer)11100);
+    boolean b62 = server16.addBan(iP56);
+    boolean b63 = server12.removeException(iP56);
+    boolean b64 = iP11.equals((java.lang.Object)server12);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 2048);
+    org.junit.Assert.assertTrue("'" + i5 + "' != '" + (-1)+ "'", i5.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP11);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b13 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b14 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b15 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i24 + "' != '" + (-1)+ "'", i24.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b25 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b26 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i33 + "' != '" + 100+ "'", i33.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i35 + "' != '" + (-1)+ "'", i35.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b36 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b39 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i45 + "' != '" + (-1)+ "'", i45.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b50 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i57 + "' != '" + (-1)+ "'", i57.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b58 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i59 + "' != '" + (-1)+ "'", i59.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b62 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b63 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b64 == false);
 
   }
 
@@ -394,4157 +624,6 @@ public class RegressionTest1 {
   public void test028() throws Throwable {
 
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test028"); }
-
-
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP5 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b6 = server0.removeException(iP5);
-    server0.update();
-    tp2.Server server8 = new tp2.Server();
-    tp2.IP iP9 = null;
-    boolean b10 = server8.addBan(iP9);
-    tp2.Server server11 = new tp2.Server();
-    tp2.IP iP16 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b17 = server11.removeException(iP16);
-    boolean b19 = iP16.equals((java.lang.Object)(-1L));
-    boolean b20 = server8.removeBan(iP16);
-    tp2.IP iP25 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    iP25.setFirst((java.lang.Integer)161);
-    iP25.setThird((java.lang.Integer)3);
-    iP25.setFirst((java.lang.Integer)26);
-    boolean b32 = server8.connect(iP25);
-    iP25.setSecond((java.lang.Integer)1677721761);
-    boolean b35 = server0.removeBan(iP25);
-    tp2.Server server36 = new tp2.Server();
-    tp2.IP iP37 = null;
-    boolean b38 = server36.addBan(iP37);
-    server36.update();
-    tp2.Server server40 = new tp2.Server();
-    tp2.IP iP41 = null;
-    boolean b42 = server40.addBan(iP41);
-    tp2.ITime iTime43 = null;
-    server40.setTime(iTime43);
-    tp2.IP iP45 = null;
-    tp2.IPBan iPBan47 = new tp2.IPBan(iP45, (java.lang.Long)10L);
-    tp2.IP iP48 = iPBan47.getIp();
-    java.lang.Long long49 = iPBan47.expires;
-    tp2.IP iP50 = null;
-    iPBan47.ip = iP50;
-    tp2.Server server52 = new tp2.Server();
-    tp2.IP iP57 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b58 = server52.removeException(iP57);
-    java.lang.Integer i59 = iP57.getFirst();
-    iPBan47.setIp(iP57);
-    iP57.setFourth((java.lang.Integer)(-2147483620));
-    boolean b63 = server40.removeBan(iP57);
-    boolean b64 = server36.addException(iP57);
-    boolean b65 = server0.removeBan(iP57);
-    iP57.setThird((java.lang.Integer)20971520);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b6 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b10 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b17 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b19 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b20 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b32 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b35 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b38 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b42 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP48);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long49 + "' != '" + 10L+ "'", long49.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b58 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i59 + "' != '" + 161+ "'", i59.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b63 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b64 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b65 == false);
-
-  }
-
-  @Test
-  public void test029() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test029"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toBinaryString(8);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "1000"+ "'", str1.equals("1000"));
-
-  }
-
-  @Test
-  public void test030() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test030"); }
-
-
-    long long1 = java.lang.Integer.toUnsignedLong(35320);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(long1 == 35320L);
-
-  }
-
-  @Test
-  public void test031() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test031"); }
-
-
-    java.lang.String str2 = java.lang.Integer.toUnsignedString(28672, 35);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "ne7"+ "'", str2.equals("ne7"));
-
-  }
-
-  @Test
-  public void test032() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test032"); }
-
-
-    int i1 = java.lang.Integer.signum(2147483647);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1);
-
-  }
-
-  @Test
-  public void test033() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test033"); }
-
-
-    int i1 = java.lang.Integer.bitCount(0);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 0);
-
-  }
-
-  @Test
-  public void test034() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test034"); }
-
-
-    long long1 = java.lang.Integer.toUnsignedLong(8);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(long1 == 8L);
-
-  }
-
-  @Test
-  public void test035() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test035"); }
-
-
-    int i2 = java.lang.Integer.rotateLeft((-219971585), 1073741824);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-219971585));
-
-  }
-
-  @Test
-  public void test036() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test036"); }
-
-
-    tp2.IP iP4 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)32768, (java.lang.Integer)161, (java.lang.Integer)(-2147483646));
-    tp2.IPBan iPBan6 = new tp2.IPBan(iP4, (java.lang.Long)100L);
-
-  }
-
-  @Test
-  public void test037() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test037"); }
-
-
-    int i2 = java.lang.Integer.sum(4, 100000);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 100004);
-
-  }
-
-  @Test
-  public void test038() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test038"); }
-
-
-    int i2 = java.lang.Integer.min(5, (-1879048192));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-1879048192));
-
-  }
-
-  @Test
-  public void test039() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test039"); }
-
-
-    int i2 = java.lang.Integer.compareUnsigned((-134217728), 2);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1);
-
-  }
-
-  @Test
-  public void test040() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test040"); }
-
-
-    int i2 = java.lang.Integer.rotateRight(28, 2147483647);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 56);
-
-  }
-
-  @Test
-  public void test041() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test041"); }
-
-
-    int i2 = java.lang.Integer.min(15, 0);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 0);
-
-  }
-
-  @Test
-  public void test042() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test042"); }
-
-
-    int i1 = java.lang.Integer.signum(8);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1);
-
-  }
-
-  @Test
-  public void test043() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test043"); }
-
-
-    java.lang.String str2 = java.lang.Integer.toUnsignedString(32768, 1073741825);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "32768"+ "'", str2.equals("32768"));
-
-  }
-
-  @Test
-  public void test044() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test044"); }
-
-
-    java.lang.Integer i2 = java.lang.Integer.getInteger("100", (java.lang.Integer)18);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 18+ "'", i2.equals(18));
-
-  }
-
-  @Test
-  public void test045() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test045"); }
-
-
-    int i2 = java.lang.Integer.rotateRight(2048, (-2147483515));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 64);
-
-  }
-
-  @Test
-  public void test046() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test046"); }
-
-
-    java.lang.Integer i2 = java.lang.Integer.getInteger("", (java.lang.Integer)1073741825);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 1073741825+ "'", i2.equals(1073741825));
-
-  }
-
-  @Test
-  public void test047() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test047"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseUnsignedInt("100", 83);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test048() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test048"); }
-
-
-    int i2 = java.lang.Integer.min((-219971585), 20971520);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-219971585));
-
-  }
-
-  @Test
-  public void test049() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test049"); }
-
-
-    int i2 = java.lang.Integer.min(56, 13);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 13);
-
-  }
-
-  @Test
-  public void test050() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test050"); }
-
-
-    java.lang.String str2 = java.lang.Integer.toUnsignedString(2147483647, 18);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "3928g3h1"+ "'", str2.equals("3928g3h1"));
-
-  }
-
-  @Test
-  public void test051() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test051"); }
-
-
-    int i1 = java.lang.Integer.reverseBytes(1);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 16777216);
-
-  }
-
-  @Test
-  public void test052() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test052"); }
-
-
-    int i1 = java.lang.Integer.signum(12);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1);
-
-  }
-
-  @Test
-  public void test053() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test053"); }
-
-
-    int i2 = java.lang.Integer.remainderUnsigned(503, 2013262563);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 503);
-
-  }
-
-  @Test
-  public void test054() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test054"); }
-
-
-    int i1 = java.lang.Integer.signum(503);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1);
-
-  }
-
-  @Test
-  public void test055() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test055"); }
-
-
-    int i1 = java.lang.Integer.lowestOneBit((-134217728));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 134217728);
-
-  }
-
-  @Test
-  public void test056() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test056"); }
-
-
-    int i2 = java.lang.Integer.sum(70, 2031616);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 2031686);
-
-  }
-
-  @Test
-  public void test057() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test057"); }
-
-
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP1 = null;
-    boolean b2 = server0.addBan(iP1);
-    tp2.ITime iTime3 = null;
-    server0.setTime(iTime3);
-    tp2.IP iP5 = null;
-    tp2.IPBan iPBan7 = new tp2.IPBan(iP5, (java.lang.Long)10L);
-    tp2.IP iP8 = iPBan7.getIp();
-    java.lang.Long long9 = iPBan7.expires;
-    tp2.IP iP10 = null;
-    iPBan7.ip = iP10;
-    tp2.Server server12 = new tp2.Server();
-    tp2.IP iP17 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b18 = server12.removeException(iP17);
-    java.lang.Integer i19 = iP17.getFirst();
-    iPBan7.setIp(iP17);
-    iP17.setFourth((java.lang.Integer)(-2147483620));
-    boolean b23 = server0.removeBan(iP17);
-    iP17.setFourth((java.lang.Integer)32768);
-    java.lang.Integer i26 = iP17.getThird();
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b2 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP8);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long9 + "' != '" + 10L+ "'", long9.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b18 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i19 + "' != '" + 161+ "'", i19.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b23 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i26 + "' != '" + 939524096+ "'", i26.equals(939524096));
-
-  }
-
-  @Test
-  public void test058() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test058"); }
-
-
-    int i1 = java.lang.Integer.parseInt("51200");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 51200);
-
-  }
-
-  @Test
-  public void test059() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test059"); }
-
-
-    int i2 = java.lang.Integer.rotateRight(186646533, 2013262563);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-1587281920));
-
-  }
-
-  @Test
-  public void test060() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test060"); }
-
-
-    int i1 = java.lang.Integer.numberOfLeadingZeros(8);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 28);
-
-  }
-
-  @Test
-  public void test061() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test061"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toHexString(20971520);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "1400000"+ "'", str1.equals("1400000"));
-
-  }
-
-  @Test
-  public void test062() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test062"); }
-
-
-    int i2 = java.lang.Integer.sum(939524096, 83886080);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1023410176);
-
-  }
-
-  @Test
-  public void test063() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test063"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toBinaryString((-2147483592));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "10000000000000000000000000111000"+ "'", str1.equals("10000000000000000000000000111000"));
-
-  }
-
-  @Test
-  public void test064() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test064"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseInt("144", 28672);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test065() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test065"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      int i1 = java.lang.Integer.parseInt("111000000000000000000000000000");
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test066() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test066"); }
-
-
-    int i2 = java.lang.Integer.compare(133, 100000);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-1));
-
-  }
-
-  @Test
-  public void test067() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test067"); }
-
-
-    int i1 = java.lang.Integer.parseUnsignedInt("100000");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 100000);
-
-  }
-
-  @Test
-  public void test068() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test068"); }
-
-
-    java.lang.Integer i1 = java.lang.Integer.valueOf("0");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 0+ "'", i1.equals(0));
-
-  }
-
-  @Test
-  public void test069() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test069"); }
-
-
-    java.lang.Integer i1 = java.lang.Integer.valueOf("38000000");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 38000000+ "'", i1.equals(38000000));
-
-  }
-
-  @Test
-  public void test070() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test070"); }
-
-
-    int i2 = java.lang.Integer.rotateRight(0, 16);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 0);
-
-  }
-
-  @Test
-  public void test071() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test071"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      java.lang.Integer i2 = java.lang.Integer.valueOf("2147483647", (-2147483648));
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test072() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test072"); }
-
-
-    long long1 = java.lang.Integer.toUnsignedLong(10);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(long1 == 10L);
-
-  }
-
-  @Test
-  public void test073() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test073"); }
-
-
-    int i1 = java.lang.Integer.lowestOneBit(7);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1);
-
-  }
-
-  @Test
-  public void test074() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test074"); }
-
-
-    int i1 = java.lang.Integer.signum(448);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1);
-
-  }
-
-  @Test
-  public void test075() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test075"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseUnsignedInt("1c000000", 503);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test076() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test076"); }
-
-
-    int i2 = java.lang.Integer.min(0, 35320);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 0);
-
-  }
-
-  @Test
-  public void test077() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test077"); }
-
-
-    long long1 = java.lang.Integer.toUnsignedLong(14);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(long1 == 14L);
-
-  }
-
-  @Test
-  public void test078() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test078"); }
-
-
-    tp2.IP iP0 = null;
-    tp2.IPBan iPBan2 = new tp2.IPBan(iP0, (java.lang.Long)10L);
-    tp2.IP iP3 = iPBan2.getIp();
-    java.lang.Long long4 = iPBan2.expires;
-    tp2.IP iP5 = null;
-    iPBan2.ip = iP5;
-    tp2.Server server7 = new tp2.Server();
-    tp2.IP iP8 = null;
-    boolean b9 = server7.addBan(iP8);
-    tp2.ITime iTime10 = null;
-    server7.setTime(iTime10);
-    tp2.IP iP12 = null;
-    tp2.IPBan iPBan14 = new tp2.IPBan(iP12, (java.lang.Long)10L);
-    tp2.IP iP15 = iPBan14.getIp();
-    java.lang.Long long16 = iPBan14.expires;
-    tp2.IP iP17 = null;
-    iPBan14.ip = iP17;
-    tp2.Server server19 = new tp2.Server();
-    tp2.IP iP24 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b25 = server19.removeException(iP24);
-    java.lang.Integer i26 = iP24.getFirst();
-    iPBan14.setIp(iP24);
-    boolean b28 = server7.connect(iP24);
-    iPBan2.setIp(iP24);
-    tp2.IP iP30 = null;
-    tp2.IPBan iPBan32 = new tp2.IPBan(iP30, (java.lang.Long)10L);
-    tp2.IP iP33 = iPBan32.getIp();
-    iPBan32.expires = 0L;
-    tp2.IP iP36 = iPBan32.ip;
-    tp2.Server server37 = new tp2.Server();
-    tp2.IP iP38 = null;
-    boolean b39 = server37.addBan(iP38);
-    tp2.IP iP44 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iP44.setSecond((java.lang.Integer)2147483647);
-    boolean b47 = server37.addBan(iP44);
-    tp2.Server server48 = new tp2.Server();
-    tp2.IP iP49 = null;
-    boolean b50 = server48.addBan(iP49);
-    tp2.ITime iTime51 = null;
-    server48.setTime(iTime51);
-    tp2.IP iP53 = null;
-    tp2.IPBan iPBan55 = new tp2.IPBan(iP53, (java.lang.Long)10L);
-    tp2.IP iP56 = iPBan55.getIp();
-    java.lang.Long long57 = iPBan55.expires;
-    tp2.IP iP58 = null;
-    iPBan55.ip = iP58;
-    tp2.Server server60 = new tp2.Server();
-    tp2.IP iP65 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b66 = server60.removeException(iP65);
-    java.lang.Integer i67 = iP65.getFirst();
-    iPBan55.setIp(iP65);
-    boolean b69 = server48.connect(iP65);
-    boolean b70 = server37.removeBan(iP65);
-    iPBan32.ip = iP65;
-    boolean b72 = iP24.equals((java.lang.Object)iP65);
-    java.lang.Integer i73 = iP24.getFirst();
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP3);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long4 + "' != '" + 10L+ "'", long4.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b9 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP15);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long16 + "' != '" + 10L+ "'", long16.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b25 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i26 + "' != '" + 161+ "'", i26.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b28 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP33);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP36);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b39 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b47 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b50 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP56);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long57 + "' != '" + 10L+ "'", long57.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b66 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i67 + "' != '" + 161+ "'", i67.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b69 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b70 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b72 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i73 + "' != '" + 161+ "'", i73.equals(161));
-
-  }
-
-  @Test
-  public void test079() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test079"); }
-
-
-    int i2 = java.lang.Integer.rotateLeft(4329604, 1437910020);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 69273664);
-
-  }
-
-  @Test
-  public void test080() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test080"); }
-
-
-    java.lang.Integer i2 = java.lang.Integer.getInteger("5", (-2063597489));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + (-2063597489)+ "'", i2.equals((-2063597489)));
-
-  }
-
-  @Test
-  public void test081() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test081"); }
-
-
-    tp2.IP iP0 = null;
-    tp2.IPBan iPBan2 = new tp2.IPBan(iP0, (java.lang.Long)10L);
-    tp2.IP iP3 = iPBan2.getIp();
-    java.lang.Long long4 = iPBan2.expires;
-    tp2.Server server5 = new tp2.Server();
-    tp2.IP iP10 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b11 = server5.removeException(iP10);
-    java.lang.Integer i12 = iP10.getFirst();
-    iPBan2.setIp(iP10);
-    tp2.IP iP14 = iPBan2.ip;
-    tp2.IP iP15 = null;
-    tp2.IPBan iPBan17 = new tp2.IPBan(iP15, (java.lang.Long)10L);
-    java.lang.Long long18 = iPBan17.getExpires();
-    tp2.IP iP23 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iPBan17.ip = iP23;
-    iP23.setFirst((java.lang.Integer)2);
-    iPBan2.setIp(iP23);
-    tp2.Server server28 = new tp2.Server();
-    tp2.IP iP29 = null;
-    boolean b30 = server28.addBan(iP29);
-    tp2.Server server31 = new tp2.Server();
-    tp2.IP iP36 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b37 = server31.removeException(iP36);
-    boolean b39 = iP36.equals((java.lang.Object)(-1L));
-    boolean b40 = server28.removeBan(iP36);
-    iPBan2.ip = iP36;
-    iPBan2.setExpires((java.lang.Long)(-1L));
-    java.lang.Long long44 = iPBan2.getExpires();
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP3);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long4 + "' != '" + 10L+ "'", long4.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b11 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i12 + "' != '" + 161+ "'", i12.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNotNull(iP14);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long18 + "' != '" + 10L+ "'", long18.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b30 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b37 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b39 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b40 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long44 + "' != '" + (-1L)+ "'", long44.equals((-1L)));
-
-  }
-
-  @Test
-  public void test082() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test082"); }
-
-
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP1 = null;
-    boolean b2 = server0.addBan(iP1);
-    tp2.IP iP7 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iP7.setSecond((java.lang.Integer)2147483647);
-    boolean b10 = server0.addBan(iP7);
-    tp2.Server server11 = new tp2.Server();
-    tp2.IP iP12 = null;
-    boolean b13 = server11.addBan(iP12);
-    tp2.Server server14 = new tp2.Server();
-    tp2.IP iP19 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b20 = server14.removeException(iP19);
-    boolean b22 = iP19.equals((java.lang.Object)(-1L));
-    boolean b23 = server11.removeBan(iP19);
-    java.lang.Integer i24 = iP19.getFourth();
-    boolean b25 = server0.removeBan(iP19);
-    iP19.setThird((java.lang.Integer)20971520);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b2 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b10 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b13 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b20 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b22 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b23 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i24 + "' != '" + 5+ "'", i24.equals(5));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b25 == false);
-
-  }
-
-  @Test
-  public void test083() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test083"); }
-
-
-    java.lang.Integer i1 = java.lang.Integer.getInteger("1000");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(i1);
-
-  }
-
-  @Test
-  public void test084() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test084"); }
-
-
-    int i2 = java.lang.Integer.max((-1587281920), 469761943);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 469761943);
-
-  }
-
-  @Test
-  public void test085() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test085"); }
-
-
-    int i1 = java.lang.Integer.parseInt("700000");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 700000);
-
-  }
-
-  @Test
-  public void test086() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test086"); }
-
-
-    java.lang.Integer i1 = java.lang.Integer.valueOf(19884108);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 19884108+ "'", i1.equals(19884108));
-
-  }
-
-  @Test
-  public void test087() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test087"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseUnsignedInt("", 51200);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test088() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test088"); }
-
-
-    int i1 = java.lang.Integer.parseUnsignedInt("1400000");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1400000);
-
-  }
-
-  @Test
-  public void test089() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test089"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      int i1 = java.lang.Integer.parseInt("1001010001110000");
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test090() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test090"); }
-
-
-    int i1 = java.lang.Integer.lowestOneBit(503);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1);
-
-  }
-
-  @Test
-  public void test091() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test091"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      java.lang.Integer i2 = java.lang.Integer.valueOf("3928g3h1", 1677721761);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test092() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test092"); }
-
-
-    java.lang.Integer i2 = java.lang.Integer.getInteger("144", (java.lang.Integer)10);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 10+ "'", i2.equals(10));
-
-  }
-
-  @Test
-  public void test093() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test093"); }
-
-
-    int i1 = java.lang.Integer.signum(1073741825);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1);
-
-  }
-
-  @Test
-  public void test094() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test094"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toHexString(4);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "4"+ "'", str1.equals("4"));
-
-  }
-
-  @Test
-  public void test095() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test095"); }
-
-
-    int i1 = java.lang.Integer.bitCount(939524096);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 3);
-
-  }
-
-  @Test
-  public void test096() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test096"); }
-
-
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP1 = null;
-    boolean b2 = server0.addBan(iP1);
-    tp2.IP iP7 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iP7.setSecond((java.lang.Integer)2147483647);
-    boolean b10 = server0.addBan(iP7);
-    tp2.IP iP15 = new tp2.IP((java.lang.Integer)133, (java.lang.Integer)(-2147483515), (java.lang.Integer)79, (java.lang.Integer)(-2147483620));
-    boolean b16 = server0.removeBan(iP15);
-    tp2.IP iP17 = null;
-    tp2.IPBan iPBan19 = new tp2.IPBan(iP17, (java.lang.Long)10L);
-    java.lang.Long long20 = iPBan19.getExpires();
-    tp2.IP iP25 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iPBan19.ip = iP25;
-    tp2.Server server27 = new tp2.Server();
-    tp2.IP iP32 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b33 = server27.removeException(iP32);
-    server27.update();
-    tp2.Server server35 = new tp2.Server();
-    tp2.IP iP40 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b41 = server35.removeException(iP40);
-    java.lang.Integer i42 = iP40.getFirst();
-    boolean b43 = server27.addBan(iP40);
-    iPBan19.setIp(iP40);
-    tp2.IP iP45 = iPBan19.ip;
-    tp2.IP iP46 = iPBan19.ip;
-    boolean b47 = server0.removeException(iP46);
-    tp2.Server server48 = new tp2.Server();
-    tp2.IP iP53 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b54 = server48.removeException(iP53);
-    iP53.setThird((java.lang.Integer)56);
-    tp2.IPBan iPBan58 = new tp2.IPBan(iP53, (java.lang.Long)2147483676L);
-    java.lang.Long long59 = null;
-    tp2.IPBan iPBan60 = new tp2.IPBan(iP53, long59);
-    java.lang.Integer i61 = iP53.getFourth();
-    boolean b62 = server0.removeException(iP53);
-    tp2.Server server63 = new tp2.Server();
-    tp2.IP iP64 = null;
-    boolean b65 = server63.addBan(iP64);
-    tp2.Server server66 = new tp2.Server();
-    tp2.IP iP71 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b72 = server66.removeException(iP71);
-    boolean b74 = iP71.equals((java.lang.Object)(-1L));
-    boolean b75 = server63.removeBan(iP71);
-    tp2.IP iP80 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    iP80.setFirst((java.lang.Integer)161);
-    iP80.setThird((java.lang.Integer)3);
-    iP80.setFirst((java.lang.Integer)26);
-    boolean b87 = server63.connect(iP80);
-    iP80.setSecond((java.lang.Integer)469761943);
-    boolean b90 = server0.connect(iP80);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b2 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b10 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b16 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long20 + "' != '" + 10L+ "'", long20.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b33 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b41 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i42 + "' != '" + 161+ "'", i42.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b43 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNotNull(iP45);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNotNull(iP46);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b47 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b54 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i61 + "' != '" + 5+ "'", i61.equals(5));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b62 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b65 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b72 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b74 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b75 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b87 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b90 == true);
-
-  }
-
-  @Test
-  public void test097() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test097"); }
-
-
-    int i1 = java.lang.Integer.reverse(20971520);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 640);
-
-  }
-
-  @Test
-  public void test098() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test098"); }
-
-
-    java.lang.Integer i1 = java.lang.Integer.getInteger("458752");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(i1);
-
-  }
-
-  @Test
-  public void test099() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test099"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toHexString(2048);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "800"+ "'", str1.equals("800"));
-
-  }
-
-  @Test
-  public void test100() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test100"); }
-
-
-    java.lang.Integer i1 = new java.lang.Integer("32768");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 32768+ "'", i1.equals(32768));
-
-  }
-
-  @Test
-  public void test101() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test101"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      java.lang.Integer i2 = java.lang.Integer.valueOf("31", 0);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test102() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test102"); }
-
-
-    int i2 = java.lang.Integer.min(38000, 1677721761);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 38000);
-
-  }
-
-  @Test
-  public void test103() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test103"); }
-
-
-    java.lang.Integer i1 = new java.lang.Integer(2);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 2+ "'", i1.equals(2));
-
-  }
-
-  @Test
-  public void test104() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test104"); }
-
-
-    java.lang.Integer i2 = java.lang.Integer.getInteger("1", 448);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 448+ "'", i2.equals(448));
-
-  }
-
-  @Test
-  public void test105() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test105"); }
-
-
-    int i2 = java.lang.Integer.compare((-2147483515), 56);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-1));
-
-  }
-
-  @Test
-  public void test106() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test106"); }
-
-
-    java.lang.Integer i1 = java.lang.Integer.getInteger("32");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(i1);
-
-  }
-
-  @Test
-  public void test107() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test107"); }
-
-
-    int i2 = java.lang.Integer.rotateRight(4329604, 2031686);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 268503106);
-
-  }
-
-  @Test
-  public void test108() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test108"); }
-
-
-    int i2 = java.lang.Integer.min(1, 524288);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1);
-
-  }
-
-  @Test
-  public void test109() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test109"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseUnsignedInt("a1000000", 1677721761);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test110() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test110"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      java.lang.Integer i2 = java.lang.Integer.valueOf("111000000000000000000000000000", 2013262563);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test111() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test111"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseUnsignedInt("3d000000", 1073741824);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test112() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test112"); }
-
-
-    java.lang.Integer i1 = java.lang.Integer.valueOf("70");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 70+ "'", i1.equals(70));
-
-  }
-
-  @Test
-  public void test113() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test113"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toOctalString(469762048);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "3400000000"+ "'", str1.equals("3400000000"));
-
-  }
-
-  @Test
-  public void test114() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test114"); }
-
-
-    int i1 = java.lang.Integer.numberOfLeadingZeros(16);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 27);
-
-  }
-
-  @Test
-  public void test115() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test115"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      korat.finitization.IFinitization iFinitization1 = tp2.Server.finServer(100);
-      org.junit.Assert.fail("Expected exception of type java.lang.IndexOutOfBoundsException");
-    } catch (java.lang.IndexOutOfBoundsException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.IndexOutOfBoundsException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.IndexOutOfBoundsException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test116() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test116"); }
-
-
-    java.lang.String str2 = java.lang.Integer.toUnsignedString(13, 26);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "d"+ "'", str2.equals("d"));
-
-  }
-
-  @Test
-  public void test117() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test117"); }
-
-
-    tp2.IP iP0 = null;
-    tp2.IPBan iPBan2 = new tp2.IPBan(iP0, (java.lang.Long)10L);
-    java.lang.Long long3 = iPBan2.getExpires();
-    tp2.IP iP4 = iPBan2.getIp();
-    iPBan2.setExpires((java.lang.Long)100L);
-    java.lang.Long long7 = iPBan2.expires;
-    java.lang.Long long8 = null;
-    iPBan2.expires = long8;
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long3 + "' != '" + 10L+ "'", long3.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP4);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long7 + "' != '" + 100L+ "'", long7.equals(100L));
-
-  }
-
-  @Test
-  public void test118() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test118"); }
-
-
-    long long1 = java.lang.Integer.toUnsignedLong(5);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(long1 == 5L);
-
-  }
-
-  @Test
-  public void test119() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test119"); }
-
-
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP1 = null;
-    boolean b2 = server0.addBan(iP1);
-    tp2.IP iP7 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iP7.setSecond((java.lang.Integer)2147483647);
-    boolean b10 = server0.addBan(iP7);
-    tp2.Server server11 = new tp2.Server();
-    tp2.IP iP12 = null;
-    boolean b13 = server11.addBan(iP12);
-    tp2.Server server14 = new tp2.Server();
-    tp2.IP iP19 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b20 = server14.removeException(iP19);
-    boolean b22 = iP19.equals((java.lang.Object)(-1L));
-    boolean b23 = server11.removeBan(iP19);
-    java.lang.Integer i24 = iP19.getFourth();
-    boolean b25 = server0.removeBan(iP19);
-    tp2.ITime iTime26 = null;
-    server0.setTime(iTime26);
-    tp2.Server server28 = new tp2.Server();
-    tp2.IP iP29 = null;
-    boolean b30 = server28.addBan(iP29);
-    tp2.Server server31 = new tp2.Server();
-    tp2.IP iP36 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b37 = server31.removeException(iP36);
-    boolean b39 = iP36.equals((java.lang.Object)(-1L));
-    boolean b40 = server28.removeBan(iP36);
-    boolean b41 = server0.connect(iP36);
-    server0.update();
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b2 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b10 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b13 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b20 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b22 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b23 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i24 + "' != '" + 5+ "'", i24.equals(5));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b25 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b30 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b37 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b39 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b40 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b41 == true);
-
-  }
-
-  @Test
-  public void test120() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test120"); }
-
-
-    java.lang.Integer i2 = java.lang.Integer.getInteger("79", 15);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 15+ "'", i2.equals(15));
-
-  }
-
-  @Test
-  public void test121() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test121"); }
-
-
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP1 = null;
-    boolean b2 = server0.connect(iP1);
-    tp2.IP iP7 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    iP7.setFirst((java.lang.Integer)161);
-    boolean b11 = iP7.equals((java.lang.Object)56);
-    java.lang.Integer i12 = iP7.getFourth();
-    boolean b13 = server0.removeBan(iP7);
-    tp2.ITime iTime14 = null;
-    server0.setTime(iTime14);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b2 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b11 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i12 + "' != '" + 5+ "'", i12.equals(5));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b13 == false);
-
-  }
-
-  @Test
-  public void test122() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test122"); }
-
-
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP5 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b6 = server0.removeException(iP5);
-    iP5.setThird((java.lang.Integer)56);
-    java.lang.Integer i9 = iP5.getFourth();
-    tp2.IPBan iPBan11 = new tp2.IPBan(iP5, (java.lang.Long)10L);
-    iPBan11.expires = 2147483647L;
-    tp2.Server server14 = new tp2.Server();
-    tp2.IP iP15 = null;
-    boolean b16 = server14.addBan(iP15);
-    tp2.Server server17 = new tp2.Server();
-    tp2.IP iP22 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b23 = server17.removeException(iP22);
-    boolean b25 = iP22.equals((java.lang.Object)(-1L));
-    boolean b26 = server14.removeBan(iP22);
-    tp2.IP iP31 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    iP31.setFirst((java.lang.Integer)161);
-    iP31.setThird((java.lang.Integer)3);
-    iP31.setFirst((java.lang.Integer)26);
-    boolean b38 = server14.connect(iP31);
-    tp2.IP iP43 = new tp2.IP((java.lang.Integer)2147483647, (java.lang.Integer)(-1), (java.lang.Integer)56, (java.lang.Integer)458752);
-    boolean b44 = server14.addException(iP43);
-    iP43.setFirst((java.lang.Integer)1677721600);
-    iPBan11.ip = iP43;
-    tp2.IPBan iPBan49 = new tp2.IPBan(iP43, (java.lang.Long)1L);
-    tp2.IP iP50 = null;
-    tp2.IPBan iPBan52 = new tp2.IPBan(iP50, (java.lang.Long)10L);
-    java.lang.Long long53 = iPBan52.getExpires();
-    java.lang.Long long54 = iPBan52.expires;
-    iPBan52.expires = 4160749568L;
-    boolean b57 = iP43.equals((java.lang.Object)4160749568L);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b6 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i9 + "' != '" + 5+ "'", i9.equals(5));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b16 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b23 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b25 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b26 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b38 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b44 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long53 + "' != '" + 10L+ "'", long53.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long54 + "' != '" + 10L+ "'", long54.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b57 == false);
-
-  }
-
-  @Test
-  public void test123() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test123"); }
-
-
-    int i1 = java.lang.Integer.reverseBytes((-2063597568));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 133);
-
-  }
-
-  @Test
-  public void test124() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test124"); }
-
-
-    java.lang.Integer i1 = new java.lang.Integer(1437910020);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 1437910020+ "'", i1.equals(1437910020));
-
-  }
-
-  @Test
-  public void test125() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test125"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      java.lang.Integer i1 = java.lang.Integer.decode("1001010001110000");
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test126() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test126"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.remainderUnsigned(3, 0);
-      org.junit.Assert.fail("Expected exception of type java.lang.ArithmeticException");
-    } catch (java.lang.ArithmeticException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.ArithmeticException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.ArithmeticException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test127() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test127"); }
-
-
-    java.lang.Integer i2 = java.lang.Integer.getInteger("79", 1073741824);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 1073741824+ "'", i2.equals(1073741824));
-
-  }
-
-  @Test
-  public void test128() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test128"); }
-
-
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP1 = null;
-    boolean b2 = server0.addBan(iP1);
-    server0.update();
-    tp2.IP iP4 = null;
-    tp2.IPBan iPBan6 = new tp2.IPBan(iP4, (java.lang.Long)10L);
-    tp2.IP iP7 = iPBan6.getIp();
-    java.lang.Long long8 = iPBan6.expires;
-    tp2.IP iP9 = null;
-    iPBan6.ip = iP9;
-    tp2.Server server11 = new tp2.Server();
-    tp2.IP iP16 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b17 = server11.removeException(iP16);
-    java.lang.Integer i18 = iP16.getFirst();
-    iPBan6.setIp(iP16);
-    java.lang.Integer i20 = iP16.getFirst();
-    java.lang.Integer i21 = iP16.getFirst();
-    boolean b22 = server0.addBan(iP16);
-    tp2.Server server23 = new tp2.Server();
-    tp2.IP iP24 = null;
-    boolean b25 = server23.addBan(iP24);
-    tp2.ITime iTime26 = null;
-    server23.setTime(iTime26);
-    tp2.IP iP28 = null;
-    tp2.IPBan iPBan30 = new tp2.IPBan(iP28, (java.lang.Long)10L);
-    tp2.IP iP31 = iPBan30.getIp();
-    java.lang.Long long32 = iPBan30.expires;
-    tp2.IP iP33 = null;
-    iPBan30.ip = iP33;
-    tp2.Server server35 = new tp2.Server();
-    tp2.IP iP40 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b41 = server35.removeException(iP40);
-    java.lang.Integer i42 = iP40.getFirst();
-    iPBan30.setIp(iP40);
-    boolean b44 = server23.connect(iP40);
-    boolean b45 = server0.connect(iP40);
-    java.lang.Integer i46 = iP40.getThird();
-    iP40.setThird((java.lang.Integer)6);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b2 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP7);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long8 + "' != '" + 10L+ "'", long8.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b17 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i18 + "' != '" + 161+ "'", i18.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i20 + "' != '" + 161+ "'", i20.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i21 + "' != '" + 161+ "'", i21.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b22 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b25 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP31);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long32 + "' != '" + 10L+ "'", long32.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b41 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i42 + "' != '" + 161+ "'", i42.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b44 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b45 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i46 + "' != '" + 939524096+ "'", i46.equals(939524096));
-
-  }
-
-  @Test
-  public void test129() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test129"); }
-
-
-    int i1 = java.lang.Integer.parseInt("1");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1);
-
-  }
-
-  @Test
-  public void test130() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test130"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toHexString(26);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "1a"+ "'", str1.equals("1a"));
-
-  }
-
-  @Test
-  public void test131() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test131"); }
-
-
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP5 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b6 = server0.removeException(iP5);
-    server0.update();
-    tp2.Server server8 = new tp2.Server();
-    tp2.IP iP9 = null;
-    boolean b10 = server8.addBan(iP9);
-    tp2.Server server11 = new tp2.Server();
-    tp2.IP iP16 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b17 = server11.removeException(iP16);
-    boolean b19 = iP16.equals((java.lang.Object)(-1L));
-    boolean b20 = server8.removeBan(iP16);
-    tp2.IP iP25 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    iP25.setFirst((java.lang.Integer)161);
-    iP25.setThird((java.lang.Integer)3);
-    iP25.setFirst((java.lang.Integer)26);
-    boolean b32 = server8.connect(iP25);
-    iP25.setSecond((java.lang.Integer)1677721761);
-    boolean b35 = server0.removeBan(iP25);
-    tp2.Server server36 = new tp2.Server();
-    tp2.Server server37 = new tp2.Server();
-    tp2.IP iP38 = null;
-    boolean b39 = server37.addBan(iP38);
-    tp2.IP iP44 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iP44.setSecond((java.lang.Integer)2147483647);
-    boolean b47 = server37.addBan(iP44);
-    tp2.Server server48 = new tp2.Server();
-    tp2.IP iP49 = null;
-    boolean b50 = server48.addBan(iP49);
-    tp2.ITime iTime51 = null;
-    server48.setTime(iTime51);
-    tp2.IP iP53 = null;
-    tp2.IPBan iPBan55 = new tp2.IPBan(iP53, (java.lang.Long)10L);
-    tp2.IP iP56 = iPBan55.getIp();
-    java.lang.Long long57 = iPBan55.expires;
-    tp2.IP iP58 = null;
-    iPBan55.ip = iP58;
-    tp2.Server server60 = new tp2.Server();
-    tp2.IP iP65 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b66 = server60.removeException(iP65);
-    java.lang.Integer i67 = iP65.getFirst();
-    iPBan55.setIp(iP65);
-    boolean b69 = server48.connect(iP65);
-    boolean b70 = server37.removeBan(iP65);
-    boolean b71 = server36.addBan(iP65);
-    iP65.setFourth((java.lang.Integer)1476395008);
-    boolean b74 = server0.addException(iP65);
-    tp2.IP iP79 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)(-2147483592), (java.lang.Integer)133, (java.lang.Integer)(-2147483646));
-    iP79.setFourth((java.lang.Integer)79);
-    boolean b82 = server0.addException(iP79);
-    java.lang.Integer i83 = iP79.getSecond();
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b6 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b10 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b17 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b19 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b20 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b32 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b35 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b39 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b47 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b50 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP56);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long57 + "' != '" + 10L+ "'", long57.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b66 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i67 + "' != '" + 161+ "'", i67.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b69 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b70 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b71 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b74 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b82 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i83 + "' != '" + (-2147483592)+ "'", i83.equals((-2147483592)));
-
-  }
-
-  @Test
-  public void test132() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test132"); }
-
-
-    java.lang.Integer i1 = java.lang.Integer.valueOf(469761943);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 469761943+ "'", i1.equals(469761943));
-
-  }
-
-  @Test
-  public void test133() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test133"); }
-
-
-    int i1 = java.lang.Integer.bitCount((-134217728));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 5);
-
-  }
-
-  @Test
-  public void test134() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test134"); }
-
-
-    java.lang.Integer i1 = java.lang.Integer.decode("458752");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 458752+ "'", i1.equals(458752));
-
-  }
-
-  @Test
-  public void test135() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test135"); }
-
-
-    int i1 = java.lang.Integer.signum(1677721600);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1);
-
-  }
-
-  @Test
-  public void test136() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test136"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      java.lang.Integer i1 = java.lang.Integer.valueOf("d");
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test137() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test137"); }
-
-
-    int i1 = java.lang.Integer.numberOfLeadingZeros(161);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 24);
-
-  }
-
-  @Test
-  public void test138() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test138"); }
-
-
-    int i1 = java.lang.Integer.signum(2031686);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1);
-
-  }
-
-  @Test
-  public void test139() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test139"); }
-
-
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP5 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b6 = server0.removeException(iP5);
-    server0.update();
-    tp2.IP iP8 = null;
-    tp2.IPBan iPBan10 = new tp2.IPBan(iP8, (java.lang.Long)10L);
-    tp2.IP iP11 = iPBan10.ip;
-    tp2.Server server12 = new tp2.Server();
-    tp2.IP iP13 = null;
-    boolean b14 = server12.addBan(iP13);
-    tp2.Server server15 = new tp2.Server();
-    tp2.IP iP20 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b21 = server15.removeException(iP20);
-    boolean b23 = iP20.equals((java.lang.Object)(-1L));
-    boolean b24 = server12.removeBan(iP20);
-    iPBan10.ip = iP20;
-    boolean b26 = server0.removeException(iP20);
-    tp2.Server server27 = new tp2.Server();
-    tp2.IP iP28 = null;
-    boolean b29 = server27.addBan(iP28);
-    tp2.IP iP34 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iP34.setSecond((java.lang.Integer)2147483647);
-    boolean b37 = server27.addBan(iP34);
-    tp2.Server server38 = new tp2.Server();
-    tp2.IP iP39 = null;
-    boolean b40 = server38.addBan(iP39);
-    tp2.ITime iTime41 = null;
-    server38.setTime(iTime41);
-    tp2.IP iP43 = null;
-    tp2.IPBan iPBan45 = new tp2.IPBan(iP43, (java.lang.Long)10L);
-    tp2.IP iP46 = iPBan45.getIp();
-    java.lang.Long long47 = iPBan45.expires;
-    tp2.IP iP48 = null;
-    iPBan45.ip = iP48;
-    tp2.Server server50 = new tp2.Server();
-    tp2.IP iP55 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b56 = server50.removeException(iP55);
-    java.lang.Integer i57 = iP55.getFirst();
-    iPBan45.setIp(iP55);
-    boolean b59 = server38.connect(iP55);
-    boolean b60 = server27.removeBan(iP55);
-    tp2.Server server61 = new tp2.Server();
-    tp2.IP iP66 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b67 = server61.removeException(iP66);
-    server61.update();
-    tp2.Server server69 = new tp2.Server();
-    tp2.IP iP74 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b75 = server69.removeException(iP74);
-    java.lang.Integer i76 = iP74.getFirst();
-    boolean b77 = server61.addBan(iP74);
-    tp2.IPBan iPBan79 = new tp2.IPBan(iP74, (java.lang.Long)(-1L));
-    boolean b80 = server27.removeBan(iP74);
-    boolean b81 = server0.addBan(iP74);
-    iP74.setSecond((java.lang.Integer)1073741825);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b6 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP11);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b14 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b21 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b23 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b24 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b26 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b29 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b37 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b40 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP46);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long47 + "' != '" + 10L+ "'", long47.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b56 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i57 + "' != '" + 161+ "'", i57.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b59 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b60 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b67 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b75 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i76 + "' != '" + 161+ "'", i76.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b77 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b80 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b81 == true);
-
-  }
-
-  @Test
-  public void test140() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test140"); }
-
-
-    int i2 = java.lang.Integer.sum(144, (-1593835520));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-1593835376));
-
-  }
-
-  @Test
-  public void test141() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test141"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toOctalString((-1587281920));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "24131000000"+ "'", str1.equals("24131000000"));
-
-  }
-
-  @Test
-  public void test142() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test142"); }
-
-
-    java.lang.Integer i2 = java.lang.Integer.getInteger("5", (-2147483620));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + (-2147483620)+ "'", i2.equals((-2147483620)));
-
-  }
-
-  @Test
-  public void test143() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test143"); }
-
-
-    int i2 = java.lang.Integer.compare(0, 2);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-1));
-
-  }
-
-  @Test
-  public void test144() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test144"); }
-
-
-    int i1 = java.lang.Integer.parseInt("229376");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 229376);
-
-  }
-
-  @Test
-  public void test145() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test145"); }
-
-
-    java.lang.Integer i2 = java.lang.Integer.getInteger("133", 35320);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 35320+ "'", i2.equals(35320));
-
-  }
-
-  @Test
-  public void test146() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test146"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toOctalString((-1593835376));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "24100000220"+ "'", str1.equals("24100000220"));
-
-  }
-
-  @Test
-  public void test147() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test147"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      java.lang.Integer i1 = new java.lang.Integer("3400000000");
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test148() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test148"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      java.lang.Integer i2 = java.lang.Integer.valueOf("10000000000000000000000000111000", 448);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test149() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test149"); }
-
-
-    java.lang.Integer i2 = java.lang.Integer.getInteger("38000", (java.lang.Integer)2);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 2+ "'", i2.equals(2));
-
-  }
-
-  @Test
-  public void test150() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test150"); }
-
-
-    int i1 = java.lang.Integer.signum(18);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1);
-
-  }
-
-  @Test
-  public void test151() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test151"); }
-
-
-    java.lang.Integer i1 = java.lang.Integer.valueOf(13);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 13+ "'", i1.equals(13));
-
-  }
-
-  @Test
-  public void test152() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test152"); }
-
-
-    java.lang.Integer i2 = java.lang.Integer.getInteger("18000000", 8);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 8+ "'", i2.equals(8));
-
-  }
-
-  @Test
-  public void test153() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test153"); }
-
-
-    tp2.IP iP0 = null;
-    tp2.IPBan iPBan2 = new tp2.IPBan(iP0, (java.lang.Long)10L);
-    tp2.IP iP3 = iPBan2.getIp();
-    java.lang.Long long4 = iPBan2.expires;
-    tp2.IP iP5 = null;
-    iPBan2.ip = iP5;
-    tp2.Server server7 = new tp2.Server();
-    tp2.IP iP12 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b13 = server7.removeException(iP12);
-    java.lang.Integer i14 = iP12.getFirst();
-    iPBan2.setIp(iP12);
-    iP12.setFourth((java.lang.Integer)(-2147483620));
-    tp2.IPBan iPBan19 = new tp2.IPBan(iP12, (java.lang.Long)(-1L));
-    java.lang.Long long20 = iPBan19.getExpires();
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP3);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long4 + "' != '" + 10L+ "'", long4.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b13 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i14 + "' != '" + 161+ "'", i14.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long20 + "' != '" + (-1L)+ "'", long20.equals((-1L)));
-
-  }
-
-  @Test
-  public void test154() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test154"); }
-
-
-    int i1 = java.lang.Integer.reverseBytes(1400000);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == (-1067707136));
-
-  }
-
-  @Test
-  public void test155() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test155"); }
-
-
-    int i2 = java.lang.Integer.compare(2031616, 4329604);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-1));
-
-  }
-
-  @Test
-  public void test156() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test156"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toBinaryString(7);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "111"+ "'", str1.equals("111"));
-
-  }
-
-  @Test
-  public void test157() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test157"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toUnsignedString(10);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "10"+ "'", str1.equals("10"));
-
-  }
-
-  @Test
-  public void test158() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test158"); }
-
-
-    java.lang.Integer i1 = new java.lang.Integer(1023410176);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 1023410176+ "'", i1.equals(1023410176));
-
-  }
-
-  @Test
-  public void test159() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test159"); }
-
-
-    tp2.IP iP0 = null;
-    tp2.IPBan iPBan2 = new tp2.IPBan(iP0, (java.lang.Long)10L);
-    tp2.IP iP3 = iPBan2.getIp();
-    java.lang.Long long4 = iPBan2.expires;
-    tp2.Server server5 = new tp2.Server();
-    tp2.IP iP10 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b11 = server5.removeException(iP10);
-    java.lang.Integer i12 = iP10.getFirst();
-    iPBan2.setIp(iP10);
-    java.lang.Integer i14 = iP10.getFirst();
-    java.lang.Integer i15 = iP10.getThird();
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP3);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long4 + "' != '" + 10L+ "'", long4.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b11 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i12 + "' != '" + 161+ "'", i12.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i14 + "' != '" + 161+ "'", i14.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i15 + "' != '" + 939524096+ "'", i15.equals(939524096));
-
-  }
-
-  @Test
-  public void test160() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test160"); }
-
-
-    long long1 = java.lang.Integer.toUnsignedLong(2013262563);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(long1 == 2013262563L);
-
-  }
-
-  @Test
-  public void test161() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test161"); }
-
-
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP1 = null;
-    boolean b2 = server0.addBan(iP1);
-    tp2.IP iP7 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iP7.setSecond((java.lang.Integer)2147483647);
-    boolean b10 = server0.addBan(iP7);
-    tp2.Server server11 = new tp2.Server();
-    tp2.IP iP12 = null;
-    boolean b13 = server11.addBan(iP12);
-    tp2.ITime iTime14 = null;
-    server11.setTime(iTime14);
-    tp2.IP iP16 = null;
-    tp2.IPBan iPBan18 = new tp2.IPBan(iP16, (java.lang.Long)10L);
-    tp2.IP iP19 = iPBan18.getIp();
-    java.lang.Long long20 = iPBan18.expires;
-    tp2.IP iP21 = null;
-    iPBan18.ip = iP21;
-    tp2.Server server23 = new tp2.Server();
-    tp2.IP iP28 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b29 = server23.removeException(iP28);
-    java.lang.Integer i30 = iP28.getFirst();
-    iPBan18.setIp(iP28);
-    boolean b32 = server11.connect(iP28);
-    boolean b33 = server0.removeBan(iP28);
-    tp2.IP iP38 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    iP38.setFirst((java.lang.Integer)161);
-    iP38.setThird((java.lang.Integer)3);
-    iP38.setFirst((java.lang.Integer)26);
-    iP38.setThird((java.lang.Integer)5);
-    boolean b47 = server0.removeBan(iP38);
-    tp2.IP iP52 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    iP52.setFirst((java.lang.Integer)161);
-    iP52.setThird((java.lang.Integer)3);
-    iP52.setFirst((java.lang.Integer)26);
-    boolean b59 = server0.removeException(iP52);
-    tp2.Server server60 = new tp2.Server();
-    tp2.IP iP61 = null;
-    boolean b62 = server60.addBan(iP61);
-    tp2.ITime iTime63 = null;
-    server60.setTime(iTime63);
-    tp2.IP iP65 = null;
-    tp2.IPBan iPBan67 = new tp2.IPBan(iP65, (java.lang.Long)10L);
-    tp2.IP iP68 = iPBan67.getIp();
-    java.lang.Long long69 = iPBan67.expires;
-    tp2.IP iP70 = null;
-    iPBan67.ip = iP70;
-    tp2.Server server72 = new tp2.Server();
-    tp2.IP iP77 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b78 = server72.removeException(iP77);
-    java.lang.Integer i79 = iP77.getFirst();
-    iPBan67.setIp(iP77);
-    boolean b81 = server60.connect(iP77);
-    iP77.setFourth((java.lang.Integer)(-1));
-    boolean b84 = server0.connect(iP77);
-    server0.update();
-    tp2.ITime iTime86 = null;
-    server0.setTime(iTime86);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b2 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b10 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b13 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP19);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long20 + "' != '" + 10L+ "'", long20.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b29 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i30 + "' != '" + 161+ "'", i30.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b32 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b33 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b47 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b59 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b62 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP68);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long69 + "' != '" + 10L+ "'", long69.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b78 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i79 + "' != '" + 161+ "'", i79.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b81 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b84 == true);
-
-  }
-
-  @Test
-  public void test162() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test162"); }
-
-
-    int i2 = java.lang.Integer.rotateRight(32768, (-1587281920));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 32768);
-
-  }
-
-  @Test
-  public void test163() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test163"); }
-
-
-    int i2 = java.lang.Integer.compare(56, 100);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-1));
-
-  }
-
-  @Test
-  public void test164() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test164"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseInt("229376", (-1593835376));
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test165() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test165"); }
-
-
-    int i2 = java.lang.Integer.remainderUnsigned(2013262563, 700000);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 62563);
-
-  }
-
-  @Test
-  public void test166() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test166"); }
-
-
-    int i2 = java.lang.Integer.divideUnsigned(186646533, 79);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 2362614);
-
-  }
-
-  @Test
-  public void test167() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test167"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toUnsignedString(20971520);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "20971520"+ "'", str1.equals("20971520"));
-
-  }
-
-  @Test
-  public void test168() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test168"); }
-
-
-    int i2 = java.lang.Integer.min(19884108, 56);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 56);
-
-  }
-
-  @Test
-  public void test169() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test169"); }
-
-
-    int i2 = java.lang.Integer.divideUnsigned(32, 101);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 0);
-
-  }
-
-  @Test
-  public void test170() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test170"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      int i1 = java.lang.Integer.parseUnsignedInt("640000a1");
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test171() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test171"); }
-
-
-    java.lang.Integer i1 = new java.lang.Integer(32);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 32+ "'", i1.equals(32));
-
-  }
-
-  @Test
-  public void test172() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test172"); }
-
-
-    int i2 = java.lang.Integer.compareUnsigned(7, 10);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-1));
-
-  }
-
-  @Test
-  public void test173() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test173"); }
-
-
-    int i2 = java.lang.Integer.divideUnsigned((-1593835520), 144);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 18757859);
-
-  }
-
-  @Test
-  public void test174() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test174"); }
-
-
-    tp2.IP iP4 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    iP4.setFirst((java.lang.Integer)161);
-    iP4.setFourth((java.lang.Integer)1325400064);
-
-  }
-
-  @Test
-  public void test175() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test175"); }
-
-
-    int i1 = java.lang.Integer.highestOneBit((-2063597440));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == (-2147483648));
-
-  }
-
-  @Test
-  public void test176() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test176"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      java.lang.Integer i1 = new java.lang.Integer("10000000000000000000000000111000");
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test177() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test177"); }
-
-
-    int i1 = java.lang.Integer.parseUnsignedInt("4294967295");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == (-1));
-
-  }
-
-  @Test
-  public void test178() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test178"); }
-
-
-    java.lang.Integer i1 = java.lang.Integer.valueOf(69273664);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 69273664+ "'", i1.equals(69273664));
-
-  }
-
-  @Test
-  public void test179() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test179"); }
-
-
-    tp2.IP iP4 = new tp2.IP((java.lang.Integer)2147483647, (java.lang.Integer)(-1), (java.lang.Integer)56, (java.lang.Integer)458752);
-    java.lang.Integer i5 = iP4.getFourth();
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i5 + "' != '" + 458752+ "'", i5.equals(458752));
-
-  }
-
-  @Test
-  public void test180() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test180"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      java.lang.Integer i2 = java.lang.Integer.valueOf("0", 536870926);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test181() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test181"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      korat.finitization.IFinitization iFinitization1 = tp2.Server.finServer(100004);
-      org.junit.Assert.fail("Expected exception of type java.lang.IndexOutOfBoundsException");
-    } catch (java.lang.IndexOutOfBoundsException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.IndexOutOfBoundsException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.IndexOutOfBoundsException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test182() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test182"); }
-
-
-    int i2 = java.lang.Integer.min((-2147483620), 1677721600);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-2147483620));
-
-  }
-
-  @Test
-  public void test183() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test183"); }
-
-
-    java.lang.Integer i2 = java.lang.Integer.getInteger("2147483704", 0);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 0+ "'", i2.equals(0));
-
-  }
-
-  @Test
-  public void test184() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test184"); }
-
-
-    int i1 = java.lang.Integer.highestOneBit(69273664);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 67108864);
-
-  }
-
-  @Test
-  public void test185() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test185"); }
-
-
-    int i1 = java.lang.Integer.parseInt("27");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 27);
-
-  }
-
-  @Test
-  public void test186() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test186"); }
-
-
-    java.lang.Integer i1 = java.lang.Integer.decode("100000");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 100000+ "'", i1.equals(100000));
-
-  }
-
-  @Test
-  public void test187() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test187"); }
-
-
-    int i2 = java.lang.Integer.compareUnsigned(134217728, 469761943);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-1));
-
-  }
-
-  @Test
-  public void test188() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test188"); }
-
-
-    int i1 = java.lang.Integer.highestOneBit(2147483647);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1073741824);
-
-  }
-
-  @Test
-  public void test189() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test189"); }
-
-
-    int i1 = java.lang.Integer.bitCount(1073741824);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1);
-
-  }
-
-  @Test
-  public void test190() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test190"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      java.lang.Integer i1 = java.lang.Integer.decode("10101000000000000000110100100");
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test191() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test191"); }
-
-
-    java.lang.Integer i1 = java.lang.Integer.valueOf(1073741824);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 1073741824+ "'", i1.equals(1073741824));
-
-  }
-
-  @Test
-  public void test192() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test192"); }
-
-
-    int i1 = java.lang.Integer.numberOfTrailingZeros(51200);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 11);
-
-  }
-
-  @Test
-  public void test193() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test193"); }
-
-
-    int i2 = java.lang.Integer.rotateRight(100004, (-134217728));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 100004);
-
-  }
-
-  @Test
-  public void test194() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test194"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toOctalString(1);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "1"+ "'", str1.equals("1"));
-
-  }
-
-  @Test
-  public void test195() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test195"); }
-
-
-    int i1 = java.lang.Integer.reverseBytes(503);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == (-150929408));
-
-  }
-
-  @Test
-  public void test196() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test196"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toUnsignedString(2013262563);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "2013262563"+ "'", str1.equals("2013262563"));
-
-  }
-
-  @Test
-  public void test197() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test197"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseUnsignedInt("10101000000000000000110100100", 35320);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test198() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test198"); }
-
-
-    int i2 = java.lang.Integer.rotateRight(640, 1400000);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 640);
-
-  }
-
-  @Test
-  public void test199() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test199"); }
-
-
-    java.lang.Integer i1 = java.lang.Integer.valueOf(2031616);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 2031616+ "'", i1.equals(2031616));
-
-  }
-
-  @Test
-  public void test200() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test200"); }
-
-
-    java.lang.Integer i1 = java.lang.Integer.decode("0");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 0+ "'", i1.equals(0));
-
-  }
-
-  @Test
-  public void test201() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test201"); }
-
-
-    int i2 = java.lang.Integer.sum(2031686, 4);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 2031690);
-
-  }
-
-  @Test
-  public void test202() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test202"); }
-
-
-    tp2.Server server0 = new tp2.Server();
-    tp2.Server server1 = new tp2.Server();
-    tp2.IP iP2 = null;
-    boolean b3 = server1.addBan(iP2);
-    tp2.IP iP8 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iP8.setSecond((java.lang.Integer)2147483647);
-    boolean b11 = server1.addBan(iP8);
-    tp2.Server server12 = new tp2.Server();
-    tp2.IP iP13 = null;
-    boolean b14 = server12.addBan(iP13);
-    tp2.ITime iTime15 = null;
-    server12.setTime(iTime15);
-    tp2.IP iP17 = null;
-    tp2.IPBan iPBan19 = new tp2.IPBan(iP17, (java.lang.Long)10L);
-    tp2.IP iP20 = iPBan19.getIp();
-    java.lang.Long long21 = iPBan19.expires;
-    tp2.IP iP22 = null;
-    iPBan19.ip = iP22;
-    tp2.Server server24 = new tp2.Server();
-    tp2.IP iP29 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b30 = server24.removeException(iP29);
-    java.lang.Integer i31 = iP29.getFirst();
-    iPBan19.setIp(iP29);
-    boolean b33 = server12.connect(iP29);
-    boolean b34 = server1.removeBan(iP29);
-    boolean b35 = server0.addBan(iP29);
-    tp2.ITime iTime36 = null;
-    server0.setTime(iTime36);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b3 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b11 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b14 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP20);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long21 + "' != '" + 10L+ "'", long21.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b30 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i31 + "' != '" + 161+ "'", i31.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b33 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b34 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b35 == true);
-
-  }
-
-  @Test
-  public void test203() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test203"); }
-
-
-    int i2 = java.lang.Integer.max(4, 1342177288);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1342177288);
-
-  }
-
-  @Test
-  public void test204() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test204"); }
-
-
-    int i2 = java.lang.Integer.rotateRight(70, 67108864);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 70);
-
-  }
-
-  @Test
-  public void test205() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test205"); }
-
-
-    int i1 = java.lang.Integer.reverse(27);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == (-671088640));
-
-  }
-
-  @Test
-  public void test206() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test206"); }
-
-
-    tp2.IP iP0 = null;
-    tp2.IPBan iPBan2 = new tp2.IPBan(iP0, (java.lang.Long)10L);
-    java.lang.Long long3 = iPBan2.getExpires();
-    tp2.IP iP8 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iPBan2.ip = iP8;
-    tp2.Server server10 = new tp2.Server();
-    tp2.IP iP15 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b16 = server10.removeException(iP15);
-    server10.update();
-    tp2.Server server18 = new tp2.Server();
-    tp2.IP iP23 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b24 = server18.removeException(iP23);
-    java.lang.Integer i25 = iP23.getFirst();
-    boolean b26 = server10.addBan(iP23);
-    iPBan2.setIp(iP23);
-    iPBan2.expires = 1L;
-    java.lang.Long long30 = iPBan2.expires;
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long3 + "' != '" + 10L+ "'", long3.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b16 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b24 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i25 + "' != '" + 161+ "'", i25.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b26 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long30 + "' != '" + 1L+ "'", long30.equals(1L));
-
-  }
-
-  @Test
-  public void test207() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test207"); }
-
-
-    java.lang.Integer i1 = new java.lang.Integer("111");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 111+ "'", i1.equals(111));
-
-  }
-
-  @Test
-  public void test208() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test208"); }
-
-
-    java.lang.Integer i2 = java.lang.Integer.getInteger("51200", (-219971585));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + (-219971585)+ "'", i2.equals((-219971585)));
-
-  }
-
-  @Test
-  public void test209() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test209"); }
-
-
-    java.lang.Integer i2 = java.lang.Integer.getInteger("79", 19884108);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 19884108+ "'", i2.equals(19884108));
-
-  }
-
-  @Test
-  public void test210() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test210"); }
-
-
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP1 = null;
-    boolean b2 = server0.addBan(iP1);
-    server0.update();
-    tp2.IP iP4 = null;
-    tp2.IPBan iPBan6 = new tp2.IPBan(iP4, (java.lang.Long)10L);
-    tp2.IP iP7 = iPBan6.getIp();
-    java.lang.Long long8 = iPBan6.expires;
-    tp2.IP iP9 = null;
-    iPBan6.ip = iP9;
-    tp2.Server server11 = new tp2.Server();
-    tp2.IP iP16 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b17 = server11.removeException(iP16);
-    java.lang.Integer i18 = iP16.getFirst();
-    iPBan6.setIp(iP16);
-    java.lang.Integer i20 = iP16.getFirst();
-    java.lang.Integer i21 = iP16.getFirst();
-    boolean b22 = server0.addBan(iP16);
-    tp2.Server server23 = new tp2.Server();
-    tp2.IP iP24 = null;
-    boolean b25 = server23.addBan(iP24);
-    tp2.ITime iTime26 = null;
-    server23.setTime(iTime26);
-    tp2.IP iP28 = null;
-    tp2.IPBan iPBan30 = new tp2.IPBan(iP28, (java.lang.Long)10L);
-    tp2.IP iP31 = iPBan30.getIp();
-    java.lang.Long long32 = iPBan30.expires;
-    tp2.IP iP33 = null;
-    iPBan30.ip = iP33;
-    tp2.Server server35 = new tp2.Server();
-    tp2.IP iP40 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b41 = server35.removeException(iP40);
-    java.lang.Integer i42 = iP40.getFirst();
-    iPBan30.setIp(iP40);
-    boolean b44 = server23.connect(iP40);
-    boolean b45 = server0.connect(iP40);
-    tp2.Server server46 = new tp2.Server();
-    tp2.IP iP51 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b52 = server46.removeException(iP51);
-    tp2.Server server53 = new tp2.Server();
-    tp2.IP iP58 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b59 = server53.removeException(iP58);
-    java.lang.Integer i60 = iP58.getFirst();
-    tp2.IPBan iPBan62 = new tp2.IPBan(iP58, (java.lang.Long)2147483676L);
-    boolean b63 = server46.addBan(iP58);
-    tp2.Server server64 = new tp2.Server();
-    tp2.IP iP65 = null;
-    boolean b66 = server64.connect(iP65);
-    tp2.IP iP67 = null;
-    tp2.IPBan iPBan69 = new tp2.IPBan(iP67, (java.lang.Long)10L);
-    java.lang.Long long70 = iPBan69.getExpires();
-    tp2.IP iP75 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iPBan69.ip = iP75;
-    tp2.Server server77 = new tp2.Server();
-    tp2.IP iP82 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b83 = server77.removeException(iP82);
-    server77.update();
-    tp2.Server server85 = new tp2.Server();
-    tp2.IP iP90 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b91 = server85.removeException(iP90);
-    java.lang.Integer i92 = iP90.getFirst();
-    boolean b93 = server77.addBan(iP90);
-    iPBan69.setIp(iP90);
-    boolean b95 = server64.removeException(iP90);
-    boolean b96 = server46.removeException(iP90);
-    boolean b97 = server0.addBan(iP90);
-    tp2.IP iP98 = null;
-    boolean b99 = server0.connect(iP98);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b2 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP7);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long8 + "' != '" + 10L+ "'", long8.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b17 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i18 + "' != '" + 161+ "'", i18.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i20 + "' != '" + 161+ "'", i20.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i21 + "' != '" + 161+ "'", i21.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b22 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b25 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP31);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long32 + "' != '" + 10L+ "'", long32.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b41 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i42 + "' != '" + 161+ "'", i42.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b44 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b45 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b52 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b59 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i60 + "' != '" + 161+ "'", i60.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b63 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b66 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long70 + "' != '" + 10L+ "'", long70.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b83 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b91 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i92 + "' != '" + 161+ "'", i92.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b93 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b95 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b96 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b97 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b99 == true);
-
-  }
-
-  @Test
-  public void test211() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test211"); }
-
-
-    int i1 = java.lang.Integer.reverseBytes(1023410176);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 61);
-
-  }
-
-  @Test
-  public void test212() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test212"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toHexString(6);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "6"+ "'", str1.equals("6"));
-
-  }
-
-  @Test
-  public void test213() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test213"); }
-
-
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP5 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b6 = server0.removeException(iP5);
-    boolean b8 = iP5.equals((java.lang.Object)(-1L));
-    iP5.setFourth((java.lang.Integer)28);
-    iP5.setThird((java.lang.Integer)1342177288);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b6 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b8 == false);
-
-  }
-
-  @Test
-  public void test214() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test214"); }
-
-
-    int i2 = java.lang.Integer.sum((-1067707136), 536870912);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-530836224));
-
-  }
-
-  @Test
-  public void test215() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test215"); }
-
-
-    int i2 = java.lang.Integer.divideUnsigned(524288, 70);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 7489);
-
-  }
-
-  @Test
-  public void test216() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test216"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseUnsignedInt("80000085", (-1067707136));
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test217() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test217"); }
-
-
-    int i2 = java.lang.Integer.compare(0, 38000);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-1));
-
-  }
-
-  @Test
-  public void test218() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test218"); }
-
-
-    int i2 = java.lang.Integer.rotateRight((-2147483648), (-134217728));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-2147483648));
-
-  }
-
-  @Test
-  public void test219() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test219"); }
-
-
-    int i1 = java.lang.Integer.reverseBytes(16);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 268435456);
-
-  }
-
-  @Test
-  public void test220() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test220"); }
-
-
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP5 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b6 = server0.removeException(iP5);
-    server0.update();
-    tp2.Server server8 = new tp2.Server();
-    tp2.IP iP9 = null;
-    boolean b10 = server8.addBan(iP9);
-    tp2.Server server11 = new tp2.Server();
-    tp2.IP iP16 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b17 = server11.removeException(iP16);
-    boolean b19 = iP16.equals((java.lang.Object)(-1L));
-    boolean b20 = server8.removeBan(iP16);
-    tp2.IP iP25 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    iP25.setFirst((java.lang.Integer)161);
-    iP25.setThird((java.lang.Integer)3);
-    iP25.setFirst((java.lang.Integer)26);
-    boolean b32 = server8.connect(iP25);
-    iP25.setSecond((java.lang.Integer)1677721761);
-    boolean b35 = server0.removeBan(iP25);
-    tp2.Server server36 = new tp2.Server();
-    tp2.Server server37 = new tp2.Server();
-    tp2.IP iP38 = null;
-    boolean b39 = server37.addBan(iP38);
-    tp2.IP iP44 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iP44.setSecond((java.lang.Integer)2147483647);
-    boolean b47 = server37.addBan(iP44);
-    tp2.Server server48 = new tp2.Server();
-    tp2.IP iP49 = null;
-    boolean b50 = server48.addBan(iP49);
-    tp2.ITime iTime51 = null;
-    server48.setTime(iTime51);
-    tp2.IP iP53 = null;
-    tp2.IPBan iPBan55 = new tp2.IPBan(iP53, (java.lang.Long)10L);
-    tp2.IP iP56 = iPBan55.getIp();
-    java.lang.Long long57 = iPBan55.expires;
-    tp2.IP iP58 = null;
-    iPBan55.ip = iP58;
-    tp2.Server server60 = new tp2.Server();
-    tp2.IP iP65 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b66 = server60.removeException(iP65);
-    java.lang.Integer i67 = iP65.getFirst();
-    iPBan55.setIp(iP65);
-    boolean b69 = server48.connect(iP65);
-    boolean b70 = server37.removeBan(iP65);
-    boolean b71 = server36.addBan(iP65);
-    iP65.setFourth((java.lang.Integer)1476395008);
-    boolean b74 = server0.addException(iP65);
-    tp2.IP iP79 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)(-2147483592), (java.lang.Integer)133, (java.lang.Integer)(-2147483646));
-    iP79.setFourth((java.lang.Integer)79);
-    boolean b82 = server0.addException(iP79);
-    iP79.setFourth((java.lang.Integer)100);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b6 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b10 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b17 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b19 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b20 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b32 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b35 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b39 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b47 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b50 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP56);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long57 + "' != '" + 10L+ "'", long57.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b66 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i67 + "' != '" + 161+ "'", i67.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b69 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b70 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b71 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b74 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b82 == true);
-
-  }
-
-  @Test
-  public void test221() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test221"); }
-
-
-    java.lang.Integer i2 = java.lang.Integer.getInteger("79", (-219971585));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + (-219971585)+ "'", i2.equals((-219971585)));
-
-  }
-
-  @Test
-  public void test222() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test222"); }
-
-
-    int i2 = java.lang.Integer.remainderUnsigned(268503106, 16);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 2);
-
-  }
-
-  @Test
-  public void test223() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test223"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      java.lang.Integer i2 = java.lang.Integer.valueOf("24100000220", 0);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test224() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test224"); }
-
-
-    int i2 = java.lang.Integer.divideUnsigned(1437910020, 100);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 14379100);
-
-  }
-
-  @Test
-  public void test225() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test225"); }
-
-
-    java.lang.String str2 = java.lang.Integer.toUnsignedString(61, 100);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "61"+ "'", str2.equals("61"));
-
-  }
-
-  @Test
-  public void test226() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test226"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toHexString(11);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "b"+ "'", str1.equals("b"));
-
-  }
-
-  @Test
-  public void test227() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test227"); }
 
 
     int i1 = java.lang.Integer.parseUnsignedInt("4");
@@ -4555,185 +634,230 @@ public class RegressionTest1 {
   }
 
   @Test
-  public void test228() throws Throwable {
+  public void test029() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test228"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test029"); }
 
 
-    tp2.IP iP0 = null;
-    tp2.IPBan iPBan2 = new tp2.IPBan(iP0, (java.lang.Long)10L);
-    tp2.IP iP3 = iPBan2.getIp();
-    java.lang.Long long4 = iPBan2.expires;
-    tp2.Server server5 = new tp2.Server();
-    tp2.IP iP10 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b11 = server5.removeException(iP10);
-    java.lang.Integer i12 = iP10.getFirst();
-    iPBan2.setIp(iP10);
-    tp2.IP iP14 = iPBan2.ip;
-    java.lang.Long long15 = iPBan2.getExpires();
-    iPBan2.expires = 1677721600L;
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    boolean b8 = singlyLinkedList0.isEmpty();
+    int i9 = singlyLinkedList0.getSize();
+    tp2.IP iP14 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i15 = iP14.getThird();
+    iP14.setFourth((java.lang.Integer)0);
+    boolean b18 = singlyLinkedList0.contains(iP14);
+    boolean b19 = singlyLinkedList0.isEmpty();
+    tp2.SinglyLinkedList singlyLinkedList20 = new tp2.SinglyLinkedList();
+    tp2.Server server21 = new tp2.Server();
+    boolean b22 = server21.exceptionsNotRepeated();
+    tp2.IP iP27 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i28 = iP27.getThird();
+    iP27.setSecond((java.lang.Integer)10);
+    boolean b31 = server21.removeBan(iP27);
+    boolean b32 = singlyLinkedList20.remove(iP27);
+    tp2.IP iP33 = null;
+    singlyLinkedList20.add(iP33);
+    tp2.IP iP36 = singlyLinkedList20.get(469762048);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList37 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP42 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)11100, (java.lang.Integer)784, (java.lang.Integer)0);
+    boolean b43 = strictlySortedSinglyLinkedList37.removeFromIP(iP42);
+    boolean b44 = singlyLinkedList20.contains(iP42);
+    boolean b45 = singlyLinkedList0.remove(iP42);
+    java.lang.Integer i46 = iP42.getFirst();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP3);
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long4 + "' != '" + 10L+ "'", long4.equals(10L));
+    org.junit.Assert.assertTrue(b7 == false);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b11 == false);
+    org.junit.Assert.assertTrue(b8 == true);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i12 + "' != '" + 161+ "'", i12.equals(161));
+    org.junit.Assert.assertTrue(i9 == 0);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNotNull(iP14);
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + (-1)+ "'", i15.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long15 + "' != '" + 10L+ "'", long15.equals(10L));
+    org.junit.Assert.assertTrue(b18 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b22 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i28 + "' != '" + (-1)+ "'", i28.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b31 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iP36);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b43 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b44 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b45 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i46 + "' != '" + 150994944+ "'", i46.equals(150994944));
 
   }
 
   @Test
-  public void test229() throws Throwable {
+  public void test030() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test229"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test030"); }
 
 
-    java.lang.Integer i2 = java.lang.Integer.getInteger("1f", 111);
+    int i1 = java.lang.Integer.lowestOneBit(26);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 111+ "'", i2.equals(111));
+    org.junit.Assert.assertTrue(i1 == 2);
 
   }
 
   @Test
-  public void test230() throws Throwable {
+  public void test031() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test230"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test031"); }
 
 
-    int i2 = java.lang.Integer.min(0, 56);
+    tp2.Server server0 = new tp2.Server();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b6 = server0.removeBan(iP5);
+    boolean b7 = server0.bansSorted();
+    boolean b8 = server0.exceptionsNotRepeated();
+    tp2.Server server9 = new tp2.Server();
+    boolean b10 = server9.exceptionsNotRepeated();
+    tp2.IP iP15 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i16 = iP15.getThird();
+    iP15.setSecond((java.lang.Integer)10);
+    boolean b19 = server9.removeBan(iP15);
+    boolean b20 = server0.connect(iP15);
+    tp2.SinglyLinkedList singlyLinkedList21 = new tp2.SinglyLinkedList();
+    tp2.IP iP26 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i27 = iP26.getThird();
+    boolean b28 = singlyLinkedList21.remove(iP26);
+    java.lang.Integer i29 = iP26.getThird();
+    java.lang.Integer i30 = iP26.getFourth();
+    boolean b31 = server0.addException(iP26);
+    tp2.Server server32 = new tp2.Server();
+    tp2.IP iP37 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b38 = server32.removeBan(iP37);
+    java.lang.Integer i39 = iP37.getFirst();
+    iP37.setThird((java.lang.Integer)134217599);
+    boolean b42 = server0.addBan(iP37);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 0);
+    org.junit.Assert.assertTrue(b6 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i27 + "' != '" + (-1)+ "'", i27.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b28 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i29 + "' != '" + (-1)+ "'", i29.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i30 + "' != '" + 100+ "'", i30.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b31 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b38 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i39 + "' != '" + (-1)+ "'", i39.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == true);
 
   }
 
   @Test
-  public void test231() throws Throwable {
+  public void test032() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test231"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test032"); }
 
 
-    int i2 = java.lang.Integer.sum(352321956, 640);
+    java.lang.Integer i1 = new java.lang.Integer("200000000");
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 352322596);
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 200000000+ "'", i1.equals(200000000));
 
   }
 
   @Test
-  public void test232() throws Throwable {
+  public void test033() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test232"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test033"); }
 
 
-    tp2.IP iP0 = null;
-    tp2.IPBan iPBan2 = new tp2.IPBan(iP0, (java.lang.Long)10L);
-    tp2.IP iP3 = iPBan2.getIp();
-    java.lang.Long long4 = iPBan2.expires;
-    tp2.IP iP5 = null;
-    iPBan2.ip = iP5;
-    tp2.Server server7 = new tp2.Server();
-    tp2.IP iP12 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b13 = server7.removeException(iP12);
-    java.lang.Integer i14 = iP12.getFirst();
-    iPBan2.setIp(iP12);
-    tp2.IP iP16 = iPBan2.getIp();
-    java.lang.Integer i17 = iP16.getSecond();
-    tp2.IPBan iPBan19 = new tp2.IPBan(iP16, (java.lang.Long)0L);
+    int i2 = java.lang.Integer.remainderUnsigned(11884, 88770);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP3);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long4 + "' != '" + 10L+ "'", long4.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b13 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i14 + "' != '" + 161+ "'", i14.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNotNull(iP16);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i17 + "' != '" + (-2147483648)+ "'", i17.equals((-2147483648)));
+    org.junit.Assert.assertTrue(i2 == 11884);
 
   }
 
   @Test
-  public void test233() throws Throwable {
+  public void test034() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test233"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test034"); }
 
 
-    java.lang.Integer i1 = new java.lang.Integer("1400000");
+    int i2 = java.lang.Integer.max((-129), 48);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 1400000+ "'", i1.equals(1400000));
+    org.junit.Assert.assertTrue(i2 == 48);
 
   }
 
   @Test
-  public void test234() throws Throwable {
+  public void test035() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test234"); }
-
-
-    java.lang.Integer i1 = java.lang.Integer.valueOf((-1593835376));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + (-1593835376)+ "'", i1.equals((-1593835376)));
-
-  }
-
-  @Test
-  public void test235() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test235"); }
-
-
-    int i2 = java.lang.Integer.sum(458752, 133);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 458885);
-
-  }
-
-  @Test
-  public void test236() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test236"); }
-
-
-    java.lang.Integer i2 = java.lang.Integer.getInteger("1400000", (-2147483592));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + (-2147483592)+ "'", i2.equals((-2147483592)));
-
-  }
-
-  @Test
-  public void test237() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test237"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test035"); }
 
 
     // The following exception was thrown during execution in test generation
     try {
-      int i1 = java.lang.Integer.parseInt("3928g3h1");
+      int i1 = java.lang.Integer.parseUnsignedInt("1001000000000000000000000000");
       org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
     } catch (java.lang.NumberFormatException e) {
       // Expected exception.
@@ -4745,12 +869,641 @@ public class RegressionTest1 {
   }
 
   @Test
-  public void test238() throws Throwable {
+  public void test036() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test238"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test036"); }
 
 
-    int i2 = java.lang.Integer.divideUnsigned(6, 31);
+    java.lang.Integer i1 = java.lang.Integer.getInteger("20");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(i1);
+
+  }
+
+  @Test
+  public void test037() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test037"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    tp2.IPBan iPBan9 = new tp2.IPBan(iP5, (java.lang.Long)10L);
+    tp2.IP iP14 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i15 = iP14.getFourth();
+    iPBan9.setIp(iP14);
+    tp2.IPBan iPBan18 = new tp2.IPBan(iP14, (java.lang.Long)10L);
+    java.lang.Long long19 = iPBan18.getExpires();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + 100+ "'", i15.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long19 + "' != '" + 10L+ "'", long19.equals(10L));
+
+  }
+
+  @Test
+  public void test038() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test038"); }
+
+
+    java.lang.String str2 = java.lang.Integer.toUnsignedString(469762048, 1476395008);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "469762048"+ "'", str2.equals("469762048"));
+
+  }
+
+  @Test
+  public void test039() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test039"); }
+
+
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)11100, (java.lang.Integer)784, (java.lang.Integer)0);
+    boolean b6 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    tp2.SinglyLinkedList singlyLinkedList7 = new tp2.SinglyLinkedList();
+    tp2.IP iP12 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i13 = iP12.getThird();
+    boolean b14 = singlyLinkedList7.remove(iP12);
+    tp2.IPBan iPBan16 = new tp2.IPBan(iP12, (java.lang.Long)10L);
+    tp2.IP iP21 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i22 = iP21.getFourth();
+    iPBan16.setIp(iP21);
+    java.lang.Long long24 = iPBan16.getExpires();
+    java.lang.Long long25 = iPBan16.getExpires();
+    tp2.IP iP30 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i31 = iP30.getFirst();
+    java.lang.Integer i32 = iP30.getSecond();
+    iP30.setFirst((java.lang.Integer)201326592);
+    iPBan16.setIp(iP30);
+    tp2.SinglyLinkedList singlyLinkedList36 = new tp2.SinglyLinkedList();
+    tp2.IP iP41 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i42 = iP41.getThird();
+    boolean b43 = singlyLinkedList36.remove(iP41);
+    boolean b44 = singlyLinkedList36.isEmpty();
+    int i45 = singlyLinkedList36.getSize();
+    tp2.IP iP50 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i51 = iP50.getThird();
+    iP50.setFourth((java.lang.Integer)0);
+    boolean b54 = singlyLinkedList36.contains(iP50);
+    boolean b55 = singlyLinkedList36.isEmpty();
+    tp2.IP iP60 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i61 = iP60.getFirst();
+    java.lang.Integer i62 = iP60.getFirst();
+    singlyLinkedList36.add(iP60);
+    tp2.SinglyLinkedList singlyLinkedList64 = new tp2.SinglyLinkedList();
+    tp2.IP iP69 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i70 = iP69.getThird();
+    boolean b71 = singlyLinkedList64.remove(iP69);
+    tp2.Server server72 = new tp2.Server();
+    tp2.IP iP77 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b78 = server72.removeBan(iP77);
+    boolean b79 = singlyLinkedList64.contains(iP77);
+    singlyLinkedList36.add(iP77);
+    iPBan16.setIp(iP77);
+    boolean b82 = strictlySortedSinglyLinkedList0.add(iPBan16);
+    tp2.IP iP87 = new tp2.IP((java.lang.Integer)5, (java.lang.Integer)1, (java.lang.Integer)0, (java.lang.Integer)12);
+    tp2.IPBan iPBan89 = new tp2.IPBan(iP87, (java.lang.Long)100L);
+    boolean b90 = strictlySortedSinglyLinkedList0.contains(iPBan89);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b6 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i13 + "' != '" + (-1)+ "'", i13.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b14 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i22 + "' != '" + 100+ "'", i22.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long24 + "' != '" + 10L+ "'", long24.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long25 + "' != '" + 10L+ "'", long25.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i31 + "' != '" + (-1)+ "'", i31.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i32 + "' != '" + (-1)+ "'", i32.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i42 + "' != '" + (-1)+ "'", i42.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b43 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b44 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i45 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i51 + "' != '" + (-1)+ "'", i51.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b54 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b55 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i61 + "' != '" + (-1)+ "'", i61.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i62 + "' != '" + (-1)+ "'", i62.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i70 + "' != '" + (-1)+ "'", i70.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b71 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b78 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b79 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b82 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b90 == false);
+
+  }
+
+  @Test
+  public void test040() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test040"); }
+
+
+    int i2 = java.lang.Integer.rotateRight(5120, 8192);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 5120);
+
+  }
+
+  @Test
+  public void test041() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test041"); }
+
+
+    int i1 = java.lang.Integer.bitCount(13);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 3);
+
+  }
+
+  @Test
+  public void test042() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test042"); }
+
+
+    int i2 = java.lang.Integer.compareUnsigned(12, 11);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 1);
+
+  }
+
+  @Test
+  public void test043() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test043"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.Server server2 = new tp2.Server();
+    boolean b3 = server2.exceptionsNotRepeated();
+    tp2.ITime iTime4 = null;
+    server2.setTime(iTime4);
+    tp2.SinglyLinkedList singlyLinkedList6 = new tp2.SinglyLinkedList();
+    tp2.Server server7 = new tp2.Server();
+    boolean b8 = server7.exceptionsNotRepeated();
+    tp2.IP iP13 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i14 = iP13.getThird();
+    iP13.setSecond((java.lang.Integer)10);
+    boolean b17 = server7.removeBan(iP13);
+    boolean b18 = singlyLinkedList6.remove(iP13);
+    tp2.SinglyLinkedList singlyLinkedList19 = new tp2.SinglyLinkedList();
+    tp2.IP iP24 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i25 = iP24.getThird();
+    boolean b26 = singlyLinkedList19.remove(iP24);
+    tp2.Server server27 = new tp2.Server();
+    tp2.IP iP32 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b33 = server27.removeBan(iP32);
+    boolean b34 = singlyLinkedList19.contains(iP32);
+    singlyLinkedList6.add(iP32);
+    boolean b36 = server2.addBan(iP32);
+    boolean b37 = server0.addException(iP32);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i14 + "' != '" + (-1)+ "'", i14.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b18 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i25 + "' != '" + (-1)+ "'", i25.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b26 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b33 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b34 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b36 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b37 == true);
+
+  }
+
+  @Test
+  public void test044() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test044"); }
+
+
+    int i1 = java.lang.Integer.lowestOneBit(1610612786);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 2);
+
+  }
+
+  @Test
+  public void test045() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test045"); }
+
+
+    java.lang.String str1 = java.lang.Integer.toBinaryString(67108864);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "100000000000000000000000000"+ "'", str1.equals("100000000000000000000000000"));
+
+  }
+
+  @Test
+  public void test046() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test046"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.bansSorted();
+    tp2.IP iP6 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i7 = iP6.getFourth();
+    boolean b8 = server0.removeException(iP6);
+    tp2.ITime iTime9 = null;
+    server0.setTime(iTime9);
+    boolean b11 = server0.notSharedElements();
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList12 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP17 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i18 = iP17.getFourth();
+    boolean b19 = strictlySortedSinglyLinkedList12.removeFromIP(iP17);
+    tp2.SinglyLinkedList singlyLinkedList20 = new tp2.SinglyLinkedList();
+    tp2.IP iP25 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i26 = iP25.getThird();
+    boolean b27 = singlyLinkedList20.remove(iP25);
+    java.lang.Integer i28 = iP25.getThird();
+    boolean b29 = strictlySortedSinglyLinkedList12.removeFromIP(iP25);
+    tp2.IPBan iPBan31 = strictlySortedSinglyLinkedList12.get(469762048);
+    tp2.SinglyLinkedList singlyLinkedList32 = new tp2.SinglyLinkedList();
+    tp2.IP iP37 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i38 = iP37.getThird();
+    boolean b39 = singlyLinkedList32.remove(iP37);
+    tp2.IP iP44 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i45 = iP44.getFirst();
+    boolean b46 = singlyLinkedList32.remove(iP44);
+    iP44.setFirst((java.lang.Integer)(-2147483648));
+    boolean b49 = strictlySortedSinglyLinkedList12.removeFromIP(iP44);
+    boolean b50 = server0.removeException(iP44);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i7 + "' != '" + 100+ "'", i7.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i18 + "' != '" + 2+ "'", i18.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i26 + "' != '" + (-1)+ "'", i26.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b27 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i28 + "' != '" + (-1)+ "'", i28.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b29 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan31);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i38 + "' != '" + (-1)+ "'", i38.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b39 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i45 + "' != '" + (-1)+ "'", i45.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b46 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b49 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b50 == false);
+
+  }
+
+  @Test
+  public void test047() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test047"); }
+
+
+    int i1 = java.lang.Integer.numberOfLeadingZeros(33554432);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 6);
+
+  }
+
+  @Test
+  public void test048() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test048"); }
+
+
+    java.lang.Integer i1 = new java.lang.Integer("144");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 144+ "'", i1.equals(144));
+
+  }
+
+  @Test
+  public void test049() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test049"); }
+
+
+    // The following exception was thrown during execution in test generation
+    try {
+      int i1 = java.lang.Integer.parseInt("10000000000000000000000000000000");
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
+
+  }
+
+  @Test
+  public void test050() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test050"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    tp2.IPBan iPBan9 = new tp2.IPBan(iP5, (java.lang.Long)10L);
+    java.lang.Long long10 = iPBan9.getExpires();
+    iPBan9.setExpires((java.lang.Long)(-1L));
+    java.lang.Long long13 = iPBan9.getExpires();
+    java.lang.Long long14 = iPBan9.getExpires();
+    java.lang.Long long15 = iPBan9.getExpires();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long10 + "' != '" + 10L+ "'", long10.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long13 + "' != '" + (-1L)+ "'", long13.equals((-1L)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long14 + "' != '" + (-1L)+ "'", long14.equals((-1L)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long15 + "' != '" + (-1L)+ "'", long15.equals((-1L)));
+
+  }
+
+  @Test
+  public void test051() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test051"); }
+
+
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i6 = iP5.getFourth();
+    boolean b7 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    tp2.SinglyLinkedList singlyLinkedList8 = new tp2.SinglyLinkedList();
+    tp2.IP iP13 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i14 = iP13.getThird();
+    boolean b15 = singlyLinkedList8.remove(iP13);
+    java.lang.Integer i16 = iP13.getThird();
+    boolean b17 = strictlySortedSinglyLinkedList0.removeFromIP(iP13);
+    tp2.IPBan iPBan19 = strictlySortedSinglyLinkedList0.get(167772160);
+    int i20 = strictlySortedSinglyLinkedList0.getSize();
+    boolean b21 = strictlySortedSinglyLinkedList0.isEmpty();
+    int i22 = strictlySortedSinglyLinkedList0.getSize();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + 2+ "'", i6.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i14 + "' != '" + (-1)+ "'", i14.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b15 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan19);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i20 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b21 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i22 == 0);
+
+  }
+
+  @Test
+  public void test052() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test052"); }
+
+
+    java.lang.String str1 = java.lang.Integer.toBinaryString(5120);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "1010000000000"+ "'", str1.equals("1010000000000"));
+
+  }
+
+  @Test
+  public void test053() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test053"); }
+
+
+    int i2 = java.lang.Integer.rotateLeft(28, 100);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 448);
+
+  }
+
+  @Test
+  public void test054() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test054"); }
+
+
+    int i1 = java.lang.Integer.reverseBytes(33554432);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 2);
+
+  }
+
+  @Test
+  public void test055() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test055"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b6 = server0.removeBan(iP5);
+    tp2.ITime iTime7 = null;
+    server0.setTime(iTime7);
+    server0.update();
+    tp2.Server server10 = new tp2.Server();
+    boolean b11 = server10.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList12 = new tp2.SinglyLinkedList();
+    tp2.IP iP17 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i18 = iP17.getThird();
+    boolean b19 = singlyLinkedList12.remove(iP17);
+    boolean b20 = server10.addException(iP17);
+    java.lang.Integer i21 = iP17.getFourth();
+    boolean b22 = server0.removeException(iP17);
+    boolean b23 = server0.bansOkTime();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b6 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i18 + "' != '" + (-1)+ "'", i18.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i21 + "' != '" + 100+ "'", i21.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b22 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+
+  }
+
+  @Test
+  public void test056() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test056"); }
+
+
+    int i2 = java.lang.Integer.remainderUnsigned(0, 146800640);
     
     // Regression assertion (captures the current behavior of the code)
     org.junit.Assert.assertTrue(i2 == 0);
@@ -4758,158 +1511,1686 @@ public class RegressionTest1 {
   }
 
   @Test
-  public void test239() throws Throwable {
+  public void test057() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test239"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test057"); }
 
 
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP1 = null;
-    boolean b2 = server0.addBan(iP1);
-    tp2.ITime iTime3 = null;
-    server0.setTime(iTime3);
-    tp2.Server server5 = new tp2.Server();
-    tp2.IP iP6 = null;
-    boolean b7 = server5.addBan(iP6);
-    server5.update();
-    tp2.IP iP9 = null;
-    tp2.IPBan iPBan11 = new tp2.IPBan(iP9, (java.lang.Long)10L);
-    tp2.IP iP12 = iPBan11.getIp();
-    java.lang.Long long13 = iPBan11.expires;
-    tp2.IP iP14 = null;
-    iPBan11.ip = iP14;
-    tp2.Server server16 = new tp2.Server();
-    tp2.IP iP21 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b22 = server16.removeException(iP21);
-    java.lang.Integer i23 = iP21.getFirst();
-    iPBan11.setIp(iP21);
-    java.lang.Integer i25 = iP21.getFirst();
-    java.lang.Integer i26 = iP21.getFirst();
-    boolean b27 = server5.addBan(iP21);
-    boolean b28 = server0.addException(iP21);
-    tp2.ITime iTime29 = null;
-    server0.setTime(iTime29);
-    tp2.Server server31 = new tp2.Server();
-    tp2.IP iP32 = null;
-    boolean b33 = server31.addBan(iP32);
-    tp2.ITime iTime34 = null;
-    server31.setTime(iTime34);
-    tp2.IP iP36 = null;
-    tp2.IPBan iPBan38 = new tp2.IPBan(iP36, (java.lang.Long)10L);
-    tp2.IP iP39 = iPBan38.getIp();
-    java.lang.Long long40 = iPBan38.expires;
-    tp2.IP iP41 = null;
-    iPBan38.ip = iP41;
-    tp2.Server server43 = new tp2.Server();
-    tp2.IP iP48 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b49 = server43.removeException(iP48);
-    java.lang.Integer i50 = iP48.getFirst();
-    iPBan38.setIp(iP48);
-    iP48.setFourth((java.lang.Integer)(-2147483620));
-    boolean b54 = server31.removeBan(iP48);
-    java.lang.Integer i55 = iP48.getSecond();
-    boolean b56 = server0.removeBan(iP48);
-    iP48.setFirst((java.lang.Integer)144);
+    long long1 = java.lang.Integer.toUnsignedLong(536870912);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b2 == false);
+    org.junit.Assert.assertTrue(long1 == 536870912L);
+
+  }
+
+  @Test
+  public void test058() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test058"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    tp2.IPBan iPBan9 = new tp2.IPBan(iP5, (java.lang.Long)10L);
+    java.lang.Long long10 = iPBan9.getExpires();
+    java.lang.Long long11 = iPBan9.getExpires();
+    tp2.SinglyLinkedList singlyLinkedList12 = new tp2.SinglyLinkedList();
+    tp2.IP iP17 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i18 = iP17.getThird();
+    boolean b19 = singlyLinkedList12.remove(iP17);
+    tp2.IPBan iPBan21 = new tp2.IPBan(iP17, (java.lang.Long)10L);
+    tp2.IP iP26 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i27 = iP26.getFourth();
+    iPBan21.setIp(iP26);
+    iPBan9.setIp(iP26);
+    iP26.setThird((java.lang.Integer)13);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
     org.junit.Assert.assertTrue(b7 == false);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP12);
+    org.junit.Assert.assertTrue("'" + long10 + "' != '" + 10L+ "'", long10.equals(10L));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long13 + "' != '" + 10L+ "'", long13.equals(10L));
+    org.junit.Assert.assertTrue("'" + long11 + "' != '" + 10L+ "'", long11.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i18 + "' != '" + (-1)+ "'", i18.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i27 + "' != '" + 100+ "'", i27.equals(100));
+
+  }
+
+  @Test
+  public void test059() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test059"); }
+
+
+    int i2 = java.lang.Integer.max(3, 19);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 19);
+
+  }
+
+  @Test
+  public void test060() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test060"); }
+
+
+    int i2 = java.lang.Integer.compare(48, 536870912);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == (-1));
+
+  }
+
+  @Test
+  public void test061() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test061"); }
+
+
+    java.lang.Integer i1 = java.lang.Integer.valueOf("58000000");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 58000000+ "'", i1.equals(58000000));
+
+  }
+
+  @Test
+  public void test062() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test062"); }
+
+
+    java.lang.Integer i1 = new java.lang.Integer(146800640);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 146800640+ "'", i1.equals(146800640));
+
+  }
+
+  @Test
+  public void test063() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test063"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    boolean b8 = singlyLinkedList0.isEmpty();
+    int i9 = singlyLinkedList0.getSize();
+    tp2.IP iP14 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i15 = iP14.getThird();
+    iP14.setFourth((java.lang.Integer)0);
+    boolean b18 = singlyLinkedList0.contains(iP14);
+    boolean b19 = singlyLinkedList0.isEmpty();
+    tp2.SinglyLinkedList singlyLinkedList20 = new tp2.SinglyLinkedList();
+    tp2.Server server21 = new tp2.Server();
+    boolean b22 = server21.exceptionsNotRepeated();
+    tp2.IP iP27 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i28 = iP27.getThird();
+    iP27.setSecond((java.lang.Integer)10);
+    boolean b31 = server21.removeBan(iP27);
+    boolean b32 = singlyLinkedList20.remove(iP27);
+    tp2.IP iP33 = null;
+    singlyLinkedList20.add(iP33);
+    tp2.IP iP36 = singlyLinkedList20.get(469762048);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList37 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP42 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)11100, (java.lang.Integer)784, (java.lang.Integer)0);
+    boolean b43 = strictlySortedSinglyLinkedList37.removeFromIP(iP42);
+    boolean b44 = singlyLinkedList20.contains(iP42);
+    boolean b45 = singlyLinkedList0.remove(iP42);
+    tp2.SinglyLinkedList singlyLinkedList46 = new tp2.SinglyLinkedList();
+    tp2.IP iP51 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i52 = iP51.getThird();
+    boolean b53 = singlyLinkedList46.remove(iP51);
+    java.lang.Integer i54 = iP51.getThird();
+    java.lang.Integer i55 = iP51.getThird();
+    singlyLinkedList0.add(iP51);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i9 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + (-1)+ "'", i15.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b18 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b22 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i28 + "' != '" + (-1)+ "'", i28.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b31 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iP36);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b43 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b44 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b45 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i52 + "' != '" + (-1)+ "'", i52.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b53 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i54 + "' != '" + (-1)+ "'", i54.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i55 + "' != '" + (-1)+ "'", i55.equals((-1)));
+
+  }
+
+  @Test
+  public void test064() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test064"); }
+
+
+    int i2 = java.lang.Integer.rotateLeft(805306368, 200000000);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 805306368);
+
+  }
+
+  @Test
+  public void test065() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test065"); }
+
+
+    java.lang.Integer i1 = java.lang.Integer.decode("5");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 5+ "'", i1.equals(5));
+
+  }
+
+  @Test
+  public void test066() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test066"); }
+
+
+    int i2 = java.lang.Integer.compare(671088644, 64);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 1);
+
+  }
+
+  @Test
+  public void test067() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test067"); }
+
+
+    java.lang.Integer i2 = java.lang.Integer.getInteger("", 2);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 2+ "'", i2.equals(2));
+
+  }
+
+  @Test
+  public void test068() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test068"); }
+
+
+    int i2 = java.lang.Integer.min(146800640, 20);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 20);
+
+  }
+
+  @Test
+  public void test069() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test069"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    tp2.SinglyLinkedList singlyLinkedList11 = new tp2.SinglyLinkedList();
+    tp2.IP iP16 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i17 = iP16.getFourth();
+    singlyLinkedList11.add(iP16);
+    java.lang.Integer i19 = iP16.getFirst();
+    boolean b20 = server0.removeBan(iP16);
+    tp2.ITime iTime21 = null;
+    server0.setTime(iTime21);
+    boolean b23 = server0.notSharedElements();
+    boolean b24 = server0.bansOkTime();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + 100+ "'", i17.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b24 == true);
+
+  }
+
+  @Test
+  public void test070() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test070"); }
+
+
+    int i2 = java.lang.Integer.sum(20, 1073741824);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 1073741844);
+
+  }
+
+  @Test
+  public void test071() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test071"); }
+
+
+    java.lang.Integer i1 = new java.lang.Integer("11100");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 11100+ "'", i1.equals(11100));
+
+  }
+
+  @Test
+  public void test072() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test072"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.exceptionsNotRepeated();
+    boolean b2 = server0.bansSorted();
+    boolean b3 = server0.notSharedElements();
+    boolean b4 = server0.bansSorted();
+    server0.update();
+    tp2.IP iP10 = new tp2.IP((java.lang.Integer)11100, (java.lang.Integer)40, (java.lang.Integer)28, (java.lang.Integer)727449600);
+    boolean b11 = server0.addException(iP10);
+    server0.update();
+    boolean b13 = server0.bansOkTime();
+    server0.update();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b4 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b13 == true);
+
+  }
+
+  @Test
+  public void test073() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test073"); }
+
+
+    // The following exception was thrown during execution in test generation
+    try {
+      java.lang.Integer i2 = java.lang.Integer.valueOf("1100000000000000000000000000", 0);
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
+
+  }
+
+  @Test
+  public void test074() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test074"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.exceptionsNotRepeated();
+    boolean b2 = server0.bansSorted();
+    boolean b3 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList4 = new tp2.SinglyLinkedList();
+    tp2.IP iP9 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i10 = iP9.getFourth();
+    singlyLinkedList4.add(iP9);
+    boolean b12 = server0.addException(iP9);
+    tp2.Server server13 = new tp2.Server();
+    boolean b14 = server13.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList15 = new tp2.SinglyLinkedList();
+    tp2.IP iP20 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i21 = iP20.getThird();
+    boolean b22 = singlyLinkedList15.remove(iP20);
+    boolean b23 = server13.addException(iP20);
+    tp2.SinglyLinkedList singlyLinkedList24 = new tp2.SinglyLinkedList();
+    tp2.IP iP29 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i30 = iP29.getFourth();
+    singlyLinkedList24.add(iP29);
+    java.lang.Integer i32 = iP29.getFirst();
+    boolean b33 = server13.removeBan(iP29);
+    tp2.ITime iTime34 = null;
+    server13.setTime(iTime34);
+    boolean b36 = server13.notSharedElements();
+    tp2.IP iP41 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i42 = iP41.getThird();
+    iP41.setFourth((java.lang.Integer)0);
+    iP41.setSecond((java.lang.Integer)3);
+    boolean b47 = server13.addBan(iP41);
+    tp2.SinglyLinkedList singlyLinkedList48 = new tp2.SinglyLinkedList();
+    tp2.IP iP53 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i54 = iP53.getThird();
+    boolean b55 = singlyLinkedList48.remove(iP53);
+    java.lang.Integer i56 = iP53.getThird();
+    iP53.setFirst((java.lang.Integer)11100);
+    boolean b59 = server13.addBan(iP53);
+    boolean b60 = server0.removeBan(iP53);
+    tp2.ITime iTime61 = null;
+    server0.setTime(iTime61);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i10 + "' != '" + 100+ "'", i10.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b12 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b14 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i21 + "' != '" + (-1)+ "'", i21.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
     org.junit.Assert.assertTrue(b22 == false);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i23 + "' != '" + 161+ "'", i23.equals(161));
+    org.junit.Assert.assertTrue(b23 == true);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i25 + "' != '" + 161+ "'", i25.equals(161));
+    org.junit.Assert.assertTrue("'" + i30 + "' != '" + 100+ "'", i30.equals(100));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i26 + "' != '" + 161+ "'", i26.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b27 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b28 == true);
+    org.junit.Assert.assertTrue("'" + i32 + "' != '" + (-1)+ "'", i32.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
     org.junit.Assert.assertTrue(b33 == false);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP39);
+    org.junit.Assert.assertTrue(b36 == true);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long40 + "' != '" + 10L+ "'", long40.equals(10L));
+    org.junit.Assert.assertTrue("'" + i42 + "' != '" + (-1)+ "'", i42.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b47 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i54 + "' != '" + (-1)+ "'", i54.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b55 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i56 + "' != '" + (-1)+ "'", i56.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b59 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b60 == false);
+
+  }
+
+  @Test
+  public void test075() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test075"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    tp2.IPBan iPBan9 = new tp2.IPBan(iP5, (java.lang.Long)10L);
+    tp2.IP iP14 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i15 = iP14.getFourth();
+    iPBan9.setIp(iP14);
+    iP14.setThird((java.lang.Integer)1476395008);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + 100+ "'", i15.equals(100));
+
+  }
+
+  @Test
+  public void test076() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test076"); }
+
+
+    java.lang.Integer i1 = java.lang.Integer.getInteger("2621440");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(i1);
+
+  }
+
+  @Test
+  public void test077() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test077"); }
+
+
+    int i1 = java.lang.Integer.lowestOneBit(1476395008);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 134217728);
+
+  }
+
+  @Test
+  public void test078() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test078"); }
+
+
+    int i1 = java.lang.Integer.highestOneBit(18);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 16);
+
+  }
+
+  @Test
+  public void test079() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test079"); }
+
+
+    // The following exception was thrown during execution in test generation
+    try {
+      int i2 = java.lang.Integer.parseInt("a", 0);
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
+
+  }
+
+  @Test
+  public void test080() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test080"); }
+
+
+    int i1 = java.lang.Integer.numberOfTrailingZeros(200000000);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 9);
+
+  }
+
+  @Test
+  public void test081() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test081"); }
+
+
+    int i1 = java.lang.Integer.reverse(536870912);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 4);
+
+  }
+
+  @Test
+  public void test082() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test082"); }
+
+
+    java.lang.Integer i2 = java.lang.Integer.getInteger("58000000", 88770);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 88770+ "'", i2.equals(88770));
+
+  }
+
+  @Test
+  public void test083() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test083"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    tp2.ITime iTime1 = null;
+    server0.setTime(iTime1);
+    tp2.ITime iTime3 = null;
+    server0.setTime(iTime3);
+    tp2.Server server5 = new tp2.Server();
+    tp2.IP iP10 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b11 = server5.removeBan(iP10);
+    java.lang.Integer i12 = iP10.getFirst();
+    boolean b13 = server0.addException(iP10);
+    server0.update();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i12 + "' != '" + (-1)+ "'", i12.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b13 == true);
+
+  }
+
+  @Test
+  public void test084() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test084"); }
+
+
+    tp2.IP iP4 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    tp2.SinglyLinkedList singlyLinkedList5 = new tp2.SinglyLinkedList();
+    tp2.IP iP10 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i11 = iP10.getThird();
+    boolean b12 = singlyLinkedList5.remove(iP10);
+    boolean b13 = singlyLinkedList5.isEmpty();
+    int i14 = singlyLinkedList5.getSize();
+    tp2.IP iP16 = singlyLinkedList5.get(1);
+    boolean b17 = iP4.equals((java.lang.Object)1);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i11 + "' != '" + (-1)+ "'", i11.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b12 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b13 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i14 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iP16);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+
+  }
+
+  @Test
+  public void test085() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test085"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.SinglyLinkedList singlyLinkedList1 = new tp2.SinglyLinkedList();
+    tp2.IP iP6 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i7 = iP6.getThird();
+    boolean b8 = singlyLinkedList1.remove(iP6);
+    tp2.IPBan iPBan10 = new tp2.IPBan(iP6, (java.lang.Long)10L);
+    tp2.IP iP15 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i16 = iP15.getFourth();
+    iPBan10.setIp(iP15);
+    java.lang.Long long18 = iPBan10.getExpires();
+    java.lang.Long long19 = iPBan10.getExpires();
+    tp2.IP iP24 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i25 = iP24.getFirst();
+    java.lang.Integer i26 = iP24.getSecond();
+    iP24.setFirst((java.lang.Integer)201326592);
+    iPBan10.setIp(iP24);
+    tp2.SinglyLinkedList singlyLinkedList30 = new tp2.SinglyLinkedList();
+    tp2.Server server31 = new tp2.Server();
+    boolean b32 = server31.exceptionsNotRepeated();
+    tp2.IP iP37 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i38 = iP37.getThird();
+    iP37.setSecond((java.lang.Integer)10);
+    boolean b41 = server31.removeBan(iP37);
+    boolean b42 = singlyLinkedList30.remove(iP37);
+    tp2.SinglyLinkedList singlyLinkedList43 = new tp2.SinglyLinkedList();
+    tp2.IP iP48 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i49 = iP48.getThird();
+    boolean b50 = singlyLinkedList43.remove(iP48);
+    tp2.Server server51 = new tp2.Server();
+    tp2.IP iP56 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b57 = server51.removeBan(iP56);
+    boolean b58 = singlyLinkedList43.contains(iP56);
+    singlyLinkedList30.add(iP56);
+    iPBan10.setIp(iP56);
+    boolean b61 = singlyLinkedList0.remove(iP56);
+    tp2.IP iP63 = singlyLinkedList0.get(201326784);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i7 + "' != '" + (-1)+ "'", i7.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + 100+ "'", i16.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long18 + "' != '" + 10L+ "'", long18.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long19 + "' != '" + 10L+ "'", long19.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i25 + "' != '" + (-1)+ "'", i25.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i26 + "' != '" + (-1)+ "'", i26.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i38 + "' != '" + (-1)+ "'", i38.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b41 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i49 + "' != '" + (-1)+ "'", i49.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b50 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b57 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b58 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b61 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iP63);
+
+  }
+
+  @Test
+  public void test086() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test086"); }
+
+
+    int i1 = java.lang.Integer.bitCount(805306368);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 2);
+
+  }
+
+  @Test
+  public void test087() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test087"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b6 = server0.removeBan(iP5);
+    boolean b7 = server0.bansSorted();
+    boolean b8 = server0.exceptionsNotRepeated();
+    boolean b9 = server0.bansNotRepeatedExpirationOrIP();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b6 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == true);
+
+  }
+
+  @Test
+  public void test088() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test088"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    tp2.IPBan iPBan9 = new tp2.IPBan(iP5, (java.lang.Long)10L);
+    tp2.IP iP14 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i15 = iP14.getFourth();
+    iPBan9.setIp(iP14);
+    java.lang.Long long17 = iPBan9.getExpires();
+    java.lang.Long long18 = iPBan9.getExpires();
+    tp2.IP iP23 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i24 = iP23.getFirst();
+    java.lang.Integer i25 = iP23.getSecond();
+    iP23.setFirst((java.lang.Integer)201326592);
+    iPBan9.setIp(iP23);
+    tp2.SinglyLinkedList singlyLinkedList29 = new tp2.SinglyLinkedList();
+    tp2.Server server30 = new tp2.Server();
+    boolean b31 = server30.exceptionsNotRepeated();
+    tp2.IP iP36 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i37 = iP36.getThird();
+    iP36.setSecond((java.lang.Integer)10);
+    boolean b40 = server30.removeBan(iP36);
+    boolean b41 = singlyLinkedList29.remove(iP36);
+    tp2.SinglyLinkedList singlyLinkedList42 = new tp2.SinglyLinkedList();
+    tp2.IP iP47 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i48 = iP47.getThird();
+    boolean b49 = singlyLinkedList42.remove(iP47);
+    tp2.Server server50 = new tp2.Server();
+    tp2.IP iP55 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b56 = server50.removeBan(iP55);
+    boolean b57 = singlyLinkedList42.contains(iP55);
+    singlyLinkedList29.add(iP55);
+    iPBan9.setIp(iP55);
+    java.lang.Long long60 = iPBan9.getExpires();
+    tp2.SinglyLinkedList singlyLinkedList61 = new tp2.SinglyLinkedList();
+    tp2.IP iP62 = null;
+    boolean b63 = singlyLinkedList61.remove(iP62);
+    boolean b64 = singlyLinkedList61.isEmpty();
+    tp2.IP iP69 = new tp2.IP((java.lang.Integer)5, (java.lang.Integer)1, (java.lang.Integer)0, (java.lang.Integer)12);
+    boolean b70 = singlyLinkedList61.contains(iP69);
+    tp2.SinglyLinkedList singlyLinkedList71 = new tp2.SinglyLinkedList();
+    tp2.IP iP72 = null;
+    boolean b73 = singlyLinkedList71.remove(iP72);
+    boolean b74 = singlyLinkedList71.isEmpty();
+    tp2.IP iP79 = new tp2.IP((java.lang.Integer)5, (java.lang.Integer)1, (java.lang.Integer)0, (java.lang.Integer)12);
+    boolean b80 = singlyLinkedList71.contains(iP79);
+    boolean b81 = singlyLinkedList61.contains(iP79);
+    tp2.IP iP86 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i87 = iP86.getSecond();
+    boolean b88 = singlyLinkedList61.contains(iP86);
+    iPBan9.setIp(iP86);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + 100+ "'", i15.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long17 + "' != '" + 10L+ "'", long17.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long18 + "' != '" + 10L+ "'", long18.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i24 + "' != '" + (-1)+ "'", i24.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i25 + "' != '" + (-1)+ "'", i25.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b31 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i37 + "' != '" + (-1)+ "'", i37.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b40 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b41 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i48 + "' != '" + (-1)+ "'", i48.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
     org.junit.Assert.assertTrue(b49 == false);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i50 + "' != '" + 161+ "'", i50.equals(161));
+    org.junit.Assert.assertTrue(b56 == false);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b54 == false);
+    org.junit.Assert.assertTrue(b57 == false);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i55 + "' != '" + (-2147483648)+ "'", i55.equals((-2147483648)));
+    org.junit.Assert.assertTrue("'" + long60 + "' != '" + 10L+ "'", long60.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b63 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b64 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b70 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b73 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b74 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b80 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b81 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i87 + "' != '" + (-1)+ "'", i87.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b88 == false);
+
+  }
+
+  @Test
+  public void test089() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test089"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    tp2.SinglyLinkedList singlyLinkedList11 = new tp2.SinglyLinkedList();
+    tp2.IP iP16 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i17 = iP16.getFourth();
+    singlyLinkedList11.add(iP16);
+    java.lang.Integer i19 = iP16.getFirst();
+    boolean b20 = server0.removeBan(iP16);
+    tp2.ITime iTime21 = null;
+    server0.setTime(iTime21);
+    boolean b23 = server0.bansSorted();
+    boolean b24 = server0.bansNotRepeatedExpirationOrIP();
+    boolean b25 = server0.bansSorted();
+    tp2.IP iP30 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i31 = iP30.getThird();
+    iP30.setFourth((java.lang.Integer)0);
+    boolean b34 = server0.addException(iP30);
+    tp2.SinglyLinkedList singlyLinkedList35 = new tp2.SinglyLinkedList();
+    tp2.IP iP40 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i41 = iP40.getThird();
+    boolean b42 = singlyLinkedList35.remove(iP40);
+    iP40.setSecond((java.lang.Integer)150994944);
+    java.lang.Integer i45 = iP40.getFourth();
+    java.lang.Integer i46 = iP40.getThird();
+    boolean b47 = server0.removeBan(iP40);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + 100+ "'", i17.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b24 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b25 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i31 + "' != '" + (-1)+ "'", i31.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b34 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i41 + "' != '" + (-1)+ "'", i41.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i45 + "' != '" + 100+ "'", i45.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i46 + "' != '" + (-1)+ "'", i46.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b47 == false);
+
+  }
+
+  @Test
+  public void test090() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test090"); }
+
+
+    int i2 = java.lang.Integer.divideUnsigned(11100, 729888);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 0);
+
+  }
+
+  @Test
+  public void test091() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test091"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    tp2.ITime iTime1 = null;
+    server0.setTime(iTime1);
+    boolean b3 = server0.bansNotRepeatedExpirationOrIP();
+    tp2.SinglyLinkedList singlyLinkedList4 = new tp2.SinglyLinkedList();
+    tp2.IP iP9 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i10 = iP9.getThird();
+    boolean b11 = singlyLinkedList4.remove(iP9);
+    iP9.setSecond((java.lang.Integer)150994944);
+    java.lang.Integer i14 = iP9.getFourth();
+    java.lang.Integer i15 = iP9.getThird();
+    java.lang.Integer i16 = iP9.getFirst();
+    boolean b17 = server0.addException(iP9);
+    server0.update();
+    boolean b19 = server0.notSharedElements();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i10 + "' != '" + (-1)+ "'", i10.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i14 + "' != '" + 100+ "'", i14.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + (-1)+ "'", i15.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == true);
+
+  }
+
+  @Test
+  public void test092() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test092"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    boolean b8 = singlyLinkedList0.isEmpty();
+    int i9 = singlyLinkedList0.getSize();
+    tp2.IP iP14 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i15 = iP14.getThird();
+    iP14.setFourth((java.lang.Integer)0);
+    boolean b18 = singlyLinkedList0.contains(iP14);
+    boolean b19 = singlyLinkedList0.isEmpty();
+    tp2.SinglyLinkedList singlyLinkedList20 = new tp2.SinglyLinkedList();
+    tp2.IP iP25 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i26 = iP25.getThird();
+    boolean b27 = singlyLinkedList20.remove(iP25);
+    tp2.IPBan iPBan29 = new tp2.IPBan(iP25, (java.lang.Long)10L);
+    singlyLinkedList0.add(iP25);
+    java.lang.Integer i31 = iP25.getThird();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i9 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + (-1)+ "'", i15.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b18 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i26 + "' != '" + (-1)+ "'", i26.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b27 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i31 + "' != '" + (-1)+ "'", i31.equals((-1)));
+
+  }
+
+  @Test
+  public void test093() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test093"); }
+
+
+    int i2 = java.lang.Integer.max(100000, 48);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 100000);
+
+  }
+
+  @Test
+  public void test094() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test094"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    tp2.IPBan iPBan9 = new tp2.IPBan(iP5, (java.lang.Long)10L);
+    tp2.IP iP14 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i15 = iP14.getFourth();
+    iPBan9.setIp(iP14);
+    java.lang.Long long17 = iPBan9.getExpires();
+    java.lang.Long long18 = iPBan9.getExpires();
+    tp2.SinglyLinkedList singlyLinkedList19 = new tp2.SinglyLinkedList();
+    tp2.IP iP24 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i25 = iP24.getThird();
+    boolean b26 = singlyLinkedList19.remove(iP24);
+    tp2.IPBan iPBan28 = new tp2.IPBan(iP24, (java.lang.Long)10L);
+    tp2.IP iP33 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i34 = iP33.getFourth();
+    iPBan28.setIp(iP33);
+    iP33.setSecond((java.lang.Integer)469762048);
+    iPBan9.setIp(iP33);
+    tp2.Server server39 = new tp2.Server();
+    boolean b40 = server39.exceptionsNotRepeated();
+    boolean b41 = server39.bansNotRepeatedExpirationOrIP();
+    tp2.Server server42 = new tp2.Server();
+    tp2.IP iP47 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b48 = server42.removeBan(iP47);
+    java.lang.Integer i49 = iP47.getFirst();
+    boolean b50 = server39.addException(iP47);
+    tp2.IPBan iPBan52 = new tp2.IPBan(iP47, (java.lang.Long)(-1L));
+    iPBan9.setIp(iP47);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + 100+ "'", i15.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long17 + "' != '" + 10L+ "'", long17.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long18 + "' != '" + 10L+ "'", long18.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i25 + "' != '" + (-1)+ "'", i25.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b26 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i34 + "' != '" + 100+ "'", i34.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b40 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b41 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b48 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i49 + "' != '" + (-1)+ "'", i49.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b50 == true);
+
+  }
+
+  @Test
+  public void test095() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test095"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    tp2.Server server8 = new tp2.Server();
+    tp2.IP iP13 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b14 = server8.removeBan(iP13);
+    boolean b15 = singlyLinkedList0.contains(iP13);
+    tp2.Server server16 = new tp2.Server();
+    tp2.IP iP21 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b22 = server16.removeBan(iP21);
+    tp2.IP iP27 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i28 = iP27.getThird();
+    iP27.setFourth((java.lang.Integer)0);
+    iP27.setSecond((java.lang.Integer)3);
+    iP27.setFourth((java.lang.Integer)12);
+    boolean b35 = server16.addBan(iP27);
+    server16.update();
+    boolean b37 = server16.bansOkTime();
+    boolean b38 = server16.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList39 = new tp2.SinglyLinkedList();
+    tp2.IP iP40 = null;
+    boolean b41 = singlyLinkedList39.remove(iP40);
+    boolean b42 = singlyLinkedList39.isEmpty();
+    tp2.IP iP47 = new tp2.IP((java.lang.Integer)5, (java.lang.Integer)1, (java.lang.Integer)0, (java.lang.Integer)12);
+    boolean b48 = singlyLinkedList39.contains(iP47);
+    tp2.SinglyLinkedList singlyLinkedList49 = new tp2.SinglyLinkedList();
+    tp2.IP iP54 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i55 = iP54.getThird();
+    boolean b56 = singlyLinkedList49.remove(iP54);
+    iP54.setSecond((java.lang.Integer)150994944);
+    java.lang.Integer i59 = iP54.getFourth();
+    java.lang.Integer i60 = iP54.getThird();
+    java.lang.Integer i61 = iP54.getFirst();
+    boolean b62 = singlyLinkedList39.contains(iP54);
+    tp2.SinglyLinkedList singlyLinkedList63 = new tp2.SinglyLinkedList();
+    tp2.IP iP68 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i69 = iP68.getThird();
+    boolean b70 = singlyLinkedList63.remove(iP68);
+    java.lang.Integer i71 = iP68.getThird();
+    java.lang.Integer i72 = iP68.getSecond();
+    boolean b73 = singlyLinkedList39.contains(iP68);
+    boolean b74 = server16.addBan(iP68);
+    singlyLinkedList0.add(iP68);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b14 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b15 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b22 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i28 + "' != '" + (-1)+ "'", i28.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b35 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b37 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b38 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b41 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b48 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i55 + "' != '" + (-1)+ "'", i55.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
     org.junit.Assert.assertTrue(b56 == false);
-
-  }
-
-  @Test
-  public void test240() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test240"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toOctalString(1400000);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "5256300"+ "'", str1.equals("5256300"));
-
-  }
-
-  @Test
-  public void test241() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test241"); }
-
-
-    int i2 = java.lang.Integer.remainderUnsigned(79, 186646533);
+    org.junit.Assert.assertTrue("'" + i59 + "' != '" + 100+ "'", i59.equals(100));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 79);
-
-  }
-
-  @Test
-  public void test242() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test242"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toHexString(128);
+    org.junit.Assert.assertTrue("'" + i60 + "' != '" + (-1)+ "'", i60.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "80"+ "'", str1.equals("80"));
+    org.junit.Assert.assertTrue("'" + i61 + "' != '" + (-1)+ "'", i61.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b62 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i69 + "' != '" + (-1)+ "'", i69.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b70 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i71 + "' != '" + (-1)+ "'", i71.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i72 + "' != '" + (-1)+ "'", i72.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b73 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b74 == true);
 
   }
 
   @Test
-  public void test243() throws Throwable {
+  public void test096() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test243"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test096"); }
+
+
+    java.lang.String str2 = java.lang.Integer.toUnsignedString(536870912, 40);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "536870912"+ "'", str2.equals("536870912"));
+
+  }
+
+  @Test
+  public void test097() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test097"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    boolean b8 = singlyLinkedList0.isEmpty();
+    int i9 = singlyLinkedList0.getSize();
+    tp2.IP iP14 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i15 = iP14.getThird();
+    iP14.setFourth((java.lang.Integer)0);
+    boolean b18 = singlyLinkedList0.contains(iP14);
+    boolean b19 = singlyLinkedList0.isEmpty();
+    tp2.IP iP24 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i25 = iP24.getFirst();
+    java.lang.Integer i26 = iP24.getFirst();
+    singlyLinkedList0.add(iP24);
+    tp2.SinglyLinkedList singlyLinkedList28 = new tp2.SinglyLinkedList();
+    tp2.IP iP33 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i34 = iP33.getThird();
+    boolean b35 = singlyLinkedList28.remove(iP33);
+    tp2.Server server36 = new tp2.Server();
+    tp2.IP iP41 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b42 = server36.removeBan(iP41);
+    boolean b43 = singlyLinkedList28.contains(iP41);
+    singlyLinkedList0.add(iP41);
+    tp2.SinglyLinkedList singlyLinkedList45 = new tp2.SinglyLinkedList();
+    tp2.IP iP50 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i51 = iP50.getThird();
+    boolean b52 = singlyLinkedList45.remove(iP50);
+    tp2.Server server53 = new tp2.Server();
+    tp2.IP iP58 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b59 = server53.removeBan(iP58);
+    boolean b60 = singlyLinkedList45.contains(iP58);
+    singlyLinkedList0.add(iP58);
+    tp2.IP iP66 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i67 = iP66.getFirst();
+    singlyLinkedList0.add(iP66);
+    tp2.IP iP70 = singlyLinkedList0.get(8);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i9 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + (-1)+ "'", i15.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b18 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i25 + "' != '" + (-1)+ "'", i25.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i26 + "' != '" + (-1)+ "'", i26.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i34 + "' != '" + (-1)+ "'", i34.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b35 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b43 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i51 + "' != '" + (-1)+ "'", i51.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b52 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b59 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b60 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i67 + "' != '" + (-1)+ "'", i67.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iP70);
+
+  }
+
+  @Test
+  public void test098() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test098"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    tp2.SinglyLinkedList singlyLinkedList11 = new tp2.SinglyLinkedList();
+    tp2.IP iP16 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i17 = iP16.getFourth();
+    singlyLinkedList11.add(iP16);
+    java.lang.Integer i19 = iP16.getFirst();
+    boolean b20 = server0.removeBan(iP16);
+    tp2.ITime iTime21 = null;
+    server0.setTime(iTime21);
+    boolean b23 = server0.bansSorted();
+    tp2.IP iP28 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i29 = iP28.getFourth();
+    iP28.setFirst((java.lang.Integer)16);
+    boolean b32 = server0.addBan(iP28);
+    server0.update();
+    boolean b34 = server0.exceptionsNotRepeated();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + 100+ "'", i17.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i29 + "' != '" + 100+ "'", i29.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b34 == true);
+
+  }
+
+  @Test
+  public void test099() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test099"); }
+
+
+    java.lang.Integer i1 = new java.lang.Integer("469762048");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 469762048+ "'", i1.equals(469762048));
+
+  }
+
+  @Test
+  public void test100() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test100"); }
+
+
+    java.lang.Integer i2 = java.lang.Integer.getInteger("1010000000000000000000000000", 58000000);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 58000000+ "'", i2.equals(58000000));
+
+  }
+
+  @Test
+  public void test101() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test101"); }
+
+
+    int i2 = java.lang.Integer.min(201326784, 784);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 784);
+
+  }
+
+  @Test
+  public void test102() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test102"); }
+
+
+    java.lang.Integer i2 = java.lang.Integer.getInteger("11111111111111111111111111111111", 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 0+ "'", i2.equals(0));
+
+  }
+
+  @Test
+  public void test103() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test103"); }
+
+
+    java.lang.Integer i1 = new java.lang.Integer(40);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 40+ "'", i1.equals(40));
+
+  }
+
+  @Test
+  public void test104() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test104"); }
+
+
+    int i1 = java.lang.Integer.signum(44);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 1);
+
+  }
+
+  @Test
+  public void test105() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test105"); }
+
+
+    java.lang.Integer i2 = java.lang.Integer.getInteger("28", (java.lang.Integer)48);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 48+ "'", i2.equals(48));
+
+  }
+
+  @Test
+  public void test106() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test106"); }
 
 
     // The following exception was thrown during execution in test generation
@@ -4926,66 +3207,345 @@ public class RegressionTest1 {
   }
 
   @Test
-  public void test244() throws Throwable {
+  public void test107() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test244"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test107"); }
 
 
-    int i1 = java.lang.Integer.bitCount(7);
+    int i1 = java.lang.Integer.numberOfLeadingZeros(134217728);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 3);
+    org.junit.Assert.assertTrue(i1 == 4);
 
   }
 
   @Test
-  public void test245() throws Throwable {
+  public void test108() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test245"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test108"); }
 
 
-    int i2 = java.lang.Integer.min((-150929408), 20971520);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)11100, (java.lang.Integer)784, (java.lang.Integer)0);
+    boolean b6 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    int i7 = strictlySortedSinglyLinkedList0.getSize();
+    tp2.Server server8 = new tp2.Server();
+    boolean b9 = server8.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList10 = new tp2.SinglyLinkedList();
+    tp2.IP iP15 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i16 = iP15.getThird();
+    boolean b17 = singlyLinkedList10.remove(iP15);
+    boolean b18 = server8.addException(iP15);
+    java.lang.Integer i19 = iP15.getFourth();
+    boolean b20 = strictlySortedSinglyLinkedList0.containsIP(iP15);
+    boolean b21 = strictlySortedSinglyLinkedList0.isEmpty();
+    tp2.SinglyLinkedList singlyLinkedList22 = new tp2.SinglyLinkedList();
+    tp2.IP iP27 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i28 = iP27.getThird();
+    boolean b29 = singlyLinkedList22.remove(iP27);
+    boolean b30 = singlyLinkedList22.isEmpty();
+    int i31 = singlyLinkedList22.getSize();
+    tp2.IP iP36 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i37 = iP36.getThird();
+    iP36.setFourth((java.lang.Integer)0);
+    boolean b40 = singlyLinkedList22.contains(iP36);
+    boolean b41 = singlyLinkedList22.isEmpty();
+    tp2.SinglyLinkedList singlyLinkedList42 = new tp2.SinglyLinkedList();
+    tp2.IP iP47 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i48 = iP47.getThird();
+    boolean b49 = singlyLinkedList42.remove(iP47);
+    tp2.IPBan iPBan51 = new tp2.IPBan(iP47, (java.lang.Long)10L);
+    singlyLinkedList22.add(iP47);
+    boolean b53 = strictlySortedSinglyLinkedList0.removeFromIP(iP47);
+    boolean b54 = strictlySortedSinglyLinkedList0.isEmpty();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-150929408));
+    org.junit.Assert.assertTrue(b6 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i7 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b18 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + 100+ "'", i19.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b21 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i28 + "' != '" + (-1)+ "'", i28.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b29 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b30 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i31 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i37 + "' != '" + (-1)+ "'", i37.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b40 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b41 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i48 + "' != '" + (-1)+ "'", i48.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b49 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b53 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b54 == true);
 
   }
 
   @Test
-  public void test246() throws Throwable {
+  public void test109() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test246"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test109"); }
 
 
-    java.lang.Integer i1 = java.lang.Integer.valueOf(1677721761);
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    tp2.IPBan iPBan9 = new tp2.IPBan(iP5, (java.lang.Long)10L);
+    tp2.IP iP14 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i15 = iP14.getFourth();
+    iPBan9.setIp(iP14);
+    java.lang.Long long17 = iPBan9.getExpires();
+    java.lang.Long long18 = iPBan9.getExpires();
+    tp2.Server server19 = new tp2.Server();
+    boolean b20 = server19.exceptionsNotRepeated();
+    tp2.IP iP25 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i26 = iP25.getThird();
+    iP25.setSecond((java.lang.Integer)10);
+    boolean b29 = server19.removeBan(iP25);
+    java.lang.Integer i30 = iP25.getFirst();
+    iPBan9.setIp(iP25);
+    iP25.setSecond((java.lang.Integer)150994944);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 1677721761+ "'", i1.equals(1677721761));
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + 100+ "'", i15.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long17 + "' != '" + 10L+ "'", long17.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long18 + "' != '" + 10L+ "'", long18.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i26 + "' != '" + (-1)+ "'", i26.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b29 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i30 + "' != '" + (-1)+ "'", i30.equals((-1)));
 
   }
 
   @Test
-  public void test247() throws Throwable {
+  public void test110() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test247"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test110"); }
 
 
-    int i2 = java.lang.Integer.rotateLeft(161, 83);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.exceptionsNotRepeated();
+    boolean b2 = server0.bansSorted();
+    boolean b3 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList4 = new tp2.SinglyLinkedList();
+    tp2.IP iP9 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i10 = iP9.getFourth();
+    singlyLinkedList4.add(iP9);
+    boolean b12 = server0.addException(iP9);
+    java.lang.Integer i13 = iP9.getSecond();
+    java.lang.Integer i14 = iP9.getSecond();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 84410368);
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i10 + "' != '" + 100+ "'", i10.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b12 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i13 + "' != '" + (-1)+ "'", i13.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i14 + "' != '" + (-1)+ "'", i14.equals((-1)));
 
   }
 
   @Test
-  public void test248() throws Throwable {
+  public void test111() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test248"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test111"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    tp2.SinglyLinkedList singlyLinkedList11 = new tp2.SinglyLinkedList();
+    tp2.IP iP16 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i17 = iP16.getFourth();
+    singlyLinkedList11.add(iP16);
+    java.lang.Integer i19 = iP16.getFirst();
+    boolean b20 = server0.removeBan(iP16);
+    tp2.ITime iTime21 = null;
+    server0.setTime(iTime21);
+    boolean b23 = server0.bansSorted();
+    boolean b24 = server0.bansNotRepeatedExpirationOrIP();
+    tp2.SinglyLinkedList singlyLinkedList25 = new tp2.SinglyLinkedList();
+    tp2.IP iP30 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i31 = iP30.getThird();
+    boolean b32 = singlyLinkedList25.remove(iP30);
+    tp2.IPBan iPBan34 = new tp2.IPBan(iP30, (java.lang.Long)10L);
+    java.lang.Long long35 = iPBan34.getExpires();
+    java.lang.Long long36 = iPBan34.getExpires();
+    tp2.SinglyLinkedList singlyLinkedList37 = new tp2.SinglyLinkedList();
+    tp2.IP iP42 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i43 = iP42.getThird();
+    boolean b44 = singlyLinkedList37.remove(iP42);
+    tp2.IPBan iPBan46 = new tp2.IPBan(iP42, (java.lang.Long)10L);
+    tp2.IP iP51 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i52 = iP51.getFourth();
+    iPBan46.setIp(iP51);
+    iPBan34.setIp(iP51);
+    boolean b55 = server0.addException(iP51);
+    tp2.IP iP60 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i61 = iP60.getFourth();
+    boolean b62 = server0.addException(iP60);
+    boolean b63 = server0.notSharedElements();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + 100+ "'", i17.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b24 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i31 + "' != '" + (-1)+ "'", i31.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long35 + "' != '" + 10L+ "'", long35.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long36 + "' != '" + 10L+ "'", long36.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i43 + "' != '" + (-1)+ "'", i43.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b44 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i52 + "' != '" + 100+ "'", i52.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b55 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i61 + "' != '" + 2+ "'", i61.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b62 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b63 == true);
+
+  }
+
+  @Test
+  public void test112() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test112"); }
+
+
+    int i1 = java.lang.Integer.signum(16384);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 1);
+
+  }
+
+  @Test
+  public void test113() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test113"); }
 
 
     // The following exception was thrown during execution in test generation
     try {
-      java.lang.Integer i1 = new java.lang.Integer("d");
+      int i2 = java.lang.Integer.parseUnsignedInt("0", 201326597);
       org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
     } catch (java.lang.NumberFormatException e) {
       // Expected exception.
@@ -4997,116 +3557,334 @@ public class RegressionTest1 {
   }
 
   @Test
-  public void test249() throws Throwable {
+  public void test114() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test249"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test114"); }
 
 
-    int i1 = java.lang.Integer.bitCount(640);
+    java.lang.String str1 = java.lang.Integer.toUnsignedString(8192);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 2);
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "8192"+ "'", str1.equals("8192"));
 
   }
 
   @Test
-  public void test250() throws Throwable {
+  public void test115() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test250"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test115"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toBinaryString(2048);
+    int i2 = java.lang.Integer.rotateRight(0, 11);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "100000000000"+ "'", str1.equals("100000000000"));
+    org.junit.Assert.assertTrue(i2 == 0);
 
   }
 
   @Test
-  public void test251() throws Throwable {
+  public void test116() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test251"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test116"); }
 
 
-    int i2 = java.lang.Integer.sum(640, 100);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.exceptionsNotRepeated();
+    boolean b2 = server0.bansSorted();
+    boolean b3 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList4 = new tp2.SinglyLinkedList();
+    tp2.IP iP9 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i10 = iP9.getFourth();
+    singlyLinkedList4.add(iP9);
+    boolean b12 = server0.addException(iP9);
+    java.lang.Integer i13 = iP9.getSecond();
+    iP9.setThird((java.lang.Integer)218103808);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 740);
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i10 + "' != '" + 100+ "'", i10.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b12 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i13 + "' != '" + (-1)+ "'", i13.equals((-1)));
 
   }
 
   @Test
-  public void test252() throws Throwable {
+  public void test117() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test252"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test117"); }
 
 
-    int i2 = java.lang.Integer.remainderUnsigned(700000, 352321956);
+    java.lang.Integer i1 = new java.lang.Integer("11001");
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 700000);
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 11001+ "'", i1.equals(11001));
 
   }
 
   @Test
-  public void test253() throws Throwable {
+  public void test118() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test253"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test118"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toBinaryString(62563);
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    boolean b8 = singlyLinkedList0.isEmpty();
+    int i9 = singlyLinkedList0.getSize();
+    tp2.IP iP14 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i15 = iP14.getThird();
+    iP14.setFourth((java.lang.Integer)0);
+    boolean b18 = singlyLinkedList0.contains(iP14);
+    boolean b19 = singlyLinkedList0.isEmpty();
+    tp2.IP iP24 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i25 = iP24.getFirst();
+    java.lang.Integer i26 = iP24.getFirst();
+    singlyLinkedList0.add(iP24);
+    tp2.SinglyLinkedList singlyLinkedList28 = new tp2.SinglyLinkedList();
+    tp2.IP iP33 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i34 = iP33.getThird();
+    boolean b35 = singlyLinkedList28.remove(iP33);
+    tp2.Server server36 = new tp2.Server();
+    tp2.IP iP41 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b42 = server36.removeBan(iP41);
+    boolean b43 = singlyLinkedList28.contains(iP41);
+    singlyLinkedList0.add(iP41);
+    tp2.SinglyLinkedList singlyLinkedList45 = new tp2.SinglyLinkedList();
+    tp2.IP iP50 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i51 = iP50.getThird();
+    boolean b52 = singlyLinkedList45.remove(iP50);
+    tp2.Server server53 = new tp2.Server();
+    tp2.IP iP58 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b59 = server53.removeBan(iP58);
+    boolean b60 = singlyLinkedList45.contains(iP58);
+    singlyLinkedList0.add(iP58);
+    java.lang.Integer i62 = iP58.getFirst();
+    boolean b64 = iP58.equals((java.lang.Object)"100000000000000000000000000");
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "1111010001100011"+ "'", str1.equals("1111010001100011"));
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i9 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + (-1)+ "'", i15.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b18 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i25 + "' != '" + (-1)+ "'", i25.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i26 + "' != '" + (-1)+ "'", i26.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i34 + "' != '" + (-1)+ "'", i34.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b35 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b43 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i51 + "' != '" + (-1)+ "'", i51.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b52 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b59 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b60 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i62 + "' != '" + (-1)+ "'", i62.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b64 == false);
 
   }
 
   @Test
-  public void test254() throws Throwable {
+  public void test119() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test254"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test119"); }
 
 
-    int i1 = java.lang.Integer.parseInt("111");
+    int i2 = java.lang.Integer.min(5120, 4);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 111);
+    org.junit.Assert.assertTrue(i2 == 4);
 
   }
 
   @Test
-  public void test255() throws Throwable {
+  public void test120() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test255"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test120"); }
 
 
-    int i2 = java.lang.Integer.rotateLeft(8, 27);
+    java.lang.Integer i1 = java.lang.Integer.valueOf(44);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1073741824);
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 44+ "'", i1.equals(44));
 
   }
 
   @Test
-  public void test256() throws Throwable {
+  public void test121() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test256"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test121"); }
 
 
-    int i2 = java.lang.Integer.remainderUnsigned((-150929408), 1023410176);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.exceptionsNotRepeated();
+    boolean b2 = server0.bansSorted();
+    boolean b3 = server0.notSharedElements();
+    boolean b4 = server0.bansSorted();
+    boolean b5 = server0.bansNotRepeatedExpirationOrIP();
+    tp2.SinglyLinkedList singlyLinkedList6 = new tp2.SinglyLinkedList();
+    tp2.IP iP11 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i12 = iP11.getThird();
+    boolean b13 = singlyLinkedList6.remove(iP11);
+    boolean b14 = singlyLinkedList6.isEmpty();
+    int i15 = singlyLinkedList6.getSize();
+    tp2.IP iP20 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i21 = iP20.getThird();
+    iP20.setFourth((java.lang.Integer)0);
+    boolean b24 = singlyLinkedList6.contains(iP20);
+    boolean b25 = singlyLinkedList6.isEmpty();
+    tp2.IP iP30 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i31 = iP30.getFirst();
+    java.lang.Integer i32 = iP30.getFirst();
+    singlyLinkedList6.add(iP30);
+    tp2.SinglyLinkedList singlyLinkedList34 = new tp2.SinglyLinkedList();
+    tp2.IP iP39 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i40 = iP39.getThird();
+    boolean b41 = singlyLinkedList34.remove(iP39);
+    tp2.Server server42 = new tp2.Server();
+    tp2.IP iP47 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b48 = server42.removeBan(iP47);
+    boolean b49 = singlyLinkedList34.contains(iP47);
+    singlyLinkedList6.add(iP47);
+    tp2.SinglyLinkedList singlyLinkedList51 = new tp2.SinglyLinkedList();
+    tp2.IP iP56 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i57 = iP56.getThird();
+    boolean b58 = singlyLinkedList51.remove(iP56);
+    tp2.Server server59 = new tp2.Server();
+    tp2.IP iP64 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b65 = server59.removeBan(iP64);
+    boolean b66 = singlyLinkedList51.contains(iP64);
+    singlyLinkedList6.add(iP64);
+    boolean b68 = server0.removeBan(iP64);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 50397184);
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b4 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b5 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i12 + "' != '" + (-1)+ "'", i12.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b13 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b14 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i15 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i21 + "' != '" + (-1)+ "'", i21.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b24 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b25 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i31 + "' != '" + (-1)+ "'", i31.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i32 + "' != '" + (-1)+ "'", i32.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i40 + "' != '" + (-1)+ "'", i40.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b41 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b48 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b49 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i57 + "' != '" + (-1)+ "'", i57.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b58 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b65 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b66 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b68 == false);
 
   }
 
   @Test
-  public void test257() throws Throwable {
+  public void test122() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test257"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test122"); }
 
 
-    int i2 = java.lang.Integer.compareUnsigned(38000, 24);
+    int i2 = java.lang.Integer.compareUnsigned(1546321920, 150994944);
     
     // Regression assertion (captures the current behavior of the code)
     org.junit.Assert.assertTrue(i2 == 1);
@@ -5114,54 +3892,3052 @@ public class RegressionTest1 {
   }
 
   @Test
-  public void test258() throws Throwable {
+  public void test123() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test258"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test123"); }
 
 
-    int i2 = java.lang.Integer.rotateLeft(5, 100004);
+    tp2.Server server0 = new tp2.Server();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b6 = server0.removeBan(iP5);
+    boolean b7 = server0.bansNotRepeatedExpirationOrIP();
+    boolean b8 = server0.bansSorted();
+    boolean b9 = server0.bansOkTime();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 80);
+    org.junit.Assert.assertTrue(b6 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == true);
 
   }
 
   @Test
-  public void test259() throws Throwable {
+  public void test124() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test259"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test124"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toHexString(268503106);
+    int i2 = java.lang.Integer.rotateLeft(16384, 26);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "10010842"+ "'", str1.equals("10010842"));
+    org.junit.Assert.assertTrue(i2 == 256);
 
   }
 
   @Test
-  public void test260() throws Throwable {
+  public void test125() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test260"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test125"); }
 
 
-    int i2 = java.lang.Integer.rotateRight(83, 2031686);
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.Server server1 = new tp2.Server();
+    boolean b2 = server1.exceptionsNotRepeated();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    iP7.setSecond((java.lang.Integer)10);
+    boolean b11 = server1.removeBan(iP7);
+    boolean b12 = singlyLinkedList0.remove(iP7);
+    int i13 = singlyLinkedList0.getSize();
+    int i14 = singlyLinkedList0.getSize();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1275068417);
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b12 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i13 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i14 == 0);
 
   }
 
   @Test
-  public void test261() throws Throwable {
+  public void test126() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test261"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test126"); }
 
 
-    java.lang.Integer i0 = null;
+    int i2 = java.lang.Integer.sum(1073741844, 33554432);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 1107296276);
+
+  }
+
+  @Test
+  public void test127() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test127"); }
+
+
+    java.lang.Integer i1 = java.lang.Integer.decode("469762048");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 469762048+ "'", i1.equals(469762048));
+
+  }
+
+  @Test
+  public void test128() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test128"); }
+
+
+    int i1 = java.lang.Integer.bitCount(16384);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 1);
+
+  }
+
+  @Test
+  public void test129() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test129"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b6 = server0.removeBan(iP5);
+    tp2.ITime iTime7 = null;
+    server0.setTime(iTime7);
+    tp2.IP iP9 = null;
+    boolean b10 = server0.connect(iP9);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b6 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+
+  }
+
+  @Test
+  public void test130() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test130"); }
+
+
+    int i2 = java.lang.Integer.rotateRight(1476395008, 58000000);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 1476395008);
+
+  }
+
+  @Test
+  public void test131() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test131"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b6 = server0.removeBan(iP5);
+    tp2.ITime iTime7 = null;
+    server0.setTime(iTime7);
+    server0.update();
+    tp2.Server server10 = new tp2.Server();
+    boolean b11 = server10.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList12 = new tp2.SinglyLinkedList();
+    tp2.IP iP17 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i18 = iP17.getThird();
+    boolean b19 = singlyLinkedList12.remove(iP17);
+    boolean b20 = server10.addException(iP17);
+    java.lang.Integer i21 = iP17.getFourth();
+    boolean b22 = server0.removeException(iP17);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList23 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP28 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i29 = iP28.getFourth();
+    boolean b30 = strictlySortedSinglyLinkedList23.removeFromIP(iP28);
+    tp2.SinglyLinkedList singlyLinkedList31 = new tp2.SinglyLinkedList();
+    tp2.IP iP36 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i37 = iP36.getThird();
+    boolean b38 = singlyLinkedList31.remove(iP36);
+    java.lang.Integer i39 = iP36.getThird();
+    boolean b40 = strictlySortedSinglyLinkedList23.removeFromIP(iP36);
+    tp2.Server server41 = new tp2.Server();
+    boolean b42 = server41.exceptionsNotRepeated();
+    boolean b43 = server41.bansSorted();
+    boolean b44 = server41.notSharedElements();
+    tp2.Server server45 = new tp2.Server();
+    boolean b46 = server45.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList47 = new tp2.SinglyLinkedList();
+    tp2.IP iP52 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i53 = iP52.getThird();
+    boolean b54 = singlyLinkedList47.remove(iP52);
+    boolean b55 = server45.addException(iP52);
+    tp2.SinglyLinkedList singlyLinkedList56 = new tp2.SinglyLinkedList();
+    tp2.IP iP61 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i62 = iP61.getFourth();
+    singlyLinkedList56.add(iP61);
+    java.lang.Integer i64 = iP61.getFirst();
+    boolean b65 = server45.removeBan(iP61);
+    tp2.ITime iTime66 = null;
+    server45.setTime(iTime66);
+    boolean b68 = server45.notSharedElements();
+    tp2.IP iP73 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i74 = iP73.getThird();
+    iP73.setFourth((java.lang.Integer)0);
+    iP73.setSecond((java.lang.Integer)3);
+    boolean b79 = server45.addBan(iP73);
+    tp2.SinglyLinkedList singlyLinkedList80 = new tp2.SinglyLinkedList();
+    tp2.IP iP85 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i86 = iP85.getThird();
+    boolean b87 = singlyLinkedList80.remove(iP85);
+    java.lang.Integer i88 = iP85.getThird();
+    iP85.setFirst((java.lang.Integer)11100);
+    boolean b91 = server45.addBan(iP85);
+    boolean b92 = server41.removeException(iP85);
+    boolean b93 = strictlySortedSinglyLinkedList23.removeFromIP(iP85);
+    boolean b94 = server0.addBan(iP85);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b6 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i18 + "' != '" + (-1)+ "'", i18.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i21 + "' != '" + 100+ "'", i21.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b22 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i29 + "' != '" + 2+ "'", i29.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b30 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i37 + "' != '" + (-1)+ "'", i37.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b38 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i39 + "' != '" + (-1)+ "'", i39.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b40 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b43 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b44 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b46 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i53 + "' != '" + (-1)+ "'", i53.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b54 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b55 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i62 + "' != '" + 100+ "'", i62.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i64 + "' != '" + (-1)+ "'", i64.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b65 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b68 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i74 + "' != '" + (-1)+ "'", i74.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b79 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i86 + "' != '" + (-1)+ "'", i86.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b87 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i88 + "' != '" + (-1)+ "'", i88.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b91 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b92 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b93 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b94 == true);
+
+  }
+
+  @Test
+  public void test132() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test132"); }
+
+
+    tp2.IP iP4 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i5 = iP4.getFirst();
+    java.lang.Integer i6 = iP4.getSecond();
+    iP4.setThird((java.lang.Integer)28);
+    tp2.IPBan iPBan10 = new tp2.IPBan(iP4, (java.lang.Long)5L);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i5 + "' != '" + (-1)+ "'", i5.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+
+  }
+
+  @Test
+  public void test133() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test133"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.exceptionsNotRepeated();
+    tp2.IP iP6 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i7 = iP6.getThird();
+    iP6.setSecond((java.lang.Integer)10);
+    boolean b10 = server0.removeBan(iP6);
+    tp2.SinglyLinkedList singlyLinkedList11 = new tp2.SinglyLinkedList();
+    tp2.IP iP16 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i17 = iP16.getThird();
+    boolean b18 = singlyLinkedList11.remove(iP16);
+    java.lang.Integer i19 = iP16.getThird();
+    java.lang.Integer i20 = iP16.getThird();
+    boolean b21 = server0.removeBan(iP16);
+    boolean b22 = server0.exceptionsNotRepeated();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i7 + "' != '" + (-1)+ "'", i7.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + (-1)+ "'", i17.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b18 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i20 + "' != '" + (-1)+ "'", i20.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b21 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b22 == true);
+
+  }
+
+  @Test
+  public void test134() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test134"); }
+
+
+    int i1 = java.lang.Integer.signum(15);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 1);
+
+  }
+
+  @Test
+  public void test135() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test135"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    boolean b8 = singlyLinkedList0.isEmpty();
+    int i9 = singlyLinkedList0.getSize();
+    tp2.IP iP14 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i15 = iP14.getThird();
+    iP14.setFourth((java.lang.Integer)0);
+    boolean b18 = singlyLinkedList0.contains(iP14);
+    boolean b19 = singlyLinkedList0.isEmpty();
+    tp2.SinglyLinkedList singlyLinkedList20 = new tp2.SinglyLinkedList();
+    tp2.IP iP25 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i26 = iP25.getThird();
+    boolean b27 = singlyLinkedList20.remove(iP25);
+    tp2.IPBan iPBan29 = new tp2.IPBan(iP25, (java.lang.Long)10L);
+    singlyLinkedList0.add(iP25);
+    iP25.setSecond((java.lang.Integer)10);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i9 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + (-1)+ "'", i15.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b18 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i26 + "' != '" + (-1)+ "'", i26.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b27 == false);
+
+  }
+
+  @Test
+  public void test136() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test136"); }
+
+
+    java.lang.Integer i2 = java.lang.Integer.getInteger("", (java.lang.Integer)201326597);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 201326597+ "'", i2.equals(201326597));
+
+  }
+
+  @Test
+  public void test137() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test137"); }
+
+
+    int i2 = java.lang.Integer.compareUnsigned(20, 218103808);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == (-1));
+
+  }
+
+  @Test
+  public void test138() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test138"); }
+
+
+    int i2 = java.lang.Integer.max(1610612786, 11884);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 1610612786);
+
+  }
+
+  @Test
+  public void test139() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test139"); }
+
+
     // The following exception was thrown during execution in test generation
     try {
-      tp2.IP iP4 = new tp2.IP(i0, (java.lang.Integer)100004, (java.lang.Integer)1325400064, (java.lang.Integer)28);
+      int i2 = java.lang.Integer.parseInt("33", 56);
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
+
+  }
+
+  @Test
+  public void test140() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test140"); }
+
+
+    int i1 = java.lang.Integer.parseUnsignedInt("10");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 10);
+
+  }
+
+  @Test
+  public void test141() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test141"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    tp2.IP iP9 = singlyLinkedList0.get(16384);
+    tp2.Server server10 = new tp2.Server();
+    tp2.IP iP15 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b16 = server10.removeBan(iP15);
+    boolean b17 = server10.bansSorted();
+    tp2.Server server18 = new tp2.Server();
+    boolean b19 = server18.exceptionsNotRepeated();
+    tp2.IP iP24 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i25 = iP24.getThird();
+    iP24.setSecond((java.lang.Integer)10);
+    boolean b28 = server18.removeBan(iP24);
+    java.lang.Integer i29 = iP24.getSecond();
+    boolean b30 = server10.addException(iP24);
+    tp2.Server server31 = new tp2.Server();
+    boolean b32 = server31.exceptionsNotRepeated();
+    boolean b33 = server31.bansSorted();
+    boolean b34 = server31.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList35 = new tp2.SinglyLinkedList();
+    tp2.IP iP40 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i41 = iP40.getFourth();
+    singlyLinkedList35.add(iP40);
+    boolean b43 = server31.addException(iP40);
+    boolean b44 = server10.addBan(iP40);
+    boolean b45 = singlyLinkedList0.contains(iP40);
+    iP40.setThird((java.lang.Integer)51);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iP9);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b16 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i25 + "' != '" + (-1)+ "'", i25.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b28 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i29 + "' != '" + 10+ "'", i29.equals(10));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b30 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b33 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b34 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i41 + "' != '" + 100+ "'", i41.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b43 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b44 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b45 == false);
+
+  }
+
+  @Test
+  public void test142() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test142"); }
+
+
+    int i1 = java.lang.Integer.reverse(100);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 637534208);
+
+  }
+
+  @Test
+  public void test143() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test143"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    iP7.setSecond((java.lang.Integer)150994944);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+
+  }
+
+  @Test
+  public void test144() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test144"); }
+
+
+    // The following exception was thrown during execution in test generation
+    try {
+      java.lang.Integer i2 = java.lang.Integer.valueOf("4", 16384);
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
+
+  }
+
+  @Test
+  public void test145() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test145"); }
+
+
+    int i2 = java.lang.Integer.sum(26, 436207616);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 436207642);
+
+  }
+
+  @Test
+  public void test146() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test146"); }
+
+
+    java.lang.Integer i1 = new java.lang.Integer("33");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 33+ "'", i1.equals(33));
+
+  }
+
+  @Test
+  public void test147() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test147"); }
+
+
+    java.lang.String str1 = java.lang.Integer.toUnsignedString(51);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "51"+ "'", str1.equals("51"));
+
+  }
+
+  @Test
+  public void test148() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test148"); }
+
+
+    int i2 = java.lang.Integer.max(201326597, 727449600);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 727449600);
+
+  }
+
+  @Test
+  public void test149() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test149"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b6 = server0.removeBan(iP5);
+    tp2.Server server7 = new tp2.Server();
+    tp2.IP iP12 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b13 = server7.removeBan(iP12);
+    tp2.ITime iTime14 = null;
+    server7.setTime(iTime14);
+    server7.update();
+    tp2.Server server17 = new tp2.Server();
+    boolean b18 = server17.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList19 = new tp2.SinglyLinkedList();
+    tp2.IP iP24 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i25 = iP24.getThird();
+    boolean b26 = singlyLinkedList19.remove(iP24);
+    boolean b27 = server17.addException(iP24);
+    java.lang.Integer i28 = iP24.getFourth();
+    boolean b29 = server7.removeException(iP24);
+    boolean b30 = server0.removeBan(iP24);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b6 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b13 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b18 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i25 + "' != '" + (-1)+ "'", i25.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b26 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b27 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i28 + "' != '" + 100+ "'", i28.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b29 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b30 == false);
+
+  }
+
+  @Test
+  public void test150() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test150"); }
+
+
+    java.lang.Integer i1 = java.lang.Integer.valueOf("201326597");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 201326597+ "'", i1.equals(201326597));
+
+  }
+
+  @Test
+  public void test151() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test151"); }
+
+
+    int i2 = java.lang.Integer.rotateLeft(56, 671088640);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 56);
+
+  }
+
+  @Test
+  public void test152() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test152"); }
+
+
+    java.lang.String str1 = java.lang.Integer.toOctalString(18);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "22"+ "'", str1.equals("22"));
+
+  }
+
+  @Test
+  public void test153() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test153"); }
+
+
+    int i2 = java.lang.Integer.compare(3, 3);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 0);
+
+  }
+
+  @Test
+  public void test154() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test154"); }
+
+
+    int i1 = java.lang.Integer.reverse(51);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == (-872415232));
+
+  }
+
+  @Test
+  public void test155() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test155"); }
+
+
+    java.lang.String str2 = java.lang.Integer.toUnsignedString((-1073741824), 40);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "3221225472"+ "'", str2.equals("3221225472"));
+
+  }
+
+  @Test
+  public void test156() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test156"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    tp2.IPBan iPBan9 = new tp2.IPBan(iP5, (java.lang.Long)10L);
+    java.lang.Long long10 = iPBan9.getExpires();
+    java.lang.Long long11 = iPBan9.getExpires();
+    tp2.SinglyLinkedList singlyLinkedList12 = new tp2.SinglyLinkedList();
+    tp2.IP iP17 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i18 = iP17.getThird();
+    boolean b19 = singlyLinkedList12.remove(iP17);
+    tp2.IPBan iPBan21 = new tp2.IPBan(iP17, (java.lang.Long)10L);
+    tp2.IP iP26 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i27 = iP26.getFourth();
+    iPBan21.setIp(iP26);
+    iPBan9.setIp(iP26);
+    iPBan9.setExpires((java.lang.Long)5L);
+    tp2.Server server32 = new tp2.Server();
+    boolean b33 = server32.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList34 = new tp2.SinglyLinkedList();
+    tp2.IP iP39 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i40 = iP39.getThird();
+    boolean b41 = singlyLinkedList34.remove(iP39);
+    boolean b42 = server32.addException(iP39);
+    tp2.SinglyLinkedList singlyLinkedList43 = new tp2.SinglyLinkedList();
+    tp2.IP iP48 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i49 = iP48.getFourth();
+    singlyLinkedList43.add(iP48);
+    java.lang.Integer i51 = iP48.getFirst();
+    boolean b52 = server32.removeBan(iP48);
+    tp2.ITime iTime53 = null;
+    server32.setTime(iTime53);
+    boolean b55 = server32.notSharedElements();
+    tp2.IP iP60 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i61 = iP60.getThird();
+    iP60.setFourth((java.lang.Integer)0);
+    iP60.setSecond((java.lang.Integer)3);
+    boolean b66 = server32.addBan(iP60);
+    tp2.SinglyLinkedList singlyLinkedList67 = new tp2.SinglyLinkedList();
+    tp2.IP iP72 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i73 = iP72.getThird();
+    boolean b74 = singlyLinkedList67.remove(iP72);
+    java.lang.Integer i75 = iP72.getThird();
+    iP72.setFirst((java.lang.Integer)11100);
+    boolean b78 = server32.addBan(iP72);
+    iPBan9.setIp(iP72);
+    tp2.IP iP80 = iPBan9.getIp();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long10 + "' != '" + 10L+ "'", long10.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long11 + "' != '" + 10L+ "'", long11.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i18 + "' != '" + (-1)+ "'", i18.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i27 + "' != '" + 100+ "'", i27.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b33 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i40 + "' != '" + (-1)+ "'", i40.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b41 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i49 + "' != '" + 100+ "'", i49.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i51 + "' != '" + (-1)+ "'", i51.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b52 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b55 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i61 + "' != '" + (-1)+ "'", i61.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b66 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i73 + "' != '" + (-1)+ "'", i73.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b74 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i75 + "' != '" + (-1)+ "'", i75.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b78 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP80);
+
+  }
+
+  @Test
+  public void test157() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test157"); }
+
+
+    java.lang.String str1 = java.lang.Integer.toOctalString((-2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "37777777776"+ "'", str1.equals("37777777776"));
+
+  }
+
+  @Test
+  public void test158() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test158"); }
+
+
+    int i1 = java.lang.Integer.reverse(167772260);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 637534288);
+
+  }
+
+  @Test
+  public void test159() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test159"); }
+
+
+    java.lang.Integer i1 = java.lang.Integer.getInteger("12");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(i1);
+
+  }
+
+  @Test
+  public void test160() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test160"); }
+
+
+    int i2 = java.lang.Integer.divideUnsigned(167772260, 67108864);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 2);
+
+  }
+
+  @Test
+  public void test161() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test161"); }
+
+
+    int i2 = java.lang.Integer.parseUnsignedInt("b", 16);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 11);
+
+  }
+
+  @Test
+  public void test162() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test162"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.bansSorted();
+    tp2.IP iP2 = null;
+    boolean b3 = server0.addException(iP2);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == false);
+
+  }
+
+  @Test
+  public void test163() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test163"); }
+
+
+    java.lang.Integer i1 = java.lang.Integer.valueOf(16384);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 16384+ "'", i1.equals(16384));
+
+  }
+
+  @Test
+  public void test164() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test164"); }
+
+
+    java.lang.String str1 = java.lang.Integer.toHexString(16384);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "4000"+ "'", str1.equals("4000"));
+
+  }
+
+  @Test
+  public void test165() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test165"); }
+
+
+    int i2 = java.lang.Integer.max(671088644, 134217728);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 671088644);
+
+  }
+
+  @Test
+  public void test166() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test166"); }
+
+
+    int i2 = java.lang.Integer.sum(18, 167772160);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 167772178);
+
+  }
+
+  @Test
+  public void test167() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test167"); }
+
+
+    java.lang.Integer i2 = java.lang.Integer.getInteger("20", 16384);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 16384+ "'", i2.equals(16384));
+
+  }
+
+  @Test
+  public void test168() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test168"); }
+
+
+    int i2 = java.lang.Integer.sum(28, 1546321920);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 1546321948);
+
+  }
+
+  @Test
+  public void test169() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test169"); }
+
+
+    int i1 = java.lang.Integer.parseUnsignedInt("100000");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 100000);
+
+  }
+
+  @Test
+  public void test170() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test170"); }
+
+
+    int i2 = java.lang.Integer.divideUnsigned(16, (-129));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 0);
+
+  }
+
+  @Test
+  public void test171() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test171"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.Server server1 = new tp2.Server();
+    boolean b2 = server1.exceptionsNotRepeated();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    iP7.setSecond((java.lang.Integer)10);
+    boolean b11 = server1.removeBan(iP7);
+    boolean b12 = singlyLinkedList0.remove(iP7);
+    int i13 = singlyLinkedList0.getSize();
+    tp2.Server server14 = new tp2.Server();
+    boolean b15 = server14.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList16 = new tp2.SinglyLinkedList();
+    tp2.IP iP21 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i22 = iP21.getThird();
+    boolean b23 = singlyLinkedList16.remove(iP21);
+    boolean b24 = server14.addException(iP21);
+    tp2.SinglyLinkedList singlyLinkedList25 = new tp2.SinglyLinkedList();
+    tp2.IP iP30 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i31 = iP30.getFourth();
+    singlyLinkedList25.add(iP30);
+    java.lang.Integer i33 = iP30.getFirst();
+    boolean b34 = server14.removeBan(iP30);
+    tp2.ITime iTime35 = null;
+    server14.setTime(iTime35);
+    boolean b37 = server14.bansSorted();
+    boolean b38 = server14.bansNotRepeatedExpirationOrIP();
+    tp2.SinglyLinkedList singlyLinkedList39 = new tp2.SinglyLinkedList();
+    tp2.IP iP44 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i45 = iP44.getThird();
+    boolean b46 = singlyLinkedList39.remove(iP44);
+    tp2.IPBan iPBan48 = new tp2.IPBan(iP44, (java.lang.Long)10L);
+    java.lang.Long long49 = iPBan48.getExpires();
+    java.lang.Long long50 = iPBan48.getExpires();
+    tp2.SinglyLinkedList singlyLinkedList51 = new tp2.SinglyLinkedList();
+    tp2.IP iP56 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i57 = iP56.getThird();
+    boolean b58 = singlyLinkedList51.remove(iP56);
+    tp2.IPBan iPBan60 = new tp2.IPBan(iP56, (java.lang.Long)10L);
+    tp2.IP iP65 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i66 = iP65.getFourth();
+    iPBan60.setIp(iP65);
+    iPBan48.setIp(iP65);
+    boolean b69 = server14.addException(iP65);
+    singlyLinkedList0.add(iP65);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b12 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i13 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b15 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i22 + "' != '" + (-1)+ "'", i22.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b24 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i31 + "' != '" + 100+ "'", i31.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i33 + "' != '" + (-1)+ "'", i33.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b34 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b37 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b38 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i45 + "' != '" + (-1)+ "'", i45.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b46 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long49 + "' != '" + 10L+ "'", long49.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long50 + "' != '" + 10L+ "'", long50.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i57 + "' != '" + (-1)+ "'", i57.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b58 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i66 + "' != '" + 100+ "'", i66.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b69 == false);
+
+  }
+
+  @Test
+  public void test172() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test172"); }
+
+
+    // The following exception was thrown during execution in test generation
+    try {
+      java.lang.Integer i2 = java.lang.Integer.valueOf("51", (-2));
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
+
+  }
+
+  @Test
+  public void test173() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test173"); }
+
+
+    java.lang.String str2 = java.lang.Integer.toUnsignedString(16384, 784);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "16384"+ "'", str2.equals("16384"));
+
+  }
+
+  @Test
+  public void test174() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test174"); }
+
+
+    int i2 = java.lang.Integer.rotateRight(2, 20);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 8192);
+
+  }
+
+  @Test
+  public void test175() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test175"); }
+
+
+    int i2 = java.lang.Integer.divideUnsigned(0, 201326784);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 0);
+
+  }
+
+  @Test
+  public void test176() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test176"); }
+
+
+    int i1 = java.lang.Integer.numberOfLeadingZeros(100000);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 15);
+
+  }
+
+  @Test
+  public void test177() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test177"); }
+
+
+    java.lang.String str1 = java.lang.Integer.toBinaryString(51);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "110011"+ "'", str1.equals("110011"));
+
+  }
+
+  @Test
+  public void test178() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test178"); }
+
+
+    int i1 = java.lang.Integer.numberOfTrailingZeros(1107296276);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 2);
+
+  }
+
+  @Test
+  public void test179() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test179"); }
+
+
+    // The following exception was thrown during execution in test generation
+    try {
+      int i2 = java.lang.Integer.parseUnsignedInt("4000", 0);
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
+
+  }
+
+  @Test
+  public void test180() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test180"); }
+
+
+    int i1 = java.lang.Integer.bitCount(2147483647);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 31);
+
+  }
+
+  @Test
+  public void test181() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test181"); }
+
+
+    int i2 = java.lang.Integer.rotateLeft(15, 201326784);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 15);
+
+  }
+
+  @Test
+  public void test182() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test182"); }
+
+
+    int i1 = java.lang.Integer.numberOfTrailingZeros(100000);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 5);
+
+  }
+
+  @Test
+  public void test183() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test183"); }
+
+
+    java.lang.String str1 = java.lang.Integer.toOctalString(2147483647);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "17777777777"+ "'", str1.equals("17777777777"));
+
+  }
+
+  @Test
+  public void test184() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test184"); }
+
+
+    int i1 = java.lang.Integer.bitCount(201326597);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 4);
+
+  }
+
+  @Test
+  public void test185() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test185"); }
+
+
+    int i1 = java.lang.Integer.reverseBytes(100000);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == (-1601830656));
+
+  }
+
+  @Test
+  public void test186() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test186"); }
+
+
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    boolean b1 = strictlySortedSinglyLinkedList0.isEmpty();
+    int i2 = strictlySortedSinglyLinkedList0.getSize();
+    tp2.SinglyLinkedList singlyLinkedList3 = new tp2.SinglyLinkedList();
+    tp2.IP iP8 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i9 = iP8.getThird();
+    boolean b10 = singlyLinkedList3.remove(iP8);
+    tp2.IPBan iPBan12 = new tp2.IPBan(iP8, (java.lang.Long)10L);
+    tp2.IP iP17 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i18 = iP17.getFourth();
+    iPBan12.setIp(iP17);
+    java.lang.Long long20 = iPBan12.getExpires();
+    java.lang.Long long21 = iPBan12.getExpires();
+    tp2.IP iP26 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i27 = iP26.getFirst();
+    java.lang.Integer i28 = iP26.getSecond();
+    iP26.setFirst((java.lang.Integer)201326592);
+    iPBan12.setIp(iP26);
+    tp2.SinglyLinkedList singlyLinkedList32 = new tp2.SinglyLinkedList();
+    tp2.Server server33 = new tp2.Server();
+    boolean b34 = server33.exceptionsNotRepeated();
+    tp2.IP iP39 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i40 = iP39.getThird();
+    iP39.setSecond((java.lang.Integer)10);
+    boolean b43 = server33.removeBan(iP39);
+    boolean b44 = singlyLinkedList32.remove(iP39);
+    tp2.SinglyLinkedList singlyLinkedList45 = new tp2.SinglyLinkedList();
+    tp2.IP iP50 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i51 = iP50.getThird();
+    boolean b52 = singlyLinkedList45.remove(iP50);
+    tp2.Server server53 = new tp2.Server();
+    tp2.IP iP58 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b59 = server53.removeBan(iP58);
+    boolean b60 = singlyLinkedList45.contains(iP58);
+    singlyLinkedList32.add(iP58);
+    iPBan12.setIp(iP58);
+    java.lang.Long long63 = iPBan12.getExpires();
+    boolean b64 = strictlySortedSinglyLinkedList0.contains(iPBan12);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i9 + "' != '" + (-1)+ "'", i9.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i18 + "' != '" + 100+ "'", i18.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long20 + "' != '" + 10L+ "'", long20.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long21 + "' != '" + 10L+ "'", long21.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i27 + "' != '" + (-1)+ "'", i27.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i28 + "' != '" + (-1)+ "'", i28.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b34 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i40 + "' != '" + (-1)+ "'", i40.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b43 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b44 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i51 + "' != '" + (-1)+ "'", i51.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b52 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b59 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b60 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long63 + "' != '" + 10L+ "'", long63.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b64 == false);
+
+  }
+
+  @Test
+  public void test187() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test187"); }
+
+
+    // The following exception was thrown during execution in test generation
+    try {
+      int i2 = java.lang.Integer.parseInt("11000000000000000000000000001100", 0);
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
+
+  }
+
+  @Test
+  public void test188() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test188"); }
+
+
+    int i2 = java.lang.Integer.compareUnsigned(11001, 15);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 1);
+
+  }
+
+  @Test
+  public void test189() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test189"); }
+
+
+    java.lang.String str1 = java.lang.Integer.toBinaryString(448);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "111000000"+ "'", str1.equals("111000000"));
+
+  }
+
+  @Test
+  public void test190() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test190"); }
+
+
+    int i2 = java.lang.Integer.min(134217728, 1610612742);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 134217728);
+
+  }
+
+  @Test
+  public void test191() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test191"); }
+
+
+    int i2 = java.lang.Integer.rotateLeft(11884, 18);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == (-1179648000));
+
+  }
+
+  @Test
+  public void test192() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test192"); }
+
+
+    // The following exception was thrown during execution in test generation
+    try {
+      int i1 = java.lang.Integer.parseInt("17777777777");
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
+
+  }
+
+  @Test
+  public void test193() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test193"); }
+
+
+    int i1 = java.lang.Integer.lowestOneBit(6);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 2);
+
+  }
+
+  @Test
+  public void test194() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test194"); }
+
+
+    // The following exception was thrown during execution in test generation
+    try {
+      int i2 = java.lang.Integer.parseInt("1001000000000000000000000000", 200000000);
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
+
+  }
+
+  @Test
+  public void test195() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test195"); }
+
+
+    int i1 = java.lang.Integer.reverse(524288);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 4096);
+
+  }
+
+  @Test
+  public void test196() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test196"); }
+
+
+    int i1 = java.lang.Integer.numberOfTrailingZeros(5120);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 10);
+
+  }
+
+  @Test
+  public void test197() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test197"); }
+
+
+    // The following exception was thrown during execution in test generation
+    try {
+      java.lang.Integer i2 = java.lang.Integer.valueOf("11000000000000000000000000001100", 150994944);
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
+
+  }
+
+  @Test
+  public void test198() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test198"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    boolean b8 = singlyLinkedList0.isEmpty();
+    tp2.SinglyLinkedList singlyLinkedList9 = new tp2.SinglyLinkedList();
+    tp2.IP iP14 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i15 = iP14.getThird();
+    boolean b16 = singlyLinkedList9.remove(iP14);
+    boolean b17 = singlyLinkedList9.isEmpty();
+    int i18 = singlyLinkedList9.getSize();
+    tp2.IP iP23 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i24 = iP23.getThird();
+    iP23.setFourth((java.lang.Integer)0);
+    boolean b27 = singlyLinkedList9.contains(iP23);
+    boolean b28 = singlyLinkedList9.isEmpty();
+    tp2.SinglyLinkedList singlyLinkedList29 = new tp2.SinglyLinkedList();
+    tp2.Server server30 = new tp2.Server();
+    boolean b31 = server30.exceptionsNotRepeated();
+    tp2.IP iP36 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i37 = iP36.getThird();
+    iP36.setSecond((java.lang.Integer)10);
+    boolean b40 = server30.removeBan(iP36);
+    boolean b41 = singlyLinkedList29.remove(iP36);
+    tp2.IP iP42 = null;
+    singlyLinkedList29.add(iP42);
+    tp2.IP iP45 = singlyLinkedList29.get(469762048);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList46 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP51 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)11100, (java.lang.Integer)784, (java.lang.Integer)0);
+    boolean b52 = strictlySortedSinglyLinkedList46.removeFromIP(iP51);
+    boolean b53 = singlyLinkedList29.contains(iP51);
+    boolean b54 = singlyLinkedList9.remove(iP51);
+    tp2.SinglyLinkedList singlyLinkedList55 = new tp2.SinglyLinkedList();
+    tp2.IP iP60 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i61 = iP60.getThird();
+    boolean b62 = singlyLinkedList55.remove(iP60);
+    boolean b63 = singlyLinkedList55.isEmpty();
+    int i64 = singlyLinkedList55.getSize();
+    tp2.IP iP69 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i70 = iP69.getThird();
+    iP69.setFourth((java.lang.Integer)0);
+    boolean b73 = singlyLinkedList55.contains(iP69);
+    boolean b74 = singlyLinkedList55.isEmpty();
+    tp2.SinglyLinkedList singlyLinkedList75 = new tp2.SinglyLinkedList();
+    tp2.IP iP80 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i81 = iP80.getThird();
+    boolean b82 = singlyLinkedList75.remove(iP80);
+    tp2.IPBan iPBan84 = new tp2.IPBan(iP80, (java.lang.Long)10L);
+    singlyLinkedList55.add(iP80);
+    boolean b86 = singlyLinkedList9.contains(iP80);
+    boolean b87 = singlyLinkedList0.contains(iP80);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + (-1)+ "'", i15.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b16 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i18 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i24 + "' != '" + (-1)+ "'", i24.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b27 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b28 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b31 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i37 + "' != '" + (-1)+ "'", i37.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b40 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b41 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iP45);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b52 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b53 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b54 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i61 + "' != '" + (-1)+ "'", i61.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b62 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b63 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i64 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i70 + "' != '" + (-1)+ "'", i70.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b73 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b74 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i81 + "' != '" + (-1)+ "'", i81.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b82 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b86 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b87 == false);
+
+  }
+
+  @Test
+  public void test199() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test199"); }
+
+
+    int i1 = java.lang.Integer.numberOfTrailingZeros(56);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 3);
+
+  }
+
+  @Test
+  public void test200() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test200"); }
+
+
+    java.lang.String str1 = java.lang.Integer.toBinaryString(33);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "100001"+ "'", str1.equals("100001"));
+
+  }
+
+  @Test
+  public void test201() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test201"); }
+
+
+    int i2 = java.lang.Integer.rotateLeft(40, 167772260);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 640);
+
+  }
+
+  @Test
+  public void test202() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test202"); }
+
+
+    int i1 = java.lang.Integer.numberOfLeadingZeros(56);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 26);
+
+  }
+
+  @Test
+  public void test203() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test203"); }
+
+
+    java.lang.String str1 = java.lang.Integer.toBinaryString(218103808);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "1101000000000000000000000000"+ "'", str1.equals("1101000000000000000000000000"));
+
+  }
+
+  @Test
+  public void test204() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test204"); }
+
+
+    java.lang.Integer i1 = new java.lang.Integer(671088640);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 671088640+ "'", i1.equals(671088640));
+
+  }
+
+  @Test
+  public void test205() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test205"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    tp2.IPBan iPBan9 = new tp2.IPBan(iP5, (java.lang.Long)10L);
+    iP5.setFourth((java.lang.Integer)201326597);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+
+  }
+
+  @Test
+  public void test206() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test206"); }
+
+
+    // The following exception was thrown during execution in test generation
+    try {
+      java.lang.Integer i2 = java.lang.Integer.valueOf("1100100", 48);
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
+
+  }
+
+  @Test
+  public void test207() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test207"); }
+
+
+    java.lang.String str1 = java.lang.Integer.toUnsignedString((-1601830656));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "2693136640"+ "'", str1.equals("2693136640"));
+
+  }
+
+  @Test
+  public void test208() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test208"); }
+
+
+    java.lang.Integer i2 = java.lang.Integer.getInteger("3221225472", 1073741844);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 1073741844+ "'", i2.equals(1073741844));
+
+  }
+
+  @Test
+  public void test209() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test209"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    java.lang.Integer i8 = iP5.getThird();
+    java.lang.Integer i9 = iP5.getSecond();
+    tp2.IPBan iPBan11 = new tp2.IPBan(iP5, (java.lang.Long)727449600L);
+    iP5.setSecond((java.lang.Integer)1610612786);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i9 + "' != '" + (-1)+ "'", i9.equals((-1)));
+
+  }
+
+  @Test
+  public void test210() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test210"); }
+
+
+    java.lang.Integer i2 = java.lang.Integer.getInteger("201326597", (java.lang.Integer)727449600);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 727449600+ "'", i2.equals(727449600));
+
+  }
+
+  @Test
+  public void test211() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test211"); }
+
+
+    // The following exception was thrown during execution in test generation
+    try {
+      int i2 = java.lang.Integer.parseUnsignedInt("100", 0);
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
+
+  }
+
+  @Test
+  public void test212() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test212"); }
+
+
+    int i2 = java.lang.Integer.sum(436207642, 11884);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 436219526);
+
+  }
+
+  @Test
+  public void test213() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test213"); }
+
+
+    java.lang.Integer i1 = java.lang.Integer.valueOf(436219526);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 436219526+ "'", i1.equals(436219526));
+
+  }
+
+  @Test
+  public void test214() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test214"); }
+
+
+    long long1 = java.lang.Integer.toUnsignedLong(33554432);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(long1 == 33554432L);
+
+  }
+
+  @Test
+  public void test215() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test215"); }
+
+
+    tp2.IP iP4 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i5 = iP4.getFirst();
+    java.lang.Integer i6 = iP4.getSecond();
+    iP4.setFirst((java.lang.Integer)201326592);
+    tp2.IPBan iPBan10 = new tp2.IPBan(iP4, (java.lang.Long)727449600L);
+    tp2.IP iP11 = iPBan10.getIp();
+    java.lang.Long long12 = iPBan10.getExpires();
+    tp2.IP iP13 = iPBan10.getIp();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i5 + "' != '" + (-1)+ "'", i5.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP11);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long12 + "' != '" + 727449600L+ "'", long12.equals(727449600L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP13);
+
+  }
+
+  @Test
+  public void test216() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test216"); }
+
+
+    int i1 = java.lang.Integer.parseInt("20");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 20);
+
+  }
+
+  @Test
+  public void test217() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test217"); }
+
+
+    int i2 = java.lang.Integer.divideUnsigned(5, 1107296276);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 0);
+
+  }
+
+  @Test
+  public void test218() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test218"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.Server server1 = new tp2.Server();
+    boolean b2 = server1.exceptionsNotRepeated();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    iP7.setSecond((java.lang.Integer)10);
+    boolean b11 = server1.removeBan(iP7);
+    boolean b12 = singlyLinkedList0.remove(iP7);
+    int i13 = singlyLinkedList0.getSize();
+    tp2.IP iP15 = singlyLinkedList0.get(1610612742);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b12 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i13 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iP15);
+
+  }
+
+  @Test
+  public void test219() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test219"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b6 = server0.removeBan(iP5);
+    tp2.ITime iTime7 = null;
+    server0.setTime(iTime7);
+    server0.update();
+    tp2.SinglyLinkedList singlyLinkedList10 = new tp2.SinglyLinkedList();
+    tp2.IP iP15 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i16 = iP15.getThird();
+    boolean b17 = singlyLinkedList10.remove(iP15);
+    java.lang.Integer i18 = iP15.getThird();
+    iP15.setFirst((java.lang.Integer)11100);
+    boolean b21 = server0.addException(iP15);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b6 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i18 + "' != '" + (-1)+ "'", i18.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b21 == true);
+
+  }
+
+  @Test
+  public void test220() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test220"); }
+
+
+    int i2 = java.lang.Integer.rotateLeft(805306368, 11001);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 6291456);
+
+  }
+
+  @Test
+  public void test221() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test221"); }
+
+
+    int i1 = java.lang.Integer.numberOfTrailingZeros(134217728);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 27);
+
+  }
+
+  @Test
+  public void test222() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test222"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    boolean b2 = server0.bansOkTime();
+    tp2.SinglyLinkedList singlyLinkedList3 = new tp2.SinglyLinkedList();
+    tp2.IP iP8 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i9 = iP8.getFourth();
+    singlyLinkedList3.add(iP8);
+    boolean b11 = server0.connect(iP8);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i9 + "' != '" + 100+ "'", i9.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == true);
+
+  }
+
+  @Test
+  public void test223() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test223"); }
+
+
+    int i1 = java.lang.Integer.parseInt("23");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 23);
+
+  }
+
+  @Test
+  public void test224() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test224"); }
+
+
+    int i2 = java.lang.Integer.sum(4096, (-2147483648));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == (-2147479552));
+
+  }
+
+  @Test
+  public void test225() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test225"); }
+
+
+    int i2 = java.lang.Integer.sum(805306368, 2621440);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 807927808);
+
+  }
+
+  @Test
+  public void test226() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test226"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.bansSorted();
+    tp2.IP iP6 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i7 = iP6.getFourth();
+    boolean b8 = server0.removeException(iP6);
+    tp2.ITime iTime9 = null;
+    server0.setTime(iTime9);
+    tp2.Server server11 = new tp2.Server();
+    tp2.ITime iTime12 = null;
+    server11.setTime(iTime12);
+    tp2.ITime iTime14 = null;
+    server11.setTime(iTime14);
+    tp2.Server server16 = new tp2.Server();
+    tp2.IP iP21 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b22 = server16.removeBan(iP21);
+    java.lang.Integer i23 = iP21.getFirst();
+    boolean b24 = server11.addException(iP21);
+    iP21.setThird((java.lang.Integer)(-1073741824));
+    boolean b27 = server0.addBan(iP21);
+    tp2.Server server28 = new tp2.Server();
+    tp2.SinglyLinkedList singlyLinkedList29 = new tp2.SinglyLinkedList();
+    tp2.Server server30 = new tp2.Server();
+    boolean b31 = server30.exceptionsNotRepeated();
+    tp2.IP iP36 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i37 = iP36.getThird();
+    iP36.setSecond((java.lang.Integer)10);
+    boolean b40 = server30.removeBan(iP36);
+    boolean b41 = singlyLinkedList29.remove(iP36);
+    tp2.SinglyLinkedList singlyLinkedList42 = new tp2.SinglyLinkedList();
+    tp2.IP iP47 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i48 = iP47.getThird();
+    boolean b49 = singlyLinkedList42.remove(iP47);
+    tp2.Server server50 = new tp2.Server();
+    tp2.IP iP55 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b56 = server50.removeBan(iP55);
+    boolean b57 = singlyLinkedList42.contains(iP55);
+    singlyLinkedList29.add(iP55);
+    boolean b59 = server28.addBan(iP55);
+    boolean b60 = server0.addBan(iP55);
+    boolean b61 = server0.notSharedElements();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i7 + "' != '" + 100+ "'", i7.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b22 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i23 + "' != '" + (-1)+ "'", i23.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b24 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b27 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b31 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i37 + "' != '" + (-1)+ "'", i37.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b40 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b41 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i48 + "' != '" + (-1)+ "'", i48.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b49 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b56 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b57 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b59 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b60 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b61 == true);
+
+  }
+
+  @Test
+  public void test227() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test227"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    boolean b8 = singlyLinkedList0.isEmpty();
+    int i9 = singlyLinkedList0.getSize();
+    boolean b10 = singlyLinkedList0.isEmpty();
+    tp2.SinglyLinkedList singlyLinkedList11 = new tp2.SinglyLinkedList();
+    tp2.IP iP12 = null;
+    boolean b13 = singlyLinkedList11.remove(iP12);
+    boolean b14 = singlyLinkedList11.isEmpty();
+    tp2.SinglyLinkedList singlyLinkedList15 = new tp2.SinglyLinkedList();
+    tp2.IP iP20 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i21 = iP20.getThird();
+    boolean b22 = singlyLinkedList15.remove(iP20);
+    tp2.IPBan iPBan24 = new tp2.IPBan(iP20, (java.lang.Long)10L);
+    java.lang.Long long25 = iPBan24.getExpires();
+    java.lang.Long long26 = iPBan24.getExpires();
+    tp2.SinglyLinkedList singlyLinkedList27 = new tp2.SinglyLinkedList();
+    tp2.IP iP32 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i33 = iP32.getThird();
+    boolean b34 = singlyLinkedList27.remove(iP32);
+    tp2.IPBan iPBan36 = new tp2.IPBan(iP32, (java.lang.Long)10L);
+    tp2.IP iP41 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i42 = iP41.getFourth();
+    iPBan36.setIp(iP41);
+    iPBan24.setIp(iP41);
+    boolean b45 = singlyLinkedList11.contains(iP41);
+    boolean b46 = singlyLinkedList0.contains(iP41);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i9 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b13 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b14 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i21 + "' != '" + (-1)+ "'", i21.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b22 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long25 + "' != '" + 10L+ "'", long25.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long26 + "' != '" + 10L+ "'", long26.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i33 + "' != '" + (-1)+ "'", i33.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b34 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i42 + "' != '" + 100+ "'", i42.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b45 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b46 == false);
+
+  }
+
+  @Test
+  public void test228() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test228"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.exceptionsNotRepeated();
+    boolean b2 = server0.bansSorted();
+    boolean b3 = server0.notSharedElements();
+    boolean b4 = server0.bansSorted();
+    server0.update();
+    tp2.IP iP10 = new tp2.IP((java.lang.Integer)11100, (java.lang.Integer)40, (java.lang.Integer)28, (java.lang.Integer)727449600);
+    boolean b11 = server0.addException(iP10);
+    server0.update();
+    boolean b13 = server0.bansOkTime();
+    boolean b14 = server0.notSharedElements();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b4 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b13 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b14 == true);
+
+  }
+
+  @Test
+  public void test229() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test229"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.exceptionsNotRepeated();
+    boolean b2 = server0.bansSorted();
+    boolean b3 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList4 = new tp2.SinglyLinkedList();
+    tp2.IP iP9 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i10 = iP9.getFourth();
+    singlyLinkedList4.add(iP9);
+    boolean b12 = server0.addException(iP9);
+    tp2.Server server13 = new tp2.Server();
+    boolean b14 = server13.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList15 = new tp2.SinglyLinkedList();
+    tp2.IP iP20 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i21 = iP20.getThird();
+    boolean b22 = singlyLinkedList15.remove(iP20);
+    boolean b23 = server13.addException(iP20);
+    tp2.SinglyLinkedList singlyLinkedList24 = new tp2.SinglyLinkedList();
+    tp2.IP iP29 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i30 = iP29.getFourth();
+    singlyLinkedList24.add(iP29);
+    java.lang.Integer i32 = iP29.getFirst();
+    boolean b33 = server13.removeBan(iP29);
+    tp2.ITime iTime34 = null;
+    server13.setTime(iTime34);
+    boolean b36 = server13.notSharedElements();
+    tp2.IP iP41 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i42 = iP41.getThird();
+    iP41.setFourth((java.lang.Integer)0);
+    iP41.setSecond((java.lang.Integer)3);
+    boolean b47 = server13.addBan(iP41);
+    tp2.SinglyLinkedList singlyLinkedList48 = new tp2.SinglyLinkedList();
+    tp2.IP iP53 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i54 = iP53.getThird();
+    boolean b55 = singlyLinkedList48.remove(iP53);
+    java.lang.Integer i56 = iP53.getThird();
+    iP53.setFirst((java.lang.Integer)11100);
+    boolean b59 = server13.addBan(iP53);
+    boolean b60 = server0.removeBan(iP53);
+    java.lang.Integer i61 = iP53.getSecond();
+    tp2.IPBan iPBan63 = new tp2.IPBan(iP53, (java.lang.Long)10L);
+    iPBan63.setExpires((java.lang.Long)5L);
+    tp2.SinglyLinkedList singlyLinkedList66 = new tp2.SinglyLinkedList();
+    tp2.IP iP71 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i72 = iP71.getThird();
+    boolean b73 = singlyLinkedList66.remove(iP71);
+    tp2.IP iP78 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i79 = iP78.getFirst();
+    boolean b80 = singlyLinkedList66.remove(iP78);
+    iP78.setSecond((java.lang.Integer)40);
+    iPBan63.setIp(iP78);
+    iP78.setFourth((java.lang.Integer)26);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i10 + "' != '" + 100+ "'", i10.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b12 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b14 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i21 + "' != '" + (-1)+ "'", i21.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b22 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i30 + "' != '" + 100+ "'", i30.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i32 + "' != '" + (-1)+ "'", i32.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b33 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b36 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i42 + "' != '" + (-1)+ "'", i42.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b47 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i54 + "' != '" + (-1)+ "'", i54.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b55 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i56 + "' != '" + (-1)+ "'", i56.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b59 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b60 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i61 + "' != '" + (-1)+ "'", i61.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i72 + "' != '" + (-1)+ "'", i72.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b73 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i79 + "' != '" + (-1)+ "'", i79.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b80 == false);
+
+  }
+
+  @Test
+  public void test230() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test230"); }
+
+
+    int i2 = java.lang.Integer.rotateRight(729888, 1107296276);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == (-1305346048));
+
+  }
+
+  @Test
+  public void test231() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test231"); }
+
+
+    java.lang.String str1 = java.lang.Integer.toOctalString(56);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "70"+ "'", str1.equals("70"));
+
+  }
+
+  @Test
+  public void test232() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test232"); }
+
+
+    tp2.IP iP4 = new tp2.IP((java.lang.Integer)671088644, (java.lang.Integer)512, (java.lang.Integer)1610612786, (java.lang.Integer)256);
+    iP4.setSecond((java.lang.Integer)25);
+
+  }
+
+  @Test
+  public void test233() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test233"); }
+
+
+    java.lang.String str1 = java.lang.Integer.toOctalString(436207616);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "3200000000"+ "'", str1.equals("3200000000"));
+
+  }
+
+  @Test
+  public void test234() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test234"); }
+
+
+    int i2 = java.lang.Integer.min(3, 3);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 3);
+
+  }
+
+  @Test
+  public void test235() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test235"); }
+
+
+    // The following exception was thrown during execution in test generation
+    try {
+      java.lang.Integer i2 = java.lang.Integer.valueOf("111000000", 1546321920);
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
+
+  }
+
+  @Test
+  public void test236() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test236"); }
+
+
+    java.lang.Integer i1 = java.lang.Integer.getInteger("70");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(i1);
+
+  }
+
+  @Test
+  public void test237() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test237"); }
+
+
+    int i2 = java.lang.Integer.min((-1073741824), 671088640);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == (-1073741824));
+
+  }
+
+  @Test
+  public void test238() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test238"); }
+
+
+    int i1 = java.lang.Integer.highestOneBit(23);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 16);
+
+  }
+
+  @Test
+  public void test239() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test239"); }
+
+
+    int i2 = java.lang.Integer.rotateLeft(3, 727449600);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 3);
+
+  }
+
+  @Test
+  public void test240() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test240"); }
+
+
+    long long1 = java.lang.Integer.toUnsignedLong(11);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(long1 == 11L);
+
+  }
+
+  @Test
+  public void test241() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test241"); }
+
+
+    int i2 = java.lang.Integer.remainderUnsigned(11001, 8192);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 2809);
+
+  }
+
+  @Test
+  public void test242() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test242"); }
+
+
+    java.lang.Integer i1 = java.lang.Integer.getInteger("469762048");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(i1);
+
+  }
+
+  @Test
+  public void test243() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test243"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    tp2.ITime iTime1 = null;
+    server0.setTime(iTime1);
+    tp2.ITime iTime3 = null;
+    server0.setTime(iTime3);
+    tp2.Server server5 = new tp2.Server();
+    tp2.IP iP10 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b11 = server5.removeBan(iP10);
+    java.lang.Integer i12 = iP10.getFirst();
+    boolean b13 = server0.addException(iP10);
+    boolean b14 = server0.bansOkTime();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i12 + "' != '" + (-1)+ "'", i12.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b13 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b14 == true);
+
+  }
+
+  @Test
+  public void test244() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test244"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    tp2.SinglyLinkedList singlyLinkedList11 = new tp2.SinglyLinkedList();
+    tp2.IP iP16 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i17 = iP16.getFourth();
+    singlyLinkedList11.add(iP16);
+    java.lang.Integer i19 = iP16.getFirst();
+    boolean b20 = server0.removeBan(iP16);
+    tp2.ITime iTime21 = null;
+    server0.setTime(iTime21);
+    server0.update();
+    boolean b24 = server0.bansOkTime();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + 100+ "'", i17.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b24 == true);
+
+  }
+
+  @Test
+  public void test245() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test245"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    tp2.SinglyLinkedList singlyLinkedList11 = new tp2.SinglyLinkedList();
+    tp2.IP iP16 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i17 = iP16.getFourth();
+    singlyLinkedList11.add(iP16);
+    java.lang.Integer i19 = iP16.getFirst();
+    boolean b20 = server0.removeBan(iP16);
+    iP16.setFourth((java.lang.Integer)1546321948);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + 100+ "'", i17.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+
+  }
+
+  @Test
+  public void test246() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test246"); }
+
+
+    java.lang.Integer i2 = null;
+    // The following exception was thrown during execution in test generation
+    try {
+      tp2.IP iP4 = new tp2.IP((java.lang.Integer)729888, (java.lang.Integer)0, i2, (java.lang.Integer)23);
       org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException");
     } catch (java.lang.IllegalArgumentException e) {
       // Expected exception.
@@ -5173,15 +6949,325 @@ public class RegressionTest1 {
   }
 
   @Test
+  public void test247() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test247"); }
+
+
+    int i2 = java.lang.Integer.max(33, 1107296276);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 1107296276);
+
+  }
+
+  @Test
+  public void test248() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test248"); }
+
+
+    int i2 = java.lang.Integer.rotateRight(536870912, 2);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 134217728);
+
+  }
+
+  @Test
+  public void test249() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test249"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.Server server1 = new tp2.Server();
+    boolean b2 = server1.exceptionsNotRepeated();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    iP7.setSecond((java.lang.Integer)10);
+    boolean b11 = server1.removeBan(iP7);
+    boolean b12 = singlyLinkedList0.remove(iP7);
+    int i13 = singlyLinkedList0.getSize();
+    boolean b14 = singlyLinkedList0.isEmpty();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b12 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i13 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b14 == true);
+
+  }
+
+  @Test
+  public void test250() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test250"); }
+
+
+    java.lang.Integer i2 = java.lang.Integer.getInteger("17777777777", (java.lang.Integer)(-1073741812));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i2 + "' != '" + (-1073741812)+ "'", i2.equals((-1073741812)));
+
+  }
+
+  @Test
+  public void test251() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test251"); }
+
+
+    java.lang.String str2 = java.lang.Integer.toUnsignedString((-129), 637534208);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "4294967167"+ "'", str2.equals("4294967167"));
+
+  }
+
+  @Test
+  public void test252() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test252"); }
+
+
+    java.lang.String str2 = java.lang.Integer.toUnsignedString(13, 44);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "13"+ "'", str2.equals("13"));
+
+  }
+
+  @Test
+  public void test253() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test253"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    tp2.Server server8 = new tp2.Server();
+    tp2.IP iP13 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b14 = server8.removeBan(iP13);
+    boolean b15 = singlyLinkedList0.contains(iP13);
+    boolean b16 = singlyLinkedList0.isEmpty();
+    boolean b17 = singlyLinkedList0.isEmpty();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b14 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b15 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b16 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == true);
+
+  }
+
+  @Test
+  public void test254() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test254"); }
+
+
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)11100, (java.lang.Integer)784, (java.lang.Integer)0);
+    boolean b6 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    int i7 = strictlySortedSinglyLinkedList0.getSize();
+    tp2.Server server8 = new tp2.Server();
+    boolean b9 = server8.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList10 = new tp2.SinglyLinkedList();
+    tp2.IP iP15 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i16 = iP15.getThird();
+    boolean b17 = singlyLinkedList10.remove(iP15);
+    boolean b18 = server8.addException(iP15);
+    java.lang.Integer i19 = iP15.getFourth();
+    boolean b20 = strictlySortedSinglyLinkedList0.containsIP(iP15);
+    int i21 = strictlySortedSinglyLinkedList0.getSize();
+    tp2.IPBan iPBan23 = strictlySortedSinglyLinkedList0.get((-1073741812));
+    tp2.IP iP24 = null;
+    boolean b25 = strictlySortedSinglyLinkedList0.containsIP(iP24);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b6 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i7 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b18 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + 100+ "'", i19.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i21 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan23);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b25 == false);
+
+  }
+
+  @Test
+  public void test255() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test255"); }
+
+
+    java.lang.Integer i1 = new java.lang.Integer(167772178);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 167772178+ "'", i1.equals(167772178));
+
+  }
+
+  @Test
+  public void test256() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test256"); }
+
+
+    java.lang.String str1 = java.lang.Integer.toUnsignedString(88770);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "88770"+ "'", str1.equals("88770"));
+
+  }
+
+  @Test
+  public void test257() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test257"); }
+
+
+    java.lang.Integer i1 = java.lang.Integer.valueOf("70");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 70+ "'", i1.equals(70));
+
+  }
+
+  @Test
+  public void test258() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test258"); }
+
+
+    int i1 = java.lang.Integer.lowestOneBit(146800640);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 4194304);
+
+  }
+
+  @Test
+  public void test259() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test259"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    tp2.IPBan iPBan9 = new tp2.IPBan(iP5, (java.lang.Long)10L);
+    java.lang.Long long10 = iPBan9.getExpires();
+    iPBan9.setExpires((java.lang.Long)(-1L));
+    java.lang.Long long13 = iPBan9.getExpires();
+    java.lang.Long long14 = iPBan9.getExpires();
+    iPBan9.setExpires((java.lang.Long)33554432L);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long10 + "' != '" + 10L+ "'", long10.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long13 + "' != '" + (-1L)+ "'", long13.equals((-1L)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long14 + "' != '" + (-1L)+ "'", long14.equals((-1L)));
+
+  }
+
+  @Test
+  public void test260() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test260"); }
+
+
+    java.lang.Integer i1 = java.lang.Integer.getInteger("4");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(i1);
+
+  }
+
+  @Test
+  public void test261() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test261"); }
+
+
+    int i1 = java.lang.Integer.highestOneBit(512);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 512);
+
+  }
+
+  @Test
   public void test262() throws Throwable {
 
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test262"); }
 
 
-    int i2 = java.lang.Integer.max(13, 448);
+    int i2 = java.lang.Integer.compareUnsigned(2147483647, (-1));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 448);
+    org.junit.Assert.assertTrue(i2 == (-1));
 
   }
 
@@ -5191,10 +7277,51 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test263"); }
 
 
-    korat.finitization.IFinitization iFinitization1 = tp2.Server.finServer((-134217728));
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.bansSorted();
+    tp2.IP iP6 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i7 = iP6.getFourth();
+    boolean b8 = server0.removeException(iP6);
+    tp2.ITime iTime9 = null;
+    server0.setTime(iTime9);
+    tp2.Server server11 = new tp2.Server();
+    tp2.ITime iTime12 = null;
+    server11.setTime(iTime12);
+    tp2.ITime iTime14 = null;
+    server11.setTime(iTime14);
+    tp2.Server server16 = new tp2.Server();
+    tp2.IP iP21 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b22 = server16.removeBan(iP21);
+    java.lang.Integer i23 = iP21.getFirst();
+    boolean b24 = server11.addException(iP21);
+    iP21.setThird((java.lang.Integer)(-1073741824));
+    boolean b27 = server0.addBan(iP21);
+    boolean b28 = server0.bansNotRepeatedExpirationOrIP();
+    server0.update();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNotNull(iFinitization1);
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i7 + "' != '" + 100+ "'", i7.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b22 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i23 + "' != '" + (-1)+ "'", i23.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b24 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b27 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b28 == true);
 
   }
 
@@ -5204,10 +7331,61 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test264"); }
 
 
-    int i2 = java.lang.Integer.min(1, 67108864);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    tp2.SinglyLinkedList singlyLinkedList11 = new tp2.SinglyLinkedList();
+    tp2.IP iP16 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i17 = iP16.getFourth();
+    singlyLinkedList11.add(iP16);
+    java.lang.Integer i19 = iP16.getFirst();
+    boolean b20 = server0.removeBan(iP16);
+    tp2.ITime iTime21 = null;
+    server0.setTime(iTime21);
+    boolean b23 = server0.bansNotRepeatedExpirationOrIP();
+    tp2.SinglyLinkedList singlyLinkedList24 = new tp2.SinglyLinkedList();
+    tp2.IP iP29 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i30 = iP29.getThird();
+    boolean b31 = singlyLinkedList24.remove(iP29);
+    iP29.setSecond((java.lang.Integer)44);
+    boolean b34 = server0.addException(iP29);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1);
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + 100+ "'", i17.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i30 + "' != '" + (-1)+ "'", i30.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b31 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b34 == true);
 
   }
 
@@ -5217,16 +7395,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test265"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseInt("1001010001110000", 2147480291);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    java.lang.String str1 = java.lang.Integer.toHexString(2);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "2"+ "'", str1.equals("2"));
 
   }
 
@@ -5236,10 +7408,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test266"); }
 
 
-    long long1 = java.lang.Integer.toUnsignedLong(27);
+    int i1 = java.lang.Integer.bitCount(436219526);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(long1 == 27L);
+    org.junit.Assert.assertTrue(i1 == 10);
 
   }
 
@@ -5251,213 +7423,7 @@ public class RegressionTest1 {
 
     // The following exception was thrown during execution in test generation
     try {
-      java.lang.Integer i1 = java.lang.Integer.decode("3400000000");
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
-
-  }
-
-  @Test
-  public void test268() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test268"); }
-
-
-    int i1 = java.lang.Integer.numberOfLeadingZeros(100004);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 15);
-
-  }
-
-  @Test
-  public void test269() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test269"); }
-
-
-    int i1 = java.lang.Integer.signum((-2147483620));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == (-1));
-
-  }
-
-  @Test
-  public void test270() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test270"); }
-
-
-    int i1 = java.lang.Integer.highestOneBit(80000085);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 67108864);
-
-  }
-
-  @Test
-  public void test271() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test271"); }
-
-
-    java.lang.Integer i1 = java.lang.Integer.valueOf("32");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 32+ "'", i1.equals(32));
-
-  }
-
-  @Test
-  public void test272() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test272"); }
-
-
-    int i2 = java.lang.Integer.min(536870912, 0);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 0);
-
-  }
-
-  @Test
-  public void test273() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test273"); }
-
-
-    long long1 = java.lang.Integer.toUnsignedLong((-219971585));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(long1 == 4074995711L);
-
-  }
-
-  @Test
-  public void test274() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test274"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toBinaryString(101);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "1100101"+ "'", str1.equals("1100101"));
-
-  }
-
-  @Test
-  public void test275() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test275"); }
-
-
-    int i2 = java.lang.Integer.min(939524096, (-671088640));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-671088640));
-
-  }
-
-  @Test
-  public void test276() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test276"); }
-
-
-    int i1 = java.lang.Integer.parseInt("80");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 80);
-
-  }
-
-  @Test
-  public void test277() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test277"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toBinaryString(268435456);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "10000000000000000000000000000"+ "'", str1.equals("10000000000000000000000000000"));
-
-  }
-
-  @Test
-  public void test278() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test278"); }
-
-
-    java.lang.String str1 = java.lang.Integer.toUnsignedString(4329604);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "4329604"+ "'", str1.equals("4329604"));
-
-  }
-
-  @Test
-  public void test279() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test279"); }
-
-
-    int i2 = java.lang.Integer.divideUnsigned(32768, 939524096);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 0);
-
-  }
-
-  @Test
-  public void test280() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test280"); }
-
-
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP1 = null;
-    boolean b2 = server0.addBan(iP1);
-    tp2.Server server3 = new tp2.Server();
-    tp2.IP iP8 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b9 = server3.removeException(iP8);
-    boolean b11 = iP8.equals((java.lang.Object)(-1L));
-    boolean b12 = server0.removeBan(iP8);
-    tp2.ITime iTime13 = null;
-    server0.setTime(iTime13);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b2 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b9 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b11 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b12 == false);
-
-  }
-
-  @Test
-  public void test281() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test281"); }
-
-
-    // The following exception was thrown during execution in test generation
-    try {
-      korat.finitization.IFinitization iFinitization1 = tp2.Server.finServer(2031690);
+      korat.finitization.IFinitization iFinitization1 = tp2.Server.finServer(11100);
       org.junit.Assert.fail("Expected exception of type java.lang.IndexOutOfBoundsException");
     } catch (java.lang.IndexOutOfBoundsException e) {
       // Expected exception.
@@ -5469,27 +7435,185 @@ public class RegressionTest1 {
   }
 
   @Test
-  public void test282() throws Throwable {
+  public void test268() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test282"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test268"); }
 
 
-    java.lang.Integer i1 = java.lang.Integer.getInteger("24131000000");
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i6 = iP5.getFourth();
+    boolean b7 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    tp2.SinglyLinkedList singlyLinkedList8 = new tp2.SinglyLinkedList();
+    tp2.IP iP13 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i14 = iP13.getThird();
+    boolean b15 = singlyLinkedList8.remove(iP13);
+    java.lang.Integer i16 = iP13.getThird();
+    boolean b17 = strictlySortedSinglyLinkedList0.removeFromIP(iP13);
+    tp2.Server server18 = new tp2.Server();
+    boolean b19 = server18.exceptionsNotRepeated();
+    boolean b20 = server18.bansSorted();
+    boolean b21 = server18.notSharedElements();
+    tp2.Server server22 = new tp2.Server();
+    boolean b23 = server22.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList24 = new tp2.SinglyLinkedList();
+    tp2.IP iP29 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i30 = iP29.getThird();
+    boolean b31 = singlyLinkedList24.remove(iP29);
+    boolean b32 = server22.addException(iP29);
+    tp2.SinglyLinkedList singlyLinkedList33 = new tp2.SinglyLinkedList();
+    tp2.IP iP38 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i39 = iP38.getFourth();
+    singlyLinkedList33.add(iP38);
+    java.lang.Integer i41 = iP38.getFirst();
+    boolean b42 = server22.removeBan(iP38);
+    tp2.ITime iTime43 = null;
+    server22.setTime(iTime43);
+    boolean b45 = server22.notSharedElements();
+    tp2.IP iP50 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i51 = iP50.getThird();
+    iP50.setFourth((java.lang.Integer)0);
+    iP50.setSecond((java.lang.Integer)3);
+    boolean b56 = server22.addBan(iP50);
+    tp2.SinglyLinkedList singlyLinkedList57 = new tp2.SinglyLinkedList();
+    tp2.IP iP62 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i63 = iP62.getThird();
+    boolean b64 = singlyLinkedList57.remove(iP62);
+    java.lang.Integer i65 = iP62.getThird();
+    iP62.setFirst((java.lang.Integer)11100);
+    boolean b68 = server22.addBan(iP62);
+    boolean b69 = server18.removeException(iP62);
+    boolean b70 = strictlySortedSinglyLinkedList0.removeFromIP(iP62);
+    iP62.setFourth((java.lang.Integer)16384);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(i1);
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + 2+ "'", i6.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i14 + "' != '" + (-1)+ "'", i14.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b15 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b21 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i30 + "' != '" + (-1)+ "'", i30.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b31 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i39 + "' != '" + 100+ "'", i39.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i41 + "' != '" + (-1)+ "'", i41.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b45 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i51 + "' != '" + (-1)+ "'", i51.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b56 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i63 + "' != '" + (-1)+ "'", i63.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b64 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i65 + "' != '" + (-1)+ "'", i65.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b68 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b69 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b70 == false);
 
   }
 
   @Test
-  public void test283() throws Throwable {
+  public void test269() throws Throwable {
 
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test283"); }
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test269"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.exceptionsNotRepeated();
+    boolean b2 = server0.bansSorted();
+    boolean b3 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList4 = new tp2.SinglyLinkedList();
+    tp2.IP iP9 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i10 = iP9.getFourth();
+    singlyLinkedList4.add(iP9);
+    boolean b12 = server0.addException(iP9);
+    java.lang.Integer i13 = iP9.getSecond();
+    iP9.setSecond((java.lang.Integer)(-1));
+    java.lang.Integer i16 = iP9.getFourth();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i10 + "' != '" + 100+ "'", i10.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b12 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i13 + "' != '" + (-1)+ "'", i13.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + 100+ "'", i16.equals(100));
+
+  }
+
+  @Test
+  public void test270() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test270"); }
 
 
     // The following exception was thrown during execution in test generation
     try {
-      int i2 = java.lang.Integer.parseUnsignedInt("5", 0);
+      int i2 = java.lang.Integer.parseUnsignedInt("5", 100);
       org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
     } catch (java.lang.NumberFormatException e) {
       // Expected exception.
@@ -5501,15 +7625,698 @@ public class RegressionTest1 {
   }
 
   @Test
+  public void test271() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test271"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.exceptionsNotRepeated();
+    boolean b2 = server0.bansSorted();
+    tp2.Server server3 = new tp2.Server();
+    tp2.IP iP8 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b9 = server3.removeBan(iP8);
+    java.lang.Integer i10 = iP8.getFirst();
+    boolean b11 = server0.addBan(iP8);
+    server0.update();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i10 + "' != '" + (-1)+ "'", i10.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == true);
+
+  }
+
+  @Test
+  public void test272() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test272"); }
+
+
+    long long1 = java.lang.Integer.toUnsignedLong(23);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(long1 == 23L);
+
+  }
+
+  @Test
+  public void test273() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test273"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    tp2.SinglyLinkedList singlyLinkedList11 = new tp2.SinglyLinkedList();
+    tp2.IP iP16 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i17 = iP16.getFourth();
+    singlyLinkedList11.add(iP16);
+    java.lang.Integer i19 = iP16.getFirst();
+    boolean b20 = server0.removeBan(iP16);
+    tp2.Server server21 = new tp2.Server();
+    tp2.IP iP26 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b27 = server21.removeBan(iP26);
+    tp2.IP iP32 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i33 = iP32.getThird();
+    iP32.setFourth((java.lang.Integer)0);
+    iP32.setSecond((java.lang.Integer)3);
+    iP32.setFourth((java.lang.Integer)12);
+    boolean b40 = server21.addBan(iP32);
+    boolean b41 = server0.removeException(iP32);
+    tp2.ITime iTime42 = null;
+    server0.setTime(iTime42);
+    tp2.SinglyLinkedList singlyLinkedList44 = new tp2.SinglyLinkedList();
+    tp2.IP iP49 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i50 = iP49.getThird();
+    boolean b51 = singlyLinkedList44.remove(iP49);
+    java.lang.Integer i52 = iP49.getThird();
+    java.lang.Integer i53 = iP49.getSecond();
+    boolean b54 = server0.addException(iP49);
+    java.lang.Integer i55 = iP49.getSecond();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + 100+ "'", i17.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b27 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i33 + "' != '" + (-1)+ "'", i33.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b40 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b41 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i50 + "' != '" + (-1)+ "'", i50.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b51 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i52 + "' != '" + (-1)+ "'", i52.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i53 + "' != '" + (-1)+ "'", i53.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b54 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i55 + "' != '" + (-1)+ "'", i55.equals((-1)));
+
+  }
+
+  @Test
+  public void test274() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test274"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    tp2.SinglyLinkedList singlyLinkedList11 = new tp2.SinglyLinkedList();
+    tp2.IP iP16 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i17 = iP16.getFourth();
+    singlyLinkedList11.add(iP16);
+    java.lang.Integer i19 = iP16.getFirst();
+    boolean b20 = server0.removeBan(iP16);
+    tp2.ITime iTime21 = null;
+    server0.setTime(iTime21);
+    boolean b23 = server0.bansSorted();
+    boolean b24 = server0.bansNotRepeatedExpirationOrIP();
+    boolean b25 = server0.bansOkTime();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + 100+ "'", i17.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b24 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b25 == true);
+
+  }
+
+  @Test
+  public void test275() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test275"); }
+
+
+    int i2 = java.lang.Integer.compare(31, (-1601830656));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 1);
+
+  }
+
+  @Test
+  public void test276() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test276"); }
+
+
+    int i1 = java.lang.Integer.reverseBytes(16);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 268435456);
+
+  }
+
+  @Test
+  public void test277() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test277"); }
+
+
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)11100, (java.lang.Integer)784, (java.lang.Integer)0);
+    boolean b6 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    int i7 = strictlySortedSinglyLinkedList0.getSize();
+    tp2.SinglyLinkedList singlyLinkedList8 = new tp2.SinglyLinkedList();
+    tp2.IP iP13 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i14 = iP13.getThird();
+    boolean b15 = singlyLinkedList8.remove(iP13);
+    tp2.IPBan iPBan17 = new tp2.IPBan(iP13, (java.lang.Long)10L);
+    java.lang.Long long18 = iPBan17.getExpires();
+    java.lang.Long long19 = iPBan17.getExpires();
+    tp2.IP iP20 = iPBan17.getIp();
+    boolean b21 = strictlySortedSinglyLinkedList0.add(iPBan17);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b6 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i7 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i14 + "' != '" + (-1)+ "'", i14.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b15 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long18 + "' != '" + 10L+ "'", long18.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long19 + "' != '" + 10L+ "'", long19.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP20);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b21 == true);
+
+  }
+
+  @Test
+  public void test278() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test278"); }
+
+
+    java.lang.String str1 = java.lang.Integer.toOctalString(805306368);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "6000000000"+ "'", str1.equals("6000000000"));
+
+  }
+
+  @Test
+  public void test279() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test279"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    iP5.setSecond((java.lang.Integer)150994944);
+    java.lang.Integer i10 = iP5.getFourth();
+    java.lang.Integer i11 = iP5.getThird();
+    java.lang.Integer i12 = iP5.getFirst();
+    tp2.SinglyLinkedList singlyLinkedList13 = new tp2.SinglyLinkedList();
+    tp2.IP iP18 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i19 = iP18.getThird();
+    boolean b20 = singlyLinkedList13.remove(iP18);
+    tp2.IPBan iPBan22 = new tp2.IPBan(iP18, (java.lang.Long)10L);
+    java.lang.Long long23 = iPBan22.getExpires();
+    java.lang.Long long24 = iPBan22.getExpires();
+    tp2.SinglyLinkedList singlyLinkedList25 = new tp2.SinglyLinkedList();
+    tp2.IP iP30 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i31 = iP30.getThird();
+    boolean b32 = singlyLinkedList25.remove(iP30);
+    tp2.IPBan iPBan34 = new tp2.IPBan(iP30, (java.lang.Long)10L);
+    tp2.IP iP39 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i40 = iP39.getFourth();
+    iPBan34.setIp(iP39);
+    iPBan22.setIp(iP39);
+    boolean b43 = iP5.equals((java.lang.Object)iP39);
+    tp2.IPBan iPBan45 = new tp2.IPBan(iP5, (java.lang.Long)1L);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i10 + "' != '" + 100+ "'", i10.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i11 + "' != '" + (-1)+ "'", i11.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i12 + "' != '" + (-1)+ "'", i12.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long23 + "' != '" + 10L+ "'", long23.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long24 + "' != '" + 10L+ "'", long24.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i31 + "' != '" + (-1)+ "'", i31.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i40 + "' != '" + 100+ "'", i40.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b43 == false);
+
+  }
+
+  @Test
+  public void test280() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test280"); }
+
+
+    int i1 = java.lang.Integer.reverse(201326597);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == (-1610612688));
+
+  }
+
+  @Test
+  public void test281() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test281"); }
+
+
+    long long1 = java.lang.Integer.toUnsignedLong(25);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(long1 == 25L);
+
+  }
+
+  @Test
+  public void test282() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test282"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP1 = null;
+    boolean b2 = singlyLinkedList0.remove(iP1);
+    boolean b3 = singlyLinkedList0.isEmpty();
+    tp2.IP iP8 = new tp2.IP((java.lang.Integer)5, (java.lang.Integer)1, (java.lang.Integer)0, (java.lang.Integer)12);
+    boolean b9 = singlyLinkedList0.contains(iP8);
+    tp2.SinglyLinkedList singlyLinkedList10 = new tp2.SinglyLinkedList();
+    tp2.IP iP15 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i16 = iP15.getThird();
+    boolean b17 = singlyLinkedList10.remove(iP15);
+    iP15.setSecond((java.lang.Integer)150994944);
+    java.lang.Integer i20 = iP15.getFourth();
+    java.lang.Integer i21 = iP15.getThird();
+    java.lang.Integer i22 = iP15.getFirst();
+    boolean b23 = singlyLinkedList0.contains(iP15);
+    tp2.SinglyLinkedList singlyLinkedList24 = new tp2.SinglyLinkedList();
+    tp2.IP iP29 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i30 = iP29.getFourth();
+    singlyLinkedList24.add(iP29);
+    java.lang.Integer i32 = iP29.getFirst();
+    boolean b33 = singlyLinkedList0.contains(iP29);
+    java.lang.Integer i34 = iP29.getThird();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i20 + "' != '" + 100+ "'", i20.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i21 + "' != '" + (-1)+ "'", i21.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i22 + "' != '" + (-1)+ "'", i22.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i30 + "' != '" + 100+ "'", i30.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i32 + "' != '" + (-1)+ "'", i32.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b33 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i34 + "' != '" + (-1)+ "'", i34.equals((-1)));
+
+  }
+
+  @Test
+  public void test283() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test283"); }
+
+
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i6 = iP5.getFourth();
+    boolean b7 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    tp2.SinglyLinkedList singlyLinkedList8 = new tp2.SinglyLinkedList();
+    tp2.IP iP13 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i14 = iP13.getThird();
+    boolean b15 = singlyLinkedList8.remove(iP13);
+    java.lang.Integer i16 = iP13.getThird();
+    boolean b17 = strictlySortedSinglyLinkedList0.removeFromIP(iP13);
+    tp2.IPBan iPBan19 = strictlySortedSinglyLinkedList0.get(167772160);
+    int i20 = strictlySortedSinglyLinkedList0.getSize();
+    tp2.SinglyLinkedList singlyLinkedList21 = new tp2.SinglyLinkedList();
+    tp2.IP iP26 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i27 = iP26.getThird();
+    boolean b28 = singlyLinkedList21.remove(iP26);
+    tp2.IPBan iPBan30 = new tp2.IPBan(iP26, (java.lang.Long)10L);
+    java.lang.Long long31 = iPBan30.getExpires();
+    java.lang.Long long32 = iPBan30.getExpires();
+    iPBan30.setExpires((java.lang.Long)10L);
+    boolean b35 = strictlySortedSinglyLinkedList0.add(iPBan30);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList36 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP41 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)11100, (java.lang.Integer)784, (java.lang.Integer)0);
+    boolean b42 = strictlySortedSinglyLinkedList36.removeFromIP(iP41);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList43 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP48 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i49 = iP48.getFourth();
+    boolean b50 = strictlySortedSinglyLinkedList43.removeFromIP(iP48);
+    tp2.SinglyLinkedList singlyLinkedList51 = new tp2.SinglyLinkedList();
+    tp2.IP iP56 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i57 = iP56.getThird();
+    boolean b58 = singlyLinkedList51.remove(iP56);
+    java.lang.Integer i59 = iP56.getThird();
+    boolean b60 = strictlySortedSinglyLinkedList43.removeFromIP(iP56);
+    tp2.IPBan iPBan62 = strictlySortedSinglyLinkedList43.get(167772160);
+    int i63 = strictlySortedSinglyLinkedList43.getSize();
+    tp2.SinglyLinkedList singlyLinkedList64 = new tp2.SinglyLinkedList();
+    tp2.IP iP69 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i70 = iP69.getThird();
+    boolean b71 = singlyLinkedList64.remove(iP69);
+    tp2.IPBan iPBan73 = new tp2.IPBan(iP69, (java.lang.Long)10L);
+    java.lang.Long long74 = iPBan73.getExpires();
+    java.lang.Long long75 = iPBan73.getExpires();
+    iPBan73.setExpires((java.lang.Long)10L);
+    boolean b78 = strictlySortedSinglyLinkedList43.add(iPBan73);
+    boolean b79 = strictlySortedSinglyLinkedList36.contains(iPBan73);
+    boolean b80 = strictlySortedSinglyLinkedList0.add(iPBan73);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + 2+ "'", i6.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i14 + "' != '" + (-1)+ "'", i14.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b15 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan19);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i20 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i27 + "' != '" + (-1)+ "'", i27.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b28 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long31 + "' != '" + 10L+ "'", long31.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long32 + "' != '" + 10L+ "'", long32.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b35 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i49 + "' != '" + 2+ "'", i49.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b50 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i57 + "' != '" + (-1)+ "'", i57.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b58 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i59 + "' != '" + (-1)+ "'", i59.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b60 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan62);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i63 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i70 + "' != '" + (-1)+ "'", i70.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b71 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long74 + "' != '" + 10L+ "'", long74.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long75 + "' != '" + 10L+ "'", long75.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b78 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b79 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b80 == false);
+
+  }
+
+  @Test
   public void test284() throws Throwable {
 
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test284"); }
 
 
-    int i1 = java.lang.Integer.numberOfLeadingZeros(80);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.bansSorted();
+    tp2.IP iP6 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i7 = iP6.getFourth();
+    boolean b8 = server0.removeException(iP6);
+    boolean b9 = server0.bansOkTime();
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList10 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP15 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i16 = iP15.getFourth();
+    boolean b17 = strictlySortedSinglyLinkedList10.removeFromIP(iP15);
+    tp2.SinglyLinkedList singlyLinkedList18 = new tp2.SinglyLinkedList();
+    tp2.IP iP23 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i24 = iP23.getThird();
+    boolean b25 = singlyLinkedList18.remove(iP23);
+    java.lang.Integer i26 = iP23.getThird();
+    boolean b27 = strictlySortedSinglyLinkedList10.removeFromIP(iP23);
+    tp2.IPBan iPBan29 = strictlySortedSinglyLinkedList10.get(469762048);
+    tp2.IPBan iPBan31 = strictlySortedSinglyLinkedList10.get(1100100);
+    tp2.Server server32 = new tp2.Server();
+    tp2.ITime iTime33 = null;
+    server32.setTime(iTime33);
+    tp2.Server server35 = new tp2.Server();
+    boolean b36 = server35.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList37 = new tp2.SinglyLinkedList();
+    tp2.IP iP42 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i43 = iP42.getThird();
+    boolean b44 = singlyLinkedList37.remove(iP42);
+    boolean b45 = server35.addException(iP42);
+    java.lang.Integer i46 = iP42.getFirst();
+    tp2.IPBan iPBan48 = new tp2.IPBan(iP42, (java.lang.Long)5L);
+    boolean b49 = server32.connect(iP42);
+    boolean b50 = strictlySortedSinglyLinkedList10.containsIP(iP42);
+    boolean b51 = server0.removeException(iP42);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 25);
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i7 + "' != '" + 100+ "'", i7.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + 2+ "'", i16.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i24 + "' != '" + (-1)+ "'", i24.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b25 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i26 + "' != '" + (-1)+ "'", i26.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b27 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan29);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan31);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b36 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i43 + "' != '" + (-1)+ "'", i43.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b44 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b45 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i46 + "' != '" + (-1)+ "'", i46.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b49 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b50 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b51 == false);
 
   }
 
@@ -5519,10 +8326,28 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test285"); }
 
 
-    int i1 = java.lang.Integer.numberOfTrailingZeros(28);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.exceptionsNotRepeated();
+    boolean b2 = server0.bansSorted();
+    boolean b3 = server0.notSharedElements();
+    boolean b4 = server0.bansSorted();
+    server0.update();
+    boolean b6 = server0.exceptionsNotRepeated();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 2);
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b4 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b6 == true);
 
   }
 
@@ -5532,10 +8357,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test286"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toUnsignedString(18);
+    int i1 = java.lang.Integer.bitCount(51);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "18"+ "'", str1.equals("18"));
+    org.junit.Assert.assertTrue(i1 == 4);
 
   }
 
@@ -5545,10 +8370,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test287"); }
 
 
-    java.lang.Integer i2 = java.lang.Integer.getInteger("111", (java.lang.Integer)458885);
+    int i2 = java.lang.Integer.max(524288, (-872415232));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 458885+ "'", i2.equals(458885));
+    org.junit.Assert.assertTrue(i2 == 524288);
 
   }
 
@@ -5558,126 +8383,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test288"); }
 
 
-    tp2.IP iP0 = null;
-    tp2.IPBan iPBan2 = new tp2.IPBan(iP0, (java.lang.Long)10L);
-    tp2.IP iP3 = iPBan2.getIp();
-    java.lang.Long long4 = iPBan2.expires;
-    tp2.Server server5 = new tp2.Server();
-    tp2.IP iP10 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b11 = server5.removeException(iP10);
-    java.lang.Integer i12 = iP10.getFirst();
-    iPBan2.setIp(iP10);
-    tp2.IP iP14 = iPBan2.ip;
-    tp2.Server server15 = new tp2.Server();
-    tp2.IP iP20 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b21 = server15.removeException(iP20);
-    iP20.setThird((java.lang.Integer)56);
-    java.lang.Integer i24 = iP20.getFourth();
-    tp2.IPBan iPBan26 = new tp2.IPBan(iP20, (java.lang.Long)10L);
-    java.lang.Long long27 = iPBan26.expires;
-    tp2.Server server28 = new tp2.Server();
-    tp2.IP iP29 = null;
-    boolean b30 = server28.addBan(iP29);
-    tp2.IP iP35 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iP35.setSecond((java.lang.Integer)2147483647);
-    boolean b38 = server28.addBan(iP35);
-    tp2.Server server39 = new tp2.Server();
-    tp2.IP iP40 = null;
-    boolean b41 = server39.addBan(iP40);
-    tp2.ITime iTime42 = null;
-    server39.setTime(iTime42);
-    tp2.IP iP44 = null;
-    tp2.IPBan iPBan46 = new tp2.IPBan(iP44, (java.lang.Long)10L);
-    tp2.IP iP47 = iPBan46.getIp();
-    java.lang.Long long48 = iPBan46.expires;
-    tp2.IP iP49 = null;
-    iPBan46.ip = iP49;
-    tp2.Server server51 = new tp2.Server();
-    tp2.IP iP56 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b57 = server51.removeException(iP56);
-    java.lang.Integer i58 = iP56.getFirst();
-    iPBan46.setIp(iP56);
-    boolean b60 = server39.connect(iP56);
-    boolean b61 = server28.removeBan(iP56);
-    tp2.IP iP66 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    iP66.setFirst((java.lang.Integer)161);
-    iP66.setThird((java.lang.Integer)3);
-    iP66.setFirst((java.lang.Integer)26);
-    iP66.setThird((java.lang.Integer)5);
-    boolean b75 = server28.removeBan(iP66);
-    java.lang.Object obj76 = null;
-    boolean b77 = iP66.equals(obj76);
-    iPBan26.setIp(iP66);
-    tp2.IP iP83 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iP83.setSecond((java.lang.Integer)2147483647);
-    iP83.setSecond((java.lang.Integer)134217728);
-    java.lang.Integer i88 = iP83.getSecond();
-    iPBan26.setIp(iP83);
-    iPBan2.ip = iP83;
-    java.lang.Long long91 = iPBan2.getExpires();
+    int i2 = java.lang.Integer.max(201326624, 201326592);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP3);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long4 + "' != '" + 10L+ "'", long4.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b11 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i12 + "' != '" + 161+ "'", i12.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNotNull(iP14);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b21 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i24 + "' != '" + 5+ "'", i24.equals(5));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long27 + "' != '" + 10L+ "'", long27.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b30 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b38 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b41 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP47);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long48 + "' != '" + 10L+ "'", long48.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b57 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i58 + "' != '" + 161+ "'", i58.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b60 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b61 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b75 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b77 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i88 + "' != '" + 134217728+ "'", i88.equals(134217728));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long91 + "' != '" + 10L+ "'", long91.equals(10L));
+    org.junit.Assert.assertTrue(i2 == 201326624);
 
   }
 
@@ -5687,10 +8396,145 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test289"); }
 
 
-    int i2 = java.lang.Integer.rotateLeft((-219971585), 1275068417);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i6 = iP5.getFourth();
+    boolean b7 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    tp2.SinglyLinkedList singlyLinkedList8 = new tp2.SinglyLinkedList();
+    tp2.IP iP13 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i14 = iP13.getThird();
+    boolean b15 = singlyLinkedList8.remove(iP13);
+    java.lang.Integer i16 = iP13.getThird();
+    boolean b17 = strictlySortedSinglyLinkedList0.removeFromIP(iP13);
+    tp2.Server server18 = new tp2.Server();
+    boolean b19 = server18.exceptionsNotRepeated();
+    boolean b20 = server18.bansSorted();
+    boolean b21 = server18.notSharedElements();
+    tp2.Server server22 = new tp2.Server();
+    boolean b23 = server22.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList24 = new tp2.SinglyLinkedList();
+    tp2.IP iP29 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i30 = iP29.getThird();
+    boolean b31 = singlyLinkedList24.remove(iP29);
+    boolean b32 = server22.addException(iP29);
+    tp2.SinglyLinkedList singlyLinkedList33 = new tp2.SinglyLinkedList();
+    tp2.IP iP38 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i39 = iP38.getFourth();
+    singlyLinkedList33.add(iP38);
+    java.lang.Integer i41 = iP38.getFirst();
+    boolean b42 = server22.removeBan(iP38);
+    tp2.ITime iTime43 = null;
+    server22.setTime(iTime43);
+    boolean b45 = server22.notSharedElements();
+    tp2.IP iP50 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i51 = iP50.getThird();
+    iP50.setFourth((java.lang.Integer)0);
+    iP50.setSecond((java.lang.Integer)3);
+    boolean b56 = server22.addBan(iP50);
+    tp2.SinglyLinkedList singlyLinkedList57 = new tp2.SinglyLinkedList();
+    tp2.IP iP62 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i63 = iP62.getThird();
+    boolean b64 = singlyLinkedList57.remove(iP62);
+    java.lang.Integer i65 = iP62.getThird();
+    iP62.setFirst((java.lang.Integer)11100);
+    boolean b68 = server22.addBan(iP62);
+    boolean b69 = server18.removeException(iP62);
+    boolean b70 = strictlySortedSinglyLinkedList0.removeFromIP(iP62);
+    tp2.Server server71 = new tp2.Server();
+    boolean b72 = server71.exceptionsNotRepeated();
+    tp2.IP iP77 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i78 = iP77.getThird();
+    iP77.setSecond((java.lang.Integer)10);
+    boolean b81 = server71.removeBan(iP77);
+    iP77.setFourth((java.lang.Integer)9);
+    boolean b84 = strictlySortedSinglyLinkedList0.removeFromIP(iP77);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-439943169));
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + 2+ "'", i6.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i14 + "' != '" + (-1)+ "'", i14.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b15 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b21 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i30 + "' != '" + (-1)+ "'", i30.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b31 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i39 + "' != '" + 100+ "'", i39.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i41 + "' != '" + (-1)+ "'", i41.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b45 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i51 + "' != '" + (-1)+ "'", i51.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b56 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i63 + "' != '" + (-1)+ "'", i63.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b64 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i65 + "' != '" + (-1)+ "'", i65.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b68 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b69 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b70 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b72 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i78 + "' != '" + (-1)+ "'", i78.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b81 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b84 == false);
 
   }
 
@@ -5700,10 +8544,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test290"); }
 
 
-    java.lang.Integer i2 = java.lang.Integer.getInteger("133", (java.lang.Integer)134217728);
+    java.lang.Integer i2 = java.lang.Integer.getInteger("12", 1);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 134217728+ "'", i2.equals(134217728));
+    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 1+ "'", i2.equals(1));
 
   }
 
@@ -5713,10 +8557,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test291"); }
 
 
-    int i1 = java.lang.Integer.numberOfTrailingZeros(100);
+    int i1 = java.lang.Integer.highestOneBit(16384);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 2);
+    org.junit.Assert.assertTrue(i1 == 16384);
 
   }
 
@@ -5726,10 +8570,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test292"); }
 
 
-    java.lang.Integer i2 = java.lang.Integer.getInteger("38000", (-2063597489));
+    int i2 = java.lang.Integer.compare(1073741824, 512);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + (-2063597489)+ "'", i2.equals((-2063597489)));
+    org.junit.Assert.assertTrue(i2 == 1);
 
   }
 
@@ -5739,10 +8583,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test293"); }
 
 
-    int i2 = java.lang.Integer.rotateLeft(268503106, 70);
+    int i2 = java.lang.Integer.sum((-1), 0);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 4329604);
+    org.junit.Assert.assertTrue(i2 == (-1));
 
   }
 
@@ -5752,15 +8596,14 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test294"); }
 
 
-    java.lang.Integer i0 = null;
     // The following exception was thrown during execution in test generation
     try {
-      tp2.IP iP4 = new tp2.IP(i0, (java.lang.Integer)19884108, (java.lang.Integer)15, (java.lang.Integer)26);
-      org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException");
-    } catch (java.lang.IllegalArgumentException e) {
+      int i2 = java.lang.Integer.parseInt("167772260", 4);
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
       // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.IllegalArgumentException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException, got " + e.getClass().getCanonicalName());
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
       }
     }
 
@@ -5772,11 +8615,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test295"); }
 
 
-    java.lang.Integer i1 = null;
-    java.lang.Integer i2 = java.lang.Integer.getInteger("10000000000000000000000000111000", i1);
+    int i1 = java.lang.Integer.reverse((-1073741812));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(i2);
+    org.junit.Assert.assertTrue(i1 == 805306371);
 
   }
 
@@ -5786,10 +8628,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test296"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toBinaryString(1437910020);
+    int i2 = java.lang.Integer.divideUnsigned(100000, 40);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "1010101101101001100010000000100"+ "'", str1.equals("1010101101101001100010000000100"));
+    org.junit.Assert.assertTrue(i2 == 2500);
 
   }
 
@@ -5799,10 +8641,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test297"); }
 
 
-    int i1 = java.lang.Integer.lowestOneBit(19884108);
+    java.lang.Integer i1 = java.lang.Integer.getInteger("16384");
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 4);
+    org.junit.Assert.assertNull(i1);
 
   }
 
@@ -5812,10 +8654,123 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test298"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toUnsignedString((-2063597489));
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i6 = iP5.getFourth();
+    boolean b7 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    tp2.SinglyLinkedList singlyLinkedList8 = new tp2.SinglyLinkedList();
+    tp2.IP iP13 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i14 = iP13.getThird();
+    boolean b15 = singlyLinkedList8.remove(iP13);
+    java.lang.Integer i16 = iP13.getThird();
+    boolean b17 = strictlySortedSinglyLinkedList0.removeFromIP(iP13);
+    tp2.IPBan iPBan19 = strictlySortedSinglyLinkedList0.get(469762048);
+    tp2.SinglyLinkedList singlyLinkedList20 = new tp2.SinglyLinkedList();
+    tp2.IP iP25 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i26 = iP25.getThird();
+    boolean b27 = singlyLinkedList20.remove(iP25);
+    tp2.IP iP32 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i33 = iP32.getFirst();
+    boolean b34 = singlyLinkedList20.remove(iP32);
+    iP32.setFirst((java.lang.Integer)(-2147483648));
+    boolean b37 = strictlySortedSinglyLinkedList0.removeFromIP(iP32);
+    tp2.IPBan iPBan39 = strictlySortedSinglyLinkedList0.get(100000);
+    tp2.SinglyLinkedList singlyLinkedList40 = new tp2.SinglyLinkedList();
+    tp2.IP iP45 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i46 = iP45.getThird();
+    boolean b47 = singlyLinkedList40.remove(iP45);
+    tp2.IPBan iPBan49 = new tp2.IPBan(iP45, (java.lang.Long)10L);
+    tp2.IP iP54 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i55 = iP54.getFourth();
+    iPBan49.setIp(iP54);
+    boolean b57 = strictlySortedSinglyLinkedList0.add(iPBan49);
+    int i58 = strictlySortedSinglyLinkedList0.getSize();
+    tp2.Server server59 = new tp2.Server();
+    boolean b60 = server59.exceptionsNotRepeated();
+    boolean b61 = server59.bansNotRepeatedExpirationOrIP();
+    tp2.Server server62 = new tp2.Server();
+    tp2.IP iP67 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b68 = server62.removeBan(iP67);
+    java.lang.Integer i69 = iP67.getFirst();
+    boolean b70 = server59.addException(iP67);
+    tp2.IPBan iPBan72 = new tp2.IPBan(iP67, (java.lang.Long)(-1L));
+    boolean b73 = strictlySortedSinglyLinkedList0.contains(iPBan72);
+    tp2.IPBan iPBan75 = strictlySortedSinglyLinkedList0.get(20);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "2231369807"+ "'", str1.equals("2231369807"));
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + 2+ "'", i6.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i14 + "' != '" + (-1)+ "'", i14.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b15 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan19);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i26 + "' != '" + (-1)+ "'", i26.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b27 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i33 + "' != '" + (-1)+ "'", i33.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b34 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b37 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan39);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i46 + "' != '" + (-1)+ "'", i46.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b47 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i55 + "' != '" + 100+ "'", i55.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b57 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i58 == 1);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b60 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b61 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b68 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i69 + "' != '" + (-1)+ "'", i69.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b70 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b73 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan75);
 
   }
 
@@ -5825,16 +8780,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test299"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseUnsignedInt("10110112112200002221", (-2147483515));
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    int i1 = java.lang.Integer.reverseBytes(436207616);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 26);
 
   }
 
@@ -5844,10 +8793,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test300"); }
 
 
-    java.lang.Integer i1 = new java.lang.Integer("144");
+    java.lang.String str1 = java.lang.Integer.toHexString(201326624);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 144+ "'", i1.equals(144));
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "c000020"+ "'", str1.equals("c000020"));
 
   }
 
@@ -5857,16 +8806,55 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test301"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseInt("20000000000", 70);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)11100, (java.lang.Integer)784, (java.lang.Integer)0);
+    boolean b6 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    int i7 = strictlySortedSinglyLinkedList0.getSize();
+    tp2.Server server8 = new tp2.Server();
+    boolean b9 = server8.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList10 = new tp2.SinglyLinkedList();
+    tp2.IP iP15 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i16 = iP15.getThird();
+    boolean b17 = singlyLinkedList10.remove(iP15);
+    boolean b18 = server8.addException(iP15);
+    java.lang.Integer i19 = iP15.getFourth();
+    boolean b20 = strictlySortedSinglyLinkedList0.containsIP(iP15);
+    int i21 = strictlySortedSinglyLinkedList0.getSize();
+    tp2.IPBan iPBan23 = strictlySortedSinglyLinkedList0.get((-1073741812));
+    tp2.IPBan iPBan25 = strictlySortedSinglyLinkedList0.get(27);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b6 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i7 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b18 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + 100+ "'", i19.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i21 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan23);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan25);
 
   }
 
@@ -5876,16 +8864,96 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test302"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseUnsignedInt("2147483781", 100);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    tp2.SinglyLinkedList singlyLinkedList11 = new tp2.SinglyLinkedList();
+    tp2.IP iP16 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i17 = iP16.getFourth();
+    singlyLinkedList11.add(iP16);
+    java.lang.Integer i19 = iP16.getFirst();
+    boolean b20 = server0.removeBan(iP16);
+    tp2.ITime iTime21 = null;
+    server0.setTime(iTime21);
+    boolean b23 = server0.bansSorted();
+    boolean b24 = server0.bansNotRepeatedExpirationOrIP();
+    tp2.SinglyLinkedList singlyLinkedList25 = new tp2.SinglyLinkedList();
+    tp2.IP iP30 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i31 = iP30.getThird();
+    boolean b32 = singlyLinkedList25.remove(iP30);
+    tp2.IPBan iPBan34 = new tp2.IPBan(iP30, (java.lang.Long)10L);
+    java.lang.Long long35 = iPBan34.getExpires();
+    java.lang.Long long36 = iPBan34.getExpires();
+    tp2.SinglyLinkedList singlyLinkedList37 = new tp2.SinglyLinkedList();
+    tp2.IP iP42 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i43 = iP42.getThird();
+    boolean b44 = singlyLinkedList37.remove(iP42);
+    tp2.IPBan iPBan46 = new tp2.IPBan(iP42, (java.lang.Long)10L);
+    tp2.IP iP51 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i52 = iP51.getFourth();
+    iPBan46.setIp(iP51);
+    iPBan34.setIp(iP51);
+    boolean b55 = server0.addException(iP51);
+    tp2.IP iP56 = null;
+    boolean b57 = server0.addBan(iP56);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + 100+ "'", i17.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b24 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i31 + "' != '" + (-1)+ "'", i31.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long35 + "' != '" + 10L+ "'", long35.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long36 + "' != '" + 10L+ "'", long36.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i43 + "' != '" + (-1)+ "'", i43.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b44 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i52 + "' != '" + 100+ "'", i52.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b55 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b57 == false);
 
   }
 
@@ -5895,35 +8963,20 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test303"); }
 
 
-    tp2.IP iP0 = null;
-    tp2.IPBan iPBan2 = new tp2.IPBan(iP0, (java.lang.Long)10L);
-    tp2.IP iP3 = iPBan2.getIp();
-    java.lang.Long long4 = iPBan2.expires;
-    tp2.IP iP5 = null;
-    iPBan2.ip = iP5;
-    tp2.Server server7 = new tp2.Server();
-    tp2.IP iP12 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b13 = server7.removeException(iP12);
-    java.lang.Integer i14 = iP12.getFirst();
-    iPBan2.setIp(iP12);
-    iP12.setSecond((java.lang.Integer)1476395008);
-    tp2.IPBan iPBan19 = new tp2.IPBan(iP12, (java.lang.Long)10L);
-    java.lang.Long long20 = iPBan19.expires;
+    tp2.IP iP4 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i5 = iP4.getFirst();
+    java.lang.Integer i6 = iP4.getSecond();
+    tp2.IPBan iPBan8 = new tp2.IPBan(iP4, (java.lang.Long)1L);
+    tp2.IP iP9 = iPBan8.getIp();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP3);
+    org.junit.Assert.assertTrue("'" + i5 + "' != '" + (-1)+ "'", i5.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long4 + "' != '" + 10L+ "'", long4.equals(10L));
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b13 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i14 + "' != '" + 161+ "'", i14.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long20 + "' != '" + 10L+ "'", long20.equals(10L));
+    org.junit.Assert.assertNotNull(iP9);
 
   }
 
@@ -5933,10 +8986,60 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test304"); }
 
 
-    java.lang.Integer i2 = java.lang.Integer.getInteger("10", (java.lang.Integer)84410368);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.exceptionsNotRepeated();
+    boolean b2 = server0.bansSorted();
+    boolean b3 = server0.notSharedElements();
+    boolean b4 = server0.bansSorted();
+    server0.update();
+    tp2.IP iP10 = new tp2.IP((java.lang.Integer)11100, (java.lang.Integer)40, (java.lang.Integer)28, (java.lang.Integer)727449600);
+    boolean b11 = server0.addException(iP10);
+    server0.update();
+    tp2.Server server13 = new tp2.Server();
+    tp2.IP iP18 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b19 = server13.removeBan(iP18);
+    tp2.IP iP24 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i25 = iP24.getThird();
+    iP24.setFourth((java.lang.Integer)0);
+    iP24.setSecond((java.lang.Integer)3);
+    iP24.setFourth((java.lang.Integer)12);
+    boolean b32 = server13.addBan(iP24);
+    boolean b33 = server0.addException(iP24);
+    boolean b34 = server0.bansNotRepeatedExpirationOrIP();
+    tp2.ITime iTime35 = null;
+    server0.setTime(iTime35);
+    tp2.ITime iTime37 = null;
+    server0.setTime(iTime37);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 84410368+ "'", i2.equals(84410368));
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b4 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i25 + "' != '" + (-1)+ "'", i25.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b33 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b34 == true);
 
   }
 
@@ -5946,10 +9049,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test305"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toBinaryString(50397184);
+    int i2 = java.lang.Integer.min(19, 640);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "11000000010000000000000000"+ "'", str1.equals("11000000010000000000000000"));
+    org.junit.Assert.assertTrue(i2 == 19);
 
   }
 
@@ -5959,10 +9062,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test306"); }
 
 
-    int i2 = java.lang.Integer.rotateLeft(4329604, 402653184);
+    java.lang.Integer i1 = java.lang.Integer.getInteger("17777777777");
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 4329604);
+    org.junit.Assert.assertNull(i1);
 
   }
 
@@ -5972,10 +9075,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test307"); }
 
 
-    int i2 = java.lang.Integer.compare(80000000, 3);
+    int i2 = java.lang.Integer.max(5, 0);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1);
+    org.junit.Assert.assertTrue(i2 == 5);
 
   }
 
@@ -5985,25 +9088,46 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test308"); }
 
 
-    tp2.IP iP0 = null;
-    tp2.IPBan iPBan2 = new tp2.IPBan(iP0, (java.lang.Long)10L);
-    java.lang.Long long3 = iPBan2.getExpires();
-    tp2.IP iP4 = iPBan2.getIp();
-    iPBan2.setExpires((java.lang.Long)100L);
-    java.lang.Long long7 = iPBan2.expires;
-    tp2.IP iP8 = iPBan2.ip;
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    tp2.IPBan iPBan9 = new tp2.IPBan(iP5, (java.lang.Long)10L);
+    tp2.IP iP14 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i15 = iP14.getFourth();
+    iPBan9.setIp(iP14);
+    java.lang.Long long17 = iPBan9.getExpires();
+    java.lang.Long long18 = iPBan9.getExpires();
+    tp2.IP iP23 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i24 = iP23.getFirst();
+    java.lang.Integer i25 = iP23.getSecond();
+    iP23.setFirst((java.lang.Integer)201326592);
+    iPBan9.setIp(iP23);
+    java.lang.Long long29 = iPBan9.getExpires();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long3 + "' != '" + 10L+ "'", long3.equals(10L));
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP4);
+    org.junit.Assert.assertTrue(b7 == false);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long7 + "' != '" + 100L+ "'", long7.equals(100L));
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + 100+ "'", i15.equals(100));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP8);
+    org.junit.Assert.assertTrue("'" + long17 + "' != '" + 10L+ "'", long17.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long18 + "' != '" + 10L+ "'", long18.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i24 + "' != '" + (-1)+ "'", i24.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i25 + "' != '" + (-1)+ "'", i25.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long29 + "' != '" + 10L+ "'", long29.equals(10L));
 
   }
 
@@ -6013,10 +9137,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test309"); }
 
 
-    int i2 = java.lang.Integer.sum(101, 740);
+    int i2 = java.lang.Integer.parseUnsignedInt("a000000", 27);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 841);
+    org.junit.Assert.assertTrue(i2 == (-420762406));
 
   }
 
@@ -6027,107 +9151,24 @@ public class RegressionTest1 {
 
 
     tp2.Server server0 = new tp2.Server();
-    tp2.IP iP1 = null;
-    boolean b2 = server0.connect(iP1);
-    tp2.Server server3 = new tp2.Server();
-    tp2.Server server4 = new tp2.Server();
-    tp2.IP iP5 = null;
-    boolean b6 = server4.addBan(iP5);
-    tp2.IP iP11 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iP11.setSecond((java.lang.Integer)2147483647);
-    boolean b14 = server4.addBan(iP11);
-    tp2.Server server15 = new tp2.Server();
-    tp2.IP iP16 = null;
-    boolean b17 = server15.addBan(iP16);
-    tp2.ITime iTime18 = null;
-    server15.setTime(iTime18);
-    tp2.IP iP20 = null;
-    tp2.IPBan iPBan22 = new tp2.IPBan(iP20, (java.lang.Long)10L);
-    tp2.IP iP23 = iPBan22.getIp();
-    java.lang.Long long24 = iPBan22.expires;
-    tp2.IP iP25 = null;
-    iPBan22.ip = iP25;
-    tp2.Server server27 = new tp2.Server();
-    tp2.IP iP32 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b33 = server27.removeException(iP32);
-    java.lang.Integer i34 = iP32.getFirst();
-    iPBan22.setIp(iP32);
-    boolean b36 = server15.connect(iP32);
-    boolean b37 = server4.removeBan(iP32);
-    boolean b38 = server3.addBan(iP32);
-    iP32.setFourth((java.lang.Integer)1476395008);
-    boolean b41 = server0.removeBan(iP32);
-    tp2.Server server42 = new tp2.Server();
-    tp2.IP iP47 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b48 = server42.removeException(iP47);
-    server42.update();
-    tp2.Server server50 = new tp2.Server();
-    tp2.IP iP55 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b56 = server50.removeException(iP55);
-    java.lang.Integer i57 = iP55.getFirst();
-    boolean b58 = server42.addBan(iP55);
-    tp2.IP iP63 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    iP63.setFirst((java.lang.Integer)161);
-    boolean b67 = iP63.equals((java.lang.Object)56);
-    boolean b68 = server42.connect(iP63);
-    boolean b69 = server0.addBan(iP63);
+    boolean b1 = server0.exceptionsNotRepeated();
+    boolean b2 = server0.bansSorted();
+    boolean b3 = server0.notSharedElements();
+    tp2.ITime iTime4 = null;
+    server0.setTime(iTime4);
+    boolean b6 = server0.bansNotRepeatedExpirationOrIP();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
     
     // Regression assertion (captures the current behavior of the code)
     org.junit.Assert.assertTrue(b2 == true);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b6 == false);
+    org.junit.Assert.assertTrue(b3 == true);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b14 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b17 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP23);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long24 + "' != '" + 10L+ "'", long24.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b33 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i34 + "' != '" + 161+ "'", i34.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b36 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b37 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b38 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b41 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b48 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b56 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i57 + "' != '" + 161+ "'", i57.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b58 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b67 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b68 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b69 == true);
+    org.junit.Assert.assertTrue(b6 == true);
 
   }
 
@@ -6137,16 +9178,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test311"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      int i1 = java.lang.Integer.parseUnsignedInt("1a");
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    java.lang.Integer i2 = java.lang.Integer.getInteger("1400000000", (java.lang.Integer)637534288);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 637534288+ "'", i2.equals(637534288));
 
   }
 
@@ -6156,10 +9191,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test312"); }
 
 
-    int i2 = java.lang.Integer.rotateRight(1325400064, 83);
+    int i2 = java.lang.Integer.sum(268435456, 16384);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 2528);
+    org.junit.Assert.assertTrue(i2 == 268451840);
 
   }
 
@@ -6169,89 +9204,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test313"); }
 
 
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP5 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b6 = server0.removeException(iP5);
-    server0.update();
-    tp2.Server server8 = new tp2.Server();
-    tp2.IP iP13 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b14 = server8.removeException(iP13);
-    java.lang.Integer i15 = iP13.getFirst();
-    boolean b16 = server0.addBan(iP13);
-    tp2.IP iP21 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    iP21.setFirst((java.lang.Integer)161);
-    boolean b25 = iP21.equals((java.lang.Object)56);
-    boolean b26 = server0.connect(iP21);
-    tp2.IP iP27 = null;
-    boolean b28 = server0.connect(iP27);
-    tp2.Server server29 = new tp2.Server();
-    tp2.IP iP30 = null;
-    boolean b31 = server29.addBan(iP30);
-    server29.update();
-    tp2.IP iP33 = null;
-    tp2.IPBan iPBan35 = new tp2.IPBan(iP33, (java.lang.Long)10L);
-    tp2.IP iP36 = iPBan35.getIp();
-    java.lang.Long long37 = iPBan35.expires;
-    tp2.IP iP38 = null;
-    iPBan35.ip = iP38;
-    tp2.Server server40 = new tp2.Server();
-    tp2.IP iP45 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b46 = server40.removeException(iP45);
-    java.lang.Integer i47 = iP45.getFirst();
-    iPBan35.setIp(iP45);
-    java.lang.Integer i49 = iP45.getFirst();
-    java.lang.Integer i50 = iP45.getFirst();
-    boolean b51 = server29.addBan(iP45);
-    boolean b52 = server0.removeBan(iP45);
-    iP45.setSecond((java.lang.Integer)84410368);
+    int i1 = java.lang.Integer.bitCount(201326624);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b6 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b14 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i15 + "' != '" + 161+ "'", i15.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b16 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b25 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b26 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b28 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b31 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP36);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long37 + "' != '" + 10L+ "'", long37.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b46 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i47 + "' != '" + 161+ "'", i47.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i49 + "' != '" + 161+ "'", i49.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i50 + "' != '" + 161+ "'", i50.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b51 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b52 == true);
+    org.junit.Assert.assertTrue(i1 == 3);
 
   }
 
@@ -6261,10 +9217,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test314"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toOctalString(2);
+    int i1 = java.lang.Integer.highestOneBit(33554432);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "2"+ "'", str1.equals("2"));
+    org.junit.Assert.assertTrue(i1 == 33554432);
 
   }
 
@@ -6274,10 +9230,153 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test315"); }
 
 
-    int i2 = java.lang.Integer.remainderUnsigned(469761943, 101);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i6 = iP5.getFourth();
+    boolean b7 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    tp2.SinglyLinkedList singlyLinkedList8 = new tp2.SinglyLinkedList();
+    tp2.IP iP13 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i14 = iP13.getThird();
+    boolean b15 = singlyLinkedList8.remove(iP13);
+    java.lang.Integer i16 = iP13.getThird();
+    boolean b17 = strictlySortedSinglyLinkedList0.removeFromIP(iP13);
+    tp2.IPBan iPBan19 = strictlySortedSinglyLinkedList0.get(469762048);
+    tp2.SinglyLinkedList singlyLinkedList20 = new tp2.SinglyLinkedList();
+    tp2.IP iP25 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i26 = iP25.getThird();
+    boolean b27 = singlyLinkedList20.remove(iP25);
+    tp2.IP iP32 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i33 = iP32.getFirst();
+    boolean b34 = singlyLinkedList20.remove(iP32);
+    iP32.setFirst((java.lang.Integer)(-2147483648));
+    boolean b37 = strictlySortedSinglyLinkedList0.removeFromIP(iP32);
+    tp2.Server server38 = new tp2.Server();
+    boolean b39 = server38.exceptionsNotRepeated();
+    boolean b40 = server38.bansSorted();
+    boolean b41 = server38.notSharedElements();
+    tp2.Server server42 = new tp2.Server();
+    boolean b43 = server42.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList44 = new tp2.SinglyLinkedList();
+    tp2.IP iP49 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i50 = iP49.getThird();
+    boolean b51 = singlyLinkedList44.remove(iP49);
+    boolean b52 = server42.addException(iP49);
+    tp2.SinglyLinkedList singlyLinkedList53 = new tp2.SinglyLinkedList();
+    tp2.IP iP58 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i59 = iP58.getFourth();
+    singlyLinkedList53.add(iP58);
+    java.lang.Integer i61 = iP58.getFirst();
+    boolean b62 = server42.removeBan(iP58);
+    tp2.ITime iTime63 = null;
+    server42.setTime(iTime63);
+    boolean b65 = server42.notSharedElements();
+    tp2.IP iP70 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i71 = iP70.getThird();
+    iP70.setFourth((java.lang.Integer)0);
+    iP70.setSecond((java.lang.Integer)3);
+    boolean b76 = server42.addBan(iP70);
+    tp2.SinglyLinkedList singlyLinkedList77 = new tp2.SinglyLinkedList();
+    tp2.IP iP82 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i83 = iP82.getThird();
+    boolean b84 = singlyLinkedList77.remove(iP82);
+    java.lang.Integer i85 = iP82.getThird();
+    iP82.setFirst((java.lang.Integer)11100);
+    boolean b88 = server42.addBan(iP82);
+    boolean b89 = server38.removeException(iP82);
+    boolean b90 = strictlySortedSinglyLinkedList0.removeFromIP(iP82);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 35);
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + 2+ "'", i6.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i14 + "' != '" + (-1)+ "'", i14.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b15 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan19);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i26 + "' != '" + (-1)+ "'", i26.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b27 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i33 + "' != '" + (-1)+ "'", i33.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b34 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b37 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b39 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b40 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b41 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b43 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i50 + "' != '" + (-1)+ "'", i50.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b51 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b52 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i59 + "' != '" + 100+ "'", i59.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i61 + "' != '" + (-1)+ "'", i61.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b62 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b65 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i71 + "' != '" + (-1)+ "'", i71.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b76 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i83 + "' != '" + (-1)+ "'", i83.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b84 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i85 + "' != '" + (-1)+ "'", i85.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b88 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b89 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b90 == false);
 
   }
 
@@ -6287,16 +9386,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test316"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      java.lang.Integer i2 = java.lang.Integer.valueOf("b", 186646533);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    int i1 = java.lang.Integer.lowestOneBit(1100100);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 4);
 
   }
 
@@ -6306,10 +9399,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test317"); }
 
 
-    java.lang.String str2 = java.lang.Integer.toUnsignedString(2528, 1073741825);
+    java.lang.String str1 = java.lang.Integer.toHexString(4);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "2528"+ "'", str2.equals("2528"));
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "4"+ "'", str1.equals("4"));
 
   }
 
@@ -6319,10 +9412,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test318"); }
 
 
-    java.lang.Integer i1 = java.lang.Integer.getInteger("18000000");
+    int i1 = java.lang.Integer.numberOfLeadingZeros(11);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(i1);
+    org.junit.Assert.assertTrue(i1 == 28);
 
   }
 
@@ -6332,10 +9425,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test319"); }
 
 
-    int i1 = java.lang.Integer.parseInt("6");
+    int i2 = java.lang.Integer.min(729888, 436219526);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 6);
+    org.junit.Assert.assertTrue(i2 == 729888);
 
   }
 
@@ -6345,10 +9438,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test320"); }
 
 
-    java.lang.Integer i1 = new java.lang.Integer(2048);
+    java.lang.String str1 = java.lang.Integer.toUnsignedString(23);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 2048+ "'", i1.equals(2048));
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "23"+ "'", str1.equals("23"));
 
   }
 
@@ -6358,10 +9451,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test321"); }
 
 
-    java.lang.Integer i1 = new java.lang.Integer((-2063597568));
+    java.lang.String str1 = java.lang.Integer.toBinaryString(2809);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + (-2063597568)+ "'", i1.equals((-2063597568)));
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "101011111001"+ "'", str1.equals("101011111001"));
 
   }
 
@@ -6371,37 +9464,15 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test322"); }
 
 
-    tp2.IP iP0 = null;
-    tp2.IPBan iPBan2 = new tp2.IPBan(iP0, (java.lang.Long)10L);
-    tp2.IP iP3 = iPBan2.getIp();
-    java.lang.Long long4 = iPBan2.expires;
-    tp2.IP iP5 = null;
-    iPBan2.ip = iP5;
-    tp2.Server server7 = new tp2.Server();
-    tp2.IP iP12 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b13 = server7.removeException(iP12);
-    java.lang.Integer i14 = iP12.getFirst();
-    iPBan2.setIp(iP12);
-    java.lang.Long long16 = iPBan2.getExpires();
-    java.lang.Long long17 = iPBan2.expires;
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getFourth();
+    singlyLinkedList0.add(iP5);
+    java.lang.Integer i8 = null;
+    iP5.setFourth(i8);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP3);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long4 + "' != '" + 10L+ "'", long4.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b13 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i14 + "' != '" + 161+ "'", i14.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long16 + "' != '" + 10L+ "'", long16.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long17 + "' != '" + 10L+ "'", long17.equals(10L));
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + 100+ "'", i6.equals(100));
 
   }
 
@@ -6411,10 +9482,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test323"); }
 
 
-    int i2 = java.lang.Integer.rotateLeft(469761943, 268503106);
+    int i2 = java.lang.Integer.rotateRight(436207642, 436207642);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1879047772);
+    org.junit.Assert.assertTrue(i2 == (-2147481978));
 
   }
 
@@ -6424,10 +9495,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test324"); }
 
 
-    java.lang.Integer i1 = java.lang.Integer.getInteger("1111010001100011");
+    int i1 = java.lang.Integer.reverse(1610612786);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(i1);
+    org.junit.Assert.assertTrue(i1 == 1275068422);
 
   }
 
@@ -6437,10 +9508,103 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test325"); }
 
 
-    java.lang.String str2 = java.lang.Integer.toUnsignedString((-439943169), 469761943);
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    boolean b8 = singlyLinkedList0.isEmpty();
+    int i9 = singlyLinkedList0.getSize();
+    tp2.IP iP14 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i15 = iP14.getThird();
+    iP14.setFourth((java.lang.Integer)0);
+    boolean b18 = singlyLinkedList0.contains(iP14);
+    boolean b19 = singlyLinkedList0.isEmpty();
+    tp2.IP iP24 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i25 = iP24.getFirst();
+    java.lang.Integer i26 = iP24.getFirst();
+    singlyLinkedList0.add(iP24);
+    tp2.SinglyLinkedList singlyLinkedList28 = new tp2.SinglyLinkedList();
+    tp2.IP iP33 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i34 = iP33.getThird();
+    boolean b35 = singlyLinkedList28.remove(iP33);
+    tp2.Server server36 = new tp2.Server();
+    tp2.IP iP41 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b42 = server36.removeBan(iP41);
+    boolean b43 = singlyLinkedList28.contains(iP41);
+    singlyLinkedList0.add(iP41);
+    tp2.IP iP49 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i50 = iP49.getThird();
+    iP49.setFourth((java.lang.Integer)0);
+    iP49.setSecond((java.lang.Integer)3);
+    iP49.setFourth((java.lang.Integer)12);
+    singlyLinkedList0.add(iP49);
+    tp2.SinglyLinkedList singlyLinkedList58 = new tp2.SinglyLinkedList();
+    tp2.IP iP63 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i64 = iP63.getThird();
+    boolean b65 = singlyLinkedList58.remove(iP63);
+    tp2.IPBan iPBan67 = new tp2.IPBan(iP63, (java.lang.Long)10L);
+    tp2.IP iP72 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i73 = iP72.getFourth();
+    iPBan67.setIp(iP72);
+    tp2.IPBan iPBan76 = new tp2.IPBan(iP72, (java.lang.Long)10L);
+    iP72.setThird((java.lang.Integer)(-129));
+    iP72.setFourth((java.lang.Integer)5120);
+    singlyLinkedList0.add(iP72);
+    boolean b82 = singlyLinkedList0.isEmpty();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "3855024127"+ "'", str2.equals("3855024127"));
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i9 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + (-1)+ "'", i15.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b18 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i25 + "' != '" + (-1)+ "'", i25.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i26 + "' != '" + (-1)+ "'", i26.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i34 + "' != '" + (-1)+ "'", i34.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b35 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b43 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i50 + "' != '" + (-1)+ "'", i50.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i64 + "' != '" + (-1)+ "'", i64.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b65 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i73 + "' != '" + 100+ "'", i73.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b82 == false);
 
   }
 
@@ -6450,10 +9614,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test326"); }
 
 
-    int i1 = java.lang.Integer.lowestOneBit(1073741825);
+    int i1 = java.lang.Integer.parseUnsignedInt("469762048");
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1);
+    org.junit.Assert.assertTrue(i1 == 469762048);
 
   }
 
@@ -6463,10 +9627,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test327"); }
 
 
-    int i1 = java.lang.Integer.reverseBytes(80);
+    int i1 = java.lang.Integer.numberOfTrailingZeros(16384);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1342177280);
+    org.junit.Assert.assertTrue(i1 == 14);
 
   }
 
@@ -6476,10 +9640,122 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test328"); }
 
 
-    int i2 = java.lang.Integer.min(7, 469761943);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    tp2.IP iP15 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i16 = iP15.getFirst();
+    java.lang.Integer i17 = iP15.getFourth();
+    tp2.IPBan iPBan19 = new tp2.IPBan(iP15, (java.lang.Long)100L);
+    boolean b20 = server0.addException(iP15);
+    tp2.SinglyLinkedList singlyLinkedList21 = new tp2.SinglyLinkedList();
+    tp2.IP iP26 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i27 = iP26.getThird();
+    boolean b28 = singlyLinkedList21.remove(iP26);
+    tp2.IPBan iPBan30 = new tp2.IPBan(iP26, (java.lang.Long)10L);
+    tp2.IP iP35 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i36 = iP35.getFourth();
+    iPBan30.setIp(iP35);
+    java.lang.Long long38 = iPBan30.getExpires();
+    java.lang.Long long39 = iPBan30.getExpires();
+    tp2.IP iP44 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i45 = iP44.getFirst();
+    java.lang.Integer i46 = iP44.getSecond();
+    iP44.setFirst((java.lang.Integer)201326592);
+    iPBan30.setIp(iP44);
+    tp2.SinglyLinkedList singlyLinkedList50 = new tp2.SinglyLinkedList();
+    tp2.Server server51 = new tp2.Server();
+    boolean b52 = server51.exceptionsNotRepeated();
+    tp2.IP iP57 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i58 = iP57.getThird();
+    iP57.setSecond((java.lang.Integer)10);
+    boolean b61 = server51.removeBan(iP57);
+    boolean b62 = singlyLinkedList50.remove(iP57);
+    tp2.SinglyLinkedList singlyLinkedList63 = new tp2.SinglyLinkedList();
+    tp2.IP iP68 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i69 = iP68.getThird();
+    boolean b70 = singlyLinkedList63.remove(iP68);
+    tp2.Server server71 = new tp2.Server();
+    tp2.IP iP76 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b77 = server71.removeBan(iP76);
+    boolean b78 = singlyLinkedList63.contains(iP76);
+    singlyLinkedList50.add(iP76);
+    iPBan30.setIp(iP76);
+    iP76.setSecond((java.lang.Integer)11100);
+    boolean b83 = server0.removeBan(iP76);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 7);
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + 100+ "'", i17.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i27 + "' != '" + (-1)+ "'", i27.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b28 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i36 + "' != '" + 100+ "'", i36.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long38 + "' != '" + 10L+ "'", long38.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long39 + "' != '" + 10L+ "'", long39.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i45 + "' != '" + (-1)+ "'", i45.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i46 + "' != '" + (-1)+ "'", i46.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b52 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i58 + "' != '" + (-1)+ "'", i58.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b61 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b62 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i69 + "' != '" + (-1)+ "'", i69.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b70 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b77 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b78 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b83 == false);
 
   }
 
@@ -6489,7 +9765,92 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test329"); }
 
 
-    tp2.IP iP4 = new tp2.IP((java.lang.Integer)84410368, (java.lang.Integer)469762048, (java.lang.Integer)134217728, (java.lang.Integer)(-2063597440));
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    boolean b1 = singlyLinkedList0.isEmpty();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP3 = null;
+    boolean b4 = singlyLinkedList2.remove(iP3);
+    boolean b5 = singlyLinkedList2.isEmpty();
+    tp2.IP iP10 = new tp2.IP((java.lang.Integer)5, (java.lang.Integer)1, (java.lang.Integer)0, (java.lang.Integer)12);
+    boolean b11 = singlyLinkedList2.contains(iP10);
+    tp2.SinglyLinkedList singlyLinkedList12 = new tp2.SinglyLinkedList();
+    tp2.IP iP17 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i18 = iP17.getThird();
+    boolean b19 = singlyLinkedList12.remove(iP17);
+    iP17.setSecond((java.lang.Integer)150994944);
+    java.lang.Integer i22 = iP17.getFourth();
+    java.lang.Integer i23 = iP17.getThird();
+    java.lang.Integer i24 = iP17.getFirst();
+    boolean b25 = singlyLinkedList2.contains(iP17);
+    singlyLinkedList0.add(iP17);
+    tp2.Server server27 = new tp2.Server();
+    boolean b28 = server27.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList29 = new tp2.SinglyLinkedList();
+    tp2.IP iP34 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i35 = iP34.getThird();
+    boolean b36 = singlyLinkedList29.remove(iP34);
+    boolean b37 = server27.addException(iP34);
+    java.lang.Integer i38 = iP34.getFirst();
+    tp2.IPBan iPBan40 = new tp2.IPBan(iP34, (java.lang.Long)5L);
+    tp2.IP iP41 = iPBan40.getIp();
+    tp2.IP iP42 = iPBan40.getIp();
+    java.lang.Integer i43 = null;
+    iP42.setFourth(i43);
+    boolean b45 = singlyLinkedList0.remove(iP42);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b4 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b5 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i18 + "' != '" + (-1)+ "'", i18.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i22 + "' != '" + 100+ "'", i22.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i23 + "' != '" + (-1)+ "'", i23.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i24 + "' != '" + (-1)+ "'", i24.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b25 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b28 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i35 + "' != '" + (-1)+ "'", i35.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b36 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b37 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i38 + "' != '" + (-1)+ "'", i38.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP41);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP42);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b45 == false);
 
   }
 
@@ -6499,10 +9860,29 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test330"); }
 
 
-    int i2 = java.lang.Integer.compareUnsigned(1400000, 4);
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP1 = null;
+    boolean b2 = singlyLinkedList0.remove(iP1);
+    boolean b3 = singlyLinkedList0.isEmpty();
+    tp2.IP iP8 = new tp2.IP((java.lang.Integer)5, (java.lang.Integer)1, (java.lang.Integer)0, (java.lang.Integer)12);
+    boolean b9 = singlyLinkedList0.contains(iP8);
+    tp2.IP iP11 = singlyLinkedList0.get(2621440);
+    int i12 = singlyLinkedList0.getSize();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1);
+    org.junit.Assert.assertTrue(b2 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iP11);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i12 == 0);
 
   }
 
@@ -6512,10 +9892,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test331"); }
 
 
-    java.lang.Integer i1 = java.lang.Integer.getInteger("0");
+    java.lang.String str1 = java.lang.Integer.toOctalString(12);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(i1);
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "14"+ "'", str1.equals("14"));
 
   }
 
@@ -6525,10 +9905,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test332"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toUnsignedString(13);
+    int i1 = java.lang.Integer.bitCount(200000000);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "13"+ "'", str1.equals("13"));
+    org.junit.Assert.assertTrue(i1 == 12);
 
   }
 
@@ -6538,10 +9918,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test333"); }
 
 
-    int i1 = java.lang.Integer.reverseBytes(1325400064);
+    int i1 = java.lang.Integer.signum(201326624);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 79);
+    org.junit.Assert.assertTrue(i1 == 1);
 
   }
 
@@ -6551,10 +9931,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test334"); }
 
 
-    int i2 = java.lang.Integer.rotateLeft(161, 28);
+    int i2 = java.lang.Integer.compareUnsigned(28, 23);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 268435466);
+    org.junit.Assert.assertTrue(i2 == 1);
 
   }
 
@@ -6564,10 +9944,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test335"); }
 
 
-    int i1 = java.lang.Integer.reverse(268503106);
+    java.lang.Integer i1 = new java.lang.Integer(1073741824);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1108377608);
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 1073741824+ "'", i1.equals(1073741824));
 
   }
 
@@ -6577,10 +9957,43 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test336"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toBinaryString(70);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    tp2.IP iP15 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i16 = iP15.getFirst();
+    java.lang.Integer i17 = iP15.getFourth();
+    tp2.IPBan iPBan19 = new tp2.IPBan(iP15, (java.lang.Long)100L);
+    boolean b20 = server0.addException(iP15);
+    java.lang.Integer i21 = iP15.getThird();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "1000110"+ "'", str1.equals("1000110"));
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + 100+ "'", i17.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i21 + "' != '" + (-1)+ "'", i21.equals((-1)));
 
   }
 
@@ -6590,10 +10003,117 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test337"); }
 
 
-    java.lang.Integer i1 = java.lang.Integer.decode("469761943");
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    tp2.IPBan iPBan9 = new tp2.IPBan(iP5, (java.lang.Long)10L);
+    java.lang.Long long10 = iPBan9.getExpires();
+    java.lang.Long long11 = iPBan9.getExpires();
+    tp2.SinglyLinkedList singlyLinkedList12 = new tp2.SinglyLinkedList();
+    tp2.IP iP17 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i18 = iP17.getThird();
+    boolean b19 = singlyLinkedList12.remove(iP17);
+    tp2.IPBan iPBan21 = new tp2.IPBan(iP17, (java.lang.Long)10L);
+    tp2.IP iP26 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i27 = iP26.getFourth();
+    iPBan21.setIp(iP26);
+    iPBan9.setIp(iP26);
+    iPBan9.setExpires((java.lang.Long)5L);
+    tp2.Server server32 = new tp2.Server();
+    boolean b33 = server32.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList34 = new tp2.SinglyLinkedList();
+    tp2.IP iP39 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i40 = iP39.getThird();
+    boolean b41 = singlyLinkedList34.remove(iP39);
+    boolean b42 = server32.addException(iP39);
+    tp2.SinglyLinkedList singlyLinkedList43 = new tp2.SinglyLinkedList();
+    tp2.IP iP48 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i49 = iP48.getFourth();
+    singlyLinkedList43.add(iP48);
+    java.lang.Integer i51 = iP48.getFirst();
+    boolean b52 = server32.removeBan(iP48);
+    tp2.ITime iTime53 = null;
+    server32.setTime(iTime53);
+    boolean b55 = server32.notSharedElements();
+    tp2.IP iP60 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i61 = iP60.getThird();
+    iP60.setFourth((java.lang.Integer)0);
+    iP60.setSecond((java.lang.Integer)3);
+    boolean b66 = server32.addBan(iP60);
+    tp2.SinglyLinkedList singlyLinkedList67 = new tp2.SinglyLinkedList();
+    tp2.IP iP72 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i73 = iP72.getThird();
+    boolean b74 = singlyLinkedList67.remove(iP72);
+    java.lang.Integer i75 = iP72.getThird();
+    iP72.setFirst((java.lang.Integer)11100);
+    boolean b78 = server32.addBan(iP72);
+    iPBan9.setIp(iP72);
+    iPBan9.setExpires((java.lang.Long)144L);
+    iPBan9.setExpires((java.lang.Long)25L);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 469761943+ "'", i1.equals(469761943));
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long10 + "' != '" + 10L+ "'", long10.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long11 + "' != '" + 10L+ "'", long11.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i18 + "' != '" + (-1)+ "'", i18.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i27 + "' != '" + 100+ "'", i27.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b33 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i40 + "' != '" + (-1)+ "'", i40.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b41 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i49 + "' != '" + 100+ "'", i49.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i51 + "' != '" + (-1)+ "'", i51.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b52 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b55 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i61 + "' != '" + (-1)+ "'", i61.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b66 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i73 + "' != '" + (-1)+ "'", i73.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b74 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i75 + "' != '" + (-1)+ "'", i75.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b78 == true);
 
   }
 
@@ -6603,10 +10123,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test338"); }
 
 
-    java.lang.Integer i1 = java.lang.Integer.valueOf(2362614);
+    int i1 = java.lang.Integer.parseUnsignedInt("167772260");
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 2362614+ "'", i1.equals(2362614));
+    org.junit.Assert.assertTrue(i1 == 167772260);
 
   }
 
@@ -6616,10 +10136,55 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test339"); }
 
 
-    java.lang.Integer i1 = new java.lang.Integer((-2147483646));
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    tp2.IPBan iPBan9 = new tp2.IPBan(iP5, (java.lang.Long)10L);
+    iPBan9.setExpires((java.lang.Long)4L);
+    tp2.Server server12 = new tp2.Server();
+    boolean b13 = server12.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList14 = new tp2.SinglyLinkedList();
+    tp2.IP iP19 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i20 = iP19.getThird();
+    boolean b21 = singlyLinkedList14.remove(iP19);
+    boolean b22 = server12.addException(iP19);
+    tp2.SinglyLinkedList singlyLinkedList23 = new tp2.SinglyLinkedList();
+    tp2.IP iP28 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i29 = iP28.getFourth();
+    singlyLinkedList23.add(iP28);
+    java.lang.Integer i31 = iP28.getFirst();
+    boolean b32 = server12.removeBan(iP28);
+    iPBan9.setIp(iP28);
+    iP28.setThird((java.lang.Integer)146800640);
+    tp2.IPBan iPBan37 = new tp2.IPBan(iP28, (java.lang.Long)100L);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + (-2147483646)+ "'", i1.equals((-2147483646)));
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b13 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i20 + "' != '" + (-1)+ "'", i20.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b21 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b22 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i29 + "' != '" + 100+ "'", i29.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i31 + "' != '" + (-1)+ "'", i31.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == false);
 
   }
 
@@ -6629,10 +10194,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test340"); }
 
 
-    int i2 = java.lang.Integer.max(1275068417, 1677721761);
+    java.lang.String str1 = java.lang.Integer.toBinaryString(640);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1677721761);
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "1010000000"+ "'", str1.equals("1010000000"));
 
   }
 
@@ -6642,400 +10207,9 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test341"); }
 
 
-    java.lang.Integer i2 = java.lang.Integer.getInteger("20971520", 536870912);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 536870912+ "'", i2.equals(536870912));
-
-  }
-
-  @Test
-  public void test342() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test342"); }
-
-
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP1 = null;
-    boolean b2 = server0.addBan(iP1);
-    tp2.IP iP7 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iP7.setSecond((java.lang.Integer)2147483647);
-    boolean b10 = server0.addBan(iP7);
-    tp2.Server server11 = new tp2.Server();
-    tp2.IP iP12 = null;
-    boolean b13 = server11.addBan(iP12);
-    tp2.Server server14 = new tp2.Server();
-    tp2.IP iP19 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b20 = server14.removeException(iP19);
-    boolean b22 = iP19.equals((java.lang.Object)(-1L));
-    boolean b23 = server11.removeBan(iP19);
-    java.lang.Integer i24 = iP19.getFourth();
-    boolean b25 = server0.removeBan(iP19);
-    tp2.ITime iTime26 = null;
-    server0.setTime(iTime26);
-    server0.update();
-    tp2.Server server29 = new tp2.Server();
-    tp2.IP iP30 = null;
-    boolean b31 = server29.addBan(iP30);
-    tp2.Server server32 = new tp2.Server();
-    tp2.IP iP37 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b38 = server32.removeException(iP37);
-    boolean b40 = iP37.equals((java.lang.Object)(-1L));
-    boolean b41 = server29.removeBan(iP37);
-    tp2.IP iP46 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    iP46.setFirst((java.lang.Integer)161);
-    iP46.setThird((java.lang.Integer)3);
-    iP46.setFirst((java.lang.Integer)26);
-    boolean b53 = server29.connect(iP46);
-    boolean b54 = server0.addException(iP46);
-    tp2.Server server55 = new tp2.Server();
-    tp2.IP iP56 = null;
-    boolean b57 = server55.addBan(iP56);
-    tp2.IP iP62 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iP62.setSecond((java.lang.Integer)2147483647);
-    boolean b65 = server55.addBan(iP62);
-    tp2.Server server66 = new tp2.Server();
-    tp2.IP iP67 = null;
-    boolean b68 = server66.addBan(iP67);
-    tp2.Server server69 = new tp2.Server();
-    tp2.IP iP74 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b75 = server69.removeException(iP74);
-    boolean b77 = iP74.equals((java.lang.Object)(-1L));
-    boolean b78 = server66.removeBan(iP74);
-    java.lang.Integer i79 = iP74.getFourth();
-    boolean b80 = server55.removeBan(iP74);
-    boolean b81 = server0.removeException(iP74);
-    java.lang.Integer i82 = iP74.getThird();
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b2 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b10 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b13 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b20 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b22 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b23 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i24 + "' != '" + 5+ "'", i24.equals(5));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b25 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b31 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b38 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b40 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b41 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b53 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b54 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b57 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b65 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b68 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b75 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b77 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b78 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i79 + "' != '" + 5+ "'", i79.equals(5));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b80 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b81 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i82 + "' != '" + 939524096+ "'", i82.equals(939524096));
-
-  }
-
-  @Test
-  public void test343() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test343"); }
-
-
-    int i1 = java.lang.Integer.numberOfTrailingZeros((-439943169));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 0);
-
-  }
-
-  @Test
-  public void test344() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test344"); }
-
-
-    int i2 = java.lang.Integer.rotateLeft(26, (-2147483515));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 832);
-
-  }
-
-  @Test
-  public void test345() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test345"); }
-
-
-    int i2 = java.lang.Integer.compareUnsigned(28, 1325400064);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-1));
-
-  }
-
-  @Test
-  public void test346() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test346"); }
-
-
-    tp2.IP iP0 = null;
-    tp2.IPBan iPBan2 = new tp2.IPBan(iP0, (java.lang.Long)10L);
-    tp2.IP iP3 = iPBan2.getIp();
-    java.lang.Long long4 = iPBan2.expires;
-    tp2.IP iP5 = null;
-    iPBan2.ip = iP5;
-    tp2.Server server7 = new tp2.Server();
-    tp2.IP iP12 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b13 = server7.removeException(iP12);
-    java.lang.Integer i14 = iP12.getFirst();
-    iPBan2.setIp(iP12);
-    iP12.setSecond((java.lang.Integer)1476395008);
-    tp2.IPBan iPBan19 = new tp2.IPBan(iP12, (java.lang.Long)10L);
-    iP12.setSecond((java.lang.Integer)1108377608);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP3);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long4 + "' != '" + 10L+ "'", long4.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b13 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i14 + "' != '" + 161+ "'", i14.equals(161));
-
-  }
-
-  @Test
-  public void test347() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test347"); }
-
-
-    int i2 = java.lang.Integer.compare(14379100, 134217728);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-1));
-
-  }
-
-  @Test
-  public void test348() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test348"); }
-
-
-    java.lang.Integer i2 = java.lang.Integer.getInteger("2", (java.lang.Integer)2147483647);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 2147483647+ "'", i2.equals(2147483647));
-
-  }
-
-  @Test
-  public void test349() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test349"); }
-
-
-    int i2 = java.lang.Integer.max(14, 14379100);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 14379100);
-
-  }
-
-  @Test
-  public void test350() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test350"); }
-
-
-    int i1 = java.lang.Integer.parseInt("0");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 0);
-
-  }
-
-  @Test
-  public void test351() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test351"); }
-
-
-    int i2 = java.lang.Integer.sum(229376, 62563);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 291939);
-
-  }
-
-  @Test
-  public void test352() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test352"); }
-
-
-    int i2 = java.lang.Integer.rotateRight(28, 0);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 28);
-
-  }
-
-  @Test
-  public void test353() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test353"); }
-
-
-    int i2 = java.lang.Integer.max(5, 1476395008);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1476395008);
-
-  }
-
-  @Test
-  public void test354() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test354"); }
-
-
-    tp2.IP iP0 = null;
-    tp2.IPBan iPBan2 = new tp2.IPBan(iP0, (java.lang.Long)10L);
-    java.lang.Long long3 = iPBan2.getExpires();
-    tp2.IP iP4 = iPBan2.getIp();
-    iPBan2.setExpires((java.lang.Long)100L);
-    java.lang.Long long7 = iPBan2.expires;
-    java.lang.Long long8 = iPBan2.getExpires();
-    iPBan2.expires = 28L;
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long3 + "' != '" + 10L+ "'", long3.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP4);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long7 + "' != '" + 100L+ "'", long7.equals(100L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long8 + "' != '" + 100L+ "'", long8.equals(100L));
-
-  }
-
-  @Test
-  public void test355() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test355"); }
-
-
-    int i1 = java.lang.Integer.parseInt("7000");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 7000);
-
-  }
-
-  @Test
-  public void test356() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test356"); }
-
-
-    int i1 = java.lang.Integer.bitCount(50397184);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 3);
-
-  }
-
-  @Test
-  public void test357() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test357"); }
-
-
-    int i2 = java.lang.Integer.sum(18, 1677721761);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1677721779);
-
-  }
-
-  @Test
-  public void test358() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test358"); }
-
-
-    long long1 = java.lang.Integer.toUnsignedLong((-439943169));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(long1 == 3855024127L);
-
-  }
-
-  @Test
-  public void test359() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test359"); }
-
-
     // The following exception was thrown during execution in test generation
     try {
-      int i1 = java.lang.Integer.parseInt("2147483781");
+      int i2 = java.lang.Integer.parseInt("hi!", 26);
       org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
     } catch (java.lang.NumberFormatException e) {
       // Expected exception.
@@ -7047,20 +10221,653 @@ public class RegressionTest1 {
   }
 
   @Test
+  public void test342() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test342"); }
+
+
+    java.lang.String str2 = java.lang.Integer.toUnsignedString((-2), 201326624);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "4294967294"+ "'", str2.equals("4294967294"));
+
+  }
+
+  @Test
+  public void test343() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test343"); }
+
+
+    int i1 = java.lang.Integer.bitCount((-1601830656));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 6);
+
+  }
+
+  @Test
+  public void test344() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test344"); }
+
+
+    int i2 = java.lang.Integer.sum((-2147479552), 88770);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == (-2147390782));
+
+  }
+
+  @Test
+  public void test345() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test345"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP1 = null;
+    boolean b2 = singlyLinkedList0.remove(iP1);
+    boolean b3 = singlyLinkedList0.isEmpty();
+    tp2.IP iP8 = new tp2.IP((java.lang.Integer)5, (java.lang.Integer)1, (java.lang.Integer)0, (java.lang.Integer)12);
+    boolean b9 = singlyLinkedList0.contains(iP8);
+    tp2.SinglyLinkedList singlyLinkedList10 = new tp2.SinglyLinkedList();
+    tp2.IP iP15 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i16 = iP15.getThird();
+    boolean b17 = singlyLinkedList10.remove(iP15);
+    iP15.setSecond((java.lang.Integer)150994944);
+    java.lang.Integer i20 = iP15.getFourth();
+    java.lang.Integer i21 = iP15.getThird();
+    java.lang.Integer i22 = iP15.getFirst();
+    boolean b23 = singlyLinkedList0.contains(iP15);
+    tp2.SinglyLinkedList singlyLinkedList24 = new tp2.SinglyLinkedList();
+    tp2.IP iP29 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i30 = iP29.getFourth();
+    singlyLinkedList24.add(iP29);
+    java.lang.Integer i32 = iP29.getFirst();
+    boolean b33 = singlyLinkedList0.remove(iP29);
+    tp2.SinglyLinkedList singlyLinkedList34 = new tp2.SinglyLinkedList();
+    tp2.IP iP39 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i40 = iP39.getThird();
+    boolean b41 = singlyLinkedList34.remove(iP39);
+    tp2.IPBan iPBan43 = new tp2.IPBan(iP39, (java.lang.Long)10L);
+    tp2.IP iP48 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i49 = iP48.getFourth();
+    iPBan43.setIp(iP48);
+    java.lang.Long long51 = iPBan43.getExpires();
+    java.lang.Long long52 = iPBan43.getExpires();
+    tp2.Server server53 = new tp2.Server();
+    boolean b54 = server53.exceptionsNotRepeated();
+    tp2.IP iP59 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i60 = iP59.getThird();
+    iP59.setSecond((java.lang.Integer)10);
+    boolean b63 = server53.removeBan(iP59);
+    java.lang.Integer i64 = iP59.getFirst();
+    iPBan43.setIp(iP59);
+    iP59.setFourth((java.lang.Integer)11884);
+    singlyLinkedList0.add(iP59);
+    iP59.setFirst((java.lang.Integer)1073741844);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i20 + "' != '" + 100+ "'", i20.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i21 + "' != '" + (-1)+ "'", i21.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i22 + "' != '" + (-1)+ "'", i22.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i30 + "' != '" + 100+ "'", i30.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i32 + "' != '" + (-1)+ "'", i32.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b33 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i40 + "' != '" + (-1)+ "'", i40.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b41 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i49 + "' != '" + 100+ "'", i49.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long51 + "' != '" + 10L+ "'", long51.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long52 + "' != '" + 10L+ "'", long52.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b54 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i60 + "' != '" + (-1)+ "'", i60.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b63 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i64 + "' != '" + (-1)+ "'", i64.equals((-1)));
+
+  }
+
+  @Test
+  public void test346() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test346"); }
+
+
+    java.lang.String str2 = java.lang.Integer.toUnsignedString(807927808, 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "807927808"+ "'", str2.equals("807927808"));
+
+  }
+
+  @Test
+  public void test347() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test347"); }
+
+
+    java.lang.String str1 = java.lang.Integer.toHexString(201326784);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "c0000c0"+ "'", str1.equals("c0000c0"));
+
+  }
+
+  @Test
+  public void test348() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test348"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b6 = server0.removeBan(iP5);
+    tp2.IP iP11 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i12 = iP11.getThird();
+    iP11.setFourth((java.lang.Integer)0);
+    iP11.setSecond((java.lang.Integer)3);
+    iP11.setFourth((java.lang.Integer)12);
+    boolean b19 = server0.addBan(iP11);
+    server0.update();
+    boolean b21 = server0.bansOkTime();
+    boolean b22 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList23 = new tp2.SinglyLinkedList();
+    tp2.IP iP24 = null;
+    boolean b25 = singlyLinkedList23.remove(iP24);
+    boolean b26 = singlyLinkedList23.isEmpty();
+    tp2.IP iP31 = new tp2.IP((java.lang.Integer)5, (java.lang.Integer)1, (java.lang.Integer)0, (java.lang.Integer)12);
+    boolean b32 = singlyLinkedList23.contains(iP31);
+    tp2.SinglyLinkedList singlyLinkedList33 = new tp2.SinglyLinkedList();
+    tp2.IP iP38 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i39 = iP38.getThird();
+    boolean b40 = singlyLinkedList33.remove(iP38);
+    iP38.setSecond((java.lang.Integer)150994944);
+    java.lang.Integer i43 = iP38.getFourth();
+    java.lang.Integer i44 = iP38.getThird();
+    java.lang.Integer i45 = iP38.getFirst();
+    boolean b46 = singlyLinkedList23.contains(iP38);
+    tp2.SinglyLinkedList singlyLinkedList47 = new tp2.SinglyLinkedList();
+    tp2.IP iP52 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i53 = iP52.getThird();
+    boolean b54 = singlyLinkedList47.remove(iP52);
+    java.lang.Integer i55 = iP52.getThird();
+    java.lang.Integer i56 = iP52.getSecond();
+    boolean b57 = singlyLinkedList23.contains(iP52);
+    boolean b58 = server0.addBan(iP52);
+    java.lang.Integer i59 = iP52.getThird();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b6 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i12 + "' != '" + (-1)+ "'", i12.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b21 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b22 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b25 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b26 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i39 + "' != '" + (-1)+ "'", i39.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b40 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i43 + "' != '" + 100+ "'", i43.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i44 + "' != '" + (-1)+ "'", i44.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i45 + "' != '" + (-1)+ "'", i45.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b46 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i53 + "' != '" + (-1)+ "'", i53.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b54 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i55 + "' != '" + (-1)+ "'", i55.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i56 + "' != '" + (-1)+ "'", i56.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b57 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b58 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i59 + "' != '" + (-1)+ "'", i59.equals((-1)));
+
+  }
+
+  @Test
+  public void test349() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test349"); }
+
+
+    tp2.IP iP0 = null;
+    tp2.IPBan iPBan2 = new tp2.IPBan(iP0, (java.lang.Long)10L);
+
+  }
+
+  @Test
+  public void test350() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test350"); }
+
+
+    int i2 = java.lang.Integer.remainderUnsigned(200000000, 5120);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 2560);
+
+  }
+
+  @Test
+  public void test351() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test351"); }
+
+
+    int i2 = java.lang.Integer.min(8192, (-1073741824));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == (-1073741824));
+
+  }
+
+  @Test
+  public void test352() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test352"); }
+
+
+    int i1 = java.lang.Integer.numberOfLeadingZeros(805306371);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 2);
+
+  }
+
+  @Test
+  public void test353() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test353"); }
+
+
+    int i1 = java.lang.Integer.numberOfLeadingZeros(11884);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 18);
+
+  }
+
+  @Test
+  public void test354() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test354"); }
+
+
+    // The following exception was thrown during execution in test generation
+    try {
+      int i2 = java.lang.Integer.parseUnsignedInt("88770", 100);
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
+
+  }
+
+  @Test
+  public void test355() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test355"); }
+
+
+    tp2.IP iP4 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i5 = iP4.getThird();
+    iP4.setFourth((java.lang.Integer)0);
+    iP4.setSecond((java.lang.Integer)167772160);
+    iP4.setFourth((java.lang.Integer)(-2147483648));
+    java.lang.Integer i12 = iP4.getFourth();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i5 + "' != '" + (-1)+ "'", i5.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i12 + "' != '" + (-2147483648)+ "'", i12.equals((-2147483648)));
+
+  }
+
+  @Test
+  public void test356() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test356"); }
+
+
+    int i1 = java.lang.Integer.numberOfTrailingZeros(144);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 4);
+
+  }
+
+  @Test
+  public void test357() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test357"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.exceptionsNotRepeated();
+    boolean b2 = server0.bansSorted();
+    boolean b3 = server0.notSharedElements();
+    boolean b4 = server0.bansSorted();
+    server0.update();
+    tp2.IP iP10 = new tp2.IP((java.lang.Integer)11100, (java.lang.Integer)40, (java.lang.Integer)28, (java.lang.Integer)727449600);
+    boolean b11 = server0.addException(iP10);
+    server0.update();
+    tp2.Server server13 = new tp2.Server();
+    tp2.IP iP18 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b19 = server13.removeBan(iP18);
+    tp2.IP iP24 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i25 = iP24.getThird();
+    iP24.setFourth((java.lang.Integer)0);
+    iP24.setSecond((java.lang.Integer)3);
+    iP24.setFourth((java.lang.Integer)12);
+    boolean b32 = server13.addBan(iP24);
+    boolean b33 = server0.addException(iP24);
+    boolean b34 = server0.bansNotRepeatedExpirationOrIP();
+    tp2.ITime iTime35 = null;
+    server0.setTime(iTime35);
+    boolean b37 = server0.notSharedElements();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b4 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i25 + "' != '" + (-1)+ "'", i25.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b33 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b34 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b37 == true);
+
+  }
+
+  @Test
+  public void test358() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test358"); }
+
+
+    int i2 = java.lang.Integer.rotateLeft(40, 201326624);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 40);
+
+  }
+
+  @Test
+  public void test359() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test359"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.bansSorted();
+    tp2.IP iP6 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i7 = iP6.getFourth();
+    boolean b8 = server0.removeException(iP6);
+    tp2.ITime iTime9 = null;
+    server0.setTime(iTime9);
+    boolean b11 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList12 = new tp2.SinglyLinkedList();
+    tp2.IP iP17 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i18 = iP17.getThird();
+    boolean b19 = singlyLinkedList12.remove(iP17);
+    java.lang.Integer i20 = iP17.getThird();
+    iP17.setFirst((java.lang.Integer)11100);
+    boolean b23 = server0.connect(iP17);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i7 + "' != '" + 100+ "'", i7.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i18 + "' != '" + (-1)+ "'", i18.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i20 + "' != '" + (-1)+ "'", i20.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+
+  }
+
+  @Test
   public void test360() throws Throwable {
 
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test360"); }
 
 
-    tp2.IP iP0 = null;
-    tp2.IPBan iPBan2 = new tp2.IPBan(iP0, (java.lang.Long)10L);
-    tp2.IP iP3 = iPBan2.getIp();
-    tp2.IP iP4 = null;
-    iPBan2.setIp(iP4);
-    iPBan2.setExpires((java.lang.Long)10L);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i6 = iP5.getFourth();
+    boolean b7 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    tp2.SinglyLinkedList singlyLinkedList8 = new tp2.SinglyLinkedList();
+    tp2.IP iP13 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i14 = iP13.getThird();
+    boolean b15 = singlyLinkedList8.remove(iP13);
+    java.lang.Integer i16 = iP13.getThird();
+    boolean b17 = strictlySortedSinglyLinkedList0.removeFromIP(iP13);
+    tp2.IPBan iPBan19 = strictlySortedSinglyLinkedList0.get(469762048);
+    tp2.SinglyLinkedList singlyLinkedList20 = new tp2.SinglyLinkedList();
+    tp2.IP iP25 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i26 = iP25.getThird();
+    boolean b27 = singlyLinkedList20.remove(iP25);
+    tp2.IP iP32 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i33 = iP32.getFirst();
+    boolean b34 = singlyLinkedList20.remove(iP32);
+    boolean b35 = strictlySortedSinglyLinkedList0.containsIP(iP32);
+    tp2.IP iP40 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i41 = iP40.getSecond();
+    boolean b42 = strictlySortedSinglyLinkedList0.containsIP(iP40);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList43 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP48 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)11100, (java.lang.Integer)784, (java.lang.Integer)0);
+    boolean b49 = strictlySortedSinglyLinkedList43.removeFromIP(iP48);
+    int i50 = strictlySortedSinglyLinkedList43.getSize();
+    tp2.Server server51 = new tp2.Server();
+    boolean b52 = server51.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList53 = new tp2.SinglyLinkedList();
+    tp2.IP iP58 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i59 = iP58.getThird();
+    boolean b60 = singlyLinkedList53.remove(iP58);
+    boolean b61 = server51.addException(iP58);
+    java.lang.Integer i62 = iP58.getFourth();
+    boolean b63 = strictlySortedSinglyLinkedList43.containsIP(iP58);
+    boolean b64 = strictlySortedSinglyLinkedList0.removeFromIP(iP58);
+    tp2.IPBan iPBan66 = strictlySortedSinglyLinkedList0.get(0);
+    boolean b67 = strictlySortedSinglyLinkedList0.isEmpty();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP3);
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + 2+ "'", i6.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i14 + "' != '" + (-1)+ "'", i14.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b15 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan19);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i26 + "' != '" + (-1)+ "'", i26.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b27 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i33 + "' != '" + (-1)+ "'", i33.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b34 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b35 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i41 + "' != '" + (-1)+ "'", i41.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b49 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i50 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b52 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i59 + "' != '" + (-1)+ "'", i59.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b60 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b61 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i62 + "' != '" + 100+ "'", i62.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b63 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b64 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan66);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b67 == true);
 
   }
 
@@ -7070,38 +10877,28 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test361"); }
 
 
-    tp2.IP iP0 = null;
-    tp2.IPBan iPBan2 = new tp2.IPBan(iP0, (java.lang.Long)10L);
-    tp2.IP iP3 = iPBan2.getIp();
-    java.lang.Long long4 = iPBan2.expires;
-    tp2.IP iP5 = null;
-    iPBan2.ip = iP5;
-    tp2.Server server7 = new tp2.Server();
-    tp2.IP iP12 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b13 = server7.removeException(iP12);
-    java.lang.Integer i14 = iP12.getFirst();
-    iPBan2.setIp(iP12);
-    tp2.IP iP16 = iPBan2.getIp();
-    iP16.setThird((java.lang.Integer)(-1593835520));
-    boolean b20 = iP16.equals((java.lang.Object)"10000000000000000000000000111000");
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    java.lang.Integer i8 = iP5.getThird();
+    java.lang.Integer i9 = iP5.getThird();
+    java.lang.Integer i10 = iP5.getThird();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP3);
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long4 + "' != '" + 10L+ "'", long4.equals(10L));
+    org.junit.Assert.assertTrue(b7 == false);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b13 == false);
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i14 + "' != '" + 161+ "'", i14.equals(161));
+    org.junit.Assert.assertTrue("'" + i9 + "' != '" + (-1)+ "'", i9.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNotNull(iP16);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b20 == false);
+    org.junit.Assert.assertTrue("'" + i10 + "' != '" + (-1)+ "'", i10.equals((-1)));
 
   }
 
@@ -7111,139 +10908,46 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test362"); }
 
 
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP1 = null;
-    boolean b2 = server0.addBan(iP1);
-    tp2.IP iP7 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iP7.setSecond((java.lang.Integer)2147483647);
-    boolean b10 = server0.addBan(iP7);
-    tp2.Server server11 = new tp2.Server();
-    tp2.IP iP12 = null;
-    boolean b13 = server11.addBan(iP12);
-    tp2.Server server14 = new tp2.Server();
-    tp2.IP iP19 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b20 = server14.removeException(iP19);
-    boolean b22 = iP19.equals((java.lang.Object)(-1L));
-    boolean b23 = server11.removeBan(iP19);
-    java.lang.Integer i24 = iP19.getFourth();
-    boolean b25 = server0.removeBan(iP19);
-    tp2.ITime iTime26 = null;
-    server0.setTime(iTime26);
-    tp2.Server server28 = new tp2.Server();
-    tp2.IP iP33 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b34 = server28.removeException(iP33);
-    server28.update();
-    tp2.Server server36 = new tp2.Server();
-    tp2.IP iP37 = null;
-    boolean b38 = server36.addBan(iP37);
-    tp2.Server server39 = new tp2.Server();
-    tp2.IP iP44 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b45 = server39.removeException(iP44);
-    boolean b47 = iP44.equals((java.lang.Object)(-1L));
-    boolean b48 = server36.removeBan(iP44);
-    tp2.IP iP53 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    iP53.setFirst((java.lang.Integer)161);
-    iP53.setThird((java.lang.Integer)3);
-    iP53.setFirst((java.lang.Integer)26);
-    boolean b60 = server36.connect(iP53);
-    iP53.setSecond((java.lang.Integer)1677721761);
-    boolean b63 = server28.removeBan(iP53);
-    tp2.Server server64 = new tp2.Server();
-    tp2.IP iP65 = null;
-    boolean b66 = server64.addBan(iP65);
-    tp2.ITime iTime67 = null;
-    server64.setTime(iTime67);
-    tp2.IP iP69 = null;
-    tp2.IPBan iPBan71 = new tp2.IPBan(iP69, (java.lang.Long)10L);
-    tp2.IP iP72 = iPBan71.getIp();
-    java.lang.Long long73 = iPBan71.expires;
-    tp2.IP iP74 = null;
-    iPBan71.ip = iP74;
-    tp2.Server server76 = new tp2.Server();
-    tp2.IP iP81 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b82 = server76.removeException(iP81);
-    java.lang.Integer i83 = iP81.getFirst();
-    iPBan71.setIp(iP81);
-    boolean b85 = server64.connect(iP81);
-    iP81.setFourth((java.lang.Integer)(-1));
-    iP81.setFourth((java.lang.Integer)(-1));
-    boolean b90 = iP53.equals((java.lang.Object)iP81);
-    boolean b91 = server0.removeBan(iP81);
-    server0.update();
-    tp2.IP iP93 = null;
-    boolean b94 = server0.addBan(iP93);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i6 = iP5.getFourth();
+    boolean b7 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    tp2.SinglyLinkedList singlyLinkedList8 = new tp2.SinglyLinkedList();
+    tp2.IP iP13 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i14 = iP13.getThird();
+    boolean b15 = singlyLinkedList8.remove(iP13);
+    java.lang.Integer i16 = iP13.getThird();
+    boolean b17 = strictlySortedSinglyLinkedList0.removeFromIP(iP13);
+    tp2.IPBan iPBan19 = strictlySortedSinglyLinkedList0.get(469762048);
+    int i20 = strictlySortedSinglyLinkedList0.getSize();
+    boolean b21 = strictlySortedSinglyLinkedList0.isEmpty();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b2 == false);
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + 2+ "'", i6.equals(2));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b10 == true);
+    org.junit.Assert.assertTrue(b7 == false);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b13 == false);
+    org.junit.Assert.assertTrue("'" + i14 + "' != '" + (-1)+ "'", i14.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b20 == false);
+    org.junit.Assert.assertTrue(b15 == false);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b22 == false);
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b23 == false);
+    org.junit.Assert.assertTrue(b17 == false);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i24 + "' != '" + 5+ "'", i24.equals(5));
+    org.junit.Assert.assertNull(iPBan19);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b25 == false);
+    org.junit.Assert.assertTrue(i20 == 0);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b34 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b38 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b45 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b47 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b48 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b60 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b63 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b66 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP72);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long73 + "' != '" + 10L+ "'", long73.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b82 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i83 + "' != '" + 161+ "'", i83.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b85 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b90 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b91 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b94 == false);
+    org.junit.Assert.assertTrue(b21 == true);
 
   }
 
@@ -7253,10 +10957,26 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test363"); }
 
 
-    int i2 = java.lang.Integer.compare(1073741825, (-439943169));
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.bansSorted();
+    tp2.IP iP6 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i7 = iP6.getFourth();
+    boolean b8 = server0.removeException(iP6);
+    boolean b9 = server0.bansSorted();
+    tp2.ITime iTime10 = null;
+    server0.setTime(iTime10);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1);
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i7 + "' != '" + 100+ "'", i7.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == true);
 
   }
 
@@ -7266,10 +10986,22 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test364"); }
 
 
-    int i2 = java.lang.Integer.divideUnsigned(80, 7);
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getFourth();
+    singlyLinkedList0.add(iP5);
+    korat.finitization.IFinitization iFinitization9 = tp2.Server.finServer((-1073741824));
+    boolean b10 = iP5.equals((java.lang.Object)iFinitization9);
+    iP5.setFirst((java.lang.Integer)64);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 11);
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + 100+ "'", i6.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iFinitization9);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == false);
 
   }
 
@@ -7280,73 +11012,32 @@ public class RegressionTest1 {
 
 
     tp2.Server server0 = new tp2.Server();
-    tp2.IP iP1 = null;
-    boolean b2 = server0.addBan(iP1);
-    tp2.IP iP7 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iP7.setSecond((java.lang.Integer)2147483647);
-    boolean b10 = server0.addBan(iP7);
-    tp2.Server server11 = new tp2.Server();
-    tp2.IP iP12 = null;
-    boolean b13 = server11.addBan(iP12);
-    tp2.Server server14 = new tp2.Server();
-    tp2.IP iP19 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b20 = server14.removeException(iP19);
-    boolean b22 = iP19.equals((java.lang.Object)(-1L));
-    boolean b23 = server11.removeBan(iP19);
-    java.lang.Integer i24 = iP19.getFourth();
-    boolean b25 = server0.removeBan(iP19);
-    tp2.IP iP26 = null;
-    boolean b27 = server0.addBan(iP26);
-    tp2.IP iP28 = null;
-    tp2.IPBan iPBan30 = new tp2.IPBan(iP28, (java.lang.Long)10L);
-    tp2.IP iP31 = iPBan30.getIp();
-    tp2.IP iP36 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    iP36.setFirst((java.lang.Integer)161);
-    iP36.setThird((java.lang.Integer)3);
-    iP36.setFirst((java.lang.Integer)26);
-    iPBan30.ip = iP36;
-    boolean b45 = iP36.equals((java.lang.Object)"458752");
-    java.lang.Integer i46 = iP36.getFirst();
-    boolean b47 = server0.addBan(iP36);
+    boolean b1 = server0.exceptionsNotRepeated();
+    boolean b2 = server0.bansNotRepeatedExpirationOrIP();
+    tp2.Server server3 = new tp2.Server();
+    tp2.IP iP8 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b9 = server3.removeBan(iP8);
+    java.lang.Integer i10 = iP8.getFirst();
+    boolean b11 = server0.addException(iP8);
+    boolean b12 = server0.exceptionsNotRepeated();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b2 == false);
+    org.junit.Assert.assertTrue(b1 == true);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b10 == true);
+    org.junit.Assert.assertTrue(b2 == true);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b13 == false);
+    org.junit.Assert.assertTrue(b9 == false);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b20 == false);
+    org.junit.Assert.assertTrue("'" + i10 + "' != '" + (-1)+ "'", i10.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b22 == false);
+    org.junit.Assert.assertTrue(b11 == true);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b23 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i24 + "' != '" + 5+ "'", i24.equals(5));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b25 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b27 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP31);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b45 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i46 + "' != '" + 26+ "'", i46.equals(26));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b47 == true);
+    org.junit.Assert.assertTrue(b12 == true);
 
   }
 
@@ -7356,10 +11047,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test366"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toHexString(134217728);
+    int i2 = java.lang.Integer.max(167772260, 8192);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "8000000"+ "'", str1.equals("8000000"));
+    org.junit.Assert.assertTrue(i2 == 167772260);
 
   }
 
@@ -7369,16 +11060,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test367"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseInt("10", 1073741824);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    korat.finitization.IFinitization iFinitization1 = tp2.Server.finServer(3);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iFinitization1);
 
   }
 
@@ -7388,10 +11073,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test368"); }
 
 
-    int i2 = java.lang.Integer.compare(12, 61);
+    int i2 = java.lang.Integer.remainderUnsigned(146800640, 1275068422);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-1));
+    org.junit.Assert.assertTrue(i2 == 146800640);
 
   }
 
@@ -7401,10 +11086,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test369"); }
 
 
-    long long1 = java.lang.Integer.toUnsignedLong(4329604);
+    java.lang.String str1 = java.lang.Integer.toOctalString(8);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(long1 == 4329604L);
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "10"+ "'", str1.equals("10"));
 
   }
 
@@ -7414,10 +11099,21 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test370"); }
 
 
-    int i2 = java.lang.Integer.rotateLeft(16777216, 458885);
+    tp2.Server server0 = new tp2.Server();
+    tp2.ITime iTime1 = null;
+    server0.setTime(iTime1);
+    boolean b3 = server0.bansNotRepeatedExpirationOrIP();
+    boolean b4 = server0.exceptionsNotRepeated();
+    boolean b5 = server0.bansSorted();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 536870912);
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b4 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b5 == true);
 
   }
 
@@ -7428,84 +11124,32 @@ public class RegressionTest1 {
 
 
     tp2.Server server0 = new tp2.Server();
-    tp2.IP iP1 = null;
-    boolean b2 = server0.addBan(iP1);
-    tp2.IP iP7 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iP7.setSecond((java.lang.Integer)2147483647);
-    boolean b10 = server0.addBan(iP7);
-    tp2.Server server11 = new tp2.Server();
-    tp2.IP iP12 = null;
-    boolean b13 = server11.addBan(iP12);
-    tp2.ITime iTime14 = null;
-    server11.setTime(iTime14);
-    tp2.IP iP16 = null;
-    tp2.IPBan iPBan18 = new tp2.IPBan(iP16, (java.lang.Long)10L);
-    tp2.IP iP19 = iPBan18.getIp();
-    java.lang.Long long20 = iPBan18.expires;
-    tp2.IP iP21 = null;
-    iPBan18.ip = iP21;
-    tp2.Server server23 = new tp2.Server();
-    tp2.IP iP28 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b29 = server23.removeException(iP28);
-    java.lang.Integer i30 = iP28.getFirst();
-    iPBan18.setIp(iP28);
-    boolean b32 = server11.connect(iP28);
-    boolean b33 = server0.removeBan(iP28);
-    tp2.IP iP38 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    iP38.setFirst((java.lang.Integer)161);
-    iP38.setThird((java.lang.Integer)3);
-    iP38.setFirst((java.lang.Integer)26);
-    iP38.setThird((java.lang.Integer)5);
-    boolean b47 = server0.removeBan(iP38);
-    tp2.IP iP52 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    iP52.setFirst((java.lang.Integer)161);
-    iP52.setThird((java.lang.Integer)3);
-    iP52.setFirst((java.lang.Integer)26);
-    boolean b59 = server0.removeException(iP52);
-    tp2.ITime iTime60 = null;
-    server0.setTime(iTime60);
-    tp2.IP iP66 = new tp2.IP((java.lang.Integer)1437910020, (java.lang.Integer)229376, (java.lang.Integer)469761943, (java.lang.Integer)1677721600);
-    boolean b67 = server0.addBan(iP66);
-    java.lang.Integer i68 = iP66.getFirst();
+    tp2.ITime iTime1 = null;
+    server0.setTime(iTime1);
+    tp2.ITime iTime3 = null;
+    server0.setTime(iTime3);
+    tp2.Server server5 = new tp2.Server();
+    tp2.IP iP10 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b11 = server5.removeBan(iP10);
+    java.lang.Integer i12 = iP10.getFirst();
+    boolean b13 = server0.addException(iP10);
+    boolean b14 = server0.bansSorted();
+    boolean b15 = server0.bansSorted();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b2 == false);
+    org.junit.Assert.assertTrue(b11 == false);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b10 == true);
+    org.junit.Assert.assertTrue("'" + i12 + "' != '" + (-1)+ "'", i12.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b13 == false);
+    org.junit.Assert.assertTrue(b13 == true);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP19);
+    org.junit.Assert.assertTrue(b14 == true);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long20 + "' != '" + 10L+ "'", long20.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b29 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i30 + "' != '" + 161+ "'", i30.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b32 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b33 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b47 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b59 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b67 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i68 + "' != '" + 1437910020+ "'", i68.equals(1437910020));
+    org.junit.Assert.assertTrue(b15 == true);
 
   }
 
@@ -7515,10 +11159,16 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test372"); }
 
 
-    int i2 = java.lang.Integer.sum(24, 25);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 49);
+    // The following exception was thrown during execution in test generation
+    try {
+      int i1 = java.lang.Integer.parseInt("4294967294");
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
 
   }
 
@@ -7528,10 +11178,124 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test373"); }
 
 
-    int i1 = java.lang.Integer.reverse((-1067707136));
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)11100, (java.lang.Integer)784, (java.lang.Integer)0);
+    boolean b6 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    tp2.SinglyLinkedList singlyLinkedList7 = new tp2.SinglyLinkedList();
+    tp2.IP iP12 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i13 = iP12.getThird();
+    boolean b14 = singlyLinkedList7.remove(iP12);
+    tp2.IPBan iPBan16 = new tp2.IPBan(iP12, (java.lang.Long)10L);
+    tp2.IP iP21 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i22 = iP21.getFourth();
+    iPBan16.setIp(iP21);
+    java.lang.Long long24 = iPBan16.getExpires();
+    java.lang.Long long25 = iPBan16.getExpires();
+    tp2.IP iP30 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i31 = iP30.getFirst();
+    java.lang.Integer i32 = iP30.getSecond();
+    iP30.setFirst((java.lang.Integer)201326592);
+    iPBan16.setIp(iP30);
+    tp2.SinglyLinkedList singlyLinkedList36 = new tp2.SinglyLinkedList();
+    tp2.IP iP41 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i42 = iP41.getThird();
+    boolean b43 = singlyLinkedList36.remove(iP41);
+    boolean b44 = singlyLinkedList36.isEmpty();
+    int i45 = singlyLinkedList36.getSize();
+    tp2.IP iP50 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i51 = iP50.getThird();
+    iP50.setFourth((java.lang.Integer)0);
+    boolean b54 = singlyLinkedList36.contains(iP50);
+    boolean b55 = singlyLinkedList36.isEmpty();
+    tp2.IP iP60 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i61 = iP60.getFirst();
+    java.lang.Integer i62 = iP60.getFirst();
+    singlyLinkedList36.add(iP60);
+    tp2.SinglyLinkedList singlyLinkedList64 = new tp2.SinglyLinkedList();
+    tp2.IP iP69 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i70 = iP69.getThird();
+    boolean b71 = singlyLinkedList64.remove(iP69);
+    tp2.Server server72 = new tp2.Server();
+    tp2.IP iP77 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b78 = server72.removeBan(iP77);
+    boolean b79 = singlyLinkedList64.contains(iP77);
+    singlyLinkedList36.add(iP77);
+    iPBan16.setIp(iP77);
+    boolean b82 = strictlySortedSinglyLinkedList0.add(iPBan16);
+    boolean b83 = strictlySortedSinglyLinkedList0.isEmpty();
+    tp2.IPBan iPBan85 = strictlySortedSinglyLinkedList0.get(16);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 11024899);
+    org.junit.Assert.assertTrue(b6 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i13 + "' != '" + (-1)+ "'", i13.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b14 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i22 + "' != '" + 100+ "'", i22.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long24 + "' != '" + 10L+ "'", long24.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long25 + "' != '" + 10L+ "'", long25.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i31 + "' != '" + (-1)+ "'", i31.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i32 + "' != '" + (-1)+ "'", i32.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i42 + "' != '" + (-1)+ "'", i42.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b43 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b44 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i45 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i51 + "' != '" + (-1)+ "'", i51.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b54 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b55 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i61 + "' != '" + (-1)+ "'", i61.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i62 + "' != '" + (-1)+ "'", i62.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i70 + "' != '" + (-1)+ "'", i70.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b71 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b78 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b79 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b82 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b83 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan85);
 
   }
 
@@ -7541,10 +11305,58 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test374"); }
 
 
-    int i1 = java.lang.Integer.numberOfLeadingZeros(61);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    tp2.SinglyLinkedList singlyLinkedList11 = new tp2.SinglyLinkedList();
+    tp2.IP iP16 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i17 = iP16.getFourth();
+    singlyLinkedList11.add(iP16);
+    java.lang.Integer i19 = iP16.getFirst();
+    boolean b20 = server0.removeBan(iP16);
+    tp2.ITime iTime21 = null;
+    server0.setTime(iTime21);
+    boolean b23 = server0.bansSorted();
+    boolean b24 = server0.bansNotRepeatedExpirationOrIP();
+    boolean b25 = server0.bansSorted();
+    tp2.ITime iTime26 = null;
+    server0.setTime(iTime26);
+    tp2.ITime iTime28 = null;
+    server0.setTime(iTime28);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 26);
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + 100+ "'", i17.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b24 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b25 == true);
 
   }
 
@@ -7554,10 +11366,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test375"); }
 
 
-    int i1 = java.lang.Integer.bitCount(24);
+    int i1 = java.lang.Integer.lowestOneBit(100000);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 2);
+    org.junit.Assert.assertTrue(i1 == 32);
 
   }
 
@@ -7567,10 +11379,82 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test376"); }
 
 
-    int i2 = java.lang.Integer.divideUnsigned(51200, (-1));
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i6 = iP5.getFourth();
+    boolean b7 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    tp2.SinglyLinkedList singlyLinkedList8 = new tp2.SinglyLinkedList();
+    tp2.IP iP13 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i14 = iP13.getThird();
+    boolean b15 = singlyLinkedList8.remove(iP13);
+    java.lang.Integer i16 = iP13.getThird();
+    boolean b17 = strictlySortedSinglyLinkedList0.removeFromIP(iP13);
+    tp2.IPBan iPBan19 = strictlySortedSinglyLinkedList0.get(469762048);
+    tp2.IPBan iPBan21 = strictlySortedSinglyLinkedList0.get(1100100);
+    tp2.SinglyLinkedList singlyLinkedList22 = new tp2.SinglyLinkedList();
+    tp2.IP iP27 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i28 = iP27.getThird();
+    boolean b29 = singlyLinkedList22.remove(iP27);
+    tp2.IPBan iPBan31 = new tp2.IPBan(iP27, (java.lang.Long)10L);
+    java.lang.Long long32 = iPBan31.getExpires();
+    iPBan31.setExpires((java.lang.Long)(-1L));
+    java.lang.Long long35 = iPBan31.getExpires();
+    java.lang.Long long36 = iPBan31.getExpires();
+    boolean b37 = strictlySortedSinglyLinkedList0.contains(iPBan31);
+    tp2.IP iP38 = iPBan31.getIp();
+    tp2.IP iP39 = iPBan31.getIp();
+    java.lang.Long long40 = iPBan31.getExpires();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 0);
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + 2+ "'", i6.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i14 + "' != '" + (-1)+ "'", i14.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b15 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan19);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan21);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i28 + "' != '" + (-1)+ "'", i28.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b29 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long32 + "' != '" + 10L+ "'", long32.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long35 + "' != '" + (-1L)+ "'", long35.equals((-1L)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long36 + "' != '" + (-1L)+ "'", long36.equals((-1L)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b37 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP38);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP39);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long40 + "' != '" + (-1L)+ "'", long40.equals((-1L)));
 
   }
 
@@ -7580,10 +11464,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test377"); }
 
 
-    java.lang.Integer i2 = java.lang.Integer.getInteger("10101000000000000000110100100", 70);
+    int i2 = java.lang.Integer.parseInt("110011", 32);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 70+ "'", i2.equals(70));
+    org.junit.Assert.assertTrue(i2 == 34603041);
 
   }
 
@@ -7593,10 +11477,9 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test378"); }
 
 
-    int i1 = java.lang.Integer.lowestOneBit(20971520);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 4194304);
+    tp2.IP iP4 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i5 = null;
+    iP4.setThird(i5);
 
   }
 
@@ -7606,16 +11489,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test379"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      java.lang.Integer i2 = java.lang.Integer.valueOf("24100000220", 832);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    java.lang.Integer i2 = java.lang.Integer.getInteger("1100000000000000000000000000", 201326784);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 201326784+ "'", i2.equals(201326784));
 
   }
 
@@ -7625,10 +11502,101 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test380"); }
 
 
-    int i2 = java.lang.Integer.max(268503106, 1023410176);
+    tp2.Server server0 = new tp2.Server();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b6 = server0.removeBan(iP5);
+    tp2.IP iP11 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i12 = iP11.getThird();
+    iP11.setFourth((java.lang.Integer)0);
+    iP11.setSecond((java.lang.Integer)3);
+    iP11.setFourth((java.lang.Integer)12);
+    boolean b19 = server0.addBan(iP11);
+    server0.update();
+    boolean b21 = server0.bansSorted();
+    tp2.Server server22 = new tp2.Server();
+    boolean b23 = server22.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList24 = new tp2.SinglyLinkedList();
+    tp2.IP iP29 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i30 = iP29.getThird();
+    boolean b31 = singlyLinkedList24.remove(iP29);
+    boolean b32 = server22.addException(iP29);
+    tp2.SinglyLinkedList singlyLinkedList33 = new tp2.SinglyLinkedList();
+    tp2.IP iP38 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i39 = iP38.getFourth();
+    singlyLinkedList33.add(iP38);
+    java.lang.Integer i41 = iP38.getFirst();
+    boolean b42 = server22.removeBan(iP38);
+    tp2.Server server43 = new tp2.Server();
+    tp2.IP iP48 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b49 = server43.removeBan(iP48);
+    tp2.IP iP54 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i55 = iP54.getThird();
+    iP54.setFourth((java.lang.Integer)0);
+    iP54.setSecond((java.lang.Integer)3);
+    iP54.setFourth((java.lang.Integer)12);
+    boolean b62 = server43.addBan(iP54);
+    boolean b63 = server22.removeException(iP54);
+    java.lang.Integer i64 = iP54.getThird();
+    java.lang.Integer i65 = iP54.getFirst();
+    boolean b66 = server0.removeBan(iP54);
+    boolean b67 = server0.notSharedElements();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1023410176);
+    org.junit.Assert.assertTrue(b6 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i12 + "' != '" + (-1)+ "'", i12.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b21 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i30 + "' != '" + (-1)+ "'", i30.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b31 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i39 + "' != '" + 100+ "'", i39.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i41 + "' != '" + (-1)+ "'", i41.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b49 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i55 + "' != '" + (-1)+ "'", i55.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b62 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b63 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i64 + "' != '" + (-1)+ "'", i64.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i65 + "' != '" + (-1)+ "'", i65.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b66 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b67 == true);
 
   }
 
@@ -7638,10 +11606,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test381"); }
 
 
-    int i1 = java.lang.Integer.signum(2528);
+    int i2 = java.lang.Integer.max(201326624, 58000000);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1);
+    org.junit.Assert.assertTrue(i2 == 201326624);
 
   }
 
@@ -7651,10 +11619,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test382"); }
 
 
-    int i2 = java.lang.Integer.compare(11, 1073741825);
+    int i2 = java.lang.Integer.max(0, 436219526);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-1));
+    org.junit.Assert.assertTrue(i2 == 436219526);
 
   }
 
@@ -7664,10 +11632,17 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test383"); }
 
 
-    int i2 = java.lang.Integer.rotateRight(69273664, 469761943);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1108377608);
+    java.lang.Integer i3 = null;
+    // The following exception was thrown during execution in test generation
+    try {
+      tp2.IP iP4 = new tp2.IP((java.lang.Integer)12, (java.lang.Integer)201326592, (java.lang.Integer)1610612786, i3);
+      org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException");
+    } catch (java.lang.IllegalArgumentException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.IllegalArgumentException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException, got " + e.getClass().getCanonicalName());
+      }
+    }
 
   }
 
@@ -7677,10 +11652,16 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test384"); }
 
 
-    int i1 = java.lang.Integer.reverseBytes(83886080);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 5);
+    // The following exception was thrown during execution in test generation
+    try {
+      int i1 = java.lang.Integer.parseInt("100000000000000000000000000");
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
 
   }
 
@@ -7690,10 +11671,8 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test385"); }
 
 
-    int i2 = java.lang.Integer.min(1400000, 18757859);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1400000);
+    tp2.IP iP4 = new tp2.IP((java.lang.Integer)1073741824, (java.lang.Integer)(-1), (java.lang.Integer)16, (java.lang.Integer)1);
+    iP4.setFourth((java.lang.Integer)2);
 
   }
 
@@ -7703,10 +11682,68 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test386"); }
 
 
-    int i2 = java.lang.Integer.min(1476395008, 111);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    boolean b1 = strictlySortedSinglyLinkedList0.isEmpty();
+    int i2 = strictlySortedSinglyLinkedList0.getSize();
+    boolean b3 = strictlySortedSinglyLinkedList0.isEmpty();
+    boolean b4 = strictlySortedSinglyLinkedList0.isEmpty();
+    tp2.SinglyLinkedList singlyLinkedList5 = new tp2.SinglyLinkedList();
+    tp2.IP iP10 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i11 = iP10.getThird();
+    boolean b12 = singlyLinkedList5.remove(iP10);
+    tp2.IPBan iPBan14 = new tp2.IPBan(iP10, (java.lang.Long)10L);
+    java.lang.Long long15 = iPBan14.getExpires();
+    java.lang.Long long16 = iPBan14.getExpires();
+    tp2.SinglyLinkedList singlyLinkedList17 = new tp2.SinglyLinkedList();
+    tp2.IP iP22 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i23 = iP22.getThird();
+    boolean b24 = singlyLinkedList17.remove(iP22);
+    tp2.IPBan iPBan26 = new tp2.IPBan(iP22, (java.lang.Long)10L);
+    tp2.IP iP31 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i32 = iP31.getFourth();
+    iPBan26.setIp(iP31);
+    iPBan14.setIp(iP31);
+    boolean b35 = strictlySortedSinglyLinkedList0.contains(iPBan14);
+    java.lang.Long long36 = iPBan14.getExpires();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 111);
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b4 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i11 + "' != '" + (-1)+ "'", i11.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b12 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long15 + "' != '" + 10L+ "'", long15.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long16 + "' != '" + 10L+ "'", long16.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i23 + "' != '" + (-1)+ "'", i23.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b24 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i32 + "' != '" + 100+ "'", i32.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b35 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long36 + "' != '" + 10L+ "'", long36.equals(10L));
 
   }
 
@@ -7716,10 +11753,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test387"); }
 
 
-    int i2 = java.lang.Integer.compare(144, 268435466);
+    java.lang.String str1 = java.lang.Integer.toUnsignedString(805306368);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-1));
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "805306368"+ "'", str1.equals("805306368"));
 
   }
 
@@ -7729,10 +11766,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test388"); }
 
 
-    int i2 = java.lang.Integer.compare(67108864, 28672);
+    int i2 = java.lang.Integer.rotateRight(11001, 15);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1);
+    org.junit.Assert.assertTrue(i2 == 1441923072);
 
   }
 
@@ -7742,10 +11779,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test389"); }
 
 
-    int i1 = java.lang.Integer.reverse((-671088640));
+    int i2 = java.lang.Integer.compare((-1610612688), 25);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 27);
+    org.junit.Assert.assertTrue(i2 == (-1));
 
   }
 
@@ -7755,16 +11792,118 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test390"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseInt("2231369807", 62563);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP1 = null;
+    boolean b2 = singlyLinkedList0.remove(iP1);
+    boolean b3 = singlyLinkedList0.isEmpty();
+    tp2.IP iP8 = new tp2.IP((java.lang.Integer)5, (java.lang.Integer)1, (java.lang.Integer)0, (java.lang.Integer)12);
+    boolean b9 = singlyLinkedList0.contains(iP8);
+    tp2.SinglyLinkedList singlyLinkedList10 = new tp2.SinglyLinkedList();
+    tp2.IP iP15 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i16 = iP15.getThird();
+    boolean b17 = singlyLinkedList10.remove(iP15);
+    iP15.setSecond((java.lang.Integer)150994944);
+    java.lang.Integer i20 = iP15.getFourth();
+    java.lang.Integer i21 = iP15.getThird();
+    java.lang.Integer i22 = iP15.getFirst();
+    boolean b23 = singlyLinkedList0.contains(iP15);
+    tp2.SinglyLinkedList singlyLinkedList24 = new tp2.SinglyLinkedList();
+    tp2.IP iP29 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i30 = iP29.getFourth();
+    singlyLinkedList24.add(iP29);
+    java.lang.Integer i32 = iP29.getFirst();
+    boolean b33 = singlyLinkedList0.remove(iP29);
+    tp2.SinglyLinkedList singlyLinkedList34 = new tp2.SinglyLinkedList();
+    tp2.IP iP39 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i40 = iP39.getThird();
+    boolean b41 = singlyLinkedList34.remove(iP39);
+    tp2.IPBan iPBan43 = new tp2.IPBan(iP39, (java.lang.Long)10L);
+    tp2.IP iP48 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i49 = iP48.getFourth();
+    iPBan43.setIp(iP48);
+    java.lang.Long long51 = iPBan43.getExpires();
+    java.lang.Long long52 = iPBan43.getExpires();
+    tp2.Server server53 = new tp2.Server();
+    boolean b54 = server53.exceptionsNotRepeated();
+    tp2.IP iP59 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i60 = iP59.getThird();
+    iP59.setSecond((java.lang.Integer)10);
+    boolean b63 = server53.removeBan(iP59);
+    java.lang.Integer i64 = iP59.getFirst();
+    iPBan43.setIp(iP59);
+    iP59.setFourth((java.lang.Integer)11884);
+    singlyLinkedList0.add(iP59);
+    boolean b69 = singlyLinkedList0.isEmpty();
+    tp2.IP iP71 = singlyLinkedList0.get(33554432);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i20 + "' != '" + 100+ "'", i20.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i21 + "' != '" + (-1)+ "'", i21.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i22 + "' != '" + (-1)+ "'", i22.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i30 + "' != '" + 100+ "'", i30.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i32 + "' != '" + (-1)+ "'", i32.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b33 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i40 + "' != '" + (-1)+ "'", i40.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b41 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i49 + "' != '" + 100+ "'", i49.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long51 + "' != '" + 10L+ "'", long51.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long52 + "' != '" + 10L+ "'", long52.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b54 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i60 + "' != '" + (-1)+ "'", i60.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b63 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i64 + "' != '" + (-1)+ "'", i64.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b69 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iP71);
 
   }
 
@@ -7774,10 +11913,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test391"); }
 
 
-    int i1 = java.lang.Integer.lowestOneBit((-2147483648));
+    java.lang.Integer i1 = java.lang.Integer.valueOf("200000000");
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == (-2147483648));
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 200000000+ "'", i1.equals(200000000));
 
   }
 
@@ -7787,10 +11926,16 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test392"); }
 
 
-    int i1 = java.lang.Integer.signum(128);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1);
+    // The following exception was thrown during execution in test generation
+    try {
+      java.lang.Integer i1 = java.lang.Integer.decode("hi!");
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
 
   }
 
@@ -7800,10 +11945,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test393"); }
 
 
-    java.lang.Integer i1 = java.lang.Integer.getInteger("144");
+    int i2 = java.lang.Integer.max((-1601830656), 218103808);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(i1);
+    org.junit.Assert.assertTrue(i2 == 218103808);
 
   }
 
@@ -7813,10 +11958,16 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test394"); }
 
 
-    java.lang.Integer i2 = java.lang.Integer.getInteger("1000110", 50397184);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 50397184+ "'", i2.equals(50397184));
+    // The following exception was thrown during execution in test generation
+    try {
+      int i2 = java.lang.Integer.divideUnsigned(671088640, 0);
+      org.junit.Assert.fail("Expected exception of type java.lang.ArithmeticException");
+    } catch (java.lang.ArithmeticException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.ArithmeticException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.ArithmeticException, got " + e.getClass().getCanonicalName());
+      }
+    }
 
   }
 
@@ -7826,16 +11977,35 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test395"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseUnsignedInt("hi!", 31);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.exceptionsNotRepeated();
+    boolean b2 = server0.bansSorted();
+    boolean b3 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList4 = new tp2.SinglyLinkedList();
+    tp2.IP iP9 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i10 = iP9.getFourth();
+    singlyLinkedList4.add(iP9);
+    boolean b12 = server0.addException(iP9);
+    tp2.IPBan iPBan14 = new tp2.IPBan(iP9, (java.lang.Long)727449600L);
+    java.lang.Long long15 = iPBan14.getExpires();
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i10 + "' != '" + 100+ "'", i10.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b12 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long15 + "' != '" + 727449600L+ "'", long15.equals(727449600L));
 
   }
 
@@ -7845,10 +12015,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test396"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toUnsignedString((-134217728));
+    int i2 = java.lang.Integer.remainderUnsigned(3, 64);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "4160749568"+ "'", str1.equals("4160749568"));
+    org.junit.Assert.assertTrue(i2 == 3);
 
   }
 
@@ -7858,149 +12028,9 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test397"); }
 
 
-    int i2 = java.lang.Integer.max(4329604, 1677721779);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1677721779);
-
-  }
-
-  @Test
-  public void test398() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test398"); }
-
-
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP5 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b6 = server0.removeException(iP5);
-    java.lang.Integer i7 = iP5.getThird();
-    java.lang.Integer i8 = iP5.getFourth();
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b6 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i7 + "' != '" + 939524096+ "'", i7.equals(939524096));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i8 + "' != '" + 5+ "'", i8.equals(5));
-
-  }
-
-  @Test
-  public void test399() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test399"); }
-
-
-    long long1 = java.lang.Integer.toUnsignedLong(80000085);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(long1 == 80000085L);
-
-  }
-
-  @Test
-  public void test400() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test400"); }
-
-
-    int i1 = java.lang.Integer.reverseBytes((-1593835376));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == (-1879048031));
-
-  }
-
-  @Test
-  public void test401() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test401"); }
-
-
-    int i1 = java.lang.Integer.numberOfLeadingZeros((-150929408));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 0);
-
-  }
-
-  @Test
-  public void test402() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test402"); }
-
-
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP1 = null;
-    boolean b2 = server0.addBan(iP1);
-    tp2.Server server3 = new tp2.Server();
-    tp2.IP iP8 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b9 = server3.removeException(iP8);
-    boolean b11 = iP8.equals((java.lang.Object)(-1L));
-    boolean b12 = server0.removeBan(iP8);
-    tp2.IPBan iPBan14 = new tp2.IPBan(iP8, (java.lang.Long)(-1L));
-    java.lang.Long long15 = iPBan14.getExpires();
-    java.lang.Long long16 = iPBan14.getExpires();
-    tp2.Server server17 = new tp2.Server();
-    tp2.IP iP22 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b23 = server17.removeException(iP22);
-    server17.update();
-    tp2.Server server25 = new tp2.Server();
-    tp2.IP iP30 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b31 = server25.removeException(iP30);
-    java.lang.Integer i32 = iP30.getFirst();
-    boolean b33 = server17.addBan(iP30);
-    iP30.setSecond((java.lang.Integer)83);
-    iPBan14.setIp(iP30);
-    java.lang.Long long37 = iPBan14.expires;
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b2 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b9 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b11 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b12 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long15 + "' != '" + (-1L)+ "'", long15.equals((-1L)));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long16 + "' != '" + (-1L)+ "'", long16.equals((-1L)));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b23 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b31 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i32 + "' != '" + 161+ "'", i32.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b33 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long37 + "' != '" + (-1L)+ "'", long37.equals((-1L)));
-
-  }
-
-  @Test
-  public void test403() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test403"); }
-
-
     // The following exception was thrown during execution in test generation
     try {
-      java.lang.Integer i2 = java.lang.Integer.valueOf("3928g3h1", (-1593835376));
+      java.lang.Integer i2 = java.lang.Integer.valueOf("11100", 56);
       org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
     } catch (java.lang.NumberFormatException e) {
       // Expected exception.
@@ -8012,15 +12042,219 @@ public class RegressionTest1 {
   }
 
   @Test
+  public void test398() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test398"); }
+
+
+    java.lang.String str1 = java.lang.Integer.toOctalString(0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "0"+ "'", str1.equals("0"));
+
+  }
+
+  @Test
+  public void test399() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test399"); }
+
+
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    tp2.SinglyLinkedList singlyLinkedList11 = new tp2.SinglyLinkedList();
+    tp2.IP iP16 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i17 = iP16.getFourth();
+    singlyLinkedList11.add(iP16);
+    java.lang.Integer i19 = iP16.getFirst();
+    boolean b20 = server0.removeBan(iP16);
+    tp2.ITime iTime21 = null;
+    server0.setTime(iTime21);
+    boolean b23 = server0.bansSorted();
+    tp2.IP iP28 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i29 = iP28.getFourth();
+    boolean b30 = server0.removeBan(iP28);
+    tp2.Server server31 = new tp2.Server();
+    boolean b32 = server31.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList33 = new tp2.SinglyLinkedList();
+    tp2.IP iP38 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i39 = iP38.getThird();
+    boolean b40 = singlyLinkedList33.remove(iP38);
+    boolean b41 = server31.addException(iP38);
+    tp2.SinglyLinkedList singlyLinkedList42 = new tp2.SinglyLinkedList();
+    tp2.IP iP47 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i48 = iP47.getFourth();
+    singlyLinkedList42.add(iP47);
+    java.lang.Integer i50 = iP47.getFirst();
+    boolean b51 = server31.removeBan(iP47);
+    tp2.ITime iTime52 = null;
+    server31.setTime(iTime52);
+    boolean b54 = server31.notSharedElements();
+    tp2.IP iP59 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i60 = iP59.getThird();
+    iP59.setFourth((java.lang.Integer)0);
+    iP59.setSecond((java.lang.Integer)3);
+    boolean b65 = server31.addBan(iP59);
+    java.lang.Integer i66 = iP59.getFirst();
+    boolean b67 = server0.addBan(iP59);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + 100+ "'", i17.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i29 + "' != '" + 100+ "'", i29.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b30 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i39 + "' != '" + (-1)+ "'", i39.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b40 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b41 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i48 + "' != '" + 100+ "'", i48.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i50 + "' != '" + (-1)+ "'", i50.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b51 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b54 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i60 + "' != '" + (-1)+ "'", i60.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b65 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i66 + "' != '" + (-1)+ "'", i66.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b67 == true);
+
+  }
+
+  @Test
+  public void test400() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test400"); }
+
+
+    java.lang.Integer i1 = java.lang.Integer.valueOf(167772260);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 167772260+ "'", i1.equals(167772260));
+
+  }
+
+  @Test
+  public void test401() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test401"); }
+
+
+    java.lang.Integer i2 = java.lang.Integer.getInteger("", (java.lang.Integer)727449600);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 727449600+ "'", i2.equals(727449600));
+
+  }
+
+  @Test
+  public void test402() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test402"); }
+
+
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    tp2.IPBan iPBan9 = new tp2.IPBan(iP5, (java.lang.Long)10L);
+    tp2.IP iP14 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i15 = iP14.getFourth();
+    iPBan9.setIp(iP14);
+    java.lang.Long long17 = iPBan9.getExpires();
+    tp2.IP iP18 = iPBan9.getIp();
+    iPBan9.setExpires((java.lang.Long)536870912L);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + 100+ "'", i15.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long17 + "' != '" + 10L+ "'", long17.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP18);
+
+  }
+
+  @Test
+  public void test403() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test403"); }
+
+
+    int i2 = java.lang.Integer.compare(637534288, 1100100);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 1);
+
+  }
+
+  @Test
   public void test404() throws Throwable {
 
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test404"); }
 
 
-    java.lang.Integer i1 = java.lang.Integer.valueOf(100004);
+    int i1 = java.lang.Integer.numberOfTrailingZeros(9);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 100004+ "'", i1.equals(100004));
+    org.junit.Assert.assertTrue(i1 == 0);
 
   }
 
@@ -8032,7 +12266,7 @@ public class RegressionTest1 {
 
     // The following exception was thrown during execution in test generation
     try {
-      int i2 = java.lang.Integer.parseInt("38000", 80000000);
+      int i1 = java.lang.Integer.parseInt("hi!");
       org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
     } catch (java.lang.NumberFormatException e) {
       // Expected exception.
@@ -8049,10 +12283,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test406"); }
 
 
-    int i2 = java.lang.Integer.min(28672, 100000);
+    java.lang.String str1 = java.lang.Integer.toUnsignedString(33);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 28672);
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "33"+ "'", str1.equals("33"));
 
   }
 
@@ -8064,12 +12298,12 @@ public class RegressionTest1 {
 
     // The following exception was thrown during execution in test generation
     try {
-      korat.finitization.IFinitization iFinitization1 = tp2.Server.finServer(70);
-      org.junit.Assert.fail("Expected exception of type java.lang.IndexOutOfBoundsException");
-    } catch (java.lang.IndexOutOfBoundsException e) {
+      java.lang.Integer i2 = java.lang.Integer.valueOf("2693136640", 5);
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
       // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.IndexOutOfBoundsException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.IndexOutOfBoundsException, got " + e.getClass().getCanonicalName());
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
       }
     }
 
@@ -8081,12 +12315,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test408"); }
 
 
-    tp2.IP iP4 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)2, (java.lang.Integer)38000, (java.lang.Integer)32);
-    java.lang.Integer i5 = iP4.getFirst();
-    iP4.setThird((java.lang.Integer)13);
+    java.lang.String str1 = java.lang.Integer.toBinaryString(0);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i5 + "' != '" + (-1)+ "'", i5.equals((-1)));
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "0"+ "'", str1.equals("0"));
 
   }
 
@@ -8096,10 +12328,34 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test409"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toOctalString(1325400064);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    java.lang.Integer i11 = iP7.getFourth();
+    java.lang.Integer i12 = iP7.getFirst();
+    iP7.setFourth((java.lang.Integer)146800640);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "11700000000"+ "'", str1.equals("11700000000"));
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i11 + "' != '" + 100+ "'", i11.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i12 + "' != '" + (-1)+ "'", i12.equals((-1)));
 
   }
 
@@ -8109,10 +12365,118 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test410"); }
 
 
-    int i2 = java.lang.Integer.divideUnsigned(2031686, 536870912);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.exceptionsNotRepeated();
+    boolean b2 = server0.bansSorted();
+    boolean b3 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList4 = new tp2.SinglyLinkedList();
+    tp2.IP iP9 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i10 = iP9.getFourth();
+    singlyLinkedList4.add(iP9);
+    boolean b12 = server0.addException(iP9);
+    tp2.Server server13 = new tp2.Server();
+    boolean b14 = server13.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList15 = new tp2.SinglyLinkedList();
+    tp2.IP iP20 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i21 = iP20.getThird();
+    boolean b22 = singlyLinkedList15.remove(iP20);
+    boolean b23 = server13.addException(iP20);
+    tp2.SinglyLinkedList singlyLinkedList24 = new tp2.SinglyLinkedList();
+    tp2.IP iP29 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i30 = iP29.getFourth();
+    singlyLinkedList24.add(iP29);
+    java.lang.Integer i32 = iP29.getFirst();
+    boolean b33 = server13.removeBan(iP29);
+    tp2.ITime iTime34 = null;
+    server13.setTime(iTime34);
+    boolean b36 = server13.notSharedElements();
+    tp2.IP iP41 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i42 = iP41.getThird();
+    iP41.setFourth((java.lang.Integer)0);
+    iP41.setSecond((java.lang.Integer)3);
+    boolean b47 = server13.addBan(iP41);
+    tp2.SinglyLinkedList singlyLinkedList48 = new tp2.SinglyLinkedList();
+    tp2.IP iP53 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i54 = iP53.getThird();
+    boolean b55 = singlyLinkedList48.remove(iP53);
+    java.lang.Integer i56 = iP53.getThird();
+    iP53.setFirst((java.lang.Integer)11100);
+    boolean b59 = server13.addBan(iP53);
+    boolean b60 = server0.removeBan(iP53);
+    java.lang.Integer i61 = iP53.getSecond();
+    tp2.IPBan iPBan63 = new tp2.IPBan(iP53, (java.lang.Long)10L);
+    iPBan63.setExpires((java.lang.Long)5L);
+    java.lang.Long long66 = iPBan63.getExpires();
+    tp2.IP iP67 = iPBan63.getIp();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 0);
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i10 + "' != '" + 100+ "'", i10.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b12 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b14 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i21 + "' != '" + (-1)+ "'", i21.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b22 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i30 + "' != '" + 100+ "'", i30.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i32 + "' != '" + (-1)+ "'", i32.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b33 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b36 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i42 + "' != '" + (-1)+ "'", i42.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b47 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i54 + "' != '" + (-1)+ "'", i54.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b55 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i56 + "' != '" + (-1)+ "'", i56.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b59 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b60 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i61 + "' != '" + (-1)+ "'", i61.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long66 + "' != '" + 5L+ "'", long66.equals(5L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP67);
 
   }
 
@@ -8122,10 +12486,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test411"); }
 
 
-    java.lang.String str2 = java.lang.Integer.toUnsignedString(35320, 100004);
+    java.lang.Integer i2 = java.lang.Integer.getInteger("14", 6291456);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "35320"+ "'", str2.equals("35320"));
+    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 6291456+ "'", i2.equals(6291456));
 
   }
 
@@ -8135,10 +12499,16 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test412"); }
 
 
-    int i2 = java.lang.Integer.max(352321956, 841);
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP1 = null;
+    boolean b2 = singlyLinkedList0.remove(iP1);
+    int i3 = singlyLinkedList0.getSize();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 352321956);
+    org.junit.Assert.assertTrue(b2 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i3 == 0);
 
   }
 
@@ -8148,10 +12518,87 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test413"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toBinaryString(10);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.exceptionsNotRepeated();
+    boolean b2 = server0.bansSorted();
+    tp2.SinglyLinkedList singlyLinkedList3 = new tp2.SinglyLinkedList();
+    tp2.IP iP8 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i9 = iP8.getThird();
+    boolean b10 = singlyLinkedList3.remove(iP8);
+    iP8.setSecond((java.lang.Integer)150994944);
+    java.lang.Integer i13 = iP8.getFourth();
+    java.lang.Integer i14 = iP8.getThird();
+    java.lang.Integer i15 = iP8.getFirst();
+    boolean b16 = server0.connect(iP8);
+    tp2.Server server17 = new tp2.Server();
+    tp2.ITime iTime18 = null;
+    server17.setTime(iTime18);
+    tp2.Server server20 = new tp2.Server();
+    boolean b21 = server20.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList22 = new tp2.SinglyLinkedList();
+    tp2.IP iP27 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i28 = iP27.getThird();
+    boolean b29 = singlyLinkedList22.remove(iP27);
+    boolean b30 = server20.addException(iP27);
+    java.lang.Integer i31 = iP27.getFirst();
+    tp2.IPBan iPBan33 = new tp2.IPBan(iP27, (java.lang.Long)5L);
+    boolean b34 = server17.connect(iP27);
+    tp2.IP iP39 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i40 = iP39.getFourth();
+    iP39.setFirst((java.lang.Integer)16);
+    boolean b43 = server17.addBan(iP39);
+    boolean b44 = server0.removeBan(iP39);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "1010"+ "'", str1.equals("1010"));
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i9 + "' != '" + (-1)+ "'", i9.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i13 + "' != '" + 100+ "'", i13.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i14 + "' != '" + (-1)+ "'", i14.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + (-1)+ "'", i15.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b16 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b21 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i28 + "' != '" + (-1)+ "'", i28.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b29 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b30 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i31 + "' != '" + (-1)+ "'", i31.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b34 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i40 + "' != '" + 100+ "'", i40.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b43 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b44 == false);
 
   }
 
@@ -8161,10 +12608,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test414"); }
 
 
-    java.lang.Integer i1 = new java.lang.Integer(80000085);
+    int i1 = java.lang.Integer.numberOfLeadingZeros(28);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 80000085+ "'", i1.equals(80000085));
+    org.junit.Assert.assertTrue(i1 == 27);
 
   }
 
@@ -8174,10 +12621,22 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test415"); }
 
 
-    int i2 = java.lang.Integer.remainderUnsigned(10, 536870912);
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.SinglyLinkedList singlyLinkedList1 = new tp2.SinglyLinkedList();
+    tp2.IP iP6 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i7 = iP6.getThird();
+    boolean b8 = singlyLinkedList1.remove(iP6);
+    java.lang.Integer i9 = iP6.getThird();
+    singlyLinkedList0.add(iP6);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 10);
+    org.junit.Assert.assertTrue("'" + i7 + "' != '" + (-1)+ "'", i7.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i9 + "' != '" + (-1)+ "'", i9.equals((-1)));
 
   }
 
@@ -8187,10 +12646,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test416"); }
 
 
-    java.lang.Integer i2 = java.lang.Integer.getInteger("229376", (java.lang.Integer)62563);
+    java.lang.String str1 = java.lang.Integer.toOctalString((-420762406));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 62563+ "'", i2.equals(62563));
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "34672726332"+ "'", str1.equals("34672726332"));
 
   }
 
@@ -8200,10 +12659,75 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test417"); }
 
 
-    int i2 = java.lang.Integer.max(28672, 0);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)11100, (java.lang.Integer)784, (java.lang.Integer)0);
+    boolean b6 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    tp2.IP iP11 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)11100, (java.lang.Integer)784, (java.lang.Integer)0);
+    boolean b12 = strictlySortedSinglyLinkedList0.removeFromIP(iP11);
+    tp2.SinglyLinkedList singlyLinkedList13 = new tp2.SinglyLinkedList();
+    tp2.IP iP18 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i19 = iP18.getThird();
+    boolean b20 = singlyLinkedList13.remove(iP18);
+    boolean b21 = singlyLinkedList13.isEmpty();
+    int i22 = singlyLinkedList13.getSize();
+    tp2.IP iP27 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i28 = iP27.getThird();
+    iP27.setFourth((java.lang.Integer)0);
+    boolean b31 = singlyLinkedList13.contains(iP27);
+    boolean b32 = singlyLinkedList13.isEmpty();
+    tp2.IP iP37 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i38 = iP37.getFirst();
+    java.lang.Integer i39 = iP37.getFirst();
+    singlyLinkedList13.add(iP37);
+    tp2.IP iP42 = singlyLinkedList13.get(727449600);
+    tp2.IP iP44 = singlyLinkedList13.get((-1073741812));
+    boolean b45 = strictlySortedSinglyLinkedList0.removeFromIP(iP44);
+    boolean b46 = strictlySortedSinglyLinkedList0.isEmpty();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 28672);
+    org.junit.Assert.assertTrue(b6 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b12 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b21 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i22 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i28 + "' != '" + (-1)+ "'", i28.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b31 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i38 + "' != '" + (-1)+ "'", i38.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i39 + "' != '" + (-1)+ "'", i39.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iP42);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP44);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b45 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b46 == true);
 
   }
 
@@ -8213,10 +12737,60 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test418"); }
 
 
-    int i2 = java.lang.Integer.max(161, 2362614);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    tp2.SinglyLinkedList singlyLinkedList11 = new tp2.SinglyLinkedList();
+    tp2.IP iP16 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i17 = iP16.getFourth();
+    singlyLinkedList11.add(iP16);
+    java.lang.Integer i19 = iP16.getFirst();
+    boolean b20 = server0.removeBan(iP16);
+    tp2.ITime iTime21 = null;
+    server0.setTime(iTime21);
+    boolean b23 = server0.bansSorted();
+    tp2.IP iP28 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i29 = iP28.getFourth();
+    iP28.setFirst((java.lang.Integer)16);
+    boolean b32 = server0.addBan(iP28);
+    java.lang.Integer i33 = iP28.getFirst();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 2362614);
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + 100+ "'", i17.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i29 + "' != '" + 100+ "'", i29.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i33 + "' != '" + 16+ "'", i33.equals(16));
 
   }
 
@@ -8226,10 +12800,33 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test419"); }
 
 
-    java.lang.Integer i2 = java.lang.Integer.getInteger("70", 939524096);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.exceptionsNotRepeated();
+    boolean b2 = server0.bansSorted();
+    tp2.Server server3 = new tp2.Server();
+    tp2.IP iP8 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b9 = server3.removeBan(iP8);
+    java.lang.Integer i10 = iP8.getFirst();
+    boolean b11 = server0.addBan(iP8);
+    boolean b12 = server0.exceptionsNotRepeated();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 939524096+ "'", i2.equals(939524096));
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i10 + "' != '" + (-1)+ "'", i10.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b12 == true);
 
   }
 
@@ -8239,10 +12836,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test420"); }
 
 
-    java.lang.Integer i1 = java.lang.Integer.getInteger("80");
+    int i1 = java.lang.Integer.signum(2809);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(i1);
+    org.junit.Assert.assertTrue(i1 == 1);
 
   }
 
@@ -8252,10 +12849,27 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test421"); }
 
 
-    int i2 = java.lang.Integer.rotateLeft(61, 16);
+    tp2.Server server0 = new tp2.Server();
+    tp2.ITime iTime1 = null;
+    server0.setTime(iTime1);
+    tp2.ITime iTime3 = null;
+    server0.setTime(iTime3);
+    tp2.Server server5 = new tp2.Server();
+    tp2.IP iP10 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b11 = server5.removeBan(iP10);
+    java.lang.Integer i12 = iP10.getFirst();
+    boolean b13 = server0.addException(iP10);
+    iP10.setThird((java.lang.Integer)(-1073741824));
+    iP10.setFourth((java.lang.Integer)807927808);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 3997696);
+    org.junit.Assert.assertTrue(b11 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i12 + "' != '" + (-1)+ "'", i12.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b13 == true);
 
   }
 
@@ -8265,10 +12879,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test422"); }
 
 
-    java.lang.Integer i2 = java.lang.Integer.valueOf("80000085", 13);
+    java.lang.Integer i1 = new java.lang.Integer(134217599);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 501988245+ "'", i2.equals(501988245));
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 134217599+ "'", i1.equals(134217599));
 
   }
 
@@ -8278,10 +12892,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test423"); }
 
 
-    int i1 = java.lang.Integer.highestOneBit(25);
+    java.lang.String str1 = java.lang.Integer.toUnsignedString(637534208);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 16);
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "637534208"+ "'", str1.equals("637534208"));
 
   }
 
@@ -8291,16 +12905,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test424"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      int i1 = java.lang.Integer.parseUnsignedInt("1111111111111111111111111111111");
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    java.lang.Integer i1 = new java.lang.Integer("110011");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 110011+ "'", i1.equals(110011));
 
   }
 
@@ -8310,10 +12918,23 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test425"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toHexString((-2063597489));
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.exceptionsNotRepeated();
+    tp2.IP iP6 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i7 = iP6.getThird();
+    iP6.setSecond((java.lang.Integer)10);
+    boolean b10 = server0.removeBan(iP6);
+    iP6.setFourth((java.lang.Integer)9);
+    tp2.IPBan iPBan14 = new tp2.IPBan(iP6, (java.lang.Long)5L);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "8500004f"+ "'", str1.equals("8500004f"));
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i7 + "' != '" + (-1)+ "'", i7.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == false);
 
   }
 
@@ -8323,10 +12944,108 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test426"); }
 
 
-    java.lang.Integer i1 = java.lang.Integer.valueOf(100000);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i6 = iP5.getFourth();
+    boolean b7 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    tp2.SinglyLinkedList singlyLinkedList8 = new tp2.SinglyLinkedList();
+    tp2.IP iP13 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i14 = iP13.getThird();
+    boolean b15 = singlyLinkedList8.remove(iP13);
+    java.lang.Integer i16 = iP13.getThird();
+    boolean b17 = strictlySortedSinglyLinkedList0.removeFromIP(iP13);
+    tp2.IPBan iPBan19 = strictlySortedSinglyLinkedList0.get(469762048);
+    tp2.SinglyLinkedList singlyLinkedList20 = new tp2.SinglyLinkedList();
+    tp2.IP iP25 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i26 = iP25.getThird();
+    boolean b27 = singlyLinkedList20.remove(iP25);
+    tp2.IP iP32 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i33 = iP32.getFirst();
+    boolean b34 = singlyLinkedList20.remove(iP32);
+    boolean b35 = strictlySortedSinglyLinkedList0.containsIP(iP32);
+    tp2.IP iP40 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i41 = iP40.getSecond();
+    boolean b42 = strictlySortedSinglyLinkedList0.containsIP(iP40);
+    tp2.Server server43 = new tp2.Server();
+    boolean b44 = server43.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList45 = new tp2.SinglyLinkedList();
+    tp2.IP iP50 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i51 = iP50.getThird();
+    boolean b52 = singlyLinkedList45.remove(iP50);
+    boolean b53 = server43.addException(iP50);
+    java.lang.Integer i54 = iP50.getFirst();
+    tp2.IPBan iPBan56 = new tp2.IPBan(iP50, (java.lang.Long)5L);
+    tp2.IP iP57 = iPBan56.getIp();
+    tp2.IP iP58 = iPBan56.getIp();
+    boolean b59 = strictlySortedSinglyLinkedList0.contains(iPBan56);
+    iPBan56.setExpires((java.lang.Long)32L);
+    iPBan56.setExpires((java.lang.Long)144L);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 100000+ "'", i1.equals(100000));
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + 2+ "'", i6.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i14 + "' != '" + (-1)+ "'", i14.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b15 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan19);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i26 + "' != '" + (-1)+ "'", i26.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b27 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i33 + "' != '" + (-1)+ "'", i33.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b34 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b35 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i41 + "' != '" + (-1)+ "'", i41.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b44 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i51 + "' != '" + (-1)+ "'", i51.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b52 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b53 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i54 + "' != '" + (-1)+ "'", i54.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP57);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP58);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b59 == false);
 
   }
 
@@ -8336,10 +13055,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test427"); }
 
 
-    java.lang.Integer i2 = java.lang.Integer.getInteger("4329604", (java.lang.Integer)31);
+    int i1 = java.lang.Integer.numberOfTrailingZeros((-2147479552));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 31+ "'", i2.equals(31));
+    org.junit.Assert.assertTrue(i1 == 12);
 
   }
 
@@ -8349,10 +13068,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test428"); }
 
 
-    java.lang.Integer i1 = java.lang.Integer.getInteger("35320");
+    int i2 = java.lang.Integer.compareUnsigned(671088644, 56);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(i1);
+    org.junit.Assert.assertTrue(i2 == 1);
 
   }
 
@@ -8362,10 +13081,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test429"); }
 
 
-    java.lang.Integer i2 = java.lang.Integer.getInteger("24100000220", 16);
+    int i1 = java.lang.Integer.highestOneBit(64);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 16+ "'", i2.equals(16));
+    org.junit.Assert.assertTrue(i1 == 64);
 
   }
 
@@ -8375,135 +13094,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test430"); }
 
 
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP1 = null;
-    boolean b2 = server0.addBan(iP1);
-    tp2.ITime iTime3 = null;
-    server0.setTime(iTime3);
-    tp2.IP iP5 = null;
-    tp2.IPBan iPBan7 = new tp2.IPBan(iP5, (java.lang.Long)10L);
-    tp2.IP iP8 = iPBan7.getIp();
-    java.lang.Long long9 = iPBan7.expires;
-    tp2.IP iP10 = null;
-    iPBan7.ip = iP10;
-    tp2.Server server12 = new tp2.Server();
-    tp2.IP iP17 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b18 = server12.removeException(iP17);
-    java.lang.Integer i19 = iP17.getFirst();
-    iPBan7.setIp(iP17);
-    boolean b21 = server0.connect(iP17);
-    tp2.Server server22 = new tp2.Server();
-    tp2.IP iP27 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b28 = server22.removeException(iP27);
-    boolean b30 = iP27.equals((java.lang.Object)(-1L));
-    iP27.setFourth((java.lang.Integer)28);
-    boolean b33 = server0.addException(iP27);
-    java.lang.Integer i34 = iP27.getFourth();
-    java.lang.Integer i35 = iP27.getFourth();
-    iP27.setThird((java.lang.Integer)80000000);
-    tp2.Server server38 = new tp2.Server();
-    tp2.IP iP39 = null;
-    boolean b40 = server38.addBan(iP39);
-    tp2.IP iP45 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iP45.setSecond((java.lang.Integer)2147483647);
-    boolean b48 = server38.addBan(iP45);
-    tp2.Server server49 = new tp2.Server();
-    tp2.IP iP50 = null;
-    boolean b51 = server49.addBan(iP50);
-    tp2.Server server52 = new tp2.Server();
-    tp2.IP iP57 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b58 = server52.removeException(iP57);
-    boolean b60 = iP57.equals((java.lang.Object)(-1L));
-    boolean b61 = server49.removeBan(iP57);
-    java.lang.Integer i62 = iP57.getFourth();
-    boolean b63 = server38.removeBan(iP57);
-    tp2.ITime iTime64 = null;
-    server38.setTime(iTime64);
-    tp2.Server server66 = new tp2.Server();
-    tp2.IP iP67 = null;
-    boolean b68 = server66.addBan(iP67);
-    tp2.Server server69 = new tp2.Server();
-    tp2.IP iP74 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b75 = server69.removeException(iP74);
-    boolean b77 = iP74.equals((java.lang.Object)(-1L));
-    boolean b78 = server66.removeBan(iP74);
-    boolean b79 = server38.connect(iP74);
-    boolean b80 = iP27.equals((java.lang.Object)b79);
+    int i2 = java.lang.Integer.compare((-2147481978), 2147483647);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b2 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(iP8);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long9 + "' != '" + 10L+ "'", long9.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b18 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i19 + "' != '" + 161+ "'", i19.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b21 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b28 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b30 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b33 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i34 + "' != '" + 28+ "'", i34.equals(28));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i35 + "' != '" + 28+ "'", i35.equals(28));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b40 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b48 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b51 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b58 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b60 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b61 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i62 + "' != '" + 5+ "'", i62.equals(5));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b63 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b68 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b75 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b77 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b78 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b79 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b80 == false);
+    org.junit.Assert.assertTrue(i2 == (-1));
 
   }
 
@@ -8513,10 +13107,80 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test431"); }
 
 
-    java.lang.Integer i2 = java.lang.Integer.getInteger("27", (-2147483515));
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)11100, (java.lang.Integer)784, (java.lang.Integer)0);
+    boolean b6 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList7 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP12 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i13 = iP12.getFourth();
+    boolean b14 = strictlySortedSinglyLinkedList7.removeFromIP(iP12);
+    tp2.SinglyLinkedList singlyLinkedList15 = new tp2.SinglyLinkedList();
+    tp2.IP iP20 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i21 = iP20.getThird();
+    boolean b22 = singlyLinkedList15.remove(iP20);
+    java.lang.Integer i23 = iP20.getThird();
+    boolean b24 = strictlySortedSinglyLinkedList7.removeFromIP(iP20);
+    tp2.IPBan iPBan26 = strictlySortedSinglyLinkedList7.get(167772160);
+    int i27 = strictlySortedSinglyLinkedList7.getSize();
+    tp2.SinglyLinkedList singlyLinkedList28 = new tp2.SinglyLinkedList();
+    tp2.IP iP33 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i34 = iP33.getThird();
+    boolean b35 = singlyLinkedList28.remove(iP33);
+    tp2.IPBan iPBan37 = new tp2.IPBan(iP33, (java.lang.Long)10L);
+    java.lang.Long long38 = iPBan37.getExpires();
+    java.lang.Long long39 = iPBan37.getExpires();
+    iPBan37.setExpires((java.lang.Long)10L);
+    boolean b42 = strictlySortedSinglyLinkedList7.add(iPBan37);
+    boolean b43 = strictlySortedSinglyLinkedList0.contains(iPBan37);
+    java.lang.Long long44 = iPBan37.getExpires();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + (-2147483515)+ "'", i2.equals((-2147483515)));
+    org.junit.Assert.assertTrue(b6 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i13 + "' != '" + 2+ "'", i13.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b14 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i21 + "' != '" + (-1)+ "'", i21.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b22 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i23 + "' != '" + (-1)+ "'", i23.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b24 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan26);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i27 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i34 + "' != '" + (-1)+ "'", i34.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b35 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long38 + "' != '" + 10L+ "'", long38.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long39 + "' != '" + 10L+ "'", long39.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b43 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long44 + "' != '" + 10L+ "'", long44.equals(10L));
 
   }
 
@@ -8526,10 +13190,16 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test432"); }
 
 
-    java.lang.Integer i1 = new java.lang.Integer("80000000");
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 80000000+ "'", i1.equals(80000000));
+    // The following exception was thrown during execution in test generation
+    try {
+      int i2 = java.lang.Integer.parseUnsignedInt("200000000", (-420762406));
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
 
   }
 
@@ -8539,10 +13209,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test433"); }
 
 
-    int i1 = java.lang.Integer.numberOfLeadingZeros((-2147483648));
+    java.lang.String str1 = java.lang.Integer.toUnsignedString(640);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 0);
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "640"+ "'", str1.equals("640"));
 
   }
 
@@ -8552,10 +13222,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test434"); }
 
 
-    int i2 = java.lang.Integer.sum(4, 24);
+    java.lang.Integer i2 = java.lang.Integer.getInteger("7fffffff", (java.lang.Integer)19);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 28);
+    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 19+ "'", i2.equals(19));
 
   }
 
@@ -8565,10 +13235,16 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test435"); }
 
 
-    int i2 = java.lang.Integer.sum(448, 83);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 531);
+    // The following exception was thrown during execution in test generation
+    try {
+      java.lang.Integer i1 = new java.lang.Integer("6000000000");
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
 
   }
 
@@ -8578,10 +13254,140 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test436"); }
 
 
-    int i2 = java.lang.Integer.divideUnsigned(50397184, 38000);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    boolean b1 = strictlySortedSinglyLinkedList0.isEmpty();
+    int i2 = strictlySortedSinglyLinkedList0.getSize();
+    boolean b3 = strictlySortedSinglyLinkedList0.isEmpty();
+    boolean b4 = strictlySortedSinglyLinkedList0.isEmpty();
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList5 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP10 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i11 = iP10.getFourth();
+    boolean b12 = strictlySortedSinglyLinkedList5.removeFromIP(iP10);
+    tp2.SinglyLinkedList singlyLinkedList13 = new tp2.SinglyLinkedList();
+    tp2.IP iP18 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i19 = iP18.getThird();
+    boolean b20 = singlyLinkedList13.remove(iP18);
+    java.lang.Integer i21 = iP18.getThird();
+    boolean b22 = strictlySortedSinglyLinkedList5.removeFromIP(iP18);
+    tp2.IPBan iPBan24 = strictlySortedSinglyLinkedList5.get(469762048);
+    tp2.SinglyLinkedList singlyLinkedList25 = new tp2.SinglyLinkedList();
+    tp2.IP iP30 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i31 = iP30.getThird();
+    boolean b32 = singlyLinkedList25.remove(iP30);
+    tp2.IP iP37 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i38 = iP37.getFirst();
+    boolean b39 = singlyLinkedList25.remove(iP37);
+    iP37.setFirst((java.lang.Integer)(-2147483648));
+    boolean b42 = strictlySortedSinglyLinkedList5.removeFromIP(iP37);
+    tp2.IPBan iPBan44 = strictlySortedSinglyLinkedList5.get(100000);
+    tp2.SinglyLinkedList singlyLinkedList45 = new tp2.SinglyLinkedList();
+    tp2.IP iP50 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i51 = iP50.getThird();
+    boolean b52 = singlyLinkedList45.remove(iP50);
+    tp2.IPBan iPBan54 = new tp2.IPBan(iP50, (java.lang.Long)10L);
+    tp2.IP iP59 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i60 = iP59.getFourth();
+    iPBan54.setIp(iP59);
+    boolean b62 = strictlySortedSinglyLinkedList5.add(iPBan54);
+    tp2.SinglyLinkedList singlyLinkedList63 = new tp2.SinglyLinkedList();
+    tp2.IP iP68 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i69 = iP68.getThird();
+    boolean b70 = singlyLinkedList63.remove(iP68);
+    tp2.IPBan iPBan72 = new tp2.IPBan(iP68, (java.lang.Long)10L);
+    java.lang.Long long73 = iPBan72.getExpires();
+    iPBan72.setExpires((java.lang.Long)(-1L));
+    java.lang.Long long76 = iPBan72.getExpires();
+    java.lang.Long long77 = iPBan72.getExpires();
+    boolean b78 = strictlySortedSinglyLinkedList5.contains(iPBan72);
+    boolean b79 = strictlySortedSinglyLinkedList0.add(iPBan72);
+    int i80 = strictlySortedSinglyLinkedList0.getSize();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1326);
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b4 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i11 + "' != '" + 2+ "'", i11.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b12 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i21 + "' != '" + (-1)+ "'", i21.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b22 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan24);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i31 + "' != '" + (-1)+ "'", i31.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i38 + "' != '" + (-1)+ "'", i38.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b39 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan44);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i51 + "' != '" + (-1)+ "'", i51.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b52 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i60 + "' != '" + 100+ "'", i60.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b62 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i69 + "' != '" + (-1)+ "'", i69.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b70 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long73 + "' != '" + 10L+ "'", long73.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long76 + "' != '" + (-1L)+ "'", long76.equals((-1L)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long77 + "' != '" + (-1L)+ "'", long77.equals((-1L)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b78 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b79 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i80 == 1);
 
   }
 
@@ -8591,10 +13397,97 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test437"); }
 
 
-    int i2 = java.lang.Integer.divideUnsigned(35320, 56);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    tp2.SinglyLinkedList singlyLinkedList11 = new tp2.SinglyLinkedList();
+    tp2.IP iP16 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i17 = iP16.getFourth();
+    singlyLinkedList11.add(iP16);
+    java.lang.Integer i19 = iP16.getFirst();
+    boolean b20 = server0.removeBan(iP16);
+    tp2.ITime iTime21 = null;
+    server0.setTime(iTime21);
+    boolean b23 = server0.bansSorted();
+    boolean b24 = server0.bansNotRepeatedExpirationOrIP();
+    boolean b25 = server0.exceptionsNotRepeated();
+    tp2.SinglyLinkedList singlyLinkedList26 = new tp2.SinglyLinkedList();
+    tp2.IP iP31 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i32 = iP31.getThird();
+    boolean b33 = singlyLinkedList26.remove(iP31);
+    iP31.setSecond((java.lang.Integer)44);
+    boolean b36 = server0.addBan(iP31);
+    tp2.SinglyLinkedList singlyLinkedList37 = new tp2.SinglyLinkedList();
+    tp2.IP iP42 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i43 = iP42.getThird();
+    boolean b44 = singlyLinkedList37.remove(iP42);
+    tp2.IP iP49 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i50 = iP49.getFirst();
+    boolean b51 = singlyLinkedList37.remove(iP49);
+    iP49.setSecond((java.lang.Integer)40);
+    java.lang.Integer i54 = iP49.getSecond();
+    boolean b55 = server0.removeException(iP49);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 630);
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + 100+ "'", i17.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b24 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b25 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i32 + "' != '" + (-1)+ "'", i32.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b33 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b36 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i43 + "' != '" + (-1)+ "'", i43.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b44 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i50 + "' != '" + (-1)+ "'", i50.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b51 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i54 + "' != '" + 40+ "'", i54.equals(40));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b55 == false);
 
   }
 
@@ -8604,10 +13497,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test438"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toUnsignedString(1326);
+    java.lang.Integer i1 = java.lang.Integer.getInteger("58000000");
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "1326"+ "'", str1.equals("1326"));
+    org.junit.Assert.assertNull(i1);
 
   }
 
@@ -8617,10 +13510,20 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test439"); }
 
 
-    int i1 = java.lang.Integer.numberOfTrailingZeros(2013262563);
+    tp2.IP iP4 = new tp2.IP((java.lang.Integer)11100, (java.lang.Integer)40, (java.lang.Integer)28, (java.lang.Integer)727449600);
+    java.lang.Integer i5 = iP4.getFourth();
+    tp2.IPBan iPBan7 = new tp2.IPBan(iP4, (java.lang.Long)784L);
+    tp2.IP iP8 = iPBan7.getIp();
+    tp2.IP iP9 = iPBan7.getIp();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 0);
+    org.junit.Assert.assertTrue("'" + i5 + "' != '" + 727449600+ "'", i5.equals(727449600));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP8);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP9);
 
   }
 
@@ -8630,10 +13533,79 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test440"); }
 
 
-    int i2 = java.lang.Integer.min(1342177288, 2528);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i6 = iP5.getFourth();
+    boolean b7 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    tp2.SinglyLinkedList singlyLinkedList8 = new tp2.SinglyLinkedList();
+    tp2.IP iP13 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i14 = iP13.getThird();
+    boolean b15 = singlyLinkedList8.remove(iP13);
+    java.lang.Integer i16 = iP13.getThird();
+    boolean b17 = strictlySortedSinglyLinkedList0.removeFromIP(iP13);
+    tp2.IPBan iPBan19 = strictlySortedSinglyLinkedList0.get(469762048);
+    tp2.IPBan iPBan21 = strictlySortedSinglyLinkedList0.get(1100100);
+    tp2.SinglyLinkedList singlyLinkedList22 = new tp2.SinglyLinkedList();
+    tp2.IP iP27 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i28 = iP27.getThird();
+    boolean b29 = singlyLinkedList22.remove(iP27);
+    tp2.IPBan iPBan31 = new tp2.IPBan(iP27, (java.lang.Long)10L);
+    java.lang.Long long32 = iPBan31.getExpires();
+    iPBan31.setExpires((java.lang.Long)(-1L));
+    java.lang.Long long35 = iPBan31.getExpires();
+    java.lang.Long long36 = iPBan31.getExpires();
+    boolean b37 = strictlySortedSinglyLinkedList0.contains(iPBan31);
+    tp2.IP iP38 = iPBan31.getIp();
+    tp2.IP iP39 = iPBan31.getIp();
+    iPBan31.setExpires((java.lang.Long)1L);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 2528);
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + 2+ "'", i6.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i14 + "' != '" + (-1)+ "'", i14.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b15 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan19);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan21);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i28 + "' != '" + (-1)+ "'", i28.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b29 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long32 + "' != '" + 10L+ "'", long32.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long35 + "' != '" + (-1L)+ "'", long35.equals((-1L)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long36 + "' != '" + (-1L)+ "'", long36.equals((-1L)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b37 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP38);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP39);
 
   }
 
@@ -8643,10 +13615,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test441"); }
 
 
-    java.lang.Integer i2 = java.lang.Integer.getInteger("10000000000000000000000000000000", 469762048);
+    int i1 = java.lang.Integer.reverseBytes(2560);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 469762048+ "'", i2.equals(469762048));
+    org.junit.Assert.assertTrue(i1 == 655360);
 
   }
 
@@ -8656,10 +13628,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test442"); }
 
 
-    int i2 = java.lang.Integer.min(14379100, 50397184);
+    java.lang.Integer i1 = new java.lang.Integer(2);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 14379100);
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 2+ "'", i1.equals(2));
 
   }
 
@@ -8669,10 +13641,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test443"); }
 
 
-    java.lang.String str2 = java.lang.Integer.toUnsignedString(503, 38000);
+    int i2 = java.lang.Integer.compareUnsigned(58000000, 150994944);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "503"+ "'", str2.equals("503"));
+    org.junit.Assert.assertTrue(i2 == (-1));
 
   }
 
@@ -8682,10 +13654,16 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test444"); }
 
 
-    int i2 = java.lang.Integer.remainderUnsigned(62563, 458752);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 62563);
+    // The following exception was thrown during execution in test generation
+    try {
+      java.lang.Integer i1 = new java.lang.Integer("34672726332");
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
 
   }
 
@@ -8695,10 +13673,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test445"); }
 
 
-    int i1 = java.lang.Integer.bitCount(28672);
+    int i2 = java.lang.Integer.compareUnsigned(469762048, 1107296276);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 3);
+    org.junit.Assert.assertTrue(i2 == (-1));
 
   }
 
@@ -8708,10 +13686,56 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test446"); }
 
 
-    int i1 = java.lang.Integer.bitCount(84410368);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    tp2.SinglyLinkedList singlyLinkedList11 = new tp2.SinglyLinkedList();
+    tp2.IP iP16 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i17 = iP16.getFourth();
+    singlyLinkedList11.add(iP16);
+    java.lang.Integer i19 = iP16.getFirst();
+    boolean b20 = server0.removeBan(iP16);
+    tp2.ITime iTime21 = null;
+    server0.setTime(iTime21);
+    boolean b23 = server0.bansSorted();
+    boolean b24 = server0.bansNotRepeatedExpirationOrIP();
+    tp2.ITime iTime25 = null;
+    server0.setTime(iTime25);
+    boolean b27 = server0.bansOkTime();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 3);
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + 100+ "'", i17.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b24 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b27 == true);
 
   }
 
@@ -8721,10 +13745,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test447"); }
 
 
-    java.lang.Integer i1 = new java.lang.Integer(0);
+    int i2 = java.lang.Integer.compareUnsigned(110011, 1073741844);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 0+ "'", i1.equals(0));
+    org.junit.Assert.assertTrue(i2 == (-1));
 
   }
 
@@ -8734,10 +13758,128 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test448"); }
 
 
-    java.lang.Integer i2 = java.lang.Integer.getInteger("27", 536870926);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)11100, (java.lang.Integer)784, (java.lang.Integer)0);
+    boolean b6 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    tp2.SinglyLinkedList singlyLinkedList7 = new tp2.SinglyLinkedList();
+    tp2.IP iP12 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i13 = iP12.getThird();
+    boolean b14 = singlyLinkedList7.remove(iP12);
+    boolean b15 = singlyLinkedList7.isEmpty();
+    int i16 = singlyLinkedList7.getSize();
+    tp2.IP iP21 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i22 = iP21.getThird();
+    iP21.setFourth((java.lang.Integer)0);
+    boolean b25 = singlyLinkedList7.contains(iP21);
+    boolean b26 = singlyLinkedList7.isEmpty();
+    tp2.IP iP31 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i32 = iP31.getFirst();
+    java.lang.Integer i33 = iP31.getFirst();
+    singlyLinkedList7.add(iP31);
+    tp2.SinglyLinkedList singlyLinkedList35 = new tp2.SinglyLinkedList();
+    tp2.IP iP40 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i41 = iP40.getThird();
+    boolean b42 = singlyLinkedList35.remove(iP40);
+    tp2.Server server43 = new tp2.Server();
+    tp2.IP iP48 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b49 = server43.removeBan(iP48);
+    boolean b50 = singlyLinkedList35.contains(iP48);
+    singlyLinkedList7.add(iP48);
+    tp2.SinglyLinkedList singlyLinkedList52 = new tp2.SinglyLinkedList();
+    tp2.IP iP57 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i58 = iP57.getThird();
+    boolean b59 = singlyLinkedList52.remove(iP57);
+    tp2.Server server60 = new tp2.Server();
+    tp2.IP iP65 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b66 = server60.removeBan(iP65);
+    boolean b67 = singlyLinkedList52.contains(iP65);
+    singlyLinkedList7.add(iP65);
+    boolean b69 = strictlySortedSinglyLinkedList0.removeFromIP(iP65);
+    tp2.IPBan iPBan71 = strictlySortedSinglyLinkedList0.get(524288);
+    int i72 = strictlySortedSinglyLinkedList0.getSize();
+    tp2.SinglyLinkedList singlyLinkedList73 = new tp2.SinglyLinkedList();
+    tp2.IP iP78 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i79 = iP78.getFourth();
+    singlyLinkedList73.add(iP78);
+    java.lang.Integer i81 = iP78.getFirst();
+    tp2.IPBan iPBan83 = new tp2.IPBan(iP78, (java.lang.Long)4L);
+    boolean b84 = strictlySortedSinglyLinkedList0.add(iPBan83);
+    int i85 = strictlySortedSinglyLinkedList0.getSize();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 536870926+ "'", i2.equals(536870926));
+    org.junit.Assert.assertTrue(b6 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i13 + "' != '" + (-1)+ "'", i13.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b14 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b15 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i16 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i22 + "' != '" + (-1)+ "'", i22.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b25 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b26 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i32 + "' != '" + (-1)+ "'", i32.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i33 + "' != '" + (-1)+ "'", i33.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i41 + "' != '" + (-1)+ "'", i41.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b49 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b50 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i58 + "' != '" + (-1)+ "'", i58.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b59 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b66 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b67 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b69 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan71);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i72 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i79 + "' != '" + 100+ "'", i79.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i81 + "' != '" + (-1)+ "'", i81.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b84 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i85 == 1);
 
   }
 
@@ -8747,16 +13889,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test449"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      int i1 = java.lang.Integer.parseInt("89f8");
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    int i2 = java.lang.Integer.compareUnsigned(1, 56);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == (-1));
 
   }
 
@@ -8766,10 +13902,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test450"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toHexString(24);
+    java.lang.Integer i1 = new java.lang.Integer(8192);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "18"+ "'", str1.equals("18"));
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 8192+ "'", i1.equals(8192));
 
   }
 
@@ -8779,10 +13915,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test451"); }
 
 
-    int i2 = java.lang.Integer.compare((-150929408), 841);
+    int i1 = java.lang.Integer.reverse(729888);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-1));
+    org.junit.Assert.assertTrue(i1 == 80007168);
 
   }
 
@@ -8792,10 +13928,54 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test452"); }
 
 
-    java.lang.Integer i1 = new java.lang.Integer(26);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.exceptionsNotRepeated();
+    boolean b2 = server0.bansSorted();
+    boolean b3 = server0.notSharedElements();
+    boolean b4 = server0.bansSorted();
+    server0.update();
+    tp2.IP iP10 = new tp2.IP((java.lang.Integer)11100, (java.lang.Integer)40, (java.lang.Integer)28, (java.lang.Integer)727449600);
+    boolean b11 = server0.addException(iP10);
+    server0.update();
+    tp2.Server server13 = new tp2.Server();
+    tp2.IP iP18 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b19 = server13.removeBan(iP18);
+    tp2.IP iP24 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i25 = iP24.getThird();
+    iP24.setFourth((java.lang.Integer)0);
+    iP24.setSecond((java.lang.Integer)3);
+    iP24.setFourth((java.lang.Integer)12);
+    boolean b32 = server13.addBan(iP24);
+    boolean b33 = server0.addException(iP24);
+    tp2.ITime iTime34 = null;
+    server0.setTime(iTime34);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 26+ "'", i1.equals(26));
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b4 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i25 + "' != '" + (-1)+ "'", i25.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b33 == true);
 
   }
 
@@ -8805,10 +13985,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test453"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toHexString(3);
+    int i2 = java.lang.Integer.compareUnsigned(6291456, 11001);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "3"+ "'", str1.equals("3"));
+    org.junit.Assert.assertTrue(i2 == 1);
 
   }
 
@@ -8818,10 +13998,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test454"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toOctalString(700000);
+    int i2 = java.lang.Integer.divideUnsigned(268451840, (-1305346048));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "2527140"+ "'", str1.equals("2527140"));
+    org.junit.Assert.assertTrue(i2 == 0);
 
   }
 
@@ -8831,10 +14011,16 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test455"); }
 
 
-    long long1 = java.lang.Integer.toUnsignedLong(133);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(long1 == 133L);
+    // The following exception was thrown during execution in test generation
+    try {
+      int i1 = java.lang.Integer.parseInt("b");
+      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
+    } catch (java.lang.NumberFormatException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
+      }
+    }
 
   }
 
@@ -8844,16 +14030,47 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test456"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      int i1 = java.lang.Integer.parseUnsignedInt("37000000000");
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.Server server1 = new tp2.Server();
+    boolean b2 = server1.exceptionsNotRepeated();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    iP7.setSecond((java.lang.Integer)10);
+    boolean b11 = server1.removeBan(iP7);
+    boolean b12 = singlyLinkedList0.remove(iP7);
+    tp2.IP iP13 = null;
+    singlyLinkedList0.add(iP13);
+    tp2.IP iP16 = singlyLinkedList0.get(469762048);
+    tp2.IP iP21 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i22 = iP21.getFirst();
+    java.lang.Integer i23 = iP21.getSecond();
+    iP21.setFirst((java.lang.Integer)201326592);
+    tp2.IPBan iPBan27 = new tp2.IPBan(iP21, (java.lang.Long)727449600L);
+    boolean b28 = singlyLinkedList0.remove(iP21);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b12 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iP16);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i22 + "' != '" + (-1)+ "'", i22.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i23 + "' != '" + (-1)+ "'", i23.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b28 == false);
 
   }
 
@@ -8863,10 +14080,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test457"); }
 
 
-    java.lang.String str2 = java.lang.Integer.toUnsignedString(536870912, 536870926);
+    java.lang.String str2 = java.lang.Integer.toUnsignedString(805306368, 14);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "536870912"+ "'", str2.equals("536870912"));
+    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "78d4add6"+ "'", str2.equals("78d4add6"));
 
   }
 
@@ -8876,16 +14093,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test458"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      java.lang.Integer i2 = java.lang.Integer.valueOf("70000", (-1879048192));
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    int i1 = java.lang.Integer.parseUnsignedInt("88770");
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 88770);
 
   }
 
@@ -8895,10 +14106,41 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test459"); }
 
 
-    int i1 = java.lang.Integer.numberOfTrailingZeros(8);
+    tp2.Server server0 = new tp2.Server();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b6 = server0.removeBan(iP5);
+    tp2.IP iP11 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i12 = iP11.getThird();
+    iP11.setFourth((java.lang.Integer)0);
+    iP11.setSecond((java.lang.Integer)3);
+    iP11.setFourth((java.lang.Integer)12);
+    boolean b19 = server0.addBan(iP11);
+    server0.update();
+    boolean b21 = server0.bansOkTime();
+    boolean b22 = server0.notSharedElements();
+    boolean b23 = server0.bansSorted();
+    boolean b24 = server0.exceptionsNotRepeated();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 3);
+    org.junit.Assert.assertTrue(b6 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i12 + "' != '" + (-1)+ "'", i12.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b19 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b21 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b22 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b24 == true);
 
   }
 
@@ -8908,16 +14150,171 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test460"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseInt("1000110", (-150929408));
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP1 = null;
+    boolean b2 = singlyLinkedList0.remove(iP1);
+    boolean b3 = singlyLinkedList0.isEmpty();
+    tp2.IP iP8 = new tp2.IP((java.lang.Integer)5, (java.lang.Integer)1, (java.lang.Integer)0, (java.lang.Integer)12);
+    boolean b9 = singlyLinkedList0.contains(iP8);
+    tp2.SinglyLinkedList singlyLinkedList10 = new tp2.SinglyLinkedList();
+    tp2.IP iP15 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i16 = iP15.getThird();
+    boolean b17 = singlyLinkedList10.remove(iP15);
+    iP15.setSecond((java.lang.Integer)150994944);
+    java.lang.Integer i20 = iP15.getFourth();
+    java.lang.Integer i21 = iP15.getThird();
+    java.lang.Integer i22 = iP15.getFirst();
+    boolean b23 = singlyLinkedList0.contains(iP15);
+    tp2.SinglyLinkedList singlyLinkedList24 = new tp2.SinglyLinkedList();
+    tp2.IP iP29 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i30 = iP29.getThird();
+    boolean b31 = singlyLinkedList24.remove(iP29);
+    java.lang.Integer i32 = iP29.getThird();
+    java.lang.Integer i33 = iP29.getSecond();
+    boolean b34 = singlyLinkedList0.contains(iP29);
+    int i35 = singlyLinkedList0.getSize();
+    tp2.IP iP40 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i41 = iP40.getFirst();
+    java.lang.Integer i42 = iP40.getSecond();
+    iP40.setThird((java.lang.Integer)28);
+    boolean b45 = singlyLinkedList0.contains(iP40);
+    tp2.Server server46 = new tp2.Server();
+    boolean b47 = server46.exceptionsNotRepeated();
+    tp2.IP iP52 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i53 = iP52.getThird();
+    iP52.setSecond((java.lang.Integer)10);
+    boolean b56 = server46.removeBan(iP52);
+    iP52.setFourth((java.lang.Integer)9);
+    boolean b59 = singlyLinkedList0.contains(iP52);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList60 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP65 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i66 = iP65.getFourth();
+    boolean b67 = strictlySortedSinglyLinkedList60.removeFromIP(iP65);
+    tp2.SinglyLinkedList singlyLinkedList68 = new tp2.SinglyLinkedList();
+    tp2.IP iP73 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i74 = iP73.getThird();
+    boolean b75 = singlyLinkedList68.remove(iP73);
+    java.lang.Integer i76 = iP73.getThird();
+    boolean b77 = strictlySortedSinglyLinkedList60.removeFromIP(iP73);
+    tp2.IPBan iPBan79 = strictlySortedSinglyLinkedList60.get(167772160);
+    int i80 = strictlySortedSinglyLinkedList60.getSize();
+    boolean b81 = strictlySortedSinglyLinkedList60.isEmpty();
+    tp2.SinglyLinkedList singlyLinkedList82 = new tp2.SinglyLinkedList();
+    tp2.IP iP87 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i88 = iP87.getThird();
+    boolean b89 = singlyLinkedList82.remove(iP87);
+    iP87.setSecond((java.lang.Integer)44);
+    boolean b92 = strictlySortedSinglyLinkedList60.removeFromIP(iP87);
+    java.lang.Integer i93 = iP87.getThird();
+    boolean b94 = singlyLinkedList0.remove(iP87);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b2 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i20 + "' != '" + 100+ "'", i20.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i21 + "' != '" + (-1)+ "'", i21.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i22 + "' != '" + (-1)+ "'", i22.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i30 + "' != '" + (-1)+ "'", i30.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b31 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i32 + "' != '" + (-1)+ "'", i32.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i33 + "' != '" + (-1)+ "'", i33.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b34 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i35 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i41 + "' != '" + (-1)+ "'", i41.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i42 + "' != '" + (-1)+ "'", i42.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b45 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b47 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i53 + "' != '" + (-1)+ "'", i53.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b56 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b59 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i66 + "' != '" + 2+ "'", i66.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b67 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i74 + "' != '" + (-1)+ "'", i74.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b75 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i76 + "' != '" + (-1)+ "'", i76.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b77 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan79);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i80 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b81 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i88 + "' != '" + (-1)+ "'", i88.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b89 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b92 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i93 + "' != '" + (-1)+ "'", i93.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b94 == false);
 
   }
 
@@ -8927,16 +14324,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test461"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseUnsignedInt("100000", 11024899);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    int i1 = java.lang.Integer.highestOneBit(448);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 256);
 
   }
 
@@ -8946,10 +14337,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test462"); }
 
 
-    int i2 = java.lang.Integer.rotateRight((-2063597489), 186646533);
+    java.lang.String str2 = java.lang.Integer.toUnsignedString(13, 56);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 2082996226);
+    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "13"+ "'", str2.equals("13"));
 
   }
 
@@ -8959,16 +14350,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test463"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      java.lang.Integer i1 = java.lang.Integer.valueOf("2231369807");
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    int i2 = java.lang.Integer.rotateLeft(144, 436207642);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 1073741826);
 
   }
 
@@ -8978,10 +14363,91 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test464"); }
 
 
-    int i2 = java.lang.Integer.rotateRight(64, 0);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    java.lang.Integer i11 = iP7.getFirst();
+    tp2.IPBan iPBan13 = new tp2.IPBan(iP7, (java.lang.Long)5L);
+    tp2.SinglyLinkedList singlyLinkedList14 = new tp2.SinglyLinkedList();
+    tp2.IP iP15 = null;
+    boolean b16 = singlyLinkedList14.remove(iP15);
+    boolean b17 = singlyLinkedList14.isEmpty();
+    tp2.IP iP22 = new tp2.IP((java.lang.Integer)5, (java.lang.Integer)1, (java.lang.Integer)0, (java.lang.Integer)12);
+    boolean b23 = singlyLinkedList14.contains(iP22);
+    tp2.SinglyLinkedList singlyLinkedList24 = new tp2.SinglyLinkedList();
+    tp2.IP iP29 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i30 = iP29.getThird();
+    boolean b31 = singlyLinkedList24.remove(iP29);
+    iP29.setSecond((java.lang.Integer)150994944);
+    java.lang.Integer i34 = iP29.getFourth();
+    java.lang.Integer i35 = iP29.getThird();
+    java.lang.Integer i36 = iP29.getFirst();
+    boolean b37 = singlyLinkedList14.contains(iP29);
+    tp2.SinglyLinkedList singlyLinkedList38 = new tp2.SinglyLinkedList();
+    tp2.IP iP43 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i44 = iP43.getFourth();
+    singlyLinkedList38.add(iP43);
+    java.lang.Integer i46 = iP43.getFirst();
+    boolean b47 = singlyLinkedList14.contains(iP43);
+    boolean b48 = iP7.equals((java.lang.Object)iP43);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 64);
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i11 + "' != '" + (-1)+ "'", i11.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b16 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i30 + "' != '" + (-1)+ "'", i30.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b31 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i34 + "' != '" + 100+ "'", i34.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i35 + "' != '" + (-1)+ "'", i35.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i36 + "' != '" + (-1)+ "'", i36.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b37 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i44 + "' != '" + 100+ "'", i44.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i46 + "' != '" + (-1)+ "'", i46.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b47 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b48 == true);
 
   }
 
@@ -8991,10 +14457,155 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test465"); }
 
 
-    java.lang.Integer i2 = java.lang.Integer.getInteger("111", 469761943);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    tp2.SinglyLinkedList singlyLinkedList11 = new tp2.SinglyLinkedList();
+    tp2.IP iP16 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i17 = iP16.getFourth();
+    singlyLinkedList11.add(iP16);
+    java.lang.Integer i19 = iP16.getFirst();
+    boolean b20 = server0.removeBan(iP16);
+    tp2.ITime iTime21 = null;
+    server0.setTime(iTime21);
+    boolean b23 = server0.notSharedElements();
+    tp2.IP iP28 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i29 = iP28.getThird();
+    iP28.setFourth((java.lang.Integer)0);
+    iP28.setSecond((java.lang.Integer)3);
+    boolean b34 = server0.addBan(iP28);
+    boolean b35 = server0.bansSorted();
+    tp2.SinglyLinkedList singlyLinkedList36 = new tp2.SinglyLinkedList();
+    tp2.IP iP41 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i42 = iP41.getThird();
+    boolean b43 = singlyLinkedList36.remove(iP41);
+    tp2.IP iP48 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i49 = iP48.getFourth();
+    singlyLinkedList36.add(iP48);
+    tp2.SinglyLinkedList singlyLinkedList51 = new tp2.SinglyLinkedList();
+    boolean b52 = singlyLinkedList51.isEmpty();
+    int i53 = singlyLinkedList51.getSize();
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList54 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP59 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i60 = iP59.getFourth();
+    boolean b61 = strictlySortedSinglyLinkedList54.removeFromIP(iP59);
+    tp2.SinglyLinkedList singlyLinkedList62 = new tp2.SinglyLinkedList();
+    tp2.IP iP67 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i68 = iP67.getThird();
+    boolean b69 = singlyLinkedList62.remove(iP67);
+    java.lang.Integer i70 = iP67.getThird();
+    boolean b71 = strictlySortedSinglyLinkedList54.removeFromIP(iP67);
+    tp2.IPBan iPBan73 = strictlySortedSinglyLinkedList54.get(469762048);
+    tp2.SinglyLinkedList singlyLinkedList74 = new tp2.SinglyLinkedList();
+    tp2.IP iP79 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i80 = iP79.getThird();
+    boolean b81 = singlyLinkedList74.remove(iP79);
+    tp2.IP iP86 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i87 = iP86.getFirst();
+    boolean b88 = singlyLinkedList74.remove(iP86);
+    iP86.setFirst((java.lang.Integer)(-2147483648));
+    boolean b91 = strictlySortedSinglyLinkedList54.removeFromIP(iP86);
+    boolean b92 = singlyLinkedList51.contains(iP86);
+    singlyLinkedList36.add(iP86);
+    boolean b94 = server0.addBan(iP86);
+    boolean b95 = server0.bansOkTime();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 469761943+ "'", i2.equals(469761943));
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + 100+ "'", i17.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i29 + "' != '" + (-1)+ "'", i29.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b34 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b35 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i42 + "' != '" + (-1)+ "'", i42.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b43 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i49 + "' != '" + 100+ "'", i49.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b52 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i53 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i60 + "' != '" + 2+ "'", i60.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b61 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i68 + "' != '" + (-1)+ "'", i68.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b69 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i70 + "' != '" + (-1)+ "'", i70.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b71 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan73);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i80 + "' != '" + (-1)+ "'", i80.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b81 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i87 + "' != '" + (-1)+ "'", i87.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b88 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b91 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b92 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b94 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b95 == true);
 
   }
 
@@ -9004,35 +14615,9 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test466"); }
 
 
-    int i2 = java.lang.Integer.remainderUnsigned(32768, 1400000);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 32768);
-
-  }
-
-  @Test
-  public void test467() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test467"); }
-
-
-    int i2 = java.lang.Integer.rotateLeft(16777216, 100004);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 268435456);
-
-  }
-
-  @Test
-  public void test468() throws Throwable {
-
-    if (debug) { System.out.format("%n%s%n","RegressionTest1.test468"); }
-
-
     // The following exception was thrown during execution in test generation
     try {
-      java.lang.Integer i2 = java.lang.Integer.valueOf("8500004f", 1275068417);
+      int i1 = java.lang.Integer.parseInt("34672726332");
       org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
     } catch (java.lang.NumberFormatException e) {
       // Expected exception.
@@ -9044,15 +14629,52 @@ public class RegressionTest1 {
   }
 
   @Test
+  public void test467() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test467"); }
+
+
+    long long1 = java.lang.Integer.toUnsignedLong(67108864);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(long1 == 67108864L);
+
+  }
+
+  @Test
+  public void test468() throws Throwable {
+
+    if (debug) { System.out.format("%n%s%n","RegressionTest1.test468"); }
+
+
+    java.lang.Integer i1 = new java.lang.Integer(67108864);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 67108864+ "'", i1.equals(67108864));
+
+  }
+
+  @Test
   public void test469() throws Throwable {
 
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test469"); }
 
 
-    int i1 = java.lang.Integer.bitCount(2528);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.bansSorted();
+    tp2.IP iP6 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i7 = iP6.getFourth();
+    boolean b8 = server0.removeException(iP6);
+    iP6.setSecond((java.lang.Integer)11001);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 5);
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i7 + "' != '" + 100+ "'", i7.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == false);
 
   }
 
@@ -9062,10 +14684,114 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test470"); }
 
 
-    int i1 = java.lang.Integer.parseUnsignedInt("27");
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP1 = null;
+    boolean b2 = singlyLinkedList0.remove(iP1);
+    boolean b3 = singlyLinkedList0.isEmpty();
+    tp2.IP iP8 = new tp2.IP((java.lang.Integer)5, (java.lang.Integer)1, (java.lang.Integer)0, (java.lang.Integer)12);
+    boolean b9 = singlyLinkedList0.contains(iP8);
+    tp2.SinglyLinkedList singlyLinkedList10 = new tp2.SinglyLinkedList();
+    tp2.IP iP15 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i16 = iP15.getThird();
+    boolean b17 = singlyLinkedList10.remove(iP15);
+    iP15.setSecond((java.lang.Integer)150994944);
+    java.lang.Integer i20 = iP15.getFourth();
+    java.lang.Integer i21 = iP15.getThird();
+    java.lang.Integer i22 = iP15.getFirst();
+    boolean b23 = singlyLinkedList0.contains(iP15);
+    tp2.SinglyLinkedList singlyLinkedList24 = new tp2.SinglyLinkedList();
+    tp2.IP iP29 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i30 = iP29.getFourth();
+    singlyLinkedList24.add(iP29);
+    java.lang.Integer i32 = iP29.getFirst();
+    boolean b33 = singlyLinkedList0.remove(iP29);
+    tp2.SinglyLinkedList singlyLinkedList34 = new tp2.SinglyLinkedList();
+    tp2.IP iP39 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i40 = iP39.getThird();
+    boolean b41 = singlyLinkedList34.remove(iP39);
+    tp2.IPBan iPBan43 = new tp2.IPBan(iP39, (java.lang.Long)10L);
+    tp2.IP iP48 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i49 = iP48.getFourth();
+    iPBan43.setIp(iP48);
+    java.lang.Long long51 = iPBan43.getExpires();
+    java.lang.Long long52 = iPBan43.getExpires();
+    tp2.Server server53 = new tp2.Server();
+    boolean b54 = server53.exceptionsNotRepeated();
+    tp2.IP iP59 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i60 = iP59.getThird();
+    iP59.setSecond((java.lang.Integer)10);
+    boolean b63 = server53.removeBan(iP59);
+    java.lang.Integer i64 = iP59.getFirst();
+    iPBan43.setIp(iP59);
+    iP59.setFourth((java.lang.Integer)11884);
+    singlyLinkedList0.add(iP59);
+    int i69 = singlyLinkedList0.getSize();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 27);
+    org.junit.Assert.assertTrue(b2 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i20 + "' != '" + 100+ "'", i20.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i21 + "' != '" + (-1)+ "'", i21.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i22 + "' != '" + (-1)+ "'", i22.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i30 + "' != '" + 100+ "'", i30.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i32 + "' != '" + (-1)+ "'", i32.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b33 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i40 + "' != '" + (-1)+ "'", i40.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b41 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i49 + "' != '" + 100+ "'", i49.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long51 + "' != '" + 10L+ "'", long51.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long52 + "' != '" + 10L+ "'", long52.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b54 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i60 + "' != '" + (-1)+ "'", i60.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b63 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i64 + "' != '" + (-1)+ "'", i64.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i69 == 1);
 
   }
 
@@ -9076,88 +14802,31 @@ public class RegressionTest1 {
 
 
     tp2.Server server0 = new tp2.Server();
-    tp2.IP iP1 = null;
-    boolean b2 = server0.addBan(iP1);
-    tp2.IP iP7 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iP7.setSecond((java.lang.Integer)2147483647);
-    boolean b10 = server0.addBan(iP7);
-    tp2.Server server11 = new tp2.Server();
-    tp2.IP iP12 = null;
-    boolean b13 = server11.addBan(iP12);
-    tp2.Server server14 = new tp2.Server();
-    tp2.IP iP19 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b20 = server14.removeException(iP19);
-    boolean b22 = iP19.equals((java.lang.Object)(-1L));
-    boolean b23 = server11.removeBan(iP19);
-    java.lang.Integer i24 = iP19.getFourth();
-    boolean b25 = server0.removeBan(iP19);
-    tp2.IP iP26 = null;
-    tp2.IPBan iPBan28 = new tp2.IPBan(iP26, (java.lang.Long)10L);
-    java.lang.Long long29 = iPBan28.getExpires();
-    tp2.IP iP34 = new tp2.IP((java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)31, (java.lang.Integer)0);
-    iPBan28.ip = iP34;
-    tp2.Server server36 = new tp2.Server();
-    tp2.IP iP41 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b42 = server36.removeException(iP41);
-    server36.update();
-    tp2.Server server44 = new tp2.Server();
-    tp2.IP iP49 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b50 = server44.removeException(iP49);
-    java.lang.Integer i51 = iP49.getFirst();
-    boolean b52 = server36.addBan(iP49);
-    iPBan28.setIp(iP49);
-    tp2.IP iP54 = iPBan28.ip;
-    tp2.IP iP55 = iPBan28.ip;
-    iP55.setFirst((java.lang.Integer)352322596);
-    boolean b58 = server0.addBan(iP55);
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b6 = server0.removeBan(iP5);
+    tp2.IP iP11 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i12 = iP11.getThird();
+    iP11.setFourth((java.lang.Integer)0);
+    iP11.setSecond((java.lang.Integer)3);
+    iP11.setFourth((java.lang.Integer)12);
+    boolean b19 = server0.addBan(iP11);
+    boolean b20 = server0.bansNotRepeatedExpirationOrIP();
+    boolean b21 = server0.exceptionsNotRepeated();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b2 == false);
+    org.junit.Assert.assertTrue(b6 == false);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b10 == true);
+    org.junit.Assert.assertTrue("'" + i12 + "' != '" + (-1)+ "'", i12.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b13 == false);
+    org.junit.Assert.assertTrue(b19 == true);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b20 == false);
+    org.junit.Assert.assertTrue(b20 == true);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b22 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b23 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i24 + "' != '" + 5+ "'", i24.equals(5));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b25 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + long29 + "' != '" + 10L+ "'", long29.equals(10L));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b42 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b50 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i51 + "' != '" + 161+ "'", i51.equals(161));
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b52 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNotNull(iP54);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNotNull(iP55);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b58 == true);
+    org.junit.Assert.assertTrue(b21 == true);
 
   }
 
@@ -9167,10 +14836,126 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test472"); }
 
 
-    int i2 = java.lang.Integer.sum(469762048, 1);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i6 = iP5.getFourth();
+    boolean b7 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    tp2.SinglyLinkedList singlyLinkedList8 = new tp2.SinglyLinkedList();
+    tp2.IP iP13 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i14 = iP13.getThird();
+    boolean b15 = singlyLinkedList8.remove(iP13);
+    java.lang.Integer i16 = iP13.getThird();
+    boolean b17 = strictlySortedSinglyLinkedList0.removeFromIP(iP13);
+    tp2.IPBan iPBan19 = strictlySortedSinglyLinkedList0.get(469762048);
+    tp2.SinglyLinkedList singlyLinkedList20 = new tp2.SinglyLinkedList();
+    tp2.IP iP25 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i26 = iP25.getThird();
+    boolean b27 = singlyLinkedList20.remove(iP25);
+    tp2.IP iP32 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i33 = iP32.getFirst();
+    boolean b34 = singlyLinkedList20.remove(iP32);
+    boolean b35 = strictlySortedSinglyLinkedList0.containsIP(iP32);
+    tp2.IPBan iPBan37 = strictlySortedSinglyLinkedList0.get(640);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList38 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP43 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i44 = iP43.getFourth();
+    boolean b45 = strictlySortedSinglyLinkedList38.removeFromIP(iP43);
+    tp2.SinglyLinkedList singlyLinkedList46 = new tp2.SinglyLinkedList();
+    tp2.IP iP51 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i52 = iP51.getThird();
+    boolean b53 = singlyLinkedList46.remove(iP51);
+    java.lang.Integer i54 = iP51.getThird();
+    boolean b55 = strictlySortedSinglyLinkedList38.removeFromIP(iP51);
+    tp2.IPBan iPBan57 = strictlySortedSinglyLinkedList38.get(469762048);
+    tp2.SinglyLinkedList singlyLinkedList58 = new tp2.SinglyLinkedList();
+    tp2.IP iP63 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i64 = iP63.getThird();
+    boolean b65 = singlyLinkedList58.remove(iP63);
+    tp2.IP iP70 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i71 = iP70.getFirst();
+    boolean b72 = singlyLinkedList58.remove(iP70);
+    iP70.setFirst((java.lang.Integer)(-2147483648));
+    boolean b75 = strictlySortedSinglyLinkedList38.removeFromIP(iP70);
+    iP70.setSecond((java.lang.Integer)5);
+    boolean b78 = strictlySortedSinglyLinkedList0.removeFromIP(iP70);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 469762049);
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + 2+ "'", i6.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i14 + "' != '" + (-1)+ "'", i14.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b15 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan19);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i26 + "' != '" + (-1)+ "'", i26.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b27 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i33 + "' != '" + (-1)+ "'", i33.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b34 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b35 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan37);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i44 + "' != '" + 2+ "'", i44.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b45 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i52 + "' != '" + (-1)+ "'", i52.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b53 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i54 + "' != '" + (-1)+ "'", i54.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b55 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan57);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i64 + "' != '" + (-1)+ "'", i64.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b65 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i71 + "' != '" + (-1)+ "'", i71.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b72 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b75 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b78 == false);
 
   }
 
@@ -9180,10 +14965,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test473"); }
 
 
-    int i2 = java.lang.Integer.sum((-2147483592), 1879047772);
+    java.lang.Integer i1 = new java.lang.Integer("2");
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-268435820));
+    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 2+ "'", i1.equals(2));
 
   }
 
@@ -9193,10 +14978,17 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test474"); }
 
 
-    int i2 = java.lang.Integer.compare(128, 161);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-1));
+    java.lang.Integer i0 = null;
+    // The following exception was thrown during execution in test generation
+    try {
+      tp2.IP iP4 = new tp2.IP(i0, (java.lang.Integer)(-2147390782), (java.lang.Integer)436207642, (java.lang.Integer)4194304);
+      org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException");
+    } catch (java.lang.IllegalArgumentException e) {
+      // Expected exception.
+      if (! e.getClass().getCanonicalName().equals("java.lang.IllegalArgumentException")) {
+        org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException, got " + e.getClass().getCanonicalName());
+      }
+    }
 
   }
 
@@ -9206,29 +14998,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test475"); }
 
 
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP1 = null;
-    boolean b2 = server0.addBan(iP1);
-    tp2.ITime iTime3 = null;
-    server0.setTime(iTime3);
-    server0.update();
-    tp2.Server server6 = new tp2.Server();
-    tp2.IP iP11 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b12 = server6.removeException(iP11);
-    boolean b13 = server0.addException(iP11);
-    java.lang.Integer i14 = iP11.getThird();
+    int i2 = java.lang.Integer.rotateLeft(14, 436207642);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b2 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b12 == false);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b13 == true);
-    
-    // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i14 + "' != '" + 939524096+ "'", i14.equals(939524096));
+    org.junit.Assert.assertTrue(i2 == 939524096);
 
   }
 
@@ -9238,10 +15011,82 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test476"); }
 
 
-    java.lang.Integer i2 = java.lang.Integer.valueOf("1f", 28);
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i6 = iP5.getFourth();
+    boolean b7 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    tp2.SinglyLinkedList singlyLinkedList8 = new tp2.SinglyLinkedList();
+    tp2.IP iP13 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i14 = iP13.getThird();
+    boolean b15 = singlyLinkedList8.remove(iP13);
+    java.lang.Integer i16 = iP13.getThird();
+    boolean b17 = strictlySortedSinglyLinkedList0.removeFromIP(iP13);
+    tp2.IPBan iPBan19 = strictlySortedSinglyLinkedList0.get(469762048);
+    tp2.IPBan iPBan21 = strictlySortedSinglyLinkedList0.get(1100100);
+    tp2.SinglyLinkedList singlyLinkedList22 = new tp2.SinglyLinkedList();
+    tp2.IP iP27 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i28 = iP27.getThird();
+    boolean b29 = singlyLinkedList22.remove(iP27);
+    tp2.IPBan iPBan31 = new tp2.IPBan(iP27, (java.lang.Long)10L);
+    java.lang.Long long32 = iPBan31.getExpires();
+    iPBan31.setExpires((java.lang.Long)(-1L));
+    java.lang.Long long35 = iPBan31.getExpires();
+    java.lang.Long long36 = iPBan31.getExpires();
+    boolean b37 = strictlySortedSinglyLinkedList0.contains(iPBan31);
+    tp2.IP iP38 = iPBan31.getIp();
+    tp2.IP iP39 = iPBan31.getIp();
+    tp2.IP iP40 = iPBan31.getIp();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 43+ "'", i2.equals(43));
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + 2+ "'", i6.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i14 + "' != '" + (-1)+ "'", i14.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b15 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan19);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan21);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i28 + "' != '" + (-1)+ "'", i28.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b29 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long32 + "' != '" + 10L+ "'", long32.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long35 + "' != '" + (-1L)+ "'", long35.equals((-1L)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long36 + "' != '" + (-1L)+ "'", long36.equals((-1L)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b37 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP38);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP39);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNotNull(iP40);
 
   }
 
@@ -9251,35 +15096,111 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test477"); }
 
 
-    tp2.Server server0 = new tp2.Server();
-    tp2.IP iP5 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b6 = server0.removeException(iP5);
-    server0.update();
-    tp2.Server server8 = new tp2.Server();
-    tp2.IP iP13 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b14 = server8.removeException(iP13);
-    java.lang.Integer i15 = iP13.getFirst();
-    boolean b16 = server0.addBan(iP13);
-    boolean b18 = iP13.equals((java.lang.Object)(short)10);
-    java.lang.Integer i19 = iP13.getFourth();
+    tp2.SinglyLinkedList singlyLinkedList0 = new tp2.SinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i6 = iP5.getThird();
+    boolean b7 = singlyLinkedList0.remove(iP5);
+    tp2.IPBan iPBan9 = new tp2.IPBan(iP5, (java.lang.Long)10L);
+    tp2.IP iP14 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i15 = iP14.getFourth();
+    iPBan9.setIp(iP14);
+    java.lang.Long long17 = iPBan9.getExpires();
+    java.lang.Long long18 = iPBan9.getExpires();
+    tp2.IP iP23 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i24 = iP23.getFirst();
+    java.lang.Integer i25 = iP23.getSecond();
+    iP23.setFirst((java.lang.Integer)201326592);
+    iPBan9.setIp(iP23);
+    tp2.SinglyLinkedList singlyLinkedList29 = new tp2.SinglyLinkedList();
+    tp2.IP iP34 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i35 = iP34.getThird();
+    boolean b36 = singlyLinkedList29.remove(iP34);
+    boolean b37 = singlyLinkedList29.isEmpty();
+    int i38 = singlyLinkedList29.getSize();
+    tp2.IP iP43 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i44 = iP43.getThird();
+    iP43.setFourth((java.lang.Integer)0);
+    boolean b47 = singlyLinkedList29.contains(iP43);
+    boolean b48 = singlyLinkedList29.isEmpty();
+    tp2.IP iP53 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i54 = iP53.getFirst();
+    java.lang.Integer i55 = iP53.getFirst();
+    singlyLinkedList29.add(iP53);
+    tp2.SinglyLinkedList singlyLinkedList57 = new tp2.SinglyLinkedList();
+    tp2.IP iP62 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i63 = iP62.getThird();
+    boolean b64 = singlyLinkedList57.remove(iP62);
+    tp2.Server server65 = new tp2.Server();
+    tp2.IP iP70 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b71 = server65.removeBan(iP70);
+    boolean b72 = singlyLinkedList57.contains(iP70);
+    singlyLinkedList29.add(iP70);
+    iPBan9.setIp(iP70);
+    java.lang.Integer i75 = iP70.getFourth();
+    iP70.setFourth((java.lang.Integer)(-2147479552));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b6 == false);
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b14 == false);
+    org.junit.Assert.assertTrue(b7 == false);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i15 + "' != '" + 161+ "'", i15.equals(161));
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + 100+ "'", i15.equals(100));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b16 == true);
+    org.junit.Assert.assertTrue("'" + long17 + "' != '" + 10L+ "'", long17.equals(10L));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b18 == false);
+    org.junit.Assert.assertTrue("'" + long18 + "' != '" + 10L+ "'", long18.equals(10L));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i19 + "' != '" + 5+ "'", i19.equals(5));
+    org.junit.Assert.assertTrue("'" + i24 + "' != '" + (-1)+ "'", i24.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i25 + "' != '" + (-1)+ "'", i25.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i35 + "' != '" + (-1)+ "'", i35.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b36 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b37 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i38 == 0);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i44 + "' != '" + (-1)+ "'", i44.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b47 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b48 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i54 + "' != '" + (-1)+ "'", i54.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i55 + "' != '" + (-1)+ "'", i55.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i63 + "' != '" + (-1)+ "'", i63.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b64 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b71 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b72 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i75 + "' != '" + 100+ "'", i75.equals(100));
 
   }
 
@@ -9289,10 +15210,93 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test478"); }
 
 
-    int i1 = java.lang.Integer.parseInt("18");
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    tp2.SinglyLinkedList singlyLinkedList11 = new tp2.SinglyLinkedList();
+    tp2.IP iP16 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i17 = iP16.getFourth();
+    singlyLinkedList11.add(iP16);
+    java.lang.Integer i19 = iP16.getFirst();
+    boolean b20 = server0.removeBan(iP16);
+    tp2.ITime iTime21 = null;
+    server0.setTime(iTime21);
+    boolean b23 = server0.bansSorted();
+    tp2.IP iP28 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i29 = iP28.getFourth();
+    iP28.setFirst((java.lang.Integer)16);
+    boolean b32 = server0.addBan(iP28);
+    boolean b33 = server0.exceptionsNotRepeated();
+    boolean b34 = server0.bansOkTime();
+    tp2.SinglyLinkedList singlyLinkedList35 = new tp2.SinglyLinkedList();
+    tp2.IP iP40 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i41 = iP40.getThird();
+    boolean b42 = singlyLinkedList35.remove(iP40);
+    java.lang.Integer i43 = iP40.getThird();
+    iP40.setFourth((java.lang.Integer)469762048);
+    iP40.setSecond((java.lang.Integer)64);
+    boolean b48 = server0.removeException(iP40);
+    tp2.IP iP49 = null;
+    boolean b50 = server0.addException(iP49);
+    boolean b51 = server0.bansNotRepeatedExpirationOrIP();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 18);
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + 100+ "'", i17.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i29 + "' != '" + 100+ "'", i29.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b33 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b34 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i41 + "' != '" + (-1)+ "'", i41.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b42 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i43 + "' != '" + (-1)+ "'", i43.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b48 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b50 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b51 == true);
 
   }
 
@@ -9302,16 +15306,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test479"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      java.lang.Integer i1 = new java.lang.Integer("24131000000");
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    int i1 = java.lang.Integer.numberOfLeadingZeros(64);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 25);
 
   }
 
@@ -9321,10 +15319,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test480"); }
 
 
-    java.lang.String str2 = java.lang.Integer.toUnsignedString((-2063597489), 2031686);
+    long long1 = java.lang.Integer.toUnsignedLong(1073741824);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "2231369807"+ "'", str2.equals("2231369807"));
+    org.junit.Assert.assertTrue(long1 == 1073741824L);
 
   }
 
@@ -9334,10 +15332,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test481"); }
 
 
-    int i1 = java.lang.Integer.numberOfTrailingZeros(0);
+    int i2 = java.lang.Integer.rotateLeft((-1073741812), 0);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 32);
+    org.junit.Assert.assertTrue(i2 == (-1073741812));
 
   }
 
@@ -9347,10 +15345,60 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test482"); }
 
 
-    int i1 = java.lang.Integer.bitCount(352321956);
+    tp2.Server server0 = new tp2.Server();
+    boolean b1 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList2 = new tp2.SinglyLinkedList();
+    tp2.IP iP7 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i8 = iP7.getThird();
+    boolean b9 = singlyLinkedList2.remove(iP7);
+    boolean b10 = server0.addException(iP7);
+    tp2.SinglyLinkedList singlyLinkedList11 = new tp2.SinglyLinkedList();
+    tp2.IP iP16 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i17 = iP16.getFourth();
+    singlyLinkedList11.add(iP16);
+    java.lang.Integer i19 = iP16.getFirst();
+    boolean b20 = server0.removeBan(iP16);
+    tp2.ITime iTime21 = null;
+    server0.setTime(iTime21);
+    boolean b23 = server0.bansSorted();
+    tp2.IP iP28 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i29 = iP28.getFourth();
+    iP28.setFirst((java.lang.Integer)16);
+    boolean b32 = server0.addBan(iP28);
+    boolean b33 = server0.bansOkTime();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 7);
+    org.junit.Assert.assertTrue(b1 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i8 + "' != '" + (-1)+ "'", i8.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b9 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b10 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + 100+ "'", i17.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i19 + "' != '" + (-1)+ "'", i19.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b20 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b23 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i29 + "' != '" + 100+ "'", i29.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b32 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b33 == true);
 
   }
 
@@ -9360,10 +15408,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test483"); }
 
 
-    java.lang.Integer i2 = java.lang.Integer.getInteger("ne7", (java.lang.Integer)38000);
+    int i2 = java.lang.Integer.min(28, 26);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i2 + "' != '" + 38000+ "'", i2.equals(38000));
+    org.junit.Assert.assertTrue(i2 == 26);
 
   }
 
@@ -9373,10 +15421,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test484"); }
 
 
-    int i2 = java.lang.Integer.divideUnsigned(1437910020, 67108864);
+    int i2 = java.lang.Integer.rotateLeft(0, 44);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 21);
+    org.junit.Assert.assertTrue(i2 == 0);
 
   }
 
@@ -9386,10 +15434,88 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test485"); }
 
 
-    java.lang.Integer i1 = java.lang.Integer.decode("1010");
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList0 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i6 = iP5.getFourth();
+    boolean b7 = strictlySortedSinglyLinkedList0.removeFromIP(iP5);
+    boolean b8 = strictlySortedSinglyLinkedList0.isEmpty();
+    tp2.StrictlySortedSinglyLinkedList strictlySortedSinglyLinkedList9 = new tp2.StrictlySortedSinglyLinkedList();
+    tp2.IP iP14 = new tp2.IP((java.lang.Integer)150994944, (java.lang.Integer)784, (java.lang.Integer)784, (java.lang.Integer)2);
+    java.lang.Integer i15 = iP14.getFourth();
+    boolean b16 = strictlySortedSinglyLinkedList9.removeFromIP(iP14);
+    tp2.SinglyLinkedList singlyLinkedList17 = new tp2.SinglyLinkedList();
+    tp2.IP iP22 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i23 = iP22.getThird();
+    boolean b24 = singlyLinkedList17.remove(iP22);
+    java.lang.Integer i25 = iP22.getThird();
+    boolean b26 = strictlySortedSinglyLinkedList9.removeFromIP(iP22);
+    tp2.IPBan iPBan28 = strictlySortedSinglyLinkedList9.get(469762048);
+    tp2.IPBan iPBan30 = strictlySortedSinglyLinkedList9.get(1100100);
+    tp2.SinglyLinkedList singlyLinkedList31 = new tp2.SinglyLinkedList();
+    tp2.IP iP36 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i37 = iP36.getThird();
+    boolean b38 = singlyLinkedList31.remove(iP36);
+    tp2.IPBan iPBan40 = new tp2.IPBan(iP36, (java.lang.Long)10L);
+    java.lang.Long long41 = iPBan40.getExpires();
+    iPBan40.setExpires((java.lang.Long)(-1L));
+    java.lang.Long long44 = iPBan40.getExpires();
+    java.lang.Long long45 = iPBan40.getExpires();
+    boolean b46 = strictlySortedSinglyLinkedList9.contains(iPBan40);
+    boolean b47 = strictlySortedSinglyLinkedList0.contains(iPBan40);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i1 + "' != '" + 1010+ "'", i1.equals(1010));
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + 2+ "'", i6.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b7 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b8 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + 2+ "'", i15.equals(2));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b16 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i23 + "' != '" + (-1)+ "'", i23.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b24 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i25 + "' != '" + (-1)+ "'", i25.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b26 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan28);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertNull(iPBan30);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i37 + "' != '" + (-1)+ "'", i37.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b38 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long41 + "' != '" + 10L+ "'", long41.equals(10L));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long44 + "' != '" + (-1L)+ "'", long44.equals((-1L)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + long45 + "' != '" + (-1L)+ "'", long45.equals((-1L)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b46 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b47 == false);
 
   }
 
@@ -9399,10 +15525,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test486"); }
 
 
-    int i2 = java.lang.Integer.max(64, (-150929408));
+    int i1 = java.lang.Integer.reverseBytes(32);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 64);
+    org.junit.Assert.assertTrue(i1 == 536870912);
 
   }
 
@@ -9412,10 +15538,34 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test487"); }
 
 
-    int i2 = java.lang.Integer.min(100000, 83);
+    tp2.Server server0 = new tp2.Server();
+    tp2.ITime iTime1 = null;
+    server0.setTime(iTime1);
+    tp2.ITime iTime3 = null;
+    server0.setTime(iTime3);
+    tp2.Server server5 = new tp2.Server();
+    tp2.IP iP10 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b11 = server5.removeBan(iP10);
+    java.lang.Integer i12 = iP10.getFirst();
+    boolean b13 = server0.addException(iP10);
+    iP10.setThird((java.lang.Integer)(-1073741824));
+    java.lang.Integer i16 = iP10.getSecond();
+    java.lang.Integer i17 = iP10.getFirst();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 83);
+    org.junit.Assert.assertTrue(b11 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i12 + "' != '" + (-1)+ "'", i12.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b13 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i17 + "' != '" + (-1)+ "'", i17.equals((-1)));
 
   }
 
@@ -9425,10 +15575,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test488"); }
 
 
-    java.lang.Integer i1 = java.lang.Integer.getInteger("100000");
+    int i1 = java.lang.Integer.bitCount(536870912);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertNull(i1);
+    org.junit.Assert.assertTrue(i1 == 1);
 
   }
 
@@ -9438,10 +15588,41 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test489"); }
 
 
-    int i1 = java.lang.Integer.highestOneBit(101);
+    tp2.IP iP4 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i5 = iP4.getFirst();
+    java.lang.Integer i6 = iP4.getSecond();
+    iP4.setFirst((java.lang.Integer)201326592);
+    tp2.IPBan iPBan10 = new tp2.IPBan(iP4, (java.lang.Long)727449600L);
+    tp2.Server server11 = new tp2.Server();
+    boolean b12 = server11.exceptionsNotRepeated();
+    boolean b13 = server11.bansSorted();
+    boolean b14 = server11.notSharedElements();
+    boolean b15 = server11.bansSorted();
+    server11.update();
+    tp2.IP iP21 = new tp2.IP((java.lang.Integer)11100, (java.lang.Integer)40, (java.lang.Integer)28, (java.lang.Integer)727449600);
+    boolean b22 = server11.addException(iP21);
+    iPBan10.setIp(iP21);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 64);
+    org.junit.Assert.assertTrue("'" + i5 + "' != '" + (-1)+ "'", i5.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i6 + "' != '" + (-1)+ "'", i6.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b12 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b13 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b14 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b15 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b22 == true);
 
   }
 
@@ -9451,10 +15632,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test490"); }
 
 
-    int i2 = java.lang.Integer.rotateLeft((-219971585), (-1879048192));
+    int i1 = java.lang.Integer.parseUnsignedInt("1400000000");
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == (-219971585));
+    org.junit.Assert.assertTrue(i1 == 1400000000);
 
   }
 
@@ -9464,10 +15645,44 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test491"); }
 
 
-    int i1 = java.lang.Integer.numberOfTrailingZeros(1677721779);
+    tp2.Server server0 = new tp2.Server();
+    tp2.ITime iTime1 = null;
+    server0.setTime(iTime1);
+    boolean b3 = server0.bansNotRepeatedExpirationOrIP();
+    tp2.SinglyLinkedList singlyLinkedList4 = new tp2.SinglyLinkedList();
+    tp2.IP iP9 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i10 = iP9.getThird();
+    boolean b11 = singlyLinkedList4.remove(iP9);
+    iP9.setSecond((java.lang.Integer)150994944);
+    java.lang.Integer i14 = iP9.getFourth();
+    java.lang.Integer i15 = iP9.getThird();
+    java.lang.Integer i16 = iP9.getFirst();
+    boolean b17 = server0.addException(iP9);
+    boolean b18 = server0.bansOkTime();
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 0);
+    org.junit.Assert.assertTrue(b3 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i10 + "' != '" + (-1)+ "'", i10.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b11 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i14 + "' != '" + 100+ "'", i14.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i15 + "' != '" + (-1)+ "'", i15.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i16 + "' != '" + (-1)+ "'", i16.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b18 == true);
 
   }
 
@@ -9477,10 +15692,48 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test492"); }
 
 
-    int i1 = java.lang.Integer.signum(14379100);
+    tp2.Server server0 = new tp2.Server();
+    tp2.ITime iTime1 = null;
+    server0.setTime(iTime1);
+    tp2.Server server3 = new tp2.Server();
+    boolean b4 = server3.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList5 = new tp2.SinglyLinkedList();
+    tp2.IP iP10 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i11 = iP10.getThird();
+    boolean b12 = singlyLinkedList5.remove(iP10);
+    boolean b13 = server3.addException(iP10);
+    java.lang.Integer i14 = iP10.getFirst();
+    tp2.IPBan iPBan16 = new tp2.IPBan(iP10, (java.lang.Long)5L);
+    boolean b17 = server0.connect(iP10);
+    tp2.IP iP22 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i23 = iP22.getFourth();
+    iP22.setFirst((java.lang.Integer)16);
+    boolean b26 = server0.addBan(iP22);
+    iP22.setFirst((java.lang.Integer)939524096);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == 1);
+    org.junit.Assert.assertTrue(b4 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i11 + "' != '" + (-1)+ "'", i11.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b12 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b13 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i14 + "' != '" + (-1)+ "'", i14.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b17 == true);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i23 + "' != '" + 100+ "'", i23.equals(100));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b26 == true);
 
   }
 
@@ -9490,10 +15743,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test493"); }
 
 
-    int i2 = java.lang.Integer.sum(630, 0);
+    int i2 = java.lang.Integer.max(4194304, 11884);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 630);
+    org.junit.Assert.assertTrue(i2 == 4194304);
 
   }
 
@@ -9503,10 +15756,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test494"); }
 
 
-    int i1 = java.lang.Integer.signum((-1879048031));
+    java.lang.String str1 = java.lang.Integer.toUnsignedString(11);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i1 == (-1));
+    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "11"+ "'", str1.equals("11"));
 
   }
 
@@ -9517,78 +15770,101 @@ public class RegressionTest1 {
 
 
     tp2.Server server0 = new tp2.Server();
-    tp2.IP iP1 = null;
-    boolean b2 = server0.addBan(iP1);
-    tp2.Server server3 = new tp2.Server();
-    tp2.IP iP8 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b9 = server3.removeException(iP8);
-    boolean b11 = iP8.equals((java.lang.Object)(-1L));
-    boolean b12 = server0.removeBan(iP8);
-    tp2.IP iP17 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    iP17.setFirst((java.lang.Integer)161);
-    iP17.setThird((java.lang.Integer)3);
-    iP17.setFirst((java.lang.Integer)26);
-    boolean b24 = server0.connect(iP17);
-    tp2.ITime iTime25 = null;
-    server0.setTime(iTime25);
-    tp2.Server server27 = new tp2.Server();
-    tp2.IP iP32 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b33 = server27.removeException(iP32);
-    server27.update();
-    tp2.Server server35 = new tp2.Server();
-    tp2.IP iP40 = new tp2.IP((java.lang.Integer)161, (java.lang.Integer)(-2147483648), (java.lang.Integer)939524096, (java.lang.Integer)5);
-    boolean b41 = server35.removeException(iP40);
-    java.lang.Integer i42 = iP40.getFirst();
-    boolean b43 = server27.addBan(iP40);
-    boolean b45 = iP40.equals((java.lang.Object)(short)10);
-    iP40.setSecond((java.lang.Integer)(-134217728));
-    java.lang.Integer i48 = iP40.getFourth();
-    boolean b49 = server0.removeException(iP40);
-    java.lang.Object obj50 = null;
-    boolean b51 = iP40.equals(obj50);
-    java.lang.Integer i52 = iP40.getFourth();
+    tp2.IP iP5 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    boolean b6 = server0.removeBan(iP5);
+    tp2.IP iP11 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i12 = iP11.getThird();
+    iP11.setFourth((java.lang.Integer)0);
+    iP11.setSecond((java.lang.Integer)3);
+    iP11.setFourth((java.lang.Integer)12);
+    boolean b19 = server0.addBan(iP11);
+    server0.update();
+    boolean b21 = server0.bansOkTime();
+    boolean b22 = server0.notSharedElements();
+    tp2.SinglyLinkedList singlyLinkedList23 = new tp2.SinglyLinkedList();
+    tp2.IP iP24 = null;
+    boolean b25 = singlyLinkedList23.remove(iP24);
+    boolean b26 = singlyLinkedList23.isEmpty();
+    tp2.IP iP31 = new tp2.IP((java.lang.Integer)5, (java.lang.Integer)1, (java.lang.Integer)0, (java.lang.Integer)12);
+    boolean b32 = singlyLinkedList23.contains(iP31);
+    tp2.SinglyLinkedList singlyLinkedList33 = new tp2.SinglyLinkedList();
+    tp2.IP iP38 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i39 = iP38.getThird();
+    boolean b40 = singlyLinkedList33.remove(iP38);
+    iP38.setSecond((java.lang.Integer)150994944);
+    java.lang.Integer i43 = iP38.getFourth();
+    java.lang.Integer i44 = iP38.getThird();
+    java.lang.Integer i45 = iP38.getFirst();
+    boolean b46 = singlyLinkedList23.contains(iP38);
+    tp2.SinglyLinkedList singlyLinkedList47 = new tp2.SinglyLinkedList();
+    tp2.IP iP52 = new tp2.IP((java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)(-1), (java.lang.Integer)100);
+    java.lang.Integer i53 = iP52.getThird();
+    boolean b54 = singlyLinkedList47.remove(iP52);
+    java.lang.Integer i55 = iP52.getThird();
+    java.lang.Integer i56 = iP52.getSecond();
+    boolean b57 = singlyLinkedList23.contains(iP52);
+    boolean b58 = server0.addBan(iP52);
+    iP52.setThird((java.lang.Integer)2809);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b2 == false);
+    org.junit.Assert.assertTrue(b6 == false);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b9 == false);
+    org.junit.Assert.assertTrue("'" + i12 + "' != '" + (-1)+ "'", i12.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b11 == false);
+    org.junit.Assert.assertTrue(b19 == true);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b12 == false);
+    org.junit.Assert.assertTrue(b21 == true);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b24 == true);
+    org.junit.Assert.assertTrue(b22 == true);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b33 == false);
+    org.junit.Assert.assertTrue(b25 == false);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b41 == false);
+    org.junit.Assert.assertTrue(b26 == true);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i42 + "' != '" + 161+ "'", i42.equals(161));
+    org.junit.Assert.assertTrue(b32 == false);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b43 == true);
+    org.junit.Assert.assertTrue("'" + i39 + "' != '" + (-1)+ "'", i39.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b45 == false);
+    org.junit.Assert.assertTrue(b40 == false);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i48 + "' != '" + 5+ "'", i48.equals(5));
+    org.junit.Assert.assertTrue("'" + i43 + "' != '" + 100+ "'", i43.equals(100));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b49 == false);
+    org.junit.Assert.assertTrue("'" + i44 + "' != '" + (-1)+ "'", i44.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(b51 == false);
+    org.junit.Assert.assertTrue("'" + i45 + "' != '" + (-1)+ "'", i45.equals((-1)));
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + i52 + "' != '" + 5+ "'", i52.equals(5));
+    org.junit.Assert.assertTrue(b46 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i53 + "' != '" + (-1)+ "'", i53.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b54 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i55 + "' != '" + (-1)+ "'", i55.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue("'" + i56 + "' != '" + (-1)+ "'", i56.equals((-1)));
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b57 == false);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(b58 == true);
 
   }
 
@@ -9598,10 +15874,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test496"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toHexString(67108864);
+    java.lang.String str2 = java.lang.Integer.toUnsignedString(10, 1610612742);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "4000000"+ "'", str1.equals("4000000"));
+    org.junit.Assert.assertTrue("'" + str2 + "' != '" + "10"+ "'", str2.equals("10"));
 
   }
 
@@ -9611,16 +15887,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test497"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      int i2 = java.lang.Integer.parseInt("8000000", 161);
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    int i2 = java.lang.Integer.min(4, 134217599);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i2 == 4);
 
   }
 
@@ -9630,10 +15900,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test498"); }
 
 
-    int i2 = java.lang.Integer.compareUnsigned(2362614, 2);
+    int i2 = java.lang.Integer.divideUnsigned(167772260, 201326592);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue(i2 == 1);
+    org.junit.Assert.assertTrue(i2 == 0);
 
   }
 
@@ -9643,16 +15913,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test499"); }
 
 
-    // The following exception was thrown during execution in test generation
-    try {
-      int i1 = java.lang.Integer.parseInt("10000000000000000000000000000010");
-      org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException");
-    } catch (java.lang.NumberFormatException e) {
-      // Expected exception.
-      if (! e.getClass().getCanonicalName().equals("java.lang.NumberFormatException")) {
-        org.junit.Assert.fail("Expected exception of type java.lang.NumberFormatException, got " + e.getClass().getCanonicalName());
-      }
-    }
+    int i1 = java.lang.Integer.numberOfLeadingZeros(4194304);
+    
+    // Regression assertion (captures the current behavior of the code)
+    org.junit.Assert.assertTrue(i1 == 9);
 
   }
 
@@ -9662,10 +15926,10 @@ public class RegressionTest1 {
     if (debug) { System.out.format("%n%s%n","RegressionTest1.test500"); }
 
 
-    java.lang.String str1 = java.lang.Integer.toHexString(10);
+    int i2 = java.lang.Integer.min(110011, 201326592);
     
     // Regression assertion (captures the current behavior of the code)
-    org.junit.Assert.assertTrue("'" + str1 + "' != '" + "a"+ "'", str1.equals("a"));
+    org.junit.Assert.assertTrue(i2 == 110011);
 
   }
 

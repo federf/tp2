@@ -14,7 +14,7 @@ public class TheoriesServerUpdate {
 		// this field its true when at least one element might be removed from bans with update
 		boolean removesElements=false;
 		// bans old size
-		int oldSize=s.bans.size;
+		int oldSize=s.bans.size; 
 		// if bans has at least one element and
 		// the first element might be removed from the list after update
 		if(s.bans.header.next!=null){

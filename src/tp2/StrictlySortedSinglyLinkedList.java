@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
 
+import randoop.CheckRep;
+
 
 /**
  * Class  StrictlySortedSinglyLinkedList defines Strictly Sorted, Singly linked List 
@@ -80,11 +82,12 @@ public class StrictlySortedSinglyLinkedList implements Serializable{
     public boolean add(IPBan value){
 		Node current = header.next;	
 		Node previous = header;
-			
-	    	while(current!=null && current.element.getExpires()< value.getExpires()){
+		if(value==null)
+			return false;
+	    while(current!=null && current.element.getExpires()< value.getExpires()){
 			previous = current;		
 			current = current.next;
-	       	}
+	    }
 		Node n = new Node();
 		n.element =  value;
 		//DUDA - CREO NO ESTA VOLVIENDO NULL EL CAMPO next DEL NUEVO NODO EN ESTE CASO
@@ -148,7 +151,7 @@ public class StrictlySortedSinglyLinkedList implements Serializable{
         return res + "}";
     }
  
-    
+    @CheckRep
     public boolean repOK(){
     	// this cant be null
     	if(this==null)

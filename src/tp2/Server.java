@@ -188,19 +188,6 @@ public class Server implements Serializable {
 		if(!bansSorted())
 			return false;
 		
-		/*if(!bansSorted())
-			return false;
-
-		if(!bansNotRepeatedExpirationOrIP())
-			return false;
-		
-		if(!bansOkTime())
-			return false;
-			*/
-		/*if(!bansOK())
-			return false;*/
-		
-		
 		if(!exceptionsNotRepeated())
 			return false;
 		
@@ -337,93 +324,14 @@ public class Server implements Serializable {
 		return "Server [lastUpdate=" + String.valueOf(lastUpdate) + ", exceptions=" + exceptions.toString() + ", bans=" + bans.toString() + "]";
 	} 
 	
-	//  ESTE METODO ENCAPSULA bansSorted, bansNotRepeatedExpireOrIP y bansOkTime --verificar
-	private boolean bansOK(){
-		boolean repeatedExpire = false;
-		boolean repeatedIP = false;
-		//existing Expiration Times
-		LinkedList<Long> existingET= new LinkedList<Long>();
-		//existing IP's
-		LinkedList<IP> existingIP= new LinkedList<IP>();
-		//bans list sorted
-		boolean sorted = true;
-		//bans elements expiration time is greater than lastUpdate
-		boolean okTime=true;
-
-		//if the list is not empty (has at least 1 element)
-		if(bans.header.next!=null){
-			//if the list has at least 2 elements
-			if(bans.header.next.next!=null){
-				//get the first element after the sentinel
-				Node current = bans.header.next;
-				// verify if expiration time of current is greater than lastUpdate
-				okTime=current.element.expires>lastUpdate;
-				// if not okTime return false
-				if(!okTime)
-					return false;
-				//save it expiration time and ip
-				existingET.add(current.element.expires);
-				existingIP.add(current.element.ip);
-				// verify sorted with the next element
-				sorted = (current.element.expires < current.next.element.expires);
-				// if not sorted return false
-				if(!sorted)
-					return false;				
-				//advance to the next and loop over the rest of the file
-				current=current.next;
-				//while there current element is not null (and the list still sorted
-				// and there is no repeated elements and elements expiration is greater than lastupdate - implicit)
-				//  && sorted && !repeatedExpire && !repeatedIP && okTime
-				while(current != null){
-					
-					// update boolean fields for repetitions
-					repeatedExpire = existingET.contains(current.element.expires);
-					repeatedIP = existingIP.contains(current.element.ip);
-					//if there is a repeated expiration time or IP return false
-					if(repeatedExpire || repeatedIP)
-						return false;
-					//otherwise save the current element ip and expiration time and loop again if possible
-					existingET.add(current.element.expires);
-					existingIP.add(current.element.ip);
-					
-					// if current.next is null we must return okTime because
-					// the list still sorted and without repetitions until now
-					if(current.next==null){
-						return current.element.expires>lastUpdate;
-					}else{
-						// otherwise if current.next!=null
-						// try to update all the boolean fields
-						// update sorted
-						sorted = (current.element.expires < current.next.element.expires);
-						// if sorted becomes false returns false
-						if(!sorted)
-							return false;
-
-						// verify if current element expiration time is greater than lastUpdate 
-						okTime=current.element.expires>lastUpdate;
-						// if current okTime becomes false return false
-						if(!okTime)
-							return false;
-						//otherwise update current element to the next one and loop again
-						current = current.next;
-					}
-				}
-			}else{
-				//if there is only one element see if expires time is greater than lastUpdate
-				okTime=bans.header.next.element.expires>lastUpdate;
-				return okTime;
-			}
-		}
-		// if the list is empty return true
-		return true;
-	}
+	
 	
 	
 	/*
 	 * This method returns True iff bans list is sorted by IP expiration time
 	 * Used for repOk
 	 */
-	private boolean bansSorted(){
+	public boolean bansSorted(){
 		boolean sorted = true;
 		//if the list is not empty (has at least 1 element)
 		if(bans.header.next!=null){
@@ -451,7 +359,7 @@ public class Server implements Serializable {
 	 * This method returns True iff bans list does not contain repeated expiration times or IPs
 	 * Used for repOk
 	 */
-	private boolean bansNotRepeatedExpirationOrIP(){
+	public boolean bansNotRepeatedExpirationOrIP(){
 		boolean repeatedExpire = false;
 		boolean repeatedIP = false;
 		
@@ -499,7 +407,7 @@ public class Server implements Serializable {
 	 * expiration time is lower than lastupdate time
 	 * Used for repOk
 	 */
-	private boolean bansOkTime(){
+	public boolean bansOkTime(){
 		boolean okTime = true;
 		//if bans list has at least one element
 		if(bans.header.next!=null){
@@ -519,7 +427,7 @@ public class Server implements Serializable {
 	 * This method returns True iff exceptions list does not contain repeated elements
 	 * Used for repOk
 	 */
-	private boolean exceptionsNotRepeated(){
+	public boolean exceptionsNotRepeated(){
 		boolean repeated = false;
 		//list of existing IP's in exceptions
 		LinkedList<IP> IPs=new LinkedList<IP>();
@@ -550,7 +458,7 @@ public class Server implements Serializable {
 	 * This method returns True iff bans and exceptions does not share elements (IPs)
 	 * Used for repOk
 	 */
-	private boolean notSharedElements(){
+	public boolean notSharedElements(){
 		boolean notShared = true;
 		//list of exceptions IP's
 		LinkedList<IP> IPExceptions=new LinkedList<IP>();

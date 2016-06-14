@@ -151,7 +151,7 @@ public class StrictlySortedSinglyLinkedList implements Serializable{
         return res + "}";
     }
  
-    @CheckRep
+    /*@CheckRep
     public boolean repOK(){
     	// this cant be null
     	if(this==null)
@@ -201,5 +201,127 @@ public class StrictlySortedSinglyLinkedList implements Serializable{
 		}
 		// if the list has no loops return if the size of the list equals the amount of elements visited
 		return cant==size;
+    }*/
+    
+    @CheckRep
+    public boolean repOK(){
+    	
+    	// STRUCTURAL VERIFICATION
+    	// this cant be null
+    	if(this==null)
+			return false;
+    	// size must be zero o higher
+    	if(size<0)
+    		return false;
+    	// header must be not null
+		if(header==null)
+			return false;
+		// header's element must be null
+		if(header.element!=null)
+			return false;
+		
+		// "visited" nodes list
+		LinkedList<Node> visited=new LinkedList<Node>();
+		
+		// add header to the visited nodes list
+		visited.add(header);
+		
+		// advance to the next element
+		Node current=header.next;
+		
+		// loop over the list searching for loops
+		// and counting the elements visited until current element becomes null
+		// and cant is lower or equal to size
+		int cant=0;
+		while(current!=null){
+			// if current.element is null return false
+			if(current.element==null)
+				return false;
+			// if current.element ip is null return false
+			if(current.element.ip==null)
+				return false;
+			// if current.element expires is null return false
+			if(current.element.expires==null)
+				return false;
+			// if current was already visited return false (there exists a loop)
+			if(visited.contains(current))
+				return false;
+			// otherwise add current node to the visited nodes list
+			visited.add(current);
+			// increase cant counter
+			cant++;
+			// advance current to the next element of the list and try to loop again
+			current=current.next;
+		}
+		// if elements counter is not equal to the list size return false
+		if(cant!=size)
+			return false;
+
+		// at this point the list structure is correct (no loops and correct elements/no null fields)
+		// VALUES VERIFICATION
+		boolean repeatedExpire = false;
+		boolean repeatedIP = false;
+		//existing Expiration Times
+		LinkedList<Long> existingET= new LinkedList<Long>();
+		//existing IP's
+		LinkedList<IP> existingIP= new LinkedList<IP>();
+		//bans list sorted
+		boolean sorted = true;
+		//bans elements expiration time is greater than lastUpdate
+		//boolean okTime=true;
+
+		// if the list has at least 1 element
+		if(header.next!=null){
+			// if the list has at least 2 elements
+			if(header.next.next!=null){
+				// get the first element after the sentinel
+				current=header.next;
+				// save current element values
+				existingET.add(current.element.expires);
+				existingIP.add(current.element.ip);
+				// see if the element is sorted with the next one (the list has at least 2 elements)
+				sorted=current.element.expires<current.next.element.expires;
+				// if they are not sorted return false
+				if(!sorted)
+					return false;
+				// otherwise advance current to the next element
+				current=current.next;
+				
+				while(current!=null){
+					// verify if current element expiration time or IP are repeated
+					repeatedExpire=existingET.contains(current.element.expires);
+					repeatedIP=existingIP.contains(current.element.ip);
+					// if repeated return false
+					if(repeatedExpire || repeatedIP)
+						return false;
+					// otherwise add them to the "existing" list
+					existingET.add(current.element.expires);
+					existingIP.add(current.element.ip);
+					// if the next element is not null
+					if(current.next!=null){
+						// verify if current is sorted with the next element
+						sorted=current.element.expires<current.next.element.expires;
+						// if they are not sorted return false
+						if(!sorted)
+							return false;
+						// otherwise advance current to the next element
+						current=current.next;
+					}else{
+						// if current element is null return true because the list stills sorted and without IP or expire repetition
+						return true;
+					}
+				}
+			}else{
+				//if the list has only one element return true
+				return true;
+			}
+		}else{
+			//if the list is empty return true
+			return true;
+		}
+
+		// if the list has no loops and the size of the list equals the amount of elements visited
+		// and is sorted and has no repeated IP or Expire
+		return true;
     }
 }//End Class

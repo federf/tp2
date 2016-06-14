@@ -28,8 +28,13 @@ public class IPBan implements Serializable {
 	}
 	public IPBan(IP ip, Long ts) {
 		super();
-		this.ip = ip;
-		this.expires = ts;
+		if(ip!=null && ts!=null){
+			this.ip = ip;
+			this.expires = ts;
+		}else{
+			this.ip=new IP(0,0,0,0);
+			this.expires=0L;
+		}
 	}	
 
 	@Override

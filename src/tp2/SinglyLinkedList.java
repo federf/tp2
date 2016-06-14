@@ -52,12 +52,15 @@ public class SinglyLinkedList implements Serializable{
 	//add the new IP at the first position.
 	public void add (IP ip){
 		if(ip!=null){
-			Entry n = new Entry();
-			n.element = new IP(ip.getFirst(), ip.getSecond(), ip.getThird(), ip.getFourth());
-			Entry nn = header.next;
-			n.next = nn;
-			header.next = n;
-			size++;
+			if(!this.contains(ip)){
+				Entry n = new Entry();
+				n.element = new IP(ip.getFirst(), ip.getSecond(), ip.getThird(), ip.getFourth());
+				Entry nn = header.next;
+				n.next = nn;
+				header.next = n;
+				size++;
+			}
+			
 		}
 	} 
 	
@@ -114,7 +117,7 @@ public class SinglyLinkedList implements Serializable{
 		return res + ")";
 	}
 
-	@CheckRep
+	/*@CheckRep
 	public boolean repOK(){
 		// this cant be null
     	if(this==null)
@@ -158,5 +161,78 @@ public class SinglyLinkedList implements Serializable{
 		}
 		// if the list has no loops return if the size of the list equals the amount of elements visited
 		return cant==size;
+	}*/
+	
+	@CheckRep
+	public boolean repOK(){
+		// this cant be null
+    	if(this==null)
+			return false;
+    	// size must be zero o higher
+    	if(size<0)
+    		return false;
+    	// header must be not null
+		if(header==null)
+			return false;
+		// header's element must be null
+		if(header.element!=null)
+			return false;
+		
+		// "visited" nodes list
+		LinkedList<Entry> visited=new LinkedList<Entry>();
+		
+		// add header to the visited nodes list
+		visited.add(header);
+		
+		// advance to the next element
+		Entry current=header.next;
+		
+		// loop over the list searching for loops
+		// and counting the elements visited until current element becomes null
+		// and cant is lower or equal to size
+		int cant=0;
+		while(current!=null){
+			// if current.element is null return false
+			if(current.element==null)
+				return false;
+			// if current was already visited return false (there exists a loop)
+			if(visited.contains(current))
+				return false;
+			// otherwise add current node to the visited nodes list
+			visited.add(current);
+			// increase cant counter
+			cant++;
+			// advance current to the next element of the list and try to loop again
+			current=current.next;
+		}
+		// if the list has no loops return if the size of the list equals the amount of elements visited
+		if(cant!=size)
+			return false;
+		
+		boolean repeated = false;
+		//list of existing IP's in exceptions
+		LinkedList<IP> IPs=new LinkedList<IP>();
+		//if exceptions list has at least 1 element
+		if(header.next!=null){
+			//if exceptions list has at least 2 elements
+			if(header.next.next!=null){
+				// set current element
+				current = header.next;
+				// save current element IP as a visited one (is the first element)
+				IPs.add(current.element);
+				// update current element to the next one
+				current=current.next;
+				
+				// loop over the elements searching for repeated IPs until there is no more elements
+				// or a repeated IP is found
+				while(current != null && !repeated){
+					repeated= IPs.contains(current.element);
+					IPs.add(current.element);
+					current = current.next;
+				}
+			}
+		}
+		return !repeated;
 	}
+	
 }//End Class

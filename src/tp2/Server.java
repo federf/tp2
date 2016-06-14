@@ -175,21 +175,21 @@ public class Server implements Serializable {
 		*/
 		if(!bans.repOK())
 			return false;
-		if(!exceptions.repOK())
-			return false;
-		
 		
 		if(!bansOkTime())
 			return false;
 		
-		if(!bansNotRepeatedExpirationOrIP())
+		if(!exceptions.repOK())
+			return false;
+		
+		/*if(!bansNotRepeatedExpirationOrIP())
 			return false;
 		
 		if(!bansSorted())
-			return false;
+			return false;*/
 		
-		if(!exceptionsNotRepeated())
-			return false;
+		/*if(!exceptionsNotRepeated())
+			return false;*/
 		
 		if(!notSharedElements())
 			return false;
@@ -331,7 +331,7 @@ public class Server implements Serializable {
 	 * This method returns True iff bans list is sorted by IP expiration time
 	 * Used for repOk
 	 */
-	public boolean bansSorted(){
+	/*public boolean bansSorted(){
 		boolean sorted = true;
 		//if the list is not empty (has at least 1 element)
 		if(bans.header.next!=null){
@@ -353,13 +353,13 @@ public class Server implements Serializable {
 			}
 		}
 		return sorted;
-	}
+	}*/
 	
 	/*
 	 * This method returns True iff bans list does not contain repeated expiration times or IPs
 	 * Used for repOk
 	 */
-	public boolean bansNotRepeatedExpirationOrIP(){
+	/*public boolean bansNotRepeatedExpirationOrIP(){
 		boolean repeatedExpire = false;
 		boolean repeatedIP = false;
 		
@@ -400,7 +400,7 @@ public class Server implements Serializable {
 			}
 		}
 		return !repeatedExpire && !repeatedIP;
-	}
+	}*/
 	
 	/*
 	 * This method returns True iff bans list does not contain IPs which 
@@ -427,7 +427,7 @@ public class Server implements Serializable {
 	 * This method returns True iff exceptions list does not contain repeated elements
 	 * Used for repOk
 	 */
-	public boolean exceptionsNotRepeated(){
+	/*public boolean exceptionsNotRepeated(){
 		boolean repeated = false;
 		//list of existing IP's in exceptions
 		LinkedList<IP> IPs=new LinkedList<IP>();
@@ -452,7 +452,7 @@ public class Server implements Serializable {
 			}
 		}
 		return !repeated;
-	}
+	}*/
 	
 	/*
 	 * This method returns True iff bans and exceptions does not share elements (IPs)
@@ -503,15 +503,4 @@ public class Server implements Serializable {
 	public ITime getTime(){
 		return time;
 	}
-	
-	/*public boolean equals(Server s2){
-		if(!String.valueOf(lastUpdate).equals(String.valueOf(s2.lastUpdate)))
-			return false;
-		if(!bans.equals(s2.bans))
-			return false;
-		if(!exceptions.equals(s2.exceptions))
-			return false;
-		return true;
-		
-	}*/
 }

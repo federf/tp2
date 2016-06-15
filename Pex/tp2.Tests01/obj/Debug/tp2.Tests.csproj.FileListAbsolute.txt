@@ -1,0 +1,16 @@
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2.Tests01\bin\Debug\tp2.Tests1.dll
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2.Tests01\bin\Debug\tp2.Tests1.pdb
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2.Tests01\bin\Debug\Microsoft.Pex.Framework.dll
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2.Tests01\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2.Tests01\bin\Debug\tp2.dll
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2.Tests01\bin\Debug\Microsoft.ExtendedReflection.Reasoning.dll
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2.Tests01\bin\Debug\Microsoft.ExtendedReflection.dll
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2.Tests01\bin\Debug\tp2.pdb
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2.Tests01\bin\Debug\Microsoft.Pex.Framework.xml
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2.Tests01\bin\Debug\es\Microsoft.Pex.Framework.resources.dll
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2.Tests01\bin\Debug\es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2.Tests01\bin\Debug\es\Microsoft.ExtendedReflection.resources.dll
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2.Tests01\obj\Debug\tp2.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2.Tests01\obj\Debug\tp2.Tests1.rewritten
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2.Tests01\obj\Debug\tp2.Tests1.dll
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2.Tests01\obj\Debug\tp2.Tests1.pdb

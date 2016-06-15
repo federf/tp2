@@ -1,0 +1,5 @@
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2\obj\Debug\tp2.csprojResolveAssemblyReference.cache
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2\bin\Debug\tp2.dll
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2\bin\Debug\tp2.pdb
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2\obj\Debug\tp2.dll
+C:\Users\Fede\Downloads\Testing\Proyectos\tp2\tp2\obj\Debug\tp2.pdb

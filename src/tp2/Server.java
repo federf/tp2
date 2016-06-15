@@ -182,15 +182,6 @@ public class Server implements Serializable {
 		if(!exceptions.repOK())
 			return false;
 		
-		/*if(!bansNotRepeatedExpirationOrIP())
-			return false;
-		
-		if(!bansSorted())
-			return false;*/
-		
-		/*if(!exceptionsNotRepeated())
-			return false;*/
-		
 		if(!notSharedElements())
 			return false;
 			
@@ -324,84 +315,6 @@ public class Server implements Serializable {
 		return "Server [lastUpdate=" + String.valueOf(lastUpdate) + ", exceptions=" + exceptions.toString() + ", bans=" + bans.toString() + "]";
 	} 
 	
-	
-	
-	
-	/*
-	 * This method returns True iff bans list is sorted by IP expiration time
-	 * Used for repOk
-	 */
-	/*public boolean bansSorted(){
-		boolean sorted = true;
-		//if the list is not empty (has at least 1 element)
-		if(bans.header.next!=null){
-			//if the list has at least 2 elements
-			if(bans.header.next.next!=null){
-				//get the first element after the sentinel
-				Node current = bans.header.next;
-				//while there current element is not null and the list still sorted
-				while(current != null && sorted){
-					//if next element is null return true because we cant compare with null
-					if(current.next==null){
-						return true;
-					}
-					//otherwise compare the current element with the next one
-					sorted = (current.element.expires < current.next.element.expires);
-					//update current element
-					current = current.next;
-				}
-			}
-		}
-		return sorted;
-	}*/
-	
-	/*
-	 * This method returns True iff bans list does not contain repeated expiration times or IPs
-	 * Used for repOk
-	 */
-	/*public boolean bansNotRepeatedExpirationOrIP(){
-		boolean repeatedExpire = false;
-		boolean repeatedIP = false;
-		
-		//existing Expiration Times
-		LinkedList<Long> existingET= new LinkedList<Long>();
-		//existing IP's
-		LinkedList<IP> existingIP= new LinkedList<IP>();
-		//if the bans list has at lest one element (after the sentinel one)
-		if(bans.header.next!=null){
-			//if the list has at least 2 elements
-			if(bans.header.next.next!=null){
-				// set current element at the first element after the sentinel
-				Node current = bans.header.next;
-				//save it expiration time and ip
-				existingET.add(current.element.expires);
-				existingIP.add(current.element.ip);
-				//advance to the next element (2nd one)
-				current=current.next;
-				
-				// loop over the elements searching for repeated elements until there is no more elements
-				// or a repeated element is found
-				while(current != null && !repeatedExpire && !repeatedIP){
-					//update boolean fields
-					repeatedExpire = existingET.contains(current.element.expires);
-					repeatedIP = existingIP.contains(current.element.ip);
-					//if there is a repeated expire time return false
-					if(repeatedExpire)
-						return false;
-					//if there is a repeated ip return false
-					if(repeatedIP)
-						return false;
-					//otherwise save the current element ip and expire time and loop again if possible
-					existingET.add(current.element.expires);
-					existingIP.add(current.element.ip);
-					//update current element to the next one
-					current = current.next;
-				}
-			}
-		}
-		return !repeatedExpire && !repeatedIP;
-	}*/
-	
 	/*
 	 * This method returns True iff bans list does not contain IPs which 
 	 * expiration time is lower than lastupdate time
@@ -422,37 +335,6 @@ public class Server implements Serializable {
 		}
 		return okTime;
 	}
-
-	/*
-	 * This method returns True iff exceptions list does not contain repeated elements
-	 * Used for repOk
-	 */
-	/*public boolean exceptionsNotRepeated(){
-		boolean repeated = false;
-		//list of existing IP's in exceptions
-		LinkedList<IP> IPs=new LinkedList<IP>();
-		//if exceptions list has at least 1 element
-		if(exceptions.header.next!=null){
-			//if exceptions list has at least 2 elements
-			if(exceptions.header.next.next!=null){
-				// set current element
-				Entry current = exceptions.header.next;
-				// save current element IP as a visited one (is the first element)
-				IPs.add(current.element);
-				// update current element to the next one
-				current=current.next;
-				
-				// loop over the elements searching for repeated IPs until there is no more elements
-				// or a repeated IP is found
-				while(current != null && !repeated){
-					repeated= IPs.contains(current.element);
-					IPs.add(current.element);
-					current = current.next;
-				}
-			}
-		}
-		return !repeated;
-	}*/
 	
 	/*
 	 * This method returns True iff bans and exceptions does not share elements (IPs)

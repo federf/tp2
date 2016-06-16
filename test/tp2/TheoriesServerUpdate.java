@@ -21,8 +21,6 @@ public class TheoriesServerUpdate {
 			if(s.bans.header.next.element.expires.compareTo(s.getTime().getCurrentTime())<=0)					
 				removesElements=true;
 		}
-		//System.out.println("-------------1 "+s.bans.toString());
-		//System.out.println("antes: "+s.getLastUpdate());
 		s.update();
 		// new bans list size
 		int newSize=s.bans.size;

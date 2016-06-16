@@ -90,7 +90,6 @@ public class StrictlySortedSinglyLinkedList implements Serializable{
 	    }
 		Node n = new Node();
 		n.element =  value;
-		//DUDA - CREO NO ESTA VOLVIENDO NULL EL CAMPO next DEL NUEVO NODO EN ESTE CASO
 		if (current==null){
 			previous.next = n;
 			size++;
@@ -150,58 +149,6 @@ public class StrictlySortedSinglyLinkedList implements Serializable{
         }
         return res + "}";
     }
- 
-    /*@CheckRep
-    public boolean repOK(){
-    	// this cant be null
-    	if(this==null)
-			return false;
-    	// size must be zero o higher
-    	if(size<0)
-    		return false;
-    	// header must be not null
-		if(header==null)
-			return false;
-		// header's element must be null
-		if(header.element!=null)
-			return false;
-		
-		// "visited" nodes list
-		LinkedList<Node> visited=new LinkedList<Node>();
-		
-		// add header to the visited nodes list
-		visited.add(header);
-		
-		// advance to the next element
-		Node current=header.next;
-		
-		// loop over the list searching for loops
-		// and counting the elements visited until current element becomes null
-		// and cant is lower or equal to size
-		int cant=0;
-		while(current!=null){
-			// if current.element is null return false
-			if(current.element==null)
-				return false;
-			// if current.element ip is null return false
-			if(current.element.ip==null)
-				return false;
-			// if current.element expires is null return false
-			if(current.element.expires==null)
-				return false;
-			// if current was already visited return false (there exists a loop)
-			if(visited.contains(current))
-				return false;
-			// otherwise add current node to the visited nodes list
-			visited.add(current);
-			// increase cant counter
-			cant++;
-			// advance current to the next element of the list and try to loop again
-			current=current.next;
-		}
-		// if the list has no loops return if the size of the list equals the amount of elements visited
-		return cant==size;
-    }*/
     
     @CheckRep
     public boolean repOK(){
